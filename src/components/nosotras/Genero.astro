@@ -1,0 +1,105 @@
+---
+// Género. Markup extraído de v5 nosotras/genero.html (scripts/v5-extract/nosotras__genero/body.html).
+// CSS: pages/nosotras__genero.css completo, como en v5. Cambios: textos del bloque 1 y ODS 5,
+// cifras nuevas con fuentes, CTA hacia /donar. Fotos pendientes con el placeholder de v5.
+import { genero } from '../../i18n/genero';
+import { localePath, type Lang } from '../../i18n/ui';
+import '../../styles/pages/nosotras__genero.css';
+import '../../styles/genero-v7.css';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const c = genero[lang];
+const L = (p: string) => localePath(lang, p);
+---
+<!-- HERO -->
+<div class="hero" id="hero" style="background:var(--rojo)">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay-top"></div>
+  <div class="hero-overlay"></div>
+  <!-- TODO: /hero/genero.webp no disponible -->
+  <span class="asset-missing" style="right:2rem;bottom:2rem">{c.hero.missing}</span>
+  <div class="hero-body">
+    <div class="hero-breadcrumb" role="navigation" aria-label={lang === 'es' ? 'Ruta de navegación' : 'Breadcrumb'}>
+      <a href={L('/')}>{c.hero.home}</a><span>/</span>
+      <a href={L('/nosotras')}>{c.hero.parent}</a><span>/</span>
+      <span style="color:rgba(255,255,255,.7)" aria-current="page">{c.hero.here}</span>
+    </div>
+    <div class="hero-badge" style="background:rgba(237,105,75,.35);color:white;border:1px solid rgba(255,255,255,.2)">
+      <span style="font-size:.8rem">01</span> · {c.hero.badge}
+    </div>
+    <h1 class="hero-title">{c.hero.title[0]}<br>{c.hero.title[1]}</h1>
+    <p class="hero-subtitle">{c.hero.subtitle}</p>
+  </div>
+</div>
+
+<!-- BLOQUE 1 -->
+<div class="eje-bloque bg-white">
+  <div class="eje-two-col">
+    <div class="reveal">
+      <p class="section-eyebrow">{c.b1.eyebrow}</p>
+      <h2 class="section-title">{c.b1.title[0]}<br>{c.b1.title[1]}</h2>
+      <div class="prose">
+        {c.b1.prose.map((p) => <p set:html={p} />)}
+      </div>
+      <div class="ods-highlight">
+        <p class="ods-num">{c.b1.odsNum}</p>
+        <p set:html={c.b1.ods} />
+      </div>
+    </div>
+    <div class="eje-photo reveal">
+      <div class="eje-photo-placeholder"><span>{c.b1.photo}</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- BLOQUE 2 -->
+<div class="eje-bloque bg-crema">
+  <div class="eje-two-col reverse">
+    <div class="eje-photo reveal">
+      <div class="eje-photo-placeholder"><span>{c.b2.photo}</span></div>
+    </div>
+    <div class="reveal">
+      <p class="section-eyebrow">{c.b2.eyebrow}</p>
+      <h2 class="section-title">{c.b2.title[0]}<br>{c.b2.title[1]}</h2>
+      <div class="prose">
+        <p>{c.b2.prose}</p>
+      </div>
+      <div class="fechas-list">
+        {c.b2.fechas.map(([d, t]) => <div class="fecha-row"><span class="fecha-dia">{d}</span><span class="fecha-desc">{t}</span></div>)}
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CIFRAS -->
+<div class="cifras-section">
+  <div class="cifras-inner">
+    <p class="section-eyebrow reveal">{c.cifras.eyebrow}</p>
+    <h2 class="section-title reveal">{c.cifras.title[0]}<br>{c.cifras.title[1]}</h2>
+    <div class="cifras-grid reveal">
+      {c.cifras.items.map((i) => (
+        <div class="cifra-card">
+          <div class="cifra-val rojo">{i.v}</div>
+          <p class="cifra-key">{i.k}</p>
+          <div class="cifra-desc">{i.d}</div>
+        </div>
+      ))}
+    </div>
+    <p class="cifras-sources reveal" set:html={c.cifras.sources} />
+  </div>
+</div>
+
+<!-- DONAR CTA -->
+<div class="donar-cta">
+  <div class="donar-cta-text reveal">
+    <p class="eyebrow">{c.donar.eyebrow}</p>
+    <h2>{c.donar.title[0]}<br>{c.donar.title[1]}</h2>
+    <p>{c.donar.body}</p>
+  </div>
+  <div class="donar-cta-actions reveal">
+    <a href={L('/donar')} class="btn-primary">{c.donar.cta}</a>
+    <a href={L('/comunidad')} class="btn-outline-white">{c.donar.other}</a>
+    <p class="donar-note">{c.donar.note}</p>
+  </div>
+</div>
