@@ -1,0 +1,10 @@
+---
+import Base from '../../../layouts/Base.astro';
+import Vivienda from '../../../components/proyectos/Vivienda.astro';
+import { vivienda } from '../../../i18n/vivienda';
+import { proyectos } from '../../../i18n/proyectos';
+const { title, description, crumb } = vivienda.en.meta;
+---
+<Base lang="en" title={title} description={description} breadcrumbs={[{ name: proyectos.en.meta.crumb, path: '/proyectos' }, { name: crumb, path: '/proyectos/vivienda' }]}>
+  <Vivienda lang="en" />
+</Base>

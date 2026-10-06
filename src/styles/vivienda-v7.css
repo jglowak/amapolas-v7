@@ -1,0 +1,6 @@
+/* /proyectos/vivienda — adiciones de v7 sobre pages/proyectos__vivienda.css (literal de v5) */
+/* h4/h5 → h3 por jerarquía: mismo estilo que las reglas originales */
+.cohousing-feat-text h3{font-size:.88rem;font-weight:700;margin-bottom:.2rem}
+.replica-item h3{font-size:.92rem;font-weight:800;color:white;margin-bottom:.6rem}
+.detalle h3{font-size:.92rem;font-weight:800;margin-bottom:.6rem;letter-spacing:-.01em}
+.timeline-content h3{font-size:.9rem;font-weight:700;color:white;margin-bottom:.3rem}
