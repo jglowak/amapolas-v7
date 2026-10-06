@@ -1,0 +1,261 @@
+---
+// Comunidad. Markup extraído de v5 comunidad.html (scripts/v5-extract/comunidad/body.html).
+// CSS: pages/comunidad.css completo (hero claro: el nav usa el modo claro de v5).
+// Cambios del documento: 3 perfiles; Red de Alianzas (#alianzas) con FMS y 4 organizaciones;
+// Fundaciones y Organizaciones (#fundaciones) con "Solicitar balance"; bloque nuevo Sponsors
+// (#sponsors) con formulario; Donantes (#donantes) con el cuadro de donación completo.
+// Se eliminan GlobalGiving, niveles de donación viejos y voluntariado. h4 → h3 por jerarquía.
+import DonationBox from '../DonationBox.astro';
+import FormScript from '../FormScript.astro';
+import { comunidad } from '../../i18n/comunidad';
+import { site } from '../../config/site';
+import { localePath, type Lang } from '../../i18n/ui';
+import '../../styles/pages/comunidad.css';
+import '../../styles/comunidad-v7.css';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const c = comunidad[lang];
+const L = (p: string) => localePath(lang, p);
+const icons: Record<string, [string, string, string]> = {
+  rojo: ['rojo-bg', 'var(--rojo)', '<path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"></path>'],
+  gris: ['gris-bg', 'var(--gris-inst)', '<rect x="2" y="7" width="20" height="14" rx="2"></rect><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"></path>'],
+  naranja: ['naranja-bg', 'var(--naranja)', '<path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"></path><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"></path>'],
+};
+const doc = '<path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line>';
+const send = '<line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>';
+const r = c.fundaciones.recursos;
+const ff = c.fundaciones.form;
+const sf = c.sponsors.form;
+---
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-breadcrumb" role="navigation" aria-label={lang === 'es' ? 'Ruta de navegación' : 'Breadcrumb'}>
+    <a href={L('/')}>{c.hero.home}</a><span>/</span>
+    <span style="color:rgba(36,37,46,.6)" aria-current="page">{c.hero.here}</span>
+  </div>
+  <div class="hero-inner">
+    <h1 class="hero-title reveal">{c.hero.title[0]}<br>{c.hero.title[1]}<br><span class="accent">{c.hero.accent}</span></h1>
+    <div class="hero-right reveal">
+      <p>{c.hero.body}</p>
+      <div class="hero-anchors">
+        {c.hero.anchors.map(([href, t]) => <a href={href} class="hero-anchor">{t}</a>)}
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PERFILES ENTRY (3 cards) -->
+<section class="perfiles-section">
+  <div class="perfiles-inner">
+    <div class="perfiles-header">
+      <p class="section-eyebrow">{c.perfiles.eyebrow}</p>
+      <h2 class="section-title">{c.perfiles.title[0]}<br>{c.perfiles.title[1]}</h2>
+    </div>
+    <div class="perfiles-grid cols-3">
+      {c.perfiles.cards.map((p) => {
+        const [bg, stroke, path] = icons[p.icon];
+        return (
+          <a href={L(p.href)} class={`perfil-card ${p.k} reveal`} style="text-decoration:none">
+            <div class={`perfil-icon ${bg}`}>
+              <svg viewBox="0 0 24 24" fill="none" stroke={stroke} stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" set:html={path} />
+            </div>
+            <p class={`perfil-tag ${p.icon}`}>{p.tag}</p>
+            <h3 class="perfil-title">{p.h}</h3>
+            <p class="perfil-desc">{p.p}</p>
+            <span class={`perfil-cta ${p.icon}`}>{p.cta}</span>
+          </a>
+        );
+      })}
+    </div>
+  </div>
+</section>
+
+<!-- RED DE ALIANZAS -->
+<section class="aliados-section" id="alianzas">
+  <div class="aliados-inner">
+    <div class="aliados-header">
+      <p class="section-eyebrow">{c.alianzas.eyebrow}</p>
+      <h2 class="section-title reveal">{c.alianzas.title[0]}<br>{c.alianzas.title[1]}</h2>
+    </div>
+
+    <div class="fms-modulo reveal">
+      <div class="fms-badge">
+        <div class="fms-logo-placeholder">{c.alianzas.fmsLogo}</div>
+        <div class="fms-ciclos">
+          {['2023', '2024', '2025'].map((y) => <div class="fms-ciclo"><span class="fms-ciclo-year">{y}</span><div class="fms-ciclo-dot"></div></div>)}
+        </div>
+      </div>
+      <div class="fms-content">
+        <p class="fms-eyebrow">{c.alianzas.fmsEyebrow}</p>
+        <h3 class="fms-title">{c.alianzas.fmsTitle}</h3>
+        <p class="fms-desc">{c.alianzas.fmsDesc}</p>
+        <div class="fms-signif">
+          <p set:html={c.alianzas.fmsSignif} />
+        </div>
+      </div>
+    </div>
+
+    <div class="aliados-grid cols-4">
+      {c.alianzas.aliados.map(([logo, n, q, v]) => (
+        <div class="aliado-card reveal">
+          {/* TODO: logos de las organizaciones */}
+          <div class="aliado-logo-wrap"><span class="aliado-logo-placeholder">{logo}</span></div>
+          <h3 class="aliado-nombre">{n}</h3>
+          <p class="aliado-que-es">{q}</p>
+          <p class="aliado-vinculo">{v}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- FUNDACIONES Y ORGANIZACIONES -->
+<section class="institucional-section" id="fundaciones">
+  <div class="institucional-inner">
+    <div class="institucional-left reveal">
+      <p class="section-eyebrow" style="color:var(--gris-inst)">{c.fundaciones.eyebrow}</p>
+      <h2>{c.fundaciones.title}</h2>
+      <p>{c.fundaciones.body}</p>
+
+      <div class="inst-recursos">
+        <!-- TODO: PDFs del dossier pendientes -->
+        <a href="/dossier-amapolas-es.pdf" target="_blank" rel="noopener" class="inst-recurso" hreflang="es">
+          <div class="inst-recurso-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--gris-inst)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" set:html={doc} /></div>
+          <div class="inst-recurso-text"><p class="label">{r.es[0]}</p><p class="nombre">{r.es[1]}</p></div>
+        </a>
+        <a href="/dossier-amapolas-en.pdf" target="_blank" rel="noopener" class="inst-recurso" hreflang="en">
+          <div class="inst-recurso-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--gris-inst)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" set:html={doc} /></div>
+          <div class="inst-recurso-text"><p class="label">{r.en[0]}</p><p class="nombre">{r.en[1]}</p></div>
+        </a>
+        <a href={`mailto:${site.email}?subject=${encodeURIComponent(r.balanceSubject)}`} class="inst-recurso">
+          <div class="inst-recurso-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--gris-inst)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg></div>
+          <div class="inst-recurso-text"><p class="label">{r.balance[0]}</p><p class="nombre">{r.balance[1]}</p></div>
+        </a>
+        <div class="inst-recurso" style="cursor:default">
+          <div class="inst-recurso-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--gris-inst)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="2"></rect><path d="M7 7h.01M12 7h.01M17 7h.01M7 12h.01M12 12h.01M17 12h.01M7 17h.01M12 17h.01M17 17h.01"></path></svg></div>
+          <div class="inst-recurso-text"><p class="label">{r.inaes[0]}</p><p class="nombre">{r.inaes[1]}</p></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="institucional-right reveal">
+      <div class="inst-form-card">
+        <p style="font-size:.68rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(36,37,46,.35);margin-bottom:1.5rem">{c.fundaciones.formLabel}</p>
+        <!-- TODO: endpoint (site.forms.alianzas); sin endpoint abre el correo -->
+        <form id="alianzaForm" method="POST" data-endpoint={site.forms.alianzas} data-subject={ff.subject} onsubmit="amapolasSubmit(event,'alianzaSuccess')">
+          <div class="form-row-2">
+            <div><label class="form-label" for="org_nombre">{ff.nombre}</label><input class="form-input" type="text" id="org_nombre" name="org_nombre" placeholder={ff.nombrePh} required autocomplete="organization"></div>
+            <div><label class="form-label" for="org_pais">{ff.pais}</label><input class="form-input" type="text" id="org_pais" name="org_pais" placeholder={ff.paisPh} required autocomplete="country-name"></div>
+          </div>
+          <div class="form-row">
+            <label class="form-label" for="org_tipo">{ff.tipo}</label>
+            <select class="form-select" id="org_tipo" name="org_tipo" required>
+              <option value="" disabled selected>{ff.select}</option>
+              {ff.tipos.map(([v, t]) => <option value={v}>{t}</option>)}
+            </select>
+          </div>
+          <div class="form-row">
+            <label class="form-label" for="org_area">{ff.area}</label>
+            <select class="form-select" id="org_area" name="org_area" required>
+              <option value="" disabled selected>{ff.select}</option>
+              {ff.areas.map(([v, t]) => <option value={v}>{t}</option>)}
+            </select>
+          </div>
+          <div class="form-row"><label class="form-label" for="contacto_email">{ff.email}</label><input class="form-input" type="email" id="contacto_email" name="contacto_email" placeholder={ff.emailPh} required autocomplete="email"></div>
+          <div class="form-row"><label class="form-label" for="propuesta">{ff.propuesta}</label><textarea class="form-textarea" id="propuesta" name="propuesta" placeholder={ff.propuestaPh} required></textarea></div>
+          {site.forms.turnstileSiteKey && <div class="turnstile-wrap"><div class="cf-turnstile" data-sitekey={site.forms.turnstileSiteKey} data-theme="light" data-language={lang}></div></div>}
+          <button type="submit" class="btn-submit" id="alianzaBtn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" set:html={send} />{ff.enviar}</button>
+          <p class="form-note">{ff.note}</p>
+        </form>
+        <div class="form-success" id="alianzaSuccess"><h3>{c.fundaciones.ok[0]}</h3><p>{c.fundaciones.ok[1]}</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SPONSORS (bloque nuevo con el diseño de "Fundaciones y organizaciones") -->
+<section class="institucional-section sponsors-section" id="sponsors">
+  <div class="institucional-inner">
+    <div class="institucional-left reveal">
+      <p class="section-eyebrow" style="color:var(--rojo)">{c.sponsors.eyebrow}</p>
+      <h2>{c.sponsors.title}</h2>
+      {c.sponsors.body.map((p) => <p>{p}</p>)}
+    </div>
+    <div class="institucional-right reveal">
+      <div class="inst-form-card">
+        <p style="font-size:.68rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(36,37,46,.35);margin-bottom:1.5rem">{c.sponsors.formLabel}</p>
+        <!-- TODO: endpoint (site.forms.sponsors); sin endpoint abre el correo -->
+        <form id="sponsorForm" method="POST" data-endpoint={site.forms.sponsors} data-subject={sf.subject} onsubmit="amapolasSubmit(event,'sponsorSuccess')">
+          <div class="form-row-2">
+            <div><label class="form-label" for="sp_nombre">{sf.nombre}</label><input class="form-input" type="text" id="sp_nombre" name="marca" placeholder={sf.nombrePh} required autocomplete="organization"></div>
+            <div><label class="form-label" for="sp_pais">{sf.pais}</label><input class="form-input" type="text" id="sp_pais" name="pais" placeholder={sf.paisPh} required autocomplete="country-name"></div>
+          </div>
+          <div class="form-row">
+            <label class="form-label" for="sp_tipo">{sf.tipo}</label>
+            <select class="form-select" id="sp_tipo" name="tipo" required>
+              <option value="" disabled selected>{sf.select}</option>
+              {sf.tipos.map(([v, t]) => <option value={v}>{t}</option>)}
+            </select>
+          </div>
+          <fieldset class="form-row form-checks">
+            <legend class="form-label">{sf.parte}</legend>
+            <p class="form-hint">{sf.parteHint}</p>
+            <div class="checks-grid">
+              {sf.partes.map(([v, t]) => <label class="check"><input type="checkbox" name="interes" value={v}><span>{t}</span></label>)}
+            </div>
+          </fieldset>
+          <div class="form-row">
+            <label class="form-label" for="sp_como">{sf.como}</label>
+            <select class="form-select" id="sp_como" name="como" required>
+              <option value="" disabled selected>{sf.select}</option>
+              {sf.comos.map(([v, t]) => <option value={v}>{t}</option>)}
+            </select>
+          </div>
+          <div class="form-row"><label class="form-label" for="sp_email">{sf.email}</label><input class="form-input" type="email" id="sp_email" name="email" placeholder={sf.emailPh} required autocomplete="email"></div>
+          <div class="form-row"><label class="form-label" for="sp_propuesta">{sf.propuesta}</label><textarea class="form-textarea" id="sp_propuesta" name="propuesta" placeholder={sf.propuestaPh} required></textarea></div>
+          {site.forms.turnstileSiteKey && <div class="turnstile-wrap"><div class="cf-turnstile" data-sitekey={site.forms.turnstileSiteKey} data-theme="light" data-language={lang}></div></div>}
+          <button type="submit" class="btn-submit" id="sponsorBtn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" set:html={send} />{sf.enviar}</button>
+          <p class="form-note">{sf.note}</p>
+        </form>
+        <div class="form-success" id="sponsorSuccess"><h3>{c.sponsors.ok[0]}</h3><p>{c.sponsors.ok[1]}</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRENSA ENTRY -->
+<div class="prensa-entry" id="prensa-entry">
+  <div class="prensa-entry-inner">
+    <div class="prensa-entry-text reveal">
+      <p class="eyebrow">{c.prensaEntry.eyebrow}</p>
+      <h2>{c.prensaEntry.title}</h2>
+      <p>{c.prensaEntry.body}</p>
+    </div>
+    <div class="prensa-entry-actions reveal">
+      <a href={L('/prensa#kit')} class="btn-kit-prensa">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+        {c.prensaEntry.kit}
+      </a>
+      <a href={`mailto:${site.email}`} class="btn-prensa-contacto">{c.prensaEntry.contacto}</a>
+    </div>
+  </div>
+</div>
+
+<!-- DONANTES -->
+<section class="donantes-section" id="donantes">
+  <div class="donantes-inner">
+    <div class="donantes-intro reveal">
+      <p class="section-eyebrow">{c.donantes.eyebrow}</p>
+      <h2 class="section-title">{c.donantes.title[0]}<br>{c.donantes.title[1]}</h2>
+      <p style="font-size:.95rem;line-height:1.8;color:rgba(36,37,46,.55);margin-top:1rem">{c.donantes.body}</p>
+    </div>
+    <div class="donantes-muro reveal">
+      <p class="donantes-placeholder">{c.donantes.muro} <a href="#donar" style="color:var(--rojo);font-weight:600;font-style:normal">{c.donantes.muroLink}</a></p>
+    </div>
+  </div>
+</section>
+
+<DonationBox lang={lang} />
+
+<FormScript lang={lang} />

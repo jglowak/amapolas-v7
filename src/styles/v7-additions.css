@@ -27,3 +27,6 @@ nav.over-bg .nav-links .nav-parent.active{opacity:1}
 
 /* Placeholder visible para assets faltantes */
 .asset-missing{position:absolute;z-index:3;font-size:.6rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:white;background:rgba(237,105,75,.85);padding:.35rem .6rem;border-radius:2px}
+
+/* Nav en modo claro (páginas con hero claro, como v5 comunidad.html) */
+nav[data-light] .nav-links .nav-parent.active{opacity:1;border-bottom:2px solid var(--rojo);padding-bottom:2px}

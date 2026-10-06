@@ -1,0 +1,89 @@
+---
+// Cuadro de donación completo (/donar y /comunidad#donantes). Diseño y clases del bloque
+// DONACIÓN de v5 index.html; textos y montos del documento de correcciones.
+// Donorbox (internacional, USD) y Mercado Pago (Argentina, ARS) se muestran las dos; la
+// detección por país (cf-ipcountry) se agrega después.
+import { donar } from '../i18n/donar';
+import { site } from '../config/site';
+import type { Lang } from '../i18n/ui';
+import '../styles/donation-v5.css';
+
+interface Props { lang: Lang; id?: string }
+const { lang, id = 'donar' } = Astro.props;
+const c = donar[lang];
+const b = c.box;
+const db = site.donate.donorbox;
+const once = (a: number) => `${db}?default_interval=o&amount=${a}`;
+const monthly = (a?: number) => `${db}?default_interval=m${a ? `&amount=${a}` : ''}`;
+---
+<section id={id} class="donation-section">
+  <div class="donation-content reveal">
+    <p class="section-eyebrow">{c.left.eyebrow}</p>
+    <h2 class="section-title">{c.left.title[0]}<br>{c.left.title[1]}</h2>
+    {c.left.body.map((p) => <p class="section-body">{p}</p>)}
+    <div class="donation-impacts">
+      {c.left.impacts.map(([a, t]) => <div class="donation-impact-row"><strong>{a}</strong> {t}</div>)}
+    </div>
+    <p class="donation-closing">{c.left.closing}</p>
+  </div>
+  <div class="donation-widget">
+    <p class="widget-label">{b.label}</p>
+    <p class="mp-intro">{b.intro}</p>
+
+    <div class="dn-tabs" role="tablist">
+      <button type="button" class="dn-tab" role="tab" id={`${id}-tab-donorbox`} aria-controls={`${id}-donorbox`} aria-selected="true">{b.tabs.donorbox[0]}<small>{b.tabs.donorbox[1]}</small></button>
+      <button type="button" class="dn-tab" role="tab" id={`${id}-tab-mp`} aria-controls={`${id}-mercadopago`} aria-selected="false">{b.tabs.mp[0]}<small>{b.tabs.mp[1]}</small></button>
+    </div>
+
+    <!-- DONORBOX (TODO: URL real en src/config/site.ts) -->
+    <div class="dn-panel" id={`${id}-donorbox`} role="tabpanel" aria-labelledby={`${id}-tab-donorbox`}>
+      <span id="donorbox" class="sr-only"></span>
+      <div class="mp-grid">
+        {b.once.map((o) => (
+          <a href={once(o.a)} target="_blank" rel="noopener" class:list={['mp-btn', 'featured' in o && o.featured && 'featured']}>
+            <span class="mp-amount">USD {o.a}</span>
+            <span class="mp-impact">{o.t}</span>
+          </a>
+        ))}
+      </div>
+      <a href={`${db}?default_interval=o`} target="_blank" rel="noopener" class="mp-otro">{b.otro}</a>
+      <p class="mp-suscripcion-label">{b.monthlyLabel}</p>
+      <p class="mp-sus-intro">{b.monthlyIntro}</p>
+      <div class="mp-suscripcion-grid">
+        {b.monthly.map((m) => (
+          <a href={monthly(m.a)} target="_blank" rel="noopener" class="mp-sus-btn">
+            <span class="mp-amount">USD {m.a}</span>
+            <span class="mp-freq">{b.perMonth}</span>
+            <span class="mp-impact">{m.t}</span>
+          </a>
+        ))}
+      </div>
+      <a href={monthly()} target="_blank" rel="noopener" class="mp-otro">{b.otroMensual}</a>
+      <p class="mp-secure">{b.secureDonorbox}</p>
+    </div>
+
+    <!-- MERCADO PAGO (TODO: links reales en src/config/site.ts) -->
+    <div class="dn-panel" id={`${id}-mercadopago`} role="tabpanel" aria-labelledby={`${id}-tab-mp`} hidden>
+      <span id="mercadopago" class="sr-only"></span>
+      <p class="mp-intro">{b.mpIntro}</p>
+      <a href={site.donate.mercadoPago} target="_blank" rel="noopener" class="mp-otro">{b.mpOnce}</a>
+      <a href={site.donate.mercadoPago} target="_blank" rel="noopener" class="mp-otro">{b.mpMonthly}</a>
+      <p class="mp-secure">{b.secureMp}</p>
+    </div>
+  </div>
+</section>
+
+<script is:inline define:vars={{ id }}>
+(function () {
+  const tabs = document.querySelectorAll('#' + id + ' .dn-tab');
+  function select(tab) {
+    tabs.forEach((t) => {
+      const on = t === tab;
+      t.setAttribute('aria-selected', on ? 'true' : 'false');
+      document.getElementById(t.getAttribute('aria-controls')).hidden = !on;
+    });
+  }
+  tabs.forEach((t) => t.addEventListener('click', () => select(t)));
+  if (location.hash === '#mercadopago') select(tabs[1]);
+})();
+</script>

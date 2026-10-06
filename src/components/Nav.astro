@@ -7,8 +7,9 @@ import logoColor from '../assets/img/logo_web.png';
 import logoNeg from '../assets/img/logo_web_neg2.png';
 import { ui, localePath, stripLang, type Lang } from '../i18n/ui';
 
-interface Props { lang: Lang }
-const { lang } = Astro.props;
+interface Props { lang: Lang; light?: boolean }
+// light: páginas con hero claro (v5 comunidad.html): el nav nunca pasa a over-bg
+const { lang, light = false } = Astro.props;
 const t = ui[lang].nav;
 const L = (p: string) => localePath(lang, p);
 const path = stripLang(Astro.url.pathname);
@@ -23,7 +24,7 @@ const enHref = localePath('en', path);
 const close = "document.getElementById('mob').classList.remove('open')";
 ---
 <!-- NAV -->
-<nav id="navbar" class="over-bg" aria-label={lang === 'es' ? 'Principal' : 'Main'}>
+<nav id="navbar" class={light ? undefined : 'over-bg'} data-light={light ? '1' : undefined} aria-label={lang === 'es' ? 'Principal' : 'Main'}>
   <a href={L('/')}>
     <Image src={logoColor} alt={ui[lang].logoAlt} height={36} densities={[1, 2]} class="nav-logo-color" loading="eager" />
     <Image src={logoNeg} alt={ui[lang].logoAlt} height={36} densities={[1, 2]} class="nav-logo-neg" loading="eager" />

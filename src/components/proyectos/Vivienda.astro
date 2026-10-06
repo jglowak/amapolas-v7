@@ -1,0 +1,271 @@
+---
+// Barrio Amapolas. Markup extraído de v5 proyectos/vivienda.html
+// (scripts/v5-extract/proyectos__vivienda/body.html). CSS: pages/proyectos__vivienda.css completo.
+// Cambios del documento: hero, "La vivienda como derecho colectivo", "Un modelo replicable",
+// "Cómo queremos construir", estado actual (agroecológicos + Donorbox) y CTA. Se elimina el bloque
+// de meta de campaña con GlobalGiving. Fotos y plano pendientes. h4/h5 → h3 por jerarquía.
+import { vivienda } from '../../i18n/vivienda';
+import { localePath, type Lang } from '../../i18n/ui';
+import '../../styles/pages/proyectos__vivienda.css';
+import '../../styles/vivienda-v7.css';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const c = vivienda[lang];
+const L = (p: string) => localePath(lang, p);
+const featIcons = [
+  '<polygon points="3 9 12 2 21 9 21 20 3 20 3 9"></polygon>',
+  '<path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 00-3-3.87"></path><path d="M16 3.13a4 4 0 010 7.75"></path>',
+  '<circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>',
+  '<path d="M12 22V12"></path><path d="M12 12C12 12 7 10 5 6c4 0 7 2 7 6z"></path><path d="M12 12c0 0 5-2 7-6-4 0-7 2-7 6z"></path>',
+];
+const detIcons = [
+  ['var(--verde)', '<path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline>'],
+  ['var(--rojo)', '<circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line>'],
+  ['var(--azul)', '<path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 00-3-3.87"></path><path d="M16 3.13a4 4 0 010 7.75"></path>'],
+  ['var(--verde)', '<path d="M12 22V12"></path><path d="M12 12C12 12 7 10 5 6c4 0 7 2 7 6z"></path><path d="M12 12c0 0 5-2 7-6-4 0-7 2-7 6z"></path>'],
+  ['var(--rojo)', '<polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>'],
+  ['var(--azul)', '<circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"></path>'],
+];
+---
+<!-- HERO -->
+<div class="hero" id="hero">
+  <!-- TODO: /proyectos/vivienda.jpeg no disponible -->
+  <div class="hero-overlay-top"></div>
+  <div class="hero-overlay"></div>
+  <span class="asset-missing" style="right:2rem;bottom:2rem">{c.hero.missing}</span>
+  <div class="hero-body">
+    <div class="hero-breadcrumb" role="navigation" aria-label={lang === 'es' ? 'Ruta de navegación' : 'Breadcrumb'}>
+      <a href={L('/')}>{c.hero.home}</a><span>/</span>
+      <a href={L('/proyectos')}>{c.hero.parent}</a><span>/</span>
+      <span style="color:rgba(255,255,255,.6)" aria-current="page">{c.hero.here}</span>
+    </div>
+    <div class="hero-badge">{c.hero.badge}</div>
+    <h1 class="hero-title">{c.hero.title}</h1>
+    <p class="hero-subtitle">{c.hero.subtitle}</p>
+  </div>
+</div>
+
+<!-- RESUMEN -->
+<section class="resumen">
+  <div class="resumen-inner">
+    <div>
+      <p class="section-eyebrow reveal">{c.resumen.eyebrow}</p>
+      <h2 class="section-title reveal">{c.resumen.title[0]}<br>{c.resumen.title[1]}</h2>
+      <div class="prose reveal">
+        {c.resumen.prose.map((p) => <p set:html={p} />)}
+      </div>
+    </div>
+    <div class="datos-clave reveal">
+      {c.resumen.datos.map(([l, v, estado]) => <div class:list={['dato', estado && 'estado']}><div class="dato-label">{l}</div><div class="dato-val">{v}</div></div>)}
+    </div>
+  </div>
+</section>
+
+<!-- COHOUSING -->
+<section class="cohousing-section">
+  <div class="cohousing-inner">
+    <div class="cohousing-text reveal">
+      <p class="section-eyebrow">{c.cohousing.eyebrow}</p>
+      <h2 class="section-title">{c.cohousing.title[0]}<br>{c.cohousing.title[1]}</h2>
+      <div class="prose">
+        <p>{c.cohousing.prose}</p>
+      </div>
+      <div class="cohousing-def">
+        <p set:html={c.cohousing.def} />
+      </div>
+    </div>
+    <div class="reveal">
+      <div class="cohousing-features">
+        {c.cohousing.feats.map(([h, p], i) => (
+          <div class="cohousing-feat">
+            <div class="cohousing-feat-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" set:html={featIcons[i]} />
+            </div>
+            <div class="cohousing-feat-text">
+              <h3>{h}</h3>
+              <p>{p}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CUIDADO COMO INFRAESTRUCTURA -->
+<section class="cuidado-section">
+  <div class="cuidado-inner">
+    <div class="cuidado-photo reveal">
+      <div class="cuidado-photo-placeholder"><span>{c.cuidado.photo}</span></div>
+    </div>
+    <div class="reveal">
+      <p class="section-eyebrow" style="color:var(--verde)">{c.cuidado.eyebrow}</p>
+      <h2 class="section-title">{c.cuidado.title[0]}<br>{c.cuidado.title[1]}</h2>
+      <div class="prose">
+        {c.cuidado.prose.map((p) => <p set:html={p} />)}
+      </div>
+      <div class="cuidado-highlight">
+        <p class="lbl">{c.cuidado.lbl}</p>
+        <p set:html={c.cuidado.ods} />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REPLICABILIDAD -->
+<section class="replica-section">
+  <div class="replica-inner">
+    <div class="replica-header reveal">
+      <p class="section-eyebrow">{c.replica.eyebrow}</p>
+      <h2 class="section-title">{c.replica.title[0]}<br>{c.replica.title[1]}</h2>
+      <p>{c.replica.body}</p>
+    </div>
+    <div class="replica-grid reveal">
+      {c.replica.items.map(([h, p], i) => (
+        <div class="replica-item">
+          <p class="replica-num">{String(i + 1).padStart(2, '0')}</p>
+          <h3>{h}</h3>
+          <p>{p}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- GALERÍA (fotos pendientes) -->
+<section class="galeria">
+  <div class="galeria-header reveal">
+    <h2>{c.galeria.title}</h2>
+    <span class="galeria-note">{c.galeria.note}</span>
+  </div>
+  <div class="galeria-grid reveal">
+    {c.galeria.items.map((t, i) => (
+      <div class="galeria-item" onclick={`openLightbox(${i})`}>
+        <div class="galeria-item-overlay"><span class="galeria-zoom">{c.galeria.zoom}</span></div>
+        <span class="galeria-placeholder">{t} · {c.galeria.pending}</span>
+      </div>
+    ))}
+  </div>
+</section>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" onclick="closeLightbox()" aria-label={lang === 'es' ? 'Cerrar' : 'Close'}>✕</button>
+  <button class="lightbox-nav lightbox-prev" onclick="navLightbox(-1)" aria-label={lang === 'es' ? 'Anterior' : 'Previous'}>‹</button>
+  <img class="lightbox-img" id="lightboxImg" src="" alt="">
+  <button class="lightbox-nav lightbox-next" onclick="navLightbox(1)" aria-label={lang === 'es' ? 'Siguiente' : 'Next'}>›</button>
+  <span class="lightbox-caption" id="lightboxCaption"></span>
+</div>
+
+<!-- PLANO -->
+<section class="plano">
+  <div class="plano-inner">
+    <div class="plano-header reveal">
+      <p class="section-eyebrow">{c.plano.eyebrow}</p>
+      <h2 class="section-title">{c.plano.title}</h2>
+    </div>
+    <div class="plano-container reveal" onclick="openPlano()">
+      <!-- TODO: plano real (plano_vivienda.jpg) -->
+      <div class="plano-placeholder">
+        <p>{c.plano.ph}</p>
+        <small>{c.plano.small[0]}<br>{c.plano.small[1]}</small>
+      </div>
+      <span class="plano-zoom-hint">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg>
+        {c.plano.zoom}
+      </span>
+    </div>
+    <p class="plano-credit reveal">{c.plano.credit}</p>
+  </div>
+</section>
+
+<!-- DETALLES -->
+<section class="detalles">
+  <div class="detalles-inner">
+    <div class="reveal">
+      <p class="section-eyebrow">{c.detalles.eyebrow}</p>
+      <h2 class="section-title">{c.detalles.title}</h2>
+    </div>
+    <div class="detalles-grid reveal">
+      {c.detalles.items.map(([h, p], i) => (
+        <div class="detalle">
+          <div class="detalle-icon"><svg viewBox="0 0 24 24" fill="none" stroke={detIcons[i][0]} stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" set:html={detIcons[i][1]} /></div>
+          <h3>{h}</h3>
+          <p>{p}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- ESTADO ACTUAL -->
+<section class="estado">
+  <div class="estado-inner">
+    <div>
+      <p class="section-eyebrow reveal">{c.estado.eyebrow}</p>
+      <h2 class="section-title reveal">{c.estado.title[0]}<br>{c.estado.title[1]}</h2>
+      <p class="estado-desc reveal">{c.estado.desc}</p>
+    </div>
+    <div class="timeline reveal">
+      {c.estado.items.map((t) => (
+        <div class="timeline-item">
+          <div class={`timeline-dot ${t.dot}`}></div>
+          <div class="timeline-content">
+            <h3>{t.h}</h3>
+            <p>{t.p}</p>
+            <span class="timeline-year">{t.y}</span>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- DONAR CTA -->
+<div class="donar-cta">
+  <div class="donar-cta-text reveal">
+    <p class="eyebrow">{c.donar.eyebrow}</p>
+    <h2>{c.donar.title[0]}<br>{c.donar.title[1]}</h2>
+    <p>{c.donar.body}</p>
+  </div>
+  <div class="donar-cta-actions reveal">
+    <a href={L('/donar')} class="btn-primary">{c.donar.cta}</a>
+    <a href={L('/comunidad')} class="btn-outline-white">{c.donar.other}</a>
+    <p class="donar-note">{c.donar.note}</p>
+  </div>
+</div>
+
+<script is:inline>
+// LIGHTBOX (literal de v5). TODO: completar src cuando estén las fotos; sin src no abre.
+const fotos = [
+  {src:'', caption:''}, {src:'', caption:''}, {src:'', caption:''},
+  {src:'', caption:''}, {src:'', caption:''}, {src:'', caption:''},
+];
+let currentFoto = 0;
+function openLightbox(idx) {
+  if (!fotos[idx].src) return;
+  currentFoto = idx;
+  document.getElementById('lightboxImg').src = fotos[idx].src;
+  document.getElementById('lightboxCaption').textContent = fotos[idx].caption;
+  document.getElementById('lightbox').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('open');
+  document.body.style.overflow = '';
+}
+function navLightbox(dir) {
+  currentFoto = (currentFoto + dir + fotos.length) % fotos.length;
+  openLightbox(currentFoto);
+}
+document.getElementById('lightbox').addEventListener('click', function(e) {
+  if (e.target === this) closeLightbox();
+});
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closeLightbox();
+  if (e.key === 'ArrowRight') navLightbox(1);
+  if (e.key === 'ArrowLeft') navLightbox(-1);
+});
+function openPlano() { /* activar con src del plano cuando esté disponible */ }
+</script>

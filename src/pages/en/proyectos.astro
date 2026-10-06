@@ -1,0 +1,10 @@
+---
+import Base from '../../layouts/Base.astro';
+import Proyectos from '../../components/proyectos/Proyectos.astro';
+import { proyectos } from '../../i18n/proyectos';
+
+const { title, description, crumb } = proyectos.en.meta;
+---
+<Base lang="en" title={title} description={description} breadcrumbs={[{ name: crumb, path: '/proyectos' }]}>
+  <Proyectos lang="en" />
+</Base>

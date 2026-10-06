@@ -1,0 +1,96 @@
+---
+// Interculturalidad. Markup extraído de v5 nosotras/interculturalidad.html
+// (scripts/v5-extract/nosotras__interculturalidad/body.html). CSS: pages/nosotras__interculturalidad.css
+// completo, como en v5. Cambios del documento: hero, Furilofche, "Alianzas que transforman"
+// y dos comunidades aliadas (Tambo Báez y Lofche Buenuleo). h4 → h3 por jerarquía.
+import { interculturalidad } from '../../i18n/interculturalidad';
+import { localePath, type Lang } from '../../i18n/ui';
+import '../../styles/pages/nosotras__interculturalidad.css';
+import '../../styles/interculturalidad-v7.css';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const c = interculturalidad[lang];
+const L = (p: string) => localePath(lang, p);
+---
+<!-- HERO -->
+<div class="hero" id="hero" style="background:var(--azul)">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay-top"></div>
+  <div class="hero-overlay"></div>
+  <!-- TODO: interculturalidad_hero.jpg no disponible -->
+  <span class="asset-missing" style="right:2rem;bottom:2rem">{c.hero.missing}</span>
+  <div class="hero-body">
+    <div class="hero-breadcrumb" role="navigation" aria-label={lang === 'es' ? 'Ruta de navegación' : 'Breadcrumb'}>
+      <a href={L('/')}>{c.hero.home}</a><span>/</span>
+      <a href={L('/nosotras')}>{c.hero.parent}</a><span>/</span>
+      <span style="color:rgba(255,255,255,.7)" aria-current="page">{c.hero.here}</span>
+    </div>
+    <div class="hero-badge" style="background:rgba(237,105,75,.35);color:white;border:1px solid rgba(255,255,255,.2)">
+      <span style="font-size:.8rem">03</span> · {c.hero.badge}
+    </div>
+    <h1 class="hero-title">{c.hero.title[0]}<br>{c.hero.title[1]}</h1>
+    <p class="hero-subtitle">{c.hero.subtitle}</p>
+  </div>
+</div>
+
+<!-- BLOQUE 1 — Territorio e historia -->
+<div class="eje-bloque bg-white">
+  <div class="eje-two-col">
+    <div class="reveal">
+      <p class="section-eyebrow">{c.b1.eyebrow}</p>
+      <h2 class="section-title">{c.b1.title[0]}</h2>
+      <div class="prose">
+        {c.b1.prose.map((p) => <p set:html={p} />)}
+      </div>
+      <div class="contexto-inst">
+        <p class="eyebrow">{c.b1.ctxEyebrow}</p>
+        <p set:html={c.b1.ctx} />
+      </div>
+    </div>
+    <div class="eje-photo reveal">
+      <div class="eje-photo-placeholder"><span>{c.b1.photo}</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- BLOQUE 2 — Alianzas reales -->
+<div class="eje-bloque bg-crema">
+  <div class="eje-two-col reverse">
+    <div class="eje-photo reveal">
+      <div class="eje-photo-placeholder"><span>{c.b2.photo}</span></div>
+    </div>
+    <div class="reveal">
+      <p class="section-eyebrow">{c.b2.eyebrow}</p>
+      <h2 class="section-title">{c.b2.title[0]}<br>{c.b2.title[1]}</h2>
+      <div class="prose">
+        {c.b2.prose.map((p) => <p set:html={p} />)}
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- VÍNCULOS COMUNITARIOS -->
+<div class="vinculos-section">
+  <div class="vinculos-inner">
+    <p class="section-eyebrow reveal">{c.vinculos.eyebrow}</p>
+    <h2 class="section-title reveal">{c.vinculos.title[0]}<br>{c.vinculos.title[1]}</h2>
+    <div class="vinculos-grid cols-2 reveal">
+      {c.vinculos.cards.map((k) => <div class="vinculo-card"><h3>{k.h}</h3><p>{k.p}</p></div>)}
+    </div>
+  </div>
+</div>
+
+<!-- DONAR CTA -->
+<div class="donar-cta">
+  <div class="donar-cta-text reveal">
+    <p class="eyebrow">{c.donar.eyebrow}</p>
+    <h2>{c.donar.title[0]}<br>{c.donar.title[1]}</h2>
+    <p>{c.donar.body}</p>
+  </div>
+  <div class="donar-cta-actions reveal">
+    <a href={L('/donar')} class="btn-primary">{c.donar.cta}</a>
+    <a href={L('/comunidad')} class="btn-outline-white">{c.donar.other}</a>
+    <p class="donar-note">{c.donar.note}</p>
+  </div>
+</div>

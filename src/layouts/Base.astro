@@ -16,8 +16,10 @@ interface Props {
   /** Nodos JSON-LD adicionales (DonateAction, Event…) */
   graph?: Record<string, unknown>[];
   ogImage?: string;
+  /** Hero claro: el nav no usa la variante sobre fondo oscuro (v5 comunidad.html) */
+  navLight?: boolean;
 }
-const { lang, title, description, breadcrumbs = [], graph = [], ogImage = '/og-default.png' } = Astro.props;
+const { lang, title, description, breadcrumbs = [], graph = [], ogImage = '/og-default.png', navLight = false } = Astro.props;
 const path = stripLang(Astro.url.pathname);
 const abs = (p: string) => (p === '/' ? `${site.url}/` : new URL(p, site.url).href.replace(/\/$/, ''));
 const canonical = abs(localePath(lang, path));
@@ -80,6 +82,7 @@ const ld = {
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{title}</title>
 <meta name="description" content={description}>
+{Astro.url.pathname.startsWith('/404') && <meta name="robots" content="noindex">}
 <link rel="canonical" href={canonical}>
 <link rel="alternate" hreflang="es" href={esUrl}>
 <link rel="alternate" hreflang="en" href={enUrl}>
@@ -104,7 +107,7 @@ const ld = {
 </head>
 <body>
 <a href="#main" class="skip-link">{ui[lang].skip}</a>
-<Nav lang={lang} />
+<Nav lang={lang} light={navLight} />
 <main id="main">
   <slot />
 </main>
@@ -117,7 +120,7 @@ const ld = {
 const navbar = document.getElementById('navbar');
 function updateNav() {
   const past = window.scrollY > 40;
-  navbar.classList.toggle('over-bg', !past);
+  navbar.classList.toggle('over-bg', !past && !navbar.dataset.light);
   navbar.classList.toggle('solid', past);
 }
 window.addEventListener('scroll', updateNav, {passive:true});
