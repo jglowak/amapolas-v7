@@ -3,6 +3,7 @@
 // clases y la estructura originales. Cambios según docs/correcciones.md:
 // - sin contador de campaña ni GlobalGiving; donación en versión corta que apunta a /donar
 // - 3 cards de proyectos; ODS traído de v5 nosotras.html; socias solo con fotos
+// - orden de secciones según el documento (Valores y Prensa en su lugar de v5)
 // - h4 → h3 para respetar la jerarquía de títulos (mismo estilo, ver v7-additions.css)
 import { Image } from 'astro:assets';
 import integrantes from '../../assets/img/integrantes.png';
@@ -81,34 +82,6 @@ const dlIcon = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stro
   <p class="quote-attr"><strong>Amapolas</strong> {c.quote.attr}</p>
 </div>
 
-<!-- INDICADORES -->
-<div class="indicadores-section reveal">
-  <div class="indicadores-inner">
-    {c.indicadores.map((d) => (
-      <div class="indicador">
-        <div class="indicador-num">{d.n}</div>
-        <div class="indicador-label">{d.l}</div>
-      </div>
-    ))}
-  </div>
-</div>
-
-<!-- DOSSIER -->
-<div class="dossier-section reveal">
-  <div class="dossier-inner">
-    <div class="dossier-text">
-      <p class="label">{c.dossier.label}</p>
-      <h2>{c.dossier.title}</h2>
-      <p>{c.dossier.body[0]}<br>{c.dossier.body[1]}</p>
-    </div>
-    <div class="dossier-btns">
-      <!-- TODO: PDFs pendientes -->
-      <a href="/dossier-amapolas-es.pdf" target="_blank" rel="noopener" class="btn-dossier es" hreflang="es"><Fragment set:html={dlIcon} />{c.dossier.es}</a>
-      <a href="/dossier-amapolas-en.pdf" target="_blank" rel="noopener" class="btn-dossier en" hreflang="en"><Fragment set:html={dlIcon} />{c.dossier.en}</a>
-    </div>
-  </div>
-</div>
-
 <!-- PROYECTOS -->
 <section id="proyectos" class="projects-section">
   <div class="projects-header reveal">
@@ -155,6 +128,23 @@ const dlIcon = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stro
   </div>
 </section>
 
+<!-- SOCIAS: solo fotos -->
+<section id="comunidad" class="testimonios solo-fotos" aria-labelledby="socias-h">
+  <h2 id="socias-h" class="sr-only">{c.socias.title}</h2>
+  <div class="socias-track-wrap">
+    <div class="socias-track">
+      {[0, 1].map((copy) => Array.from({ length: SOCIAS }, () => (
+        <div class="socia-item" aria-hidden={copy === 1 ? 'true' : undefined}>
+          {/* TODO: fotos de /chicas/ pendientes */}
+          <div class="socia-placeholder" role="img" aria-label={copy === 0 ? c.socias.alt : undefined}>
+            <Fragment set:html={imgIcon} /><span class="socia-placeholder-label">{c.socias.ph}</span>
+          </div>
+        </div>
+      )))}
+    </div>
+  </div>
+</section>
+
 <!-- ODS (de v5 nosotras.html) -->
 <section id="ods" class="ods-section">
   <div class="ods-inner">
@@ -176,6 +166,22 @@ const dlIcon = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stro
     </div>
   </div>
 </section>
+
+<!-- DOSSIER -->
+<div class="dossier-section reveal">
+  <div class="dossier-inner">
+    <div class="dossier-text">
+      <p class="label">{c.dossier.label}</p>
+      <h2>{c.dossier.title}</h2>
+      <p>{c.dossier.body[0]}<br>{c.dossier.body[1]}</p>
+    </div>
+    <div class="dossier-btns">
+      <!-- TODO: PDFs pendientes -->
+      <a href="/dossier-amapolas-es.pdf" target="_blank" rel="noopener" class="btn-dossier es" hreflang="es"><Fragment set:html={dlIcon} />{c.dossier.es}</a>
+      <a href="/dossier-amapolas-en.pdf" target="_blank" rel="noopener" class="btn-dossier en" hreflang="en"><Fragment set:html={dlIcon} />{c.dossier.en}</a>
+    </div>
+  </div>
+</div>
 
 <!-- DONACIÓN (versión corta; el cuadro completo está en /donar) -->
 <section id="donar" class="donation-section">
@@ -209,22 +215,17 @@ const dlIcon = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stro
   </div>
 </section>
 
-<!-- SOCIAS: solo fotos -->
-<section id="comunidad" class="testimonios solo-fotos" aria-labelledby="socias-h">
-  <h2 id="socias-h" class="sr-only">{c.socias.title}</h2>
-  <div class="socias-track-wrap">
-    <div class="socias-track">
-      {[0, 1].map((copy) => Array.from({ length: SOCIAS }, () => (
-        <div class="socia-item" aria-hidden={copy === 1 ? 'true' : undefined}>
-          {/* TODO: fotos de /chicas/ pendientes */}
-          <div class="socia-placeholder" role="img" aria-label={copy === 0 ? c.socias.alt : undefined}>
-            <Fragment set:html={imgIcon} /><span class="socia-placeholder-label">{c.socias.ph}</span>
-          </div>
-        </div>
-      )))}
-    </div>
+<!-- INDICADORES -->
+<div class="indicadores-section reveal">
+  <div class="indicadores-inner">
+    {c.indicadores.map((d) => (
+      <div class="indicador">
+        <div class="indicador-num">{d.n}</div>
+        <div class="indicador-label">{d.l}</div>
+      </div>
+    ))}
   </div>
-</section>
+</div>
 
 <!-- PRENSA BAND -->
 <section id="prensa" class="prensa-band">
