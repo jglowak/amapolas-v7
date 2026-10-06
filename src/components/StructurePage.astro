@@ -1,0 +1,48 @@
+---
+import Base from '../layouts/Base.astro';
+import { pages } from '../content/structure';
+import { localePath, type Lang } from '../i18n/utils';
+
+interface Props { page: keyof typeof pages; lang: Lang }
+const { page, lang } = Astro.props;
+const def = pages[page][lang];
+const image = def.hero === 'image';
+---
+
+<Base title={def.title} description={def.lead} lang={lang} heroStyle={image ? 'dark' : 'light'}>
+  {image ? (
+    <div class="hero">
+      <div class="hero-bg"><img src="/hero/barrio.jpg" alt="" class="hero-bg-img" /></div>
+      <div class="hero-overlay-top"></div>
+      <div class="hero-overlay"></div>
+      <div class="hero-body">
+        <h1 class="hero-title">{def.title}</h1>
+        {def.lead && <p class="hero-subtitle">{def.lead}</p>}
+        <div class="hero-actions">
+          {def.ctas?.map((c) => (
+            <a href={localePath(lang, c.href)} class={c.ghost ? 'btn-ghost' : 'btn-primary-hero'}>{c.label} →</a>
+          ))}
+        </div>
+      </div>
+    </div>
+  ) : (
+    <header class="page-hero">
+      <div class="page-hero-inner">
+        <h1>{def.title}</h1>
+        {def.lead && <p class="lead">{def.lead}</p>}
+      </div>
+    </header>
+  )}
+
+  {def.sections.map((s) => (
+    <section class="s-block" id={s.id}>
+      <div class="s-inner">
+        {s.eyebrow && <p class="section-eyebrow">{s.eyebrow}</p>}
+        <h2 class="section-title">{s.title}</h2>
+        <div class="s-stub">
+          <strong>#{s.id}</strong> — sección por implementar{s.note && <> · {s.note}</>}
+        </div>
+      </div>
+    </section>
+  ))}
+</Base>

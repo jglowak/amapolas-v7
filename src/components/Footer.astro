@@ -1,0 +1,81 @@
+---
+import { localePath, type Lang } from '../i18n/utils';
+import { site } from '../i18n/site';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const href = (p: string) => localePath(lang, p);
+
+const t = {
+  es: {
+    brand: 'Amapolas Cooperativa de Viviendas',
+    desc: 'Una cooperativa de viviendas conducida por mujeres y disidencias en la Patagonia Argentina. Construimos autonomía y comunidad desde Bariloche.',
+    coop: 'La cooperativa',
+    colab: 'Colaborar',
+    contact: 'Contacto',
+    legal: `Cooperativa de Vivienda Amapolas Ltda. · Matrícula INAES N°${site.inaes} obtenida en 2022 · Bariloche, Río Negro, Argentina`,
+    top: 'Volver arriba',
+  },
+  en: {
+    brand: 'Amapolas Housing Cooperative',
+    desc: 'A housing cooperative led by women and gender-diverse people in Argentine Patagonia. We build autonomy and community from Bariloche.',
+    coop: 'The cooperative',
+    colab: 'Get involved',
+    contact: 'Contact',
+    legal: `Cooperativa de Vivienda Amapolas Ltda. · INAES Registration No. ${site.inaes} (granted 2022) · Bariloche, Río Negro, Argentina`,
+    top: 'Back to top',
+  },
+}[lang];
+
+// Enlaces del footer: según el texto de correcciones.
+const coop = [
+  { label: { es: 'Quiénes somos', en: 'Who we are' }, href: '/#quienes-somos' }, // texto: "que te lleve a la home"
+  { label: { es: 'Proyectos', en: 'Projects' }, href: '/proyectos' },
+  { label: { es: 'Acciones y Prensa', en: 'Actions & Press' }, href: '/prensa' },
+  { label: { es: 'Comunidad', en: 'Community' }, href: '/comunidad' },
+];
+const colab = [
+  { label: { es: 'Donar', en: 'Donate' }, href: '/#donar' },
+  { label: { es: 'Alianzas', en: 'Partnerships' }, href: '/comunidad' },
+  { label: { es: 'Kit de Prensa', en: 'Press Kit' }, href: '/prensa#kit' },
+];
+const social = [
+  { name: 'WhatsApp', short: 'wa', url: site.social.whatsapp },
+  { name: 'LinkedIn', short: 'in', url: site.social.linkedin },
+  { name: 'Instagram', short: 'ig', url: site.social.instagram },
+  { name: 'Facebook', short: 'fb', url: site.social.facebook },
+];
+---
+
+<footer>
+  <div class="footer-top">
+    <div>
+      <img src="/img/logo-footer.png" alt={t.brand} class="foot-logo" />
+      <p class="foot-desc">{t.desc}</p>
+    </div>
+    <div class="foot-col">
+      <h5>{t.coop}</h5>
+      <ul>{coop.map((l) => <li><a href={href(l.href)}>{l.label[lang]}</a></li>)}</ul>
+    </div>
+    <div class="foot-col">
+      <h5>{t.colab}</h5>
+      <ul>{colab.map((l) => <li><a href={href(l.href)}>{l.label[lang]}</a></li>)}</ul>
+    </div>
+    <div class="foot-col">
+      <h5>{t.contact}</h5>
+      <ul>
+        <li><a href={`mailto:${site.email}`}>{site.email}</a></li>
+        <li><a href={site.social.linkedin} target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href={site.social.instagram} target="_blank" rel="noopener">Instagram</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>{t.legal}</p>
+    <div class="foot-social">
+      {social.map((s) => <a href={s.url} target="_blank" rel="noopener" title={s.name} aria-label={s.name}>{s.short}</a>)}
+    </div>
+  </div>
+</footer>
+
+<button class="scroll-top" id="stop" aria-label={t.top}>↑</button>

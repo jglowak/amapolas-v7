@@ -1,0 +1,78 @@
+---
+import '../styles/global.css';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import { switchLangPath, type Lang } from '../i18n/utils';
+
+interface Props {
+  title: string;
+  description?: string;
+  lang: Lang;
+  heroStyle?: 'dark' | 'light';
+}
+const { title, description = '', lang, heroStyle = 'light' } = Astro.props;
+const site = Astro.site ?? new URL('https://amapolas.org');
+const abs = (p: string) => new URL(p, site).href;
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title} · Amapolas</title>
+    {description && <meta name="description" content={description} />}
+    <link rel="canonical" href={abs(Astro.url.pathname)} />
+    <link rel="alternate" hreflang="es" href={abs(switchLangPath(Astro.url, 'es'))} />
+    <link rel="alternate" hreflang="en" href={abs(switchLangPath(Astro.url, 'en'))} />
+    <link rel="alternate" hreflang="x-default" href={abs(switchLangPath(Astro.url, 'es'))} />
+    <link rel="icon" href="/img/logo-color.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <Nav lang={lang} heroStyle={heroStyle} />
+    <main>
+      <slot />
+    </main>
+    <Footer lang={lang} />
+
+    <script>
+      const nav = document.getElementById('navbar');
+      const dark = nav?.dataset.hero === 'dark';
+      const stop = document.getElementById('stop');
+      function onScroll() {
+        if (nav && dark) {
+          const past = window.scrollY > 40;
+          nav.classList.toggle('over-bg', !past);
+          nav.classList.toggle('solid', past);
+        }
+        stop?.classList.toggle('on', window.scrollY > 500);
+      }
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+
+      const mob = document.getElementById('mob');
+      document.getElementById('ham')?.addEventListener('click', () => mob?.classList.add('open'));
+      document.getElementById('mob-close')?.addEventListener('click', () => mob?.classList.remove('open'));
+      mob?.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => mob.classList.remove('open')));
+      document.querySelectorAll<HTMLElement>('[data-acc]').forEach((b) =>
+        b.addEventListener('click', () => {
+          b.classList.toggle('open');
+          b.nextElementSibling?.classList.toggle('open');
+        })
+      );
+      stop?.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+      const io = new IntersectionObserver(
+        (es) => es.forEach((e) => e.isIntersecting && e.target.classList.add('visible')),
+        { threshold: 0.08 }
+      );
+      document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+    </script>
+  </body>
+</html>

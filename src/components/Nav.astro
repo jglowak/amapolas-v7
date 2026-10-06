@@ -1,0 +1,82 @@
+---
+import { menu, donateLabel } from '../i18n/menu';
+import { localePath, switchLangPath, type Lang } from '../i18n/utils';
+
+interface Props {
+  lang: Lang;
+  /** 'dark' = transparente sobre hero con imagen; 'light' = barra sólida desde el inicio. */
+  heroStyle?: 'dark' | 'light';
+}
+const { lang, heroStyle = 'light' } = Astro.props;
+const here = Astro.url.pathname.replace(/^\/en(?=\/|$)/, '').replace(/\/$/, '') || '/';
+const href = (p: string) => localePath(lang, p);
+const isActive = (p?: string) => !!p && p.split('#')[0] === here;
+const childActive = (item: (typeof menu)[number]) => item.children?.some((c) => isActive(c.href));
+const initial = heroStyle === 'dark' ? 'over-bg' : 'solid';
+---
+
+<nav id="navbar" class={initial} data-hero={heroStyle}>
+  <a href={href('/')} aria-label="Amapolas">
+    <img src="/img/logo-color.png" alt="Amapolas Cooperativa de Viviendas" class="nav-logo-color" />
+    <img src="/img/logo-white.png" alt="" class="nav-logo-neg" />
+  </a>
+
+  <ul class="nav-links">
+    {menu.map((item) =>
+      item.children ? (
+        <li class="nav-item has-dropdown">
+          <button type="button" class:list={['nav-parent', { active: childActive(item) }]} aria-haspopup="true">
+            {item.label[lang]}
+          </button>
+          <div class="nav-dropdown">
+            <span class="nav-dropdown-label">{item.label[lang]}</span>
+            {item.children.map((c) => (
+              <a href={href(c.href)}>{c.label[lang]}</a>
+            ))}
+          </div>
+        </li>
+      ) : (
+        <li>
+          <a href={href(item.href!)} class:list={[{ active: isActive(item.href) }]}>{item.label[lang]}</a>
+        </li>
+      )
+    )}
+    <li class="nav-lang">
+      <a href={switchLangPath(Astro.url, 'es')} class:list={['lang-btn', { 'lang-active': lang === 'es' }]} hreflang="es">ES</a>
+      <span class="lang-sep">|</span>
+      <a href={switchLangPath(Astro.url, 'en')} class:list={['lang-btn', { 'lang-active': lang === 'en' }]} hreflang="en">EN</a>
+    </li>
+    <li><a href={href('/#donar')} class="cta">{donateLabel[lang]}</a></li>
+  </ul>
+
+  <button class="hamburger" id="ham" aria-label={lang === 'es' ? 'Abrir menú' : 'Open menu'}>
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- Overlay mobile: mismo menú, en acordeón -->
+<div class="mobile-overlay" id="mob">
+  <button class="mob-close" id="mob-close" aria-label={lang === 'es' ? 'Cerrar' : 'Close'}>✕</button>
+  {menu.map((item) =>
+    item.children ? (
+      <div class="mob-accordion">
+        <button class="mob-acc-btn" data-acc>
+          {item.label[lang]} <span class="mob-acc-arrow">▾</span>
+        </button>
+        <div class="mob-acc-panel">
+          {item.children.map((c) => (
+            <a href={href(c.href)}>{c.label[lang]}</a>
+          ))}
+        </div>
+      </div>
+    ) : (
+      <a href={href(item.href!)}>{item.label[lang]}</a>
+    )
+  )}
+  <div class="mob-lang">
+    <a href={switchLangPath(Astro.url, 'es')} class:list={['lang-btn', { 'lang-active': lang === 'es' }]} hreflang="es">ES</a>
+    <span class="lang-sep">|</span>
+    <a href={switchLangPath(Astro.url, 'en')} class:list={['lang-btn', { 'lang-active': lang === 'en' }]} hreflang="en">EN</a>
+  </div>
+  <a href={href('/#donar')} style="color:var(--rojo)">{donateLabel[lang]}</a>
+</div>
