@@ -1,0 +1,10 @@
+---
+import Base from '../../../layouts/Base.astro';
+import Cohousing from '../../../components/nosotras/Cohousing.astro';
+import { cohousing } from '../../../i18n/cohousing';
+import { nosotras } from '../../../i18n/nosotras';
+const { title, description, crumb } = cohousing.en.meta;
+---
+<Base lang="en" title={title} description={description} breadcrumbs={[{ name: nosotras.en.meta.crumb, path: '/nosotras' }, { name: crumb, path: '/nosotras/cohousing' }]}>
+  <Cohousing lang="en" />
+</Base>

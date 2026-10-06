@@ -1,0 +1,179 @@
+---
+// Cuidado y Cohousing. Markup extraído de v5 nosotras/cohousing.html
+// (scripts/v5-extract/nosotras__cohousing/body.html). CSS: pages/nosotras__cohousing.css completo.
+// Cambios del documento: sin menú de pestañas del hero, hero y bloque "Cohousing" nuevos,
+// "El cuidado como eje central" antes de "Cohousing con perspectiva feminista", tarjeta de
+// Construcción y CTA. h4/h5 → h3 por jerarquía (mismo estilo, ver cohousing-v7.css).
+import { cohousing } from '../../i18n/cohousing';
+import { localePath, type Lang } from '../../i18n/ui';
+import '../../styles/pages/nosotras__cohousing.css';
+import '../../styles/cohousing-v7.css';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const c = cohousing[lang];
+const L = (p: string) => localePath(lang, p);
+const icons = [
+  '<polygon points="3 9 12 2 21 9 21 20 3 20 3 9"></polygon>',
+  '<path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 00-3-3.87"></path><path d="M16 3.13a4 4 0 010 7.75"></path>',
+  '<circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>',
+  '<path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline>',
+  '<path d="M12 22V12"></path><path d="M12 12C12 12 7 10 5 6c4 0 7 2 7 6z"></path><path d="M12 12c0 0 5-2 7-6-4 0-7 2-7 6z"></path>',
+  '<line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line>',
+];
+---
+<!-- HERO (sin menú de pestañas) -->
+<div class="hero" id="hero">
+  <div class="hero-deco" aria-hidden="true">◎</div>
+  <div class="hero-body">
+    <div class="hero-breadcrumb" role="navigation" aria-label={lang === 'es' ? 'Ruta de navegación' : 'Breadcrumb'}>
+      <a href={L('/')}>{c.hero.home}</a><span>/</span>
+      <a href={L('/nosotras')}>{c.hero.parent}</a><span>/</span>
+      <span style="color:rgba(255,255,255,.7)" aria-current="page">{c.hero.here}</span>
+    </div>
+    <div class="hero-badge">
+      <span style="font-size:.8rem">04</span> · {c.hero.badge}
+    </div>
+    <h1 class="hero-title">{c.hero.title[0]}<br>{c.hero.title[1]}</h1>
+    <p class="hero-subtitle">{c.hero.subtitle}</p>
+  </div>
+</div>
+
+<!-- COHOUSING -->
+<div class="eje-bloque bg-white" id="cohousing">
+  <div class="eje-two-col">
+    <div class="reveal">
+      <p class="section-eyebrow">{c.cohousing.eyebrow}</p>
+      <h2 class="section-title">{c.cohousing.title[0]}<br>{c.cohousing.title[1]}</h2>
+      <div class="prose">
+        {c.cohousing.prose.map((p) => <p set:html={p} />)}
+      </div>
+      <div class="cohousing-def">
+        <p set:html={c.cohousing.def} />
+      </div>
+    </div>
+    <div class="eje-photo reveal">
+      <!-- TODO: /proyectos/vivienda.jpeg no disponible -->
+      <div class="eje-photo-placeholder"><span>{c.cohousing.photo}</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- CUIDADO COMO EJE CENTRAL -->
+<section class="cuidado-section" id="cuidado">
+  <div class="cuidado-inner">
+    <div class="cuidado-text reveal">
+      <p class="section-eyebrow">{c.cuidado.eyebrow}</p>
+      <h2 class="section-title" style="color:white">{c.cuidado.title[0]}<br>{c.cuidado.title[1]}</h2>
+      {c.cuidado.prose.map((p) => <p set:html={p} />)}
+      <div class="ods-highlight" style="--rojo: var(--rojo)">
+        <div class="ods-item" style="background:rgba(237,105,75,.12);border-left-color:rgba(237,105,75,.6)">
+          <p class="ods-num" style="color:rgba(237,105,75,.9)">{c.cuidado.odsNum}</p>
+          <p style="color:rgba(255,255,255,.6)" set:html={c.cuidado.ods} />
+        </div>
+      </div>
+    </div>
+    <div class="cuidado-list reveal">
+      {c.cuidado.items.map((it, i) => (
+        <div class="cuidado-item">
+          <span class="cuidado-item-num">{String(i + 1).padStart(2, '0')}</span>
+          <div class="cuidado-item-text">
+            <h3>{it.h}</h3>
+            <p>{it.p}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- COHOUSING CON PERSPECTIVA FEMINISTA -->
+<section class="cohousing-features-section" id="como-amapolas">
+  <div class="cf-inner">
+    <div class="cf-head reveal">
+      <p class="section-eyebrow">{c.cf.eyebrow}</p>
+      <h2 class="section-title">{c.cf.title[0]}<br>{c.cf.title[1]}</h2>
+      <p style="font-size:1rem;line-height:1.78;color:rgba(36,37,46,.58);max-width:580px;margin-top:.8rem">{c.cf.body}</p>
+    </div>
+    <div class="cf-grid reveal">
+      {c.cf.cards.map((k, i) => (
+        <div class="cf-card">
+          <div class="cf-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" set:html={icons[i]} />
+          </div>
+          <p class="cf-tag">{k.tag}</p>
+          <h3>{k.h}</h3>
+          <p>{k.p}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- QUÉ LO DIFERENCIA DE OTROS PROYECTOS -->
+<section class="diferencia-section">
+  <div class="diferencia-inner">
+    <div class="diferencia-head reveal">
+      <p class="section-eyebrow">{c.diferencia.eyebrow}</p>
+      <h2 class="section-title">{c.diferencia.title[0]}<br>{c.diferencia.title[1]}</h2>
+      <p style="font-size:1rem;line-height:1.78;color:rgba(36,37,46,.58);max-width:580px;margin-top:.8rem">{c.diferencia.body}</p>
+    </div>
+    <div class="diferencia-grid reveal">
+      {c.diferencia.cards.map((k) => (
+        <div class="diferencia-card">
+          <div class="diferencia-vs">
+            <span class="label">{c.diferencia.label}</span>
+            <span class="badge si">{c.diferencia.yes}</span>
+          </div>
+          <div class="diferencia-content">
+            <h3>{k.h}</h3>
+            <p>{k.p}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE -->
+<div class="quote-section reveal">
+  <p class="quote-text">{c.quote.text}</p>
+  <p class="quote-attr">{c.quote.attr}</p>
+</div>
+
+<!-- EJES RELACIONADOS -->
+<section class="ejes-section">
+  <div class="ejes-inner">
+    <div class="ejes-head reveal">
+      <p class="section-eyebrow" style="color:rgba(36,37,46,.4)">{c.ejes.eyebrow}</p>
+      <h2 class="section-title">{c.ejes.title[0]}<br>{c.ejes.title[1]}</h2>
+    </div>
+    <div class="ejes-grid reveal">
+      {c.ejes.cards.map((e) => (
+        <a href={L(e.href)} class="eje-link-card">
+          <div class={`eje-link-bar ${e.bar}`}></div>
+          <div class="eje-link-body">
+            <p class="eje-link-num">{e.num}</p>
+            <h3>{e.h}</h3>
+            <p>{e.p}</p>
+            <span class="eje-arrow">{c.ejes.more}</span>
+          </div>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- DONAR CTA -->
+<div class="donar-cta">
+  <div class="donar-cta-text reveal">
+    <p class="eyebrow">{c.donar.eyebrow}</p>
+    <h2>{c.donar.title[0]}<br>{c.donar.title[1]}</h2>
+    <p>{c.donar.body}</p>
+  </div>
+  <div class="donar-cta-actions reveal">
+    <a href={L('/donar')} class="btn-primary">{c.donar.cta}</a>
+    <a href={L('/proyectos/vivienda')} class="btn-outline-white">{c.donar.other}</a>
+    <p class="donar-note">{c.donar.note}</p>
+  </div>
+</div>
