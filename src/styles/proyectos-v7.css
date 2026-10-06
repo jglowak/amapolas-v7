@@ -1,0 +1,6 @@
+/* /proyectos — adiciones de v7 sobre pages/proyectos.css (literal de v5) */
+.info-block h3{font-size:.65rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(36,37,46,.45);margin-bottom:1.2rem}
+/* Tercera card (Formación) con el mismo diseño que la de agroecológicos, en rojo */
+.section-agro .agro-card+.agro-card{margin-top:1.5rem}
+.agro-card.formacion{background:var(--rojo)}
+a.agro-tag:hover .agro-tag-label{color:white}

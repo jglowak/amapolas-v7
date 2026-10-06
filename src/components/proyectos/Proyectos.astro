@@ -1,0 +1,99 @@
+---
+// Proyectos (no está en el menú; la home lo enlaza). Markup extraído de v5 proyectos.html
+// (scripts/v5-extract/proyectos/body.html). CSS: pages/proyectos.css completo.
+// Cambios: textos de las cards de la home (documento), tercera card de Formación con el mismo
+// diseño que la de agroecológicos, etiquetas que llevan a las anclas de /proyectos/productivos.
+import { proyectos } from '../../i18n/proyectos';
+import { localePath, type Lang } from '../../i18n/ui';
+import '../../styles/pages/proyectos.css';
+import '../../styles/proyectos-v7.css';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const c = proyectos[lang];
+const L = (p: string) => localePath(lang, p);
+---
+<!-- HERO -->
+<div class="hero" id="hero">
+  <div class="hero-grid-deco" aria-hidden="true"></div>
+  <div class="hero-body">
+    <div class="hero-breadcrumb" role="navigation" aria-label={lang === 'es' ? 'Ruta de navegación' : 'Breadcrumb'}>
+      <a href={L('/')}>{c.hero.home}</a><span>/</span>
+      <span style="color:rgba(255,255,255,.6)" aria-current="page">{c.hero.here}</span>
+    </div>
+    <h1 class="hero-title">{c.hero.title[0]}<br>{c.hero.title[1]}<br>{c.hero.title[2]}<span class="accent">{c.hero.accent}</span></h1>
+    <p class="hero-subtitle">{c.hero.subtitle}</p>
+  </div>
+  <div class="hero-bottom"></div>
+</div>
+
+<!-- SECCIÓN 1: BARRIO AMAPOLAS -->
+<section class="section-barrio reveal">
+  <span class="section-eyebrow">{c.barrio.eyebrow}</span>
+  <a href={L('/proyectos/vivienda')} class="featured-card">
+    <div class="featured-card-image">
+      <!-- TODO: /proyectos/vivienda.jpeg no disponible -->
+      <span class="featured-card-image-placeholder">{c.barrio.ph}</span>
+    </div>
+    <div class="featured-card-body">
+      <p class="featured-card-cat">{c.barrio.cat}</p>
+      <h2 class="featured-card-title">{c.barrio.title}</h2>
+      <p class="featured-card-desc">{c.barrio.desc}</p>
+      <div class="featured-pills">
+        {c.barrio.pills.map((p) => <span class="featured-pill">{p}</span>)}
+      </div>
+      <span class="featured-card-link">{c.barrio.link}</span>
+    </div>
+  </a>
+</section>
+
+<!-- SECCIÓN 2: PROYECTOS AGROECOLÓGICOS + FORMACIÓN -->
+<section class="section-agro reveal">
+  <div class="agro-card">
+    <a href={L('/proyectos/productivos')} class="agro-card-body">
+      <p class="agro-card-cat">{c.agro.cat}</p>
+      <h2 class="agro-card-title">{c.agro.title[0]}<br>{c.agro.title[1]}</h2>
+      <p class="agro-card-desc">{c.agro.desc}</p>
+      <span class="agro-card-link">{c.agro.link}</span>
+    </a>
+    <div class="agro-card-tags">
+      {c.agro.tags.map(([t, href]) => <a href={L(href)} class="agro-tag"><span class="agro-tag-dot"></span><span class="agro-tag-label">{t}</span></a>)}
+    </div>
+  </div>
+  <a href={L('/proyectos/formacion')} class="agro-card formacion">
+    <div class="agro-card-body">
+      <p class="agro-card-cat">{c.formacion.cat}</p>
+      <h2 class="agro-card-title">{c.formacion.title[0]}<br>{c.formacion.title[1]}</h2>
+      <p class="agro-card-desc">{c.formacion.desc}</p>
+      <span class="agro-card-link">{c.formacion.link}</span>
+    </div>
+    <div class="agro-card-tags">
+      {c.formacion.tags.map((t) => <div class="agro-tag"><span class="agro-tag-dot"></span><span class="agro-tag-label">{t}</span></div>)}
+    </div>
+  </a>
+</section>
+
+<!-- INFO COMPLEMENTARIA -->
+<div class="info-complement reveal">
+  {c.info.map((b) => (
+    <div class="info-block">
+      <h3>{b.h}</h3>
+      {'p' in b && <p>{b.p}</p>}
+      {'list' in b && <ul>{b.list.map((li) => <li>{li}</li>)}</ul>}
+    </div>
+  ))}
+</div>
+
+<!-- DONAR CTA -->
+<div class="donar-cta reveal">
+  <div class="donar-cta-text">
+    <p class="eyebrow">{c.donar.eyebrow}</p>
+    <h2>{c.donar.title[0]}<br>{c.donar.title[1]}<br>{c.donar.title[2]}</h2>
+    <p>{c.donar.body}</p>
+  </div>
+  <div class="donar-cta-actions">
+    <a href={L('/donar')} class="btn-primary">{c.donar.cta}</a>
+    <a href={L('/comunidad')} class="btn-outline-white">{c.donar.other}</a>
+    <p class="donar-note">{c.donar.note}</p>
+  </div>
+</div>
