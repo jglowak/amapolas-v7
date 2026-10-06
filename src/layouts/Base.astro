@@ -1,78 +1,148 @@
 ---
-import '../styles/global.css';
+// El CSS de v5 lo importa cada página (global.css en la home, pages/<pagina>.css en el resto),
+// igual que en v5, donde cada página tenía su <style> completo.
+import '../styles/v7-additions.css';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
-import { switchLangPath, type Lang } from '../i18n/utils';
+import { site } from '../config/site';
+import { ui, languages, localePath, stripLang, type Lang } from '../i18n/ui';
 
+interface Crumb { name: string; path: string }
 interface Props {
-  title: string;
-  description?: string;
   lang: Lang;
-  heroStyle?: 'dark' | 'light';
+  title: string;
+  description: string;
+  breadcrumbs?: Crumb[];
+  /** Nodos JSON-LD adicionales (DonateAction, Event…) */
+  graph?: Record<string, unknown>[];
+  ogImage?: string;
 }
-const { title, description = '', lang, heroStyle = 'light' } = Astro.props;
-const site = Astro.site ?? new URL('https://amapolas.org');
-const abs = (p: string) => new URL(p, site).href;
+const { lang, title, description, breadcrumbs = [], graph = [], ogImage = '/og-default.png' } = Astro.props;
+const path = stripLang(Astro.url.pathname);
+const abs = (p: string) => (p === '/' ? `${site.url}/` : new URL(p, site.url).href.replace(/\/$/, ''));
+const canonical = abs(localePath(lang, path));
+const esUrl = abs(localePath('es', path));
+const enUrl = abs(localePath('en', path));
+const homeName = lang === 'es' ? 'Inicio' : 'Home';
+
+const orgId = `${site.url}/#organization`;
+const ld = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'NGO',
+      '@id': orgId,
+      name: site.name,
+      legalName: site.legalName,
+      url: site.url,
+      logo: abs('/logo.png'),
+      foundingDate: site.foundingYear,
+      identifier: { '@type': 'PropertyValue', propertyID: 'INAES', name: 'Matrícula INAES', value: site.inaes },
+      address: { '@type': 'PostalAddress', addressLocality: site.locality, addressRegion: site.region, addressCountry: site.country },
+      areaServed: { '@type': 'Place', name: 'Bariloche, Patagonia, Argentina' },
+      ...(site.verified.social ? { sameAs: Object.values(site.social) } : {}),
+      ...(site.verified.contact ? { contactPoint: { '@type': 'ContactPoint', contactType: 'general', email: site.email, availableLanguage: ['es', 'en'] } } : {}),
+    },
+    {
+      '@type': 'WebSite',
+      '@id': `${site.url}/#website`,
+      url: site.url,
+      name: site.name,
+      inLanguage: ['es-AR', 'en'],
+      publisher: { '@id': orgId },
+    },
+    {
+      '@type': 'WebPage',
+      '@id': `${canonical}#webpage`,
+      url: canonical,
+      name: title,
+      description,
+      inLanguage: languages[lang],
+      isPartOf: { '@id': `${site.url}/#website` },
+      about: { '@id': orgId },
+      breadcrumb: { '@id': `${canonical}#breadcrumb` },
+    },
+    {
+      '@type': 'BreadcrumbList',
+      '@id': `${canonical}#breadcrumb`,
+      itemListElement: [{ name: homeName, path: '/' }, ...breadcrumbs].map((c, i) => ({
+        '@type': 'ListItem', position: i + 1, name: c.name, item: abs(localePath(lang, c.path)),
+      })),
+    },
+    ...graph,
+  ],
+};
 ---
+<!DOCTYPE html>
+<html lang={languages[lang]}>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{title}</title>
+<meta name="description" content={description}>
+<link rel="canonical" href={canonical}>
+<link rel="alternate" hreflang="es" href={esUrl}>
+<link rel="alternate" hreflang="en" href={enUrl}>
+<link rel="alternate" hreflang="x-default" href={esUrl}>
+<meta property="og:type" content="website">
+<meta property="og:site_name" content={site.name}>
+<meta property="og:title" content={title}>
+<meta property="og:description" content={description}>
+<meta property="og:url" content={canonical}>
+<meta property="og:image" content={abs(ogImage)}>
+<meta property="og:locale" content={lang === 'es' ? 'es_AR' : 'en_US'}>
+<meta property="og:locale:alternate" content={lang === 'es' ? 'en_US' : 'es_AR'}>
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content={title}>
+<meta name="twitter:description" content={description}>
+<meta name="twitter:image" content={abs(ogImage)}>
+<link rel="sitemap" href="/sitemap-index.xml">
+<script type="application/ld+json" set:html={JSON.stringify(ld)} />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400;1,9..40,700&display=swap" rel="stylesheet">
+</head>
+<body>
+<a href="#main" class="skip-link">{ui[lang].skip}</a>
+<Nav lang={lang} />
+<main id="main">
+  <slot />
+</main>
+<Footer lang={lang} />
 
-<!doctype html>
-<html lang={lang}>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{title} · Amapolas</title>
-    {description && <meta name="description" content={description} />}
-    <link rel="canonical" href={abs(Astro.url.pathname)} />
-    <link rel="alternate" hreflang="es" href={abs(switchLangPath(Astro.url, 'es'))} />
-    <link rel="alternate" hreflang="en" href={abs(switchLangPath(Astro.url, 'en'))} />
-    <link rel="alternate" hreflang="x-default" href={abs(switchLangPath(Astro.url, 'es'))} />
-    <link rel="icon" href="/img/logo-color.png" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800&display=swap"
-      rel="stylesheet"
-    />
-  </head>
-  <body>
-    <Nav lang={lang} heroStyle={heroStyle} />
-    <main>
-      <slot />
-    </main>
-    <Footer lang={lang} />
+<button class="scroll-top" id="stop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label={ui[lang].backToTop}>↑</button>
 
-    <script>
-      const nav = document.getElementById('navbar');
-      const dark = nav?.dataset.hero === 'dark';
-      const stop = document.getElementById('stop');
-      function onScroll() {
-        if (nav && dark) {
-          const past = window.scrollY > 40;
-          nav.classList.toggle('over-bg', !past);
-          nav.classList.toggle('solid', past);
-        }
-        stop?.classList.toggle('on', window.scrollY > 500);
-      }
-      window.addEventListener('scroll', onScroll, { passive: true });
-      onScroll();
+<script is:inline>
+// NAV (literal de v5)
+const navbar = document.getElementById('navbar');
+function updateNav() {
+  const past = window.scrollY > 40;
+  navbar.classList.toggle('over-bg', !past);
+  navbar.classList.toggle('solid', past);
+}
+window.addEventListener('scroll', updateNav, {passive:true});
+updateNav();
 
-      const mob = document.getElementById('mob');
-      document.getElementById('ham')?.addEventListener('click', () => mob?.classList.add('open'));
-      document.getElementById('mob-close')?.addEventListener('click', () => mob?.classList.remove('open'));
-      mob?.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => mob.classList.remove('open')));
-      document.querySelectorAll<HTMLElement>('[data-acc]').forEach((b) =>
-        b.addEventListener('click', () => {
-          b.classList.toggle('open');
-          b.nextElementSibling?.classList.toggle('open');
-        })
-      );
-      stop?.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+window.addEventListener('scroll', () => {
+  document.getElementById('stop').classList.toggle('on', window.scrollY > 500);
+}, {passive:true});
 
-      const io = new IntersectionObserver(
-        (es) => es.forEach((e) => e.isIntersecting && e.target.classList.add('visible')),
-        { threshold: 0.08 }
-      );
-      document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
-    </script>
-  </body>
+document.getElementById('ham').addEventListener('click', () =>
+  document.getElementById('mob').classList.add('open')
+);
+
+function toggleMobAcc(btn) {
+  btn.classList.toggle('open');
+  btn.nextElementSibling.classList.toggle('open');
+}
+
+// REVEAL
+const revealIO = new IntersectionObserver(
+  entries => entries.forEach(e => e.isIntersecting && e.target.classList.add('visible')),
+  {threshold: 0.08}
+);
+document.querySelectorAll('.reveal').forEach(el => revealIO.observe(el));
+</script>
+<slot name="scripts" />
+</body>
 </html>

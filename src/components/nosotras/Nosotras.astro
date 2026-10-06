@@ -1,0 +1,238 @@
+---
+// ¿Quiénes somos? Markup extraído de v5 nosotras.html (scripts/v5-extract/nosotras/body.html)
+// con sus clases. CSS: pages/nosotras.css completo, como en v5 (sin global.css).
+// Cambios según docs/correcciones.md: hero, historia, socias reales, timeline, encabezado de
+// "Cómo nos organizamos", ejes 02 y 03, CTA de donación. El bloque ODS pasó a la home.
+// h4 → h3 por jerarquía (mismo estilo, ver nosotras-v7.css).
+import { nosotras, socias } from '../../i18n/nosotras';
+import { site } from '../../config/site';
+import { localePath, type Lang } from '../../i18n/ui';
+import '../../styles/pages/nosotras.css';
+import '../../styles/nosotras-v7.css';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const c = nosotras[lang];
+const L = (p: string) => localePath(lang, p);
+const dl = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>';
+const consejo = socias.filter((s) => s.consejo);
+---
+<!-- HERO -->
+<div class="hero" id="hero">
+  <!-- TODO: about_foto1.jpg no disponible -->
+  <span class="asset-missing" style="right:2rem;top:6.5rem">{c.hero.missing}</span>
+  <div class="hero-deco" aria-hidden="true">♀</div>
+  <div class="hero-body">
+    <div class="hero-breadcrumb" role="navigation" aria-label={lang === 'es' ? 'Ruta de navegación' : 'Breadcrumb'}>
+      <a href={L('/')}>{c.hero.home}</a><span>/</span>
+      <span style="color:rgba(255,255,255,.7)" aria-current="page">{c.hero.here}</span>
+    </div>
+    <h1 class="hero-title">{c.hero.title}</h1>
+    <p class="hero-subtitle">{c.hero.subtitle}</p>
+  </div>
+  <div class="hero-tabs">
+    {c.hero.tabs.map(([href, label]) => <a href={href} class="hero-tab">{label}</a>)}
+  </div>
+</div>
+
+<!-- PROPUESTA DE VALOR — tagline jerárquico -->
+<div class="pv-section">
+  <div class="pv-inner">
+    <p class="pv-eyebrow reveal">{c.pv.eyebrow}</p>
+    <p class="pv-statement reveal">{c.pv.statement}</p>
+    {c.pv.second && <p class="pv-en reveal" lang="en">{c.pv.second}</p>}
+  </div>
+</div>
+
+<!-- HISTORIA -->
+<section id="historia" class="historia">
+  <div class="historia-inner">
+    <div class="historia-meta reveal">
+      <div class="historia-meta-sticky">
+        <p class="meta-label">{c.historia.metaLabel}</p>
+        <p class="meta-quote">{c.historia.metaQuote}</p>
+        <p class="meta-body">{c.historia.metaBody}</p>
+        <div class="meta-datos">
+          {c.historia.datos.map((d) => <div class="meta-dato"><div class="val">{d.v}</div><div class="lbl">{d.l}</div></div>)}
+        </div>
+
+        <div class="dossier-inline">
+          <div class="dossier-inline-text">
+            <p class="label">{c.historia.dossierLabel}</p>
+            <p class="title">{c.historia.dossierTitle}</p>
+          </div>
+          <div class="dossier-btns-sm">
+            <!-- TODO: PDFs pendientes -->
+            <a href="/dossier-amapolas-es.pdf" target="_blank" rel="noopener" class="btn-dl-sm es" hreflang="es"><Fragment set:html={dl} />{c.historia.dossierEs}</a>
+            <a href="/dossier-amapolas-en.pdf" target="_blank" rel="noopener" class="btn-dl-sm en" hreflang="en"><Fragment set:html={dl} />{c.historia.dossierEn}</a>
+            <a href={`mailto:${site.email}?subject=${encodeURIComponent(c.historia.balanceSubject)}`} class="btn-dl-sm bal">{c.historia.balance}</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="historia-texto">
+      <p class="section-eyebrow reveal">{c.historia.eyebrow}</p>
+      <h2 class="section-title reveal">{c.historia.title.map((t, i) => <>{i > 0 && <br />}{t}</>)}</h2>
+      <div class="prose reveal">
+        {c.historia.prose.map((p) => <p set:html={p} />)}
+      </div>
+      <div class="autoridades">
+        <h3>{c.historia.consejo}</h3>
+        <div class="autoridades-grid">
+          {consejo.map((s) => <div class="autoridad"><p class="nombre">{s.n}</p><p class="cargo">{s.cargo?.[lang]}</p></div>)}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LAS SOCIAS -->
+<section id="socias" class="socias-section">
+  <div class="socias-inner">
+    <div class="socias-head">
+      <div class="socias-head-meta reveal">
+        <span class="socias-count"><strong>{socias.length}</strong> {c.socias.count}</span>
+        <p class="section-eyebrow">{c.socias.eyebrow}</p>
+        <h2 class="section-title">{c.socias.title[0]}<br>{c.socias.title[1]}</h2>
+      </div>
+      <div class="socias-head-text reveal">
+        {c.socias.text.map((t) => <p>{t}</p>)}
+      </div>
+    </div>
+
+    <div class="socias-grid reveal">
+      {socias.map((s) => (
+        <div class="socia-card">
+          <div class="socia-photo">
+            {/* TODO: foto pendiente */}
+            <div class="socia-photo-fallback" role="img" aria-label={`${s.n} · ${c.socias.photoPending}`}>{s.ini}<span class="socia-photo-pending">{c.socias.photoPending}</span></div>
+          </div>
+          <div class="socia-body">
+            {s.cargo && <span class="socia-badge">{s.consejo ? `${c.socias.consejoBadge} · ` : ''}{s.cargo[lang]}</span>}
+            <h3 class="socia-name">{s.n}</h3>
+            <p class="socia-role">{s.desde ? `${c.socias.desde} ${s.desde}` : c.socias.fundadora}</p>
+            <p class="socia-quote">"{s.q[lang]}"</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section id="timeline" class="timeline-section">
+  <div class="timeline-inner">
+    <div class="timeline-head reveal">
+      <p class="section-eyebrow">{c.timeline.eyebrow}</p>
+      <h2 class="section-title">{c.timeline.title[0]}<br>{c.timeline.title[1]}</h2>
+      <p style="font-size:1rem;line-height:1.75;color:rgba(36,37,46,.55);max-width:520px;margin-top:.8rem">{c.timeline.body}</p>
+    </div>
+    <div class="timeline reveal">
+      {c.timeline.rows.map((r) => (
+        <div class="tl-row">
+          <div class="tl-year">{r.y}<span class="tl-month">{r.tag}</span></div>
+          <div class="tl-content"><h3>{r.h}</h3>{r.p.map((p) => <p>{p}</p>)}</div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- CÓMO NOS ORGANIZAMOS -->
+<section id="como" class="como-section">
+  <div class="como-inner">
+    <div class="como-head reveal">
+      <p class="section-eyebrow">{c.como.eyebrow}</p>
+      <h2 class="section-title">{c.como.title[0]}<br>{c.como.title[1]}</h2>
+      <p style="font-size:1rem;line-height:1.75;color:rgba(36,37,46,.55);max-width:520px;margin-top:.8rem">{c.como.body}</p>
+    </div>
+    <div class="como-grid reveal">
+      {c.como.cards.map((k) => (
+        <div class="como-card">
+          <div class="como-icon" aria-hidden="true">{k.i}</div>
+          <h3>{k.h}</h3>
+          <p>{k.p}</p>
+          <div class="como-meta"><strong>{k.m[0]}</strong>{k.m[1]}</div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- REDES Y MEMBRESÍAS -->
+<section id="redes" class="redes-section">
+  <div class="redes-inner">
+    <div class="redes-head reveal">
+      <p class="section-eyebrow">{c.redes.eyebrow}</p>
+      <h2 class="section-title">{c.redes.title[0]}<br>{c.redes.title[1]}</h2>
+      <p class="body">{c.redes.body}</p>
+    </div>
+    <div class="redes-grid reveal">
+      {c.redes.cards.map((r) => (
+        <div class="red-card">
+          <p class="red-tipo">{r.t}</p>
+          <h3 class="red-nombre">{r.n}</h3>
+          <p class="red-que-es">{r.q}</p>
+          <p class="red-vinculo">{r.v}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- VALORES -->
+<section id="valores" class="valores">
+  <div class="valores-head reveal">
+    <p class="section-eyebrow">{c.valores.eyebrow}</p>
+    <h2 class="section-title">{c.valores.title[0]}<br>{c.valores.title[1]}</h2>
+  </div>
+  <div class="valores-grid reveal">
+    {c.valores.items.map((v, i) => <div class="valor"><p class="valor-num">{String(i + 1).padStart(2, '0')}</p><h3>{v.h}</h3><p>{v.p}</p></div>)}
+  </div>
+</section>
+
+<!-- EJES -->
+<section id="ejes" class="ejes-section">
+  <div class="ejes-header reveal">
+    <p class="section-eyebrow">{c.ejes.eyebrow}</p>
+    <h2 class="section-title">{c.ejes.title[0]}<br>{c.ejes.title[1]}</h2>
+    <p style="font-size:1rem;line-height:1.75;color:rgba(36,37,46,.55);max-width:560px;margin-top:.8rem">{c.ejes.body}</p>
+  </div>
+  <div class="ejes-grid reveal">
+    {c.ejes.cards.map((e, i) => (
+      <a href={L(e.href)} class="eje-card">
+        <div class={`eje-card-image ${e.color}`}>
+          {/* TODO: foto pendiente */}
+          <span class="eje-num-bg" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+          <span class="eje-photo-pending">{c.ejes.photoPending}</span>
+        </div>
+        <div class="eje-card-body">
+          <p class="eje-num">{e.num}</p>
+          <h3>{e.h}</h3>
+          <p>{e.p}</p>
+          <span class="eje-link">{c.ejes.more}</span>
+        </div>
+      </a>
+    ))}
+  </div>
+</section>
+
+<!-- MISIÓN -->
+<div class="mision reveal">
+  <p class="mision-text">{c.mision.text}</p>
+  <p class="mision-attr">{c.mision.attr}</p>
+</div>
+
+<!-- DONAR CTA -->
+<div class="donar-cta">
+  <div class="donar-cta-text reveal">
+    <p class="eyebrow">{c.donar.eyebrow}</p>
+    <h2>{c.donar.title[0]}<br>{c.donar.title[1]}</h2>
+    <p>{c.donar.body}</p>
+  </div>
+  <div class="donar-cta-actions reveal">
+    <a href={L('/donar')} class="btn-primary">{c.donar.cta}</a>
+    <a href={L('/comunidad')} class="btn-outline-white">{c.donar.other}</a>
+    <p class="donar-note">{c.donar.note}</p>
+  </div>
+</div>

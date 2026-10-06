@@ -1,0 +1,234 @@
+<!-- NAV -->
+<nav id="navbar" class="over-bg">
+  <a href="/">
+    <img src="/logo_web.png" alt="Amapolas Cooperativa de Viviendas" class="nav-logo-color">
+    <img src="/logo_web_neg2.png" alt="Amapolas Cooperativa de Viviendas" class="nav-logo-neg">
+  </a>
+  <ul class="nav-links">
+    <li><a href="/">Home</a></li>
+    <li class="nav-item has-dropdown">
+      <a href="/nosotras" class="active">Nosotras</a>
+      <div class="nav-dropdown">
+        <span class="nav-dropdown-label">Nosotras</span>
+        <a href="/nosotras/genero">Género</a>
+        <a href="/nosotras/sustentabilidad">Hábitat Sustentable</a>
+        <a href="/nosotras/interculturalidad">Interculturalidad</a>
+        <a href="/nosotras/cohousing">Cuidado y Cohousing</a>
+      </div>
+    </li>
+    <li class="nav-item has-dropdown">
+      <a href="/proyectos">Proyectos</a>
+      <div class="nav-dropdown">
+        <span class="nav-dropdown-label">Proyectos</span>
+        <a href="/proyectos/vivienda">Barrio Amapolas</a>
+        <a href="/proyectos/productivos">Proyectos agroecológicos</a>
+      </div>
+    </li>
+    <li class="nav-item has-dropdown">
+      <a href="/prensa">Acciones y Prensa</a>
+      <div class="nav-dropdown">
+        <span class="nav-dropdown-label">Acciones y Prensa</span>
+        <a href="/prensa#eventos">Eventos / Charlas / Capacitaciones</a>
+        <a href="/prensa">Prensa</a>
+        <a href="/prensa#kit">Kit de Prensa</a>
+      </div>
+    </li>
+    <li class="nav-item has-dropdown">
+      <a href="/comunidad">Comunidad</a>
+      <div class="nav-dropdown">
+        <span class="nav-dropdown-label">Comunidad</span>
+        <a href="/comunidad#aliados">Aliados</a>
+        <a href="/comunidad#fundaciones">Fundaciones y Organizaciones</a>
+        <a href="/comunidad#sponsors">Sponsors</a>
+        <a href="/comunidad#donantes">Donantes</a>
+        <a href="/comunidad#comunidad">Comunidad</a>
+      </div>
+    </li>
+    <li class="nav-lang">
+      <a href="?lang=es" class="lang-btn lang-active">ES</a>
+      <span class="lang-sep">/</span>
+      <a href="?lang=en" class="lang-btn">EN</a>
+    </li>
+    <li><a href="/#donar" class="cta">Donar ahora</a></li>
+  </ul>
+  <button class="hamburger" id="ham" aria-label="Abrir menú"><span></span><span></span><span></span></button>
+</nav>
+
+<!-- MOBILE OVERLAY -->
+<div class="mobile-overlay" id="mob">
+  <button class="mob-close" onclick="document.getElementById('mob').classList.remove('open')">✕</button>
+  <a href="/" onclick="document.getElementById('mob').classList.remove('open')">Home</a>
+  <div class="mob-accordion">
+    <button class="mob-acc-btn" onclick="toggleMobAcc(this)">Nosotras <span class="mob-acc-arrow">▾</span></button>
+    <div class="mob-acc-panel">
+      <a href="/nosotras" onclick="document.getElementById('mob').classList.remove('open')">Nosotras</a>
+      <a href="/nosotras/genero" onclick="document.getElementById('mob').classList.remove('open')">Género</a>
+      <a href="/nosotras/sustentabilidad" onclick="document.getElementById('mob').classList.remove('open')">Hábitat Sustentable</a>
+      <a href="/nosotras/interculturalidad" onclick="document.getElementById('mob').classList.remove('open')">Interculturalidad</a>
+      <a href="/nosotras/cohousing" onclick="document.getElementById('mob').classList.remove('open')">Cuidado y Cohousing</a>
+    </div>
+  </div>
+  <div class="mob-accordion">
+    <button class="mob-acc-btn" onclick="toggleMobAcc(this)">Proyectos <span class="mob-acc-arrow">▾</span></button>
+    <div class="mob-acc-panel">
+      <a href="/proyectos" onclick="document.getElementById('mob').classList.remove('open')">Proyectos</a>
+      <a href="/proyectos/vivienda" onclick="document.getElementById('mob').classList.remove('open')">Barrio Amapolas</a>
+      <a href="/proyectos/productivos" onclick="document.getElementById('mob').classList.remove('open')">Proyectos agroecológicos</a>
+    </div>
+  </div>
+  <div class="mob-accordion">
+    <button class="mob-acc-btn" onclick="toggleMobAcc(this)">Acciones y Prensa <span class="mob-acc-arrow">▾</span></button>
+    <div class="mob-acc-panel">
+      <a href="/prensa#eventos" onclick="document.getElementById('mob').classList.remove('open')">Eventos / Capacitaciones</a>
+      <a href="/prensa" onclick="document.getElementById('mob').classList.remove('open')">Prensa</a>
+      <a href="/prensa#kit" onclick="document.getElementById('mob').classList.remove('open')">Kit de Prensa</a>
+    </div>
+  </div>
+  <div class="mob-accordion">
+    <button class="mob-acc-btn" onclick="toggleMobAcc(this)">Comunidad <span class="mob-acc-arrow">▾</span></button>
+    <div class="mob-acc-panel">
+      <a href="/comunidad#aliados" onclick="document.getElementById('mob').classList.remove('open')">Aliados</a>
+      <a href="/comunidad#fundaciones" onclick="document.getElementById('mob').classList.remove('open')">Fundaciones y Org.</a>
+      <a href="/comunidad#sponsors" onclick="document.getElementById('mob').classList.remove('open')">Sponsors</a>
+      <a href="/comunidad#donantes" onclick="document.getElementById('mob').classList.remove('open')">Donantes</a>
+    </div>
+  </div>
+  <div class="mob-lang">
+    <a href="?lang=es" class="lang-btn lang-active">ES</a>
+    <span class="lang-sep">/</span>
+    <a href="?lang=en" class="lang-btn">EN</a>
+  </div>
+  <a href="/#donar" onclick="document.getElementById('mob').classList.remove('open')" style="color:var(--rojo)">Donar ahora</a>
+</div>
+
+<!-- HERO -->
+<div class="hero" id="hero" style="background:var(--verde)">
+  <div class="hero-bg">
+    <img src="sustentabilidad_hero.jpg" alt="Bosque andino-patagónico en Bariloche: el territorio que cuida y habita la Cooperativa Amapolas">
+  </div>
+  <div class="hero-overlay-top"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-body">
+    <div class="hero-breadcrumb">
+      <a href="/">Inicio</a><span>/</span>
+      <a href="/nosotras">Nosotras</a><span>/</span>
+      <span style="color:rgba(255,255,255,.7)">Hábitat Sustentable</span>
+    </div>
+    <div class="hero-badge" style="background:rgba(55,97,53,.5);color:white;border:1px solid rgba(255,255,255,.2)">
+      <span style="font-size:.8rem">02</span> · Cuidado del territorio
+    </div>
+    <h1 class="hero-title">Construir con las manos<br>y con la cabeza</h1>
+    <p class="hero-subtitle">Bioconstrucción, diseño bioclimático y guardianas del agua. La sustentabilidad como práctica cotidiana en cada decisión del proyecto.</p>
+  </div>
+</div>
+
+<!-- BLOQUE 1 -->
+<div class="eje-bloque bg-white">
+  <div class="eje-two-col">
+    <div class="reveal">
+      <p class="section-eyebrow">Una forma de habitar</p>
+      <h2 class="section-title">Construir con las manos<br>y con la cabeza</h2>
+      <div class="prose">
+        <p>Para nosotras, la sustentabilidad no es un adjetivo técnico: es una forma de habitar el mundo que respeta lo que nos precedió y cuida lo que vendrá. En la construcción de este barrio, combinamos saber profesional con bioconstrucción —barro, madera recuperada, diseño bioclimático— para que las paredes no solo sostengan techos, sino que respiren y sean saludables.</p>
+        <p><strong>Guardianas del agua:</strong> tratamos al agua como lo que es: vida. Captamos lluvia, reutilizamos grises, recuperamos cuerpos hídricos dañados. Nuestros residuos se transforman en compost comunitario.</p>
+      </div>
+      <div class="ods-highlight">
+        <div class="ods-item">
+          <p class="ods-num">ODS 11 — Ciudades y comunidades sostenibles</p>
+          <p>Desarrollamos un <strong>modelo de cohousing con bioconstrucción y diseño bioclimático</strong> en territorio patagónico. El barrio integra espacios de uso colectivo como componente estructural del diseño, no como agregado.</p>
+        </div>
+        <div class="ods-item">
+          <p class="ods-num">ODS 12 — Producción y consumo responsables</p>
+          <p>Los proyectos productivos operan bajo principios de <strong>economía regenerativa</strong>: sin agroquímicos, con soberanía alimentaria y en respeto de los ciclos naturales del ecosistema andino-patagónico.</p>
+        </div>
+      </div>
+    </div>
+    <div class="eje-photo reveal">
+      <img src="sustentabilidad_foto1.jpg" alt="Técnica de bioconstrucción con barro y madera recuperada en obra de la Cooperativa Amapolas, Bariloche">
+      <div class="eje-photo-placeholder"><span>Bioconstrucción / barro / madera</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- BLOQUE 2 -->
+<div class="eje-bloque bg-crema">
+  <div class="eje-two-col reverse">
+    <div class="eje-photo reveal">
+      <img src="sustentabilidad_foto2.jpg" alt="Bosque patagónico y cuerpos de agua que rodean el territorio de la Cooperativa Amapolas en Bariloche">
+      <div class="eje-photo-placeholder"><span>Bosque / agua / naturaleza patagónica</span></div>
+    </div>
+    <div class="reveal">
+      <p class="section-eyebrow">Comunidad y vínculos</p>
+      <h2 class="section-title">La sustentabilidad<br>habita en los vínculos</h2>
+      <div class="prose">
+        <p>La sustentabilidad verdadera no es solo técnica: habita en los vínculos. Diseñamos espacios que invitan a encontrarnos: huertas colectivas, fogones comunes, decisiones tomadas en asamblea. Tejemos redes con productores locales, universidades y organizaciones vecinas para fortalecer una economía que circule y quede en el territorio.</p>
+        <p>Aplicamos las herramientas de la <strong>Permacultura Social</strong>: cuidado de la Tierra, cuidado de las personas y justa repartición. No como filosofía abstracta sino como práctica concreta en cada asamblea y cada decisión colectiva.</p>
+      </div>
+      <div class="ods-highlight">
+        <div class="ods-item">
+          <p class="ods-num">ODS 15 — Vida de ecosistemas terrestres</p>
+          <p>La <strong>reproducción de plantas nativas patagónicas</strong>, el apiario en territorio de la Comunidad Mapuche Tambo Báez y el enfoque de permacultura protegen activamente la biodiversidad del ecosistema.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- VÍNCULOS -->
+<div class="vinculos-section">
+  <div class="vinculos-inner">
+    <p class="section-eyebrow reveal">Marcos y alianzas</p>
+    <h2 class="section-title reveal">Herramientas que<br>nos guían</h2>
+    <div class="vinculos-grid reveal">
+      <div class="vinculo-card">
+        <h4>Permacultura Social</h4>
+        <p>Tres principios éticos: cuidado de la Tierra, cuidado de las personas y justa repartición. Aplicamos estas herramientas al territorio y a los vínculos humanos dentro de la cooperativa.</p>
+      </div>
+      <div class="vinculo-card">
+        <h4>Bioconstrucción</h4>
+        <p>Barro, madera recuperada y diseño bioclimático para viviendas que respiren, regulen temperatura y sean saludables para quienes las habitan.</p>
+      </div>
+      <div class="vinculo-card">
+        <h4>TEC IN HAB · UNAM México</h4>
+        <p>Participamos del Diplomado de Diseño Participativo del Hábitat de la UNAM, obtenido mediante beca. Formación de excelencia que pocos proyectos cooperativos locales han alcanzado.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- DONAR CTA — verde para sustentabilidad -->
+<div class="donar-cta">
+  <div class="donar-cta-text reveal">
+    <p class="eyebrow">Sumate al proyecto</p>
+    <h2>Construimos desde<br>el cuidado</h2>
+    <p>Tu aporte financia materiales naturales, formación en bioconstrucción y el trabajo de mujeres que cuidan el territorio mientras construyen.</p>
+  </div>
+  <div class="donar-cta-actions reveal">
+    <a href="/#donar" class="btn-primary">Donar ahora →</a>
+    <a href="/comunidad" class="btn-outline-white">Otras formas de colaborar</a>
+    <p class="donar-note">Cooperativa con personería jurídica INAES N°63884 · Donaciones trazables</p>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <img src="/logo_amapolas.png" alt="Amapolas Cooperativa de Viviendas" class="foot-logo">
+      <p class="foot-desc">Una cooperativa de viviendas conducida por mujeres y disidencias en la Patagonia argentina. Construimos autonomía y comunidad desde Bariloche.</p>
+    </div>
+    <div class="foot-col"><h5>La cooperativa</h5><ul><li><a href="/nosotras">Quiénes somos</a></li><li><a href="/proyectos">Proyectos</a></li><li><a href="/comunidad">Comunidad</a></li><li><a href="/prensa">Prensa</a></li></ul></div>
+    <div class="foot-col"><h5>Colaborar</h5><ul><li><a href="/#donar">Donar</a></li><li><a href="/comunidad#voluntariado">Voluntariado</a></li><li><a href="/comunidad#fundaciones">Alianzas</a></li><li><a href="/prensa#kit">Kit de Prensa</a></li></ul></div>
+    <div class="foot-col"><h5>Contacto</h5><ul><li><a href="mailto:contacto@amapolas.coop">contacto@amapolas.coop</a></li><li><a href="mailto:prensa@amapolas.coop">prensa@amapolas.coop</a></li><li><a href="#">Bariloche, Río Negro</a></li><li><a href="#" target="_blank" rel="noopener">Instagram</a></li></ul></div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 Amapolas Cooperativa de Viviendas Ltda. · INAES N°63884 · Bariloche, Río Negro</p>
+    <div class="foot-social">
+      <a href="#" aria-label="Instagram">ig</a>
+      <a href="#" aria-label="Facebook">fb</a>
+      <a href="#" aria-label="WhatsApp">wa</a>
+    </div>
+  </div>
+</footer>
+
+<button class="scroll-top" id="stop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Volver arriba">↑</button>

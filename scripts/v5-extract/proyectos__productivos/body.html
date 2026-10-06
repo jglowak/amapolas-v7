@@ -1,0 +1,578 @@
+<!-- NAV -->
+<nav id="navbar" class="over-bg">
+  <a href="/">
+    <img src="/logo_web.png" alt="Amapolas Cooperativa de Viviendas" class="nav-logo-color">
+    <img src="/logo_web_neg2.png" alt="Amapolas Cooperativa de Viviendas" class="nav-logo-neg">
+  </a>
+  <ul class="nav-links">
+    <li><a href="/">Home</a></li>
+    <li class="nav-item has-dropdown">
+      <a href="/nosotras">Nosotras</a>
+      <div class="nav-dropdown">
+        <span class="nav-dropdown-label">Nosotras</span>
+        <a href="/nosotras/genero">Género</a>
+        <a href="/nosotras/sustentabilidad">Hábitat Sustentable</a>
+        <a href="/nosotras/interculturalidad">Interculturalidad</a>
+        <a href="/nosotras/cohousing">Cuidado y Cohousing</a>
+      </div>
+    </li>
+    <li class="nav-item has-dropdown">
+      <a href="/proyectos" class="active">Proyectos</a>
+      <div class="nav-dropdown">
+        <span class="nav-dropdown-label">Proyectos</span>
+        <a href="/proyectos/vivienda">Barrio Amapolas</a>
+        <a href="/proyectos/productivos">Proyectos agroecológicos</a>
+      </div>
+    </li>
+    <li class="nav-item has-dropdown">
+      <a href="/prensa">Acciones y Prensa</a>
+      <div class="nav-dropdown">
+        <span class="nav-dropdown-label">Acciones y Prensa</span>
+        <a href="/prensa#eventos">Eventos / Charlas / Capacitaciones</a>
+        <a href="/prensa">Prensa</a>
+        <a href="/prensa#kit">Kit de Prensa</a>
+      </div>
+    </li>
+    <li class="nav-item has-dropdown">
+      <a href="/comunidad">Comunidad</a>
+      <div class="nav-dropdown">
+        <span class="nav-dropdown-label">Comunidad</span>
+        <a href="/comunidad#aliados">Aliados</a>
+        <a href="/comunidad#fundaciones">Fundaciones y Organizaciones</a>
+        <a href="/comunidad#sponsors">Sponsors</a>
+        <a href="/comunidad#donantes">Donantes</a>
+        <a href="/comunidad#comunidad">Comunidad</a>
+      </div>
+    </li>
+    <li class="nav-lang">
+      <a href="?lang=es" class="lang-btn lang-active">ES</a>
+      <span class="lang-sep">/</span>
+      <a href="?lang=en" class="lang-btn">EN</a>
+    </li>
+    <li><a href="/#donar" class="cta">Donar ahora</a></li>
+  </ul>
+  <button class="hamburger" id="ham" aria-label="Abrir menú"><span></span><span></span><span></span></button>
+</nav>
+
+<!-- MOBILE OVERLAY -->
+<div class="mobile-overlay" id="mob">
+  <button class="mob-close" onclick="document.getElementById('mob').classList.remove('open')">✕</button>
+  <a href="/" onclick="document.getElementById('mob').classList.remove('open')">Home</a>
+  <div class="mob-accordion">
+    <button class="mob-acc-btn" onclick="toggleMobAcc(this)">Nosotras <span class="mob-acc-arrow">▾</span></button>
+    <div class="mob-acc-panel">
+      <a href="/nosotras" onclick="document.getElementById('mob').classList.remove('open')">Nosotras</a>
+      <a href="/nosotras/genero" onclick="document.getElementById('mob').classList.remove('open')">Género</a>
+      <a href="/nosotras/sustentabilidad" onclick="document.getElementById('mob').classList.remove('open')">Hábitat Sustentable</a>
+      <a href="/nosotras/interculturalidad" onclick="document.getElementById('mob').classList.remove('open')">Interculturalidad</a>
+      <a href="/nosotras/cohousing" onclick="document.getElementById('mob').classList.remove('open')">Cuidado y Cohousing</a>
+    </div>
+  </div>
+  <div class="mob-accordion">
+    <button class="mob-acc-btn" onclick="toggleMobAcc(this)">Proyectos <span class="mob-acc-arrow">▾</span></button>
+    <div class="mob-acc-panel">
+      <a href="/proyectos" onclick="document.getElementById('mob').classList.remove('open')">Proyectos</a>
+      <a href="/proyectos/vivienda" onclick="document.getElementById('mob').classList.remove('open')">Barrio Amapolas</a>
+      <a href="/proyectos/productivos" onclick="document.getElementById('mob').classList.remove('open')">Proyectos agroecológicos</a>
+    </div>
+  </div>
+  <div class="mob-accordion">
+    <button class="mob-acc-btn" onclick="toggleMobAcc(this)">Acciones y Prensa <span class="mob-acc-arrow">▾</span></button>
+    <div class="mob-acc-panel">
+      <a href="/prensa#eventos" onclick="document.getElementById('mob').classList.remove('open')">Eventos / Capacitaciones</a>
+      <a href="/prensa" onclick="document.getElementById('mob').classList.remove('open')">Prensa</a>
+      <a href="/prensa#kit" onclick="document.getElementById('mob').classList.remove('open')">Kit de Prensa</a>
+    </div>
+  </div>
+  <div class="mob-accordion">
+    <button class="mob-acc-btn" onclick="toggleMobAcc(this)">Comunidad <span class="mob-acc-arrow">▾</span></button>
+    <div class="mob-acc-panel">
+      <a href="/comunidad#aliados" onclick="document.getElementById('mob').classList.remove('open')">Aliados</a>
+      <a href="/comunidad#fundaciones" onclick="document.getElementById('mob').classList.remove('open')">Fundaciones y Org.</a>
+      <a href="/comunidad#sponsors" onclick="document.getElementById('mob').classList.remove('open')">Sponsors</a>
+      <a href="/comunidad#donantes" onclick="document.getElementById('mob').classList.remove('open')">Donantes</a>
+    </div>
+  </div>
+  <div class="mob-lang">
+    <a href="?lang=es" class="lang-btn lang-active">ES</a>
+    <span class="lang-sep">/</span>
+    <a href="?lang=en" class="lang-btn">EN</a>
+  </div>
+  <a href="/#donar" onclick="document.getElementById('mob').classList.remove('open')" style="color:var(--rojo)">Donar ahora</a>
+</div>
+
+<!-- HERO -->
+<div class="hero" id="hero">
+  <img src="/proyectos/productivos_hero.jpg" alt="Proyectos agroecológicos de la Cooperativa Amapolas en territorio patagónico: apiario, plantas nativas y hongos silvestres" class="hero-bg-img">
+  <div class="hero-overlay-top"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-body">
+    <div class="hero-breadcrumb">
+      <a href="/">Inicio</a><span>/</span>
+      <a href="/proyectos">Proyectos</a><span>/</span>
+      <span style="color:rgba(255,255,255,.6)">Proyectos agroecológicos</span>
+    </div>
+    <h1 class="hero-title">Producción que<br>cuida el territorio</h1>
+    <p class="hero-subtitle">Tres proyectos de economía regenerativa en territorio de la Comunidad Mapuche Tambo Báez. Sin agroquímicos. Con soberanía alimentaria. Y con autonomía económica para las socias.</p>
+  </div>
+  <div class="proyecto-nav">
+    <a href="#apiario-colectivo">🍯 Apiario Colectivo</a>
+    <a href="#plantas-nativas">🌿 Plantas Nativas</a>
+    <a href="#hongos-silvestres">🍄 Hongos Silvestres</a>
+  </div>
+</div>
+
+<!-- ══════════════════════ APIARIO COLECTIVO ══ -->
+<div id="apiario-colectivo">
+  <div class="chapter verde reveal">
+    <div class="chapter-num">01</div>
+    <div class="chapter-text">
+      <p class="chapter-tag">Proyecto productivo · Economía regenerativa</p>
+      <h2 class="chapter-title">Apiario Colectivo</h2>
+    </div>
+  </div>
+
+  <div class="metricas">
+    <div class="metrica"><div class="metrica-num verde">5</div><div class="metrica-label">Colmenas activas</div></div>
+    <div class="metrica"><div class="metrica-num verde">23 kg</div><div class="metrica-label">Primera cosecha 2024</div></div>
+    <div class="metrica"><div class="metrica-num verde">Tambo Báez</div><div class="metrica-label">Comunidad Mapuche</div></div>
+    <div class="metrica"><div class="metrica-num verde">2024</div><div class="metrica-label">Año de inicio</div></div>
+  </div>
+
+  <div class="resumen">
+    <div class="resumen-inner">
+      <div>
+        <p class="section-eyebrow verde reveal">Narrativa de impacto</p>
+        <h2 class="section-title reveal">Miel patagónica que<br>financia autonomía</h2>
+        <div class="prose reveal">
+          <p>Veintitrés kilos de miel en la primera cosecha. Un número pequeño con un significado enorme: es el primer ingreso autónomo generado por la propia producción de las socias de Amapolas, sin depender de empleadores ni de subsidios.</p>
+          <p>El apiario funciona en el territorio de la <strong>Comunidad Mapuche Tambo Báez</strong>, en una alianza donde cada parte aporta: la comunidad, el espacio y el vínculo con el territorio; Amapolas, el trabajo, la formación y la gestión. Las abejas, mientras tanto, polinizan el bosque patagónico y fortalecen la biodiversidad nativa.</p>
+          <p>Cada tarro de miel Amapolas es producción sin agroquímicos, con manejo agroecológico y respeto de los ciclos naturales. Es <strong>economía regenerativa en práctica concreta</strong>.</p>
+        </div>
+        <div class="ods-highlight">
+          <div class="ods-item">
+            <p class="ods-num">ODS 12 — Producción y consumo responsables</p>
+            <p>Producción apícola <strong>sin agroquímicos</strong>, con manejo agroecológico y respeto de los ciclos del ecosistema andino-patagónico.</p>
+          </div>
+          <div class="ods-item">
+            <p class="ods-num">ODS 15 — Vida de ecosistemas terrestres</p>
+            <p>El apiario en territorio mapuche <strong>fortalece la polinización de especies nativas</strong> del bosque patagónico y protege la biodiversidad local.</p>
+          </div>
+        </div>
+      </div>
+      <div class="datos-clave reveal">
+        <div class="dato estado"><div class="dato-label">Estado</div><div class="dato-val">Activo — segunda temporada</div></div>
+        <div class="dato"><div class="dato-label">Especie</div><div class="dato-val">Apis mellifera — miel artesanal patagónica</div></div>
+        <div class="dato"><div class="dato-label">Territorio</div><div class="dato-val">Comunidad Mapuche Tambo Báez, Bariloche</div></div>
+        <div class="dato"><div class="dato-label">Financiamiento</div><div class="dato-val">Fondo Mujeres del Sur — 3 ciclos consecutivos</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Objetivo financiero: Apiario -->
+  <div class="obj-proyecto reveal">
+    <div class="obj-proyecto-inner">
+      <div class="obj-proyecto-text">
+        <p class="eyebrow">Objetivo financiero · Apiario</p>
+        <h3>¿Qué financia tu donación a este proyecto?</h3>
+        <p>Ampliación de colmenas, equipamiento apícola y formación avanzada para segunda temporada.</p>
+      </div>
+      <div class="obj-proyecto-metas">
+        <div class="obj-meta-chip dest">
+          <span class="val">USD 2.500</span>
+          <span class="lbl">Meta del proyecto</span>
+        </div>
+        <div class="obj-meta-chip">
+          <span class="val">5 → 10</span>
+          <span class="lbl">Colmenas proyectadas</span>
+        </div>
+        <div class="obj-meta-chip">
+          <span class="val">2025–26</span>
+          <span class="lbl">Plazo</span>
+        </div>
+      </div>
+      <a href="https://www.globalgiving.org" target="_blank" rel="noopener" class="btn-obj-sm">Donar a este proyecto →</a>
+    </div>
+  </div>
+
+  <div class="galeria">
+    <div class="galeria-header reveal"><h3>Imágenes del apiario</h3><span class="galeria-note">Click para ampliar</span></div>
+    <div class="galeria-grid reveal">
+      <div class="galeria-item" onclick="openLB('api',0)">
+        <img src="/proyectos/apicultura.jpg" alt="Colmenas del Apiario Colectivo de la Cooperativa Amapolas en territorio de la Comunidad Mapuche Tambo Báez, Bariloche">
+        <div class="galeria-item-overlay"><span class="galeria-zoom">Ampliar</span></div>
+        <span class="galeria-placeholder-text">Apiario Colectivo</span>
+      </div>
+      <div class="galeria-item" onclick="openLB('api',1)">
+        <div class="galeria-item-overlay"><span class="galeria-zoom">Ampliar</span></div>
+        <span class="galeria-placeholder-text">Colmenas en el bosque</span>
+      </div>
+      <div class="galeria-item" onclick="openLB('api',2)">
+        <div class="galeria-item-overlay"><span class="galeria-zoom">Ampliar</span></div>
+        <span class="galeria-placeholder-text">Trabajo con colmenas</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="objetivos">
+    <div class="objetivos-inner">
+      <p class="section-eyebrow verde reveal">Para qué lo hacemos</p>
+      <h3 class="section-title reveal">Más que producir miel</h3>
+      <div class="objetivos-grid reveal">
+        <div class="objetivo"><div class="objetivo-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--verde)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22V12"></path><path d="M12 12C12 12 7 10 5 6c4 0 7 2 7 6z"></path><path d="M12 12c0 0 5-2 7-6-4 0-7 2-7 6z"></path></svg></div><h4>Biodiversidad</h4><p>Las abejas son indicadoras de ambientes saludables y contribuyen a la polinización de especies nativas del bosque patagónico.</p></div>
+        <div class="objetivo"><div class="objetivo-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--verde)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 00-3-3.87"></path><path d="M16 3.13a4 4 0 010 7.75"></path></svg></div><h4>Comunidad y territorio</h4><p>Fortalecemos lazos con la Comunidad Mapuche Tambo Báez a través del trabajo colectivo en el territorio.</p></div>
+        <div class="objetivo"><div class="objetivo-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--verde)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 8v4l3 3"></path></svg></div><h4>Autonomía económica</h4><p>El primer ingreso productivo propio: 23 kg de miel en 2024. Una fuente de ingresos sustentable para las socias.</p></div>
+        <div class="objetivo"><div class="objetivo-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--verde)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"></path><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"></path></svg></div><h4>Educación ambiental</h4><p>Aprender a interpretar el clima y revalorizar el vínculo entre las personas y la naturaleza patagónica.</p></div>
+        <div class="objetivo"><div class="objetivo-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--verde)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"></path></svg></div><h4>Medicina ancestral</h4><p>Recuperación parcial de saberes de medicina ancestral de los pueblos del territorio en torno a las plantas y la miel.</p></div>
+        <div class="objetivo"><div class="objetivo-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--verde)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg></div><h4>Integración agroecológica</h4><p>El apiario poliniza el vivero de plantas nativas. Los tres proyectos se potencian mutuamente como un ecosistema productivo.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="estado">
+    <div class="estado-inner">
+      <div><p class="section-eyebrow reveal">Dónde estamos</p><h3 class="section-title reveal">Estado actual</h3></div>
+      <div class="timeline reveal">
+        <div class="timeline-item"><div class="timeline-dot done"></div><div class="timeline-content"><h5>Formación en apicultura</h5><p>Capacitación de las integrantes en manejo de colmenas y prácticas agroecológicas.</p><span class="timeline-year">2024</span></div></div>
+        <div class="timeline-item"><div class="timeline-dot done"></div><div class="timeline-content"><h5>Instalación de 5 colmenas</h5><p>Adquisición y mantenimiento en el territorio de la Comunidad Mapuche Tambo Báez.</p><span class="timeline-year">2024</span></div></div>
+        <div class="timeline-item"><div class="timeline-dot done"></div><div class="timeline-content"><h5>Primera cosecha: 23 kg</h5><p>Primer ingreso productivo propio de la cooperativa. Inicio de comercialización local de miel artesanal patagónica.</p><span class="timeline-year">2024</span></div></div>
+        <div class="timeline-item"><div class="timeline-dot active"></div><div class="timeline-content"><h5>Segunda temporada activa</h5><p>Mantenimiento activo, preparación para segunda cosecha y evaluación de ampliación a 10 colmenas.</p><span class="timeline-year">2025 — en curso</span></div></div>
+        <div class="timeline-item"><div class="timeline-dot pending"></div><div class="timeline-content"><h5>Comercialización regional</h5><p>Ampliar la distribución de la miel Amapolas a mercados locales y regionales.</p><span class="timeline-year">A definir</span></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="proyecto-sep"></div>
+
+<!-- ══════════════════════ PLANTAS NATIVAS ══ -->
+<div id="plantas-nativas">
+  <div class="chapter rojo reveal">
+    <div class="chapter-num">02</div>
+    <div class="chapter-text">
+      <p class="chapter-tag">Proyecto productivo · Soberanía alimentaria</p>
+      <h2 class="chapter-title">Plantas Nativas</h2>
+    </div>
+  </div>
+
+  <div class="resumen">
+    <div class="resumen-inner">
+      <div>
+        <p class="section-eyebrow reveal">Narrativa de impacto</p>
+        <h2 class="section-title reveal">Raíces patagónicas,<br>soberanía alimentaria</h2>
+        <div class="prose reveal">
+          <p>El proyecto de plantas nativas no es solo un vivero: es una declaración de soberanía sobre el territorio. Trabajar con especies nativas patagónicas significa recuperar la relación de las personas con el ecosistema que habitan, sin depender de semillas comerciales ni de cadenas externas de distribución.</p>
+          <p>La formación de las integrantes incluye <strong>tipos de compostaje</strong>, reproducción de plantas por esquejes y reconocimiento de las distintas especies acordes a los distintos territorios. El proyecto articula directamente con el apiario —cuyas abejas polinizan los plantines— y con el proyecto de hongos, generando un ecosistema productivo integrado.</p>
+          <p>Cada planta reproducida es un paso hacia la <strong>autonomía económica y alimentaria</strong> de la cooperativa y del territorio que habita.</p>
+        </div>
+        <div class="ods-highlight">
+          <div class="ods-item">
+            <p class="ods-num">ODS 15 — Vida de ecosistemas terrestres</p>
+            <p>La <strong>reproducción de especies nativas patagónicas</strong> protege activamente la biodiversidad del ecosistema andino y reduce la dependencia de especies exóticas.</p>
+          </div>
+          <div class="ods-item rojo-border">
+            <p class="ods-num" style="color:var(--rojo)">ODS 12 — Producción responsable</p>
+            <p>Técnicas de reproducción vegetativa sin agroquímicos. <strong>Compostaje como práctica de economía circular</strong> y reducción de residuos orgánicos.</p>
+          </div>
+        </div>
+      </div>
+      <div class="datos-clave reveal">
+        <div class="dato estado"><div class="dato-label">Estado</div><div class="dato-val">Activo — en desarrollo</div></div>
+        <div class="dato"><div class="dato-label">Período</div><div class="dato-val">2024 — 2026</div></div>
+        <div class="dato"><div class="dato-label">Financiamiento</div><div class="dato-val">Fondo Mujeres del Sur — 2° y 3° ciclo</div></div>
+        <div class="dato"><div class="dato-label">Técnica principal</div><div class="dato-val">Reproducción por esquejes · Compostaje · Semillero nativo</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Objetivo financiero: Plantas Nativas -->
+  <div class="obj-proyecto reveal">
+    <div class="obj-proyecto-inner">
+      <div class="obj-proyecto-text">
+        <p class="eyebrow">Objetivo financiero · Plantas Nativas</p>
+        <h3>¿Qué financia tu donación a este proyecto?</h3>
+        <p>Infraestructura de vivero, herramientas de reproducción vegetal e insumos para compostaje.</p>
+      </div>
+      <div class="obj-proyecto-metas">
+        <div class="obj-meta-chip dest">
+          <span class="val">USD 1.500</span>
+          <span class="lbl">Meta del proyecto</span>
+        </div>
+        <div class="obj-meta-chip">
+          <span class="val">Nativas</span>
+          <span class="lbl">Solo especies patagónicas</span>
+        </div>
+        <div class="obj-meta-chip">
+          <span class="val">2025–26</span>
+          <span class="lbl">Plazo</span>
+        </div>
+      </div>
+      <a href="https://www.globalgiving.org" target="_blank" rel="noopener" class="btn-obj-sm">Donar a este proyecto →</a>
+    </div>
+  </div>
+
+  <div class="galeria" style="background:white">
+    <div class="galeria-header reveal"><h3>Imágenes del proyecto</h3><span class="galeria-note">Click para ampliar</span></div>
+    <div class="galeria-grid reveal">
+      <div class="galeria-item" onclick="openLB('plantas',0)">
+        <img src="/proyectos/plantas.jpg" alt="Vivero de plantas nativas patagónicas de la Cooperativa Amapolas: reproducción por esquejes en Bariloche">
+        <div class="galeria-item-overlay"><span class="galeria-zoom">Ampliar</span></div>
+        <span class="galeria-placeholder-text">Plantas nativas</span>
+      </div>
+      <div class="galeria-item" onclick="openLB('plantas',1)">
+        <div class="galeria-item-overlay"><span class="galeria-zoom">Ampliar</span></div>
+        <span class="galeria-placeholder-text">Reproducción por esquejes</span>
+      </div>
+      <div class="galeria-item" onclick="openLB('plantas',2)">
+        <div class="galeria-item-overlay"><span class="galeria-zoom">Ampliar</span></div>
+        <span class="galeria-placeholder-text">Taller de compostaje</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="objetivos" style="background:var(--crema)">
+    <div class="objetivos-inner">
+      <p class="section-eyebrow reveal">Lo que logramos</p>
+      <h3 class="section-title reveal">Primeros resultados</h3>
+      <div class="objetivos-grid reveal">
+        <div class="objetivo"><h4>Formación inicial</h4><p>Capacitación en tipos de plantas acordes a los distintos territorios patagónicos y sus características ecológicas.</p></div>
+        <div class="objetivo"><h4>Técnicas de compostaje</h4><p>Formación en distintos tipos de compostaje como práctica de soberanía alimentaria y reducción de residuos orgánicos.</p></div>
+        <div class="objetivo"><h4>Reproducción por esquejes</h4><p>Primeras reproducciones exitosas de especies nativas patagónicas sin depender de semillas comerciales.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="objetivos" style="background:white">
+    <div class="objetivos-inner">
+      <p class="section-eyebrow reveal">Con quiénes trabajamos</p>
+      <h3 class="section-title reveal">Organizaciones aliadas</h3>
+      <div class="alianzas-grid reveal">
+        <div class="alianza-card"><div class="alianza-nombre">Vivero de Plantas Nativas — Parques Nacionales</div><div class="alianza-desc">Vínculo técnico para el trabajo con especies nativas patagónicas y buenas prácticas de reproducción vegetal.</div></div>
+        <div class="alianza-card"><div class="alianza-nombre">Circuito Verde Bariloche</div><div class="alianza-desc">Organización local que trabaja en la promoción de prácticas sustentables y economía circular en la ciudad.</div></div>
+        <div class="alianza-card"><div class="alianza-nombre">Jóvenes por Bariloche</div><div class="alianza-desc">Organización juvenil local con trabajo en territorio y cuidado ambiental con quienes construimos vínculo activo.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="estado" style="background:var(--azul)">
+    <div class="estado-inner">
+      <div>
+        <p class="section-eyebrow" style="color:rgba(255,255,255,.35)">Dónde estamos</p>
+        <h3 class="section-title" style="color:white">Estado actual</h3>
+      </div>
+      <div class="timeline reveal">
+        <div class="timeline-item" style="border-color:rgba(255,255,255,.06)"><div class="timeline-dot done"></div><div class="timeline-content"><h5 style="color:white">Formación en plantas nativas</h5><p style="color:rgba(255,255,255,.42)">Capacitación en tipos de plantas, territorios y técnicas de reproducción vegetativa.</p><span class="timeline-year" style="color:rgba(255,255,255,.2)">2024</span></div></div>
+        <div class="timeline-item" style="border-color:rgba(255,255,255,.06)"><div class="timeline-dot done"></div><div class="timeline-content"><h5 style="color:white">Formación en compostaje</h5><p style="color:rgba(255,255,255,.42)">Aprendizaje de distintos métodos de compostaje y su aplicación en producción agroecológica.</p><span class="timeline-year" style="color:rgba(255,255,255,.2)">2024</span></div></div>
+        <div class="timeline-item" style="border-color:rgba(255,255,255,.06)"><div class="timeline-dot done"></div><div class="timeline-content"><h5 style="color:white">Reproducción por esquejes</h5><p style="color:rgba(255,255,255,.42)">Primeras reproducciones exitosas de especies nativas patagónicas.</p><span class="timeline-year" style="color:rgba(255,255,255,.2)">2024 — 2025</span></div></div>
+        <div class="timeline-item" style="border-color:rgba(255,255,255,.06)"><div class="timeline-dot active"></div><div class="timeline-content"><h5 style="color:white">Expansión y consolidación</h5><p style="color:rgba(255,255,255,.42)">Consolidación en el marco del tercer Fondo Mujeres del Sur. Ampliación de variedades y vínculos.</p><span class="timeline-year" style="color:rgba(255,255,255,.2)">2025 — en curso</span></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="proyecto-sep"></div>
+
+<!-- ══════════════════════ HONGOS SILVESTRES ══ -->
+<div id="hongos-silvestres">
+  <div class="chapter dark reveal">
+    <div class="chapter-num">03</div>
+    <div class="chapter-text">
+      <p class="chapter-tag">Proyecto productivo · Economía regenerativa · Potencial de escala</p>
+      <h2 class="chapter-title">Hongos Silvestres</h2>
+    </div>
+  </div>
+
+  <div class="metricas">
+    <div class="metrica"><div class="metrica-num azul">2024</div><div class="metrica-label">Año de inicio</div></div>
+    <div class="metrica"><div class="metrica-num azul">Tambo Báez</div><div class="metrica-label">Comunidad Mapuche</div></div>
+    <div class="metrica"><div class="metrica-num azul">Gírgolas</div><div class="metrica-label">Especie cultivada</div></div>
+    <div class="metrica"><div class="metrica-num azul">2ª etapa</div><div class="metrica-label">Inoculación en curso</div></div>
+  </div>
+
+  <div class="resumen">
+    <div class="resumen-inner">
+      <div>
+        <p class="section-eyebrow reveal">Narrativa de impacto</p>
+        <h2 class="section-title reveal">Del bosque a la mesa,<br>con manos colectivas</h2>
+        <div class="prose reveal">
+          <p>El cultivo de gírgolas en territorio de la Comunidad Mapuche Tambo Báez es el proyecto con mayor potencial de escala de la cooperativa. Las gírgolas fueron elegidas por su <strong>adaptabilidad al clima patagónico</strong>, su alto valor nutricional y su creciente demanda en mercados de economía consciente y gastronomía sustentable.</p>
+          <p>El proyecto cuenta con el acompañamiento técnico del <strong>CIEFAP</strong> (Centro de Investigación y Extensión Forestal Andino Patagónico), lo que le da rigor científico y diferencia a Amapolas de los emprendimientos sin respaldo institucional.</p>
+          <p>Las primeras cosechas fueron pequeñas — las socias son honestas al respecto — y están trabajando en la segunda etapa de inoculación para mejorar los resultados. La transparencia sobre las dificultades es parte de la cultura organizacional de la cooperativa.</p>
+        </div>
+        <div class="ods-highlight">
+          <div class="ods-item">
+            <p class="ods-num">ODS 12 — Producción y consumo responsables</p>
+            <p>Cultivo sin agroquímicos con <strong>acompañamiento técnico de CIEFAP</strong>. Economía regenerativa integrada al ecosistema del bosque andino.</p>
+          </div>
+          <div class="ods-item">
+            <p class="ods-num">ODS 10 — Reducción de desigualdades</p>
+            <p>Generación de <strong>ingresos para mujeres en situación de vulnerabilidad económica</strong>, en alianza con una comunidad mapuche del territorio.</p>
+          </div>
+        </div>
+      </div>
+      <div class="datos-clave reveal">
+        <div class="dato estado"><div class="dato-label">Estado</div><div class="dato-val">Activo — 2ª etapa</div></div>
+        <div class="dato atencion"><div class="dato-label">Nota sobre cosechas</div><div class="dato-val">Las cosechas iniciales fueron pequeñas. Se está analizando y mejorando en 2ª inoculación.</div></div>
+        <div class="dato"><div class="dato-label">Especie</div><div class="dato-val">Gírgolas (Pleurotus ostreatus)</div></div>
+        <div class="dato"><div class="dato-label">Infraestructura</div><div class="dato-val">Cobertizo + riego automático instalado</div></div>
+        <div class="dato"><div class="dato-label">Apoyo técnico</div><div class="dato-val">CIEFAP · Parques y Jardines Municipio Bariloche</div></div>
+        <div class="dato"><div class="dato-label">Financiamiento</div><div class="dato-val">Fondo Mujeres del Sur — 2° y 3° ciclo</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Objetivo financiero: Hongos -->
+  <div class="obj-proyecto reveal">
+    <div class="obj-proyecto-inner">
+      <div class="obj-proyecto-text">
+        <p class="eyebrow">Objetivo financiero · Hongos Silvestres</p>
+        <h3>¿Qué financia tu donación a este proyecto?</h3>
+        <p>Materiales para segunda inoculación, mejoras al cobertizo e insumos para escalado de producción.</p>
+      </div>
+      <div class="obj-proyecto-metas">
+        <div class="obj-meta-chip dest">
+          <span class="val">USD 2.000</span>
+          <span class="lbl">Meta del proyecto</span>
+        </div>
+        <div class="obj-meta-chip">
+          <span class="val">CIEFAP</span>
+          <span class="lbl">Aval técnico científico</span>
+        </div>
+        <div class="obj-meta-chip">
+          <span class="val">Escalable</span>
+          <span class="lbl">Potencial regional</span>
+        </div>
+      </div>
+      <a href="https://www.globalgiving.org" target="_blank" rel="noopener" class="btn-obj-sm">Donar a este proyecto →</a>
+    </div>
+  </div>
+
+  <div class="galeria">
+    <div class="galeria-header reveal"><h3>Imágenes del cultivo</h3><span class="galeria-note">Click para ampliar</span></div>
+    <div class="galeria-grid reveal">
+      <div class="galeria-item" onclick="openLB('hongos',0)">
+        <div class="galeria-item-overlay"><span class="galeria-zoom">Ampliar</span></div>
+        <span class="galeria-placeholder-text">Cobertizo en Tambo Báez</span>
+      </div>
+      <div class="galeria-item" onclick="openLB('hongos',1)">
+        <div class="galeria-item-overlay"><span class="galeria-zoom">Ampliar</span></div>
+        <span class="galeria-placeholder-text">Cultivo de gírgolas</span>
+      </div>
+      <div class="galeria-item" onclick="openLB('hongos',2)">
+        <div class="galeria-item-overlay"><span class="galeria-zoom">Ampliar</span></div>
+        <span class="galeria-placeholder-text">Proceso de inoculación</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Economía regenerativa — módulo especial para hongos -->
+  <div class="hongos-regen">
+    <div class="hongos-regen-inner">
+      <div class="reveal">
+        <p class="section-eyebrow">Por qué importa más allá de Amapolas</p>
+        <h3 class="section-title">Un modelo de economía<br>regenerativa con escala</h3>
+        <p style="font-size:.95rem;line-height:1.78;color:rgba(36,37,46,.6);margin-top:.8rem">El proyecto de hongos silvestres tiene potencial para funcionar como campaña satélite orientada a donantes con perfil de economía regenerativa y sustentabilidad. Su impacto va más allá de la cooperativa.</p>
+      </div>
+      <div class="regen-puntos reveal">
+        <div class="regen-punto">
+          <span class="regen-punto-num">01</span>
+          <div class="regen-punto-text"><h5>Ciclo cerrado sin residuos</h5><p>Los sustratos usados se convierten en compost para el vivero de plantas nativas. Economía circular en práctica.</p></div>
+        </div>
+        <div class="regen-punto">
+          <span class="regen-punto-num">02</span>
+          <div class="regen-punto-text"><h5>Aval técnico científico</h5><p>El respaldo de CIEFAP diferencia este proyecto de emprendimientos artesanales sin base científica, y lo hace replicable con garantías.</p></div>
+        </div>
+        <div class="regen-punto">
+          <span class="regen-punto-num">03</span>
+          <div class="regen-punto-text"><h5>Alianza intercultural real</h5><p>El cobertizo está en territorio mapuche por decisión política, no por conveniencia logística. Es el modelo de alianza que Amapolas defiende.</p></div>
+        </div>
+        <div class="regen-punto">
+          <span class="regen-punto-num">04</span>
+          <div class="regen-punto-text"><h5>Potencial de escala regional</h5><p>Las gírgolas tienen alta demanda en mercados de gastronomía consciente en la Patagonia. Un modelo exitoso puede replicarse en otras comunidades de la región.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="objetivos" style="background:white">
+    <div class="objetivos-inner">
+      <p class="section-eyebrow reveal">Cómo lo hacemos</p>
+      <h3 class="section-title reveal">El proceso de cultivo</h3>
+      <div class="proceso-grid reveal">
+        <div class="paso"><p class="paso-num">Etapa 01</p><h4>Preparación del sustrato</h4><p>Preparación de troncos y sustratos aptos para la inoculación de micelio de gírgolas según las características del bosque andino.</p></div>
+        <div class="paso"><p class="paso-num">Etapa 02</p><h4>Inoculación</h4><p>Siembra del micelio en los sustratos. El cobertizo cuenta con sistema de riego automático para mantener condiciones óptimas de humedad.</p></div>
+        <div class="paso"><p class="paso-num">Etapa 03</p><h4>Cosecha y mejoras</h4><p>Las cosechas iniciales fueron pequeñas. La segunda inoculación de troncos está en curso con ajustes técnicos apoyados por CIEFAP.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="territorio-dark">
+    <div class="territorio-dark-inner">
+      <div>
+        <p class="section-eyebrow reveal">Territorio e interculturalidad</p>
+        <h3 class="section-title reveal">Un proyecto arraigado<br>en Tambo Báez</h3>
+        <p class="territorio-desc reveal">El cobertizo donde se desarrolla el cultivo fue construido en el territorio de la Comunidad Mapuche Tambo Báez, fortaleciendo el vínculo intercultural entre la cooperativa y la comunidad. No es una decisión logística: es política.</p>
+      </div>
+      <div class="territorio-cards reveal">
+        <div class="territorio-card"><h4>Comunidad Mapuche Tambo Báez</h4><p>A través de su referente Mirta, la comunidad cedió el espacio para el cobertizo. El proyecto también alberga el apiario colectivo.</p></div>
+        <div class="territorio-card"><h4>CIEFAP</h4><p>Centro de Investigación y Extensión Forestal Andino Patagónico. Acompañamiento técnico para el cultivo de gírgolas en el ecosistema patagónico.</p></div>
+        <div class="territorio-card"><h4>Dirección de Parques y Jardines — Municipio Bariloche</h4><p>Apoyo técnico municipal para el desarrollo del proyecto y la capacitación de las integrantes.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="estado">
+    <div class="estado-inner">
+      <div><p class="section-eyebrow reveal">Dónde estamos</p><h3 class="section-title reveal">Estado actual</h3></div>
+      <div class="timeline reveal">
+        <div class="timeline-item"><div class="timeline-dot done"></div><div class="timeline-content"><h5>Construcción del cobertizo</h5><p>Construcción de un espacio apto para el cultivo en el territorio de Tambo Báez.</p><span class="timeline-year">2024</span></div></div>
+        <div class="timeline-item"><div class="timeline-dot done"></div><div class="timeline-content"><h5>Sistema de riego automático</h5><p>Instalación de infraestructura para mantener condiciones óptimas de humedad.</p><span class="timeline-year">2024</span></div></div>
+        <div class="timeline-item"><div class="timeline-dot done"></div><div class="timeline-content"><h5>Primera inoculación y cosechas iniciales</h5><p>Primera etapa realizada. Cosechas pequeñas — se está analizando la situación y posibles mejoras.</p><span class="timeline-year">2024 — 2025</span></div></div>
+        <div class="timeline-item"><div class="timeline-dot active"></div><div class="timeline-content"><h5>Segunda etapa de inoculación</h5><p>En curso con incorporación de nuevos sustratos y ajuste de condiciones en base a la primera etapa.</p><span class="timeline-year">2025 — en curso</span></div></div>
+        <div class="timeline-item"><div class="timeline-dot pending"></div><div class="timeline-content"><h5>Escalado de la producción</h5><p>Una vez consolidadas las mejoras, ampliar la producción y explorar canales de comercialización regional.</p><span class="timeline-year">A definir</span></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CTA — verde para agroecológico -->
+<div class="donar-cta">
+  <div class="donar-cta-text reveal">
+    <p class="eyebrow">Apoyá los proyectos</p>
+    <h2>Tres proyectos,<br>una misma raíz</h2>
+    <p>Tu donación financia insumos, formación y el trabajo de mujeres que producen, cuidan el territorio y construyen autonomía económica en la Patagonia. Cooperativa con personería jurídica INAES N°63884.</p>
+  </div>
+  <div class="donar-cta-actions reveal">
+    <a href="/#donar" class="btn-primary">Donar ahora →</a>
+    <a href="/proyectos" class="btn-outline-white">Ver todos los proyectos</a>
+    <p class="donar-note">Donaciones trazables · INAES N°63884</p>
+  </div>
+</div>
+
+<!-- LIGHTBOXES -->
+<div class="lightbox" id="lb-api"><button class="lightbox-close" onclick="closeLB('api')">✕</button><button class="lightbox-nav lightbox-prev" onclick="navLB('api',-1)">‹</button><img class="lightbox-img" id="lb-api-img" src="" alt=""><button class="lightbox-nav lightbox-next" onclick="navLB('api',1)">›</button><span class="lightbox-caption" id="lb-api-cap"></span></div>
+<div class="lightbox" id="lb-plantas"><button class="lightbox-close" onclick="closeLB('plantas')">✕</button><button class="lightbox-nav lightbox-prev" onclick="navLB('plantas',-1)">‹</button><img class="lightbox-img" id="lb-plantas-img" src="" alt=""><button class="lightbox-nav lightbox-next" onclick="navLB('plantas',1)">›</button><span class="lightbox-caption" id="lb-plantas-cap"></span></div>
+<div class="lightbox" id="lb-hongos"><button class="lightbox-close" onclick="closeLB('hongos')">✕</button><button class="lightbox-nav lightbox-prev" onclick="navLB('hongos',-1)">‹</button><img class="lightbox-img" id="lb-hongos-img" src="" alt=""><button class="lightbox-nav lightbox-next" onclick="navLB('hongos',1)">›</button><span class="lightbox-caption" id="lb-hongos-cap"></span></div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <img src="/logo_amapolas.png" alt="Amapolas Cooperativa de Viviendas" class="foot-logo">
+      <p class="foot-desc">Una cooperativa de viviendas conducida por mujeres y disidencias en la Patagonia argentina. Construimos autonomía y comunidad desde Bariloche.</p>
+    </div>
+    <div class="foot-col"><h5>La cooperativa</h5><ul><li><a href="/nosotras">Quiénes somos</a></li><li><a href="/proyectos">Proyectos</a></li><li><a href="/comunidad">Comunidad</a></li><li><a href="/prensa">Prensa</a></li></ul></div>
+    <div class="foot-col"><h5>Colaborar</h5><ul><li><a href="/#donar">Donar</a></li><li><a href="/comunidad#voluntariado">Voluntariado</a></li><li><a href="/comunidad#fundaciones">Alianzas</a></li><li><a href="/prensa#kit">Kit de Prensa</a></li></ul></div>
+    <div class="foot-col"><h5>Contacto</h5><ul><li><a href="mailto:contacto@amapolas.coop">contacto@amapolas.coop</a></li><li><a href="mailto:prensa@amapolas.coop">prensa@amapolas.coop</a></li><li><a href="#">Bariloche, Río Negro</a></li><li><a href="#" target="_blank" rel="noopener">Instagram</a></li></ul></div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 Amapolas Cooperativa de Viviendas Ltda. · INAES N°63884 · Bariloche, Río Negro</p>
+    <div class="foot-social">
+      <a href="#" aria-label="Instagram">ig</a>
+      <a href="#" aria-label="Facebook">fb</a>
+      <a href="#" aria-label="WhatsApp">wa</a>
+    </div>
+  </div>
+</footer>
+
+<button class="scroll-top" id="stop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Volver arriba">↑</button>

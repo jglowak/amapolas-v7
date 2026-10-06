@@ -1,0 +1,223 @@
+<!-- NAV -->
+<nav id="navbar" class="over-bg">
+  <a href="/">
+    <img src="/logo_web.png" alt="Amapolas Cooperativa de Viviendas" class="nav-logo-color">
+    <img src="/logo_web_neg2.png" alt="Amapolas Cooperativa de Viviendas" class="nav-logo-neg">
+  </a>
+  <ul class="nav-links">
+    <li><a href="/">Home</a></li>
+    <li class="nav-item has-dropdown">
+      <a href="/nosotras" class="active">Nosotras</a>
+      <div class="nav-dropdown">
+        <span class="nav-dropdown-label">Nosotras</span>
+        <a href="/nosotras/genero">Género</a>
+        <a href="/nosotras/sustentabilidad">Hábitat Sustentable</a>
+        <a href="/nosotras/interculturalidad">Interculturalidad</a>
+        <a href="/nosotras/cohousing">Cuidado y Cohousing</a>
+      </div>
+    </li>
+    <li class="nav-item has-dropdown">
+      <a href="/proyectos">Proyectos</a>
+      <div class="nav-dropdown">
+        <span class="nav-dropdown-label">Proyectos</span>
+        <a href="/proyectos/vivienda">Barrio Amapolas</a>
+        <a href="/proyectos/productivos">Proyectos agroecológicos</a>
+      </div>
+    </li>
+    <li class="nav-item has-dropdown">
+      <a href="/prensa">Acciones y Prensa</a>
+      <div class="nav-dropdown">
+        <span class="nav-dropdown-label">Acciones y Prensa</span>
+        <a href="/prensa#eventos">Eventos / Charlas / Capacitaciones</a>
+        <a href="/prensa">Prensa</a>
+        <a href="/prensa#kit">Kit de Prensa</a>
+      </div>
+    </li>
+    <li class="nav-item has-dropdown">
+      <a href="/comunidad">Comunidad</a>
+      <div class="nav-dropdown">
+        <span class="nav-dropdown-label">Comunidad</span>
+        <a href="/comunidad#aliados">Aliados</a>
+        <a href="/comunidad#fundaciones">Fundaciones y Organizaciones</a>
+        <a href="/comunidad#sponsors">Sponsors</a>
+        <a href="/comunidad#donantes">Donantes</a>
+        <a href="/comunidad#comunidad">Comunidad</a>
+      </div>
+    </li>
+    <li class="nav-lang">
+      <a href="?lang=es" class="lang-btn lang-active">ES</a>
+      <span class="lang-sep">/</span>
+      <a href="?lang=en" class="lang-btn">EN</a>
+    </li>
+    <li><a href="/#donar" class="cta">Donar ahora</a></li>
+  </ul>
+  <button class="hamburger" id="ham" aria-label="Abrir menú"><span></span><span></span><span></span></button>
+</nav>
+
+<!-- MOBILE OVERLAY -->
+<div class="mobile-overlay" id="mob">
+  <button class="mob-close" onclick="document.getElementById('mob').classList.remove('open')">✕</button>
+  <a href="/" onclick="document.getElementById('mob').classList.remove('open')">Home</a>
+  <div class="mob-accordion">
+    <button class="mob-acc-btn" onclick="toggleMobAcc(this)">Nosotras <span class="mob-acc-arrow">▾</span></button>
+    <div class="mob-acc-panel">
+      <a href="/nosotras" onclick="document.getElementById('mob').classList.remove('open')">Nosotras</a>
+      <a href="/nosotras/genero" onclick="document.getElementById('mob').classList.remove('open')">Género</a>
+      <a href="/nosotras/sustentabilidad" onclick="document.getElementById('mob').classList.remove('open')">Hábitat Sustentable</a>
+      <a href="/nosotras/interculturalidad" onclick="document.getElementById('mob').classList.remove('open')">Interculturalidad</a>
+      <a href="/nosotras/cohousing" onclick="document.getElementById('mob').classList.remove('open')">Cuidado y Cohousing</a>
+    </div>
+  </div>
+  <div class="mob-accordion">
+    <button class="mob-acc-btn" onclick="toggleMobAcc(this)">Proyectos <span class="mob-acc-arrow">▾</span></button>
+    <div class="mob-acc-panel">
+      <a href="/proyectos" onclick="document.getElementById('mob').classList.remove('open')">Proyectos</a>
+      <a href="/proyectos/vivienda" onclick="document.getElementById('mob').classList.remove('open')">Barrio Amapolas</a>
+      <a href="/proyectos/productivos" onclick="document.getElementById('mob').classList.remove('open')">Proyectos agroecológicos</a>
+    </div>
+  </div>
+  <div class="mob-accordion">
+    <button class="mob-acc-btn" onclick="toggleMobAcc(this)">Acciones y Prensa <span class="mob-acc-arrow">▾</span></button>
+    <div class="mob-acc-panel">
+      <a href="/prensa#eventos" onclick="document.getElementById('mob').classList.remove('open')">Eventos / Capacitaciones</a>
+      <a href="/prensa" onclick="document.getElementById('mob').classList.remove('open')">Prensa</a>
+      <a href="/prensa#kit" onclick="document.getElementById('mob').classList.remove('open')">Kit de Prensa</a>
+    </div>
+  </div>
+  <div class="mob-accordion">
+    <button class="mob-acc-btn" onclick="toggleMobAcc(this)">Comunidad <span class="mob-acc-arrow">▾</span></button>
+    <div class="mob-acc-panel">
+      <a href="/comunidad#aliados" onclick="document.getElementById('mob').classList.remove('open')">Aliados</a>
+      <a href="/comunidad#fundaciones" onclick="document.getElementById('mob').classList.remove('open')">Fundaciones y Org.</a>
+      <a href="/comunidad#sponsors" onclick="document.getElementById('mob').classList.remove('open')">Sponsors</a>
+      <a href="/comunidad#donantes" onclick="document.getElementById('mob').classList.remove('open')">Donantes</a>
+    </div>
+  </div>
+  <div class="mob-lang">
+    <a href="?lang=es" class="lang-btn lang-active">ES</a>
+    <span class="lang-sep">/</span>
+    <a href="?lang=en" class="lang-btn">EN</a>
+  </div>
+  <a href="/#donar" onclick="document.getElementById('mob').classList.remove('open')" style="color:var(--rojo)">Donar ahora</a>
+</div>
+
+<!-- HERO -->
+<div class="hero" id="hero" style="background:var(--azul)">
+  <div class="hero-bg">
+    <img src="interculturalidad_hero.jpg" alt="Paisaje del territorio mapuche en Bariloche, Patagonia Argentina — territorio que la Cooperativa Amapolas habita y cuida">
+  </div>
+  <div class="hero-overlay-top"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-body">
+    <div class="hero-breadcrumb">
+      <a href="/">Inicio</a><span>/</span>
+      <a href="/nosotras">Nosotras</a><span>/</span>
+      <span style="color:rgba(255,255,255,.7)">Interculturalidad</span>
+    </div>
+    <div class="hero-badge" style="background:rgba(237,105,75,.35);color:white;border:1px solid rgba(255,255,255,.2)">
+      <span style="font-size:.8rem">03</span> · Territorio y memoria
+    </div>
+    <h1 class="hero-title">No se construyen futuros<br>sobre injusticias negadas</h1>
+    <p class="hero-subtitle">Reconocemos la preexistencia mapuche y tejemos alianzas reales con comunidades del territorio que habitamos.</p>
+  </div>
+</div>
+
+<!-- BLOQUE 1 — Territorio e historia -->
+<div class="eje-bloque bg-white">
+  <div class="eje-two-col">
+    <div class="reveal">
+      <p class="section-eyebrow">Territorio y memoria</p>
+      <h2 class="section-title">Furilofche:<br>ciudad del cielo azul</h2>
+      <div class="prose">
+        <p>Bariloche —Furilofche en mapudungún, "ciudad del cielo azul"— es hoy una ciudad turística de fama internacional. Su principal industria oculta una historia anterior: durante siglos, estas tierras fueron el territorio libre del pueblo Mapuche.</p>
+        <p>A fines del siglo XIX, el Estado argentino ejecutó la "Campaña del Desierto": masacres, desplazamiento forzoso y despojo territorial que concentró la tierra en pocas manos. Esa violencia estructural dejó huellas que persisten hasta hoy.</p>
+        <p>Reconocemos la preexistencia del pueblo Mapuche en estas tierras, su vigencia como pueblo vivo y organizado. Desde esta concepción política, hemos tejido vínculos de confianza con comunidades de la región.</p>
+      </div>
+      <div class="contexto-inst">
+        <p class="eyebrow">Marco institucional verificable</p>
+        <p>Bariloche fue reconocida oficialmente como <strong>Municipio Intercultural</strong> el 18 de junio de 2015 mediante la Ordenanza 2641/2015, y es parte de la <strong>Red Argentina de Municipios frente al Cambio Climático (RAMCC)</strong>. El trabajo intercultural de Amapolas se inscribe dentro de este marco institucional y de las políticas municipales de reconocimiento de la diversidad.</p>
+      </div>
+    </div>
+    <div class="eje-photo reveal">
+      <img src="interculturalidad_foto1.jpg" alt="Territorio patagónico en Bariloche: la geografía mapuche que inspira el trabajo intercultural de la Cooperativa Amapolas">
+      <div class="eje-photo-placeholder"><span>Territorio / paisaje patagónico</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- BLOQUE 2 — Alianzas reales -->
+<div class="eje-bloque bg-crema">
+  <div class="eje-two-col reverse">
+    <div class="eje-photo reveal">
+      <img src="interculturalidad_foto2.jpg" alt="Encuentro intercultural entre la Cooperativa Amapolas y la Comunidad Mapuche Tambo Báez, Bariloche">
+      <div class="eje-photo-placeholder"><span>Comunidad / encuentro intercultural</span></div>
+    </div>
+    <div class="reveal">
+      <p class="section-eyebrow">Alianzas reales</p>
+      <h2 class="section-title">No asistencialismo:<br>alianzas</h2>
+      <div class="prose">
+        <p>No asistencialismo: <strong>alianzas donde cada parte aporta saberes, recursos y trabajo</strong>. Hemos tejido vínculos de confianza con comunidades del territorio que hoy sostienen proyectos concretos y nos guían en la comprensión del lugar que habitamos.</p>
+        <p>El Barrio Intercultural de San Martín de los Andes es nuestra inspiración directa: la unión del barrio con la comunidad Curruhuinca logró la restitución y ampliación del territorio. Un hecho histórico sin precedentes que guía nuestro camino.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- VÍNCULOS COMUNITARIOS -->
+<div class="vinculos-section">
+  <div class="vinculos-inner">
+    <p class="section-eyebrow reveal">Comunidades aliadas</p>
+    <h2 class="section-title reveal">Vínculos que<br>sostienen el proyecto</h2>
+    <div class="vinculos-grid reveal">
+      <div class="vinculo-card">
+        <h4>Comunidad Tambo Báez</h4>
+        <p>A través de su referente Mirta, la comunidad nos abrió las puertas al territorio. Hoy allí funcionan el proyecto de hongos silvestres y el apiario colectivo.</p>
+      </div>
+      <div class="vinculo-card">
+        <h4>Lofche Buenuleo</h4>
+        <p>Vínculo iniciado con Sandra Ferman en una caminata narrativa sobre las plantas del territorio. A futuro: sendero interpretativo en conjunto con perspectiva de género.</p>
+      </div>
+      <div class="vinculo-card">
+        <h4>Barrio Intercultural · San Martín de los Andes</h4>
+        <p>Inspiración directa: la unión del barrio con la comunidad Curruhuinca logró la restitución y ampliación del territorio. Un hecho histórico sin precedentes que demuestra que otro modelo es posible.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- DONAR CTA -->
+<div class="donar-cta">
+  <div class="donar-cta-text reveal">
+    <p class="eyebrow">Sumate al proyecto</p>
+    <h2>Construimos sobre<br>territorio y memoria</h2>
+    <p>Tu apoyo financia proyectos que nacen del vínculo intercultural y respetan la historia del territorio que habitamos.</p>
+  </div>
+  <div class="donar-cta-actions reveal">
+    <a href="/#donar" class="btn-primary">Donar ahora →</a>
+    <a href="/comunidad" class="btn-outline-white">Otras formas de colaborar</a>
+    <p class="donar-note">Cooperativa con personería jurídica INAES N°63884 · Donaciones trazables</p>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <img src="/logo_amapolas.png" alt="Amapolas Cooperativa de Viviendas" class="foot-logo">
+      <p class="foot-desc">Una cooperativa de viviendas conducida por mujeres y disidencias en la Patagonia argentina. Construimos autonomía y comunidad desde Bariloche.</p>
+    </div>
+    <div class="foot-col"><h5>La cooperativa</h5><ul><li><a href="/nosotras">Quiénes somos</a></li><li><a href="/proyectos">Proyectos</a></li><li><a href="/comunidad">Comunidad</a></li><li><a href="/prensa">Prensa</a></li></ul></div>
+    <div class="foot-col"><h5>Colaborar</h5><ul><li><a href="/#donar">Donar</a></li><li><a href="/comunidad#voluntariado">Voluntariado</a></li><li><a href="/comunidad#fundaciones">Alianzas</a></li><li><a href="/prensa#kit">Kit de Prensa</a></li></ul></div>
+    <div class="foot-col"><h5>Contacto</h5><ul><li><a href="mailto:contacto@amapolas.coop">contacto@amapolas.coop</a></li><li><a href="mailto:prensa@amapolas.coop">prensa@amapolas.coop</a></li><li><a href="#">Bariloche, Río Negro</a></li><li><a href="#" target="_blank" rel="noopener">Instagram</a></li></ul></div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 Amapolas Cooperativa de Viviendas Ltda. · INAES N°63884 · Bariloche, Río Negro</p>
+    <div class="foot-social">
+      <a href="#" aria-label="Instagram">ig</a>
+      <a href="#" aria-label="Facebook">fb</a>
+      <a href="#" aria-label="WhatsApp">wa</a>
+    </div>
+  </div>
+</footer>
+
+<button class="scroll-top" id="stop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Volver arriba">↑</button>

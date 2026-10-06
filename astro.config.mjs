@@ -1,13 +1,22 @@
 import { defineConfig } from 'astro/config';
+import sitemap from '@astrojs/sitemap';
 
-// ES es el idioma por defecto (sin prefijo). EN vive en /en/.
-// Para cambiar el idioma principal: defaultLocale + redirigir la raíz (ver README).
+// Dominio provisorio: se define también en src/config/site.ts (TODO: dominio real).
+const SITE = 'https://amapolas.org';
+
+// ES por defecto sin prefijo; EN completo bajo /en. Los slugs no se traducen.
 export default defineConfig({
-  site: 'https://amapolas.org',
-  trailingSlash: 'ignore',
+  site: SITE,
+  trailingSlash: 'never',
+  build: { format: 'file' },
   i18n: {
     defaultLocale: 'es',
     locales: ['es', 'en'],
     routing: { prefixDefaultLocale: false },
   },
+  integrations: [
+    sitemap({
+      i18n: { defaultLocale: 'es', locales: { es: 'es-AR', en: 'en' } },
+    }),
+  ],
 });

@@ -1,0 +1,576 @@
+<!-- NAV -->
+<nav id="navbar">
+  <a href="/">
+    <img src="logo_web.png" alt="Amapolas Cooperativa de Viviendas" class="nav-logo-color">
+    <img src="logo_web_neg2.png" alt="Amapolas" class="nav-logo-neg">
+  </a>
+  <ul class="nav-links">
+    <li><a href="/">Home</a></li>
+    <li class="nav-item has-dropdown">
+      <a href="/nosotras">Nosotras</a>
+      <div class="nav-dropdown">
+        <span class="nav-dropdown-label">Nosotras</span>
+        <a href="/nosotras/genero">Género</a>
+        <a href="/nosotras/sustentabilidad">Hábitat Sustentable</a>
+        <a href="/nosotras/interculturalidad">Interculturalidad</a>
+        <a href="/nosotras/cohousing">Cuidado y Cohousing</a>
+      </div>
+    </li>
+    <li class="nav-item has-dropdown">
+      <a href="/proyectos">Proyectos</a>
+      <div class="nav-dropdown">
+        <span class="nav-dropdown-label">Proyectos</span>
+        <a href="/proyectos/vivienda">Barrio Amapolas</a>
+        <a href="/proyectos/productivos">Proyectos agroecológicos</a>
+      </div>
+    </li>
+    <li class="nav-item has-dropdown">
+      <a href="/prensa">Acciones y Prensa</a>
+      <div class="nav-dropdown">
+        <span class="nav-dropdown-label">Acciones y Prensa</span>
+        <a href="/prensa#eventos">Eventos / Charlas / Capacitaciones</a>
+        <a href="/prensa">Prensa</a>
+        <a href="/prensa#kit">Kit de Prensa</a>
+      </div>
+    </li>
+    <li class="nav-item has-dropdown">
+      <a href="/comunidad" class="active">Comunidad</a>
+      <div class="nav-dropdown">
+        <span class="nav-dropdown-label">Comunidad</span>
+        <a href="/comunidad#aliados">Aliados</a>
+        <a href="/comunidad#fundaciones">Fundaciones y Organizaciones</a>
+        <a href="/comunidad#sponsors">Sponsors</a>
+        <a href="/comunidad#donantes">Donantes</a>
+        <a href="/comunidad#comunidad">Comunidad</a>
+      </div>
+    </li>
+    <li class="nav-lang">
+      <a href="?lang=es" class="lang-btn lang-active">ES</a>
+      <span class="lang-sep">/</span>
+      <a href="?lang=en" class="lang-btn">EN</a>
+    </li>
+    <li><a href="/#donar" class="cta">Donar ahora</a></li>
+  </ul>
+  <button class="hamburger" id="ham" aria-label="Abrir menú"><span></span><span></span><span></span></button>
+</nav>
+
+<!-- MOBILE OVERLAY -->
+<div class="mobile-overlay" id="mob">
+  <button class="mob-close" onclick="document.getElementById('mob').classList.remove('open')">✕</button>
+  <a href="/" onclick="document.getElementById('mob').classList.remove('open')">Home</a>
+  <div class="mob-accordion">
+    <button class="mob-acc-btn" onclick="toggleMobAcc(this)">Nosotras <span class="mob-acc-arrow">▾</span></button>
+    <div class="mob-acc-panel">
+      <a href="/nosotras" onclick="document.getElementById('mob').classList.remove('open')">Nosotras</a>
+      <a href="/nosotras/genero" onclick="document.getElementById('mob').classList.remove('open')">Género</a>
+      <a href="/nosotras/sustentabilidad" onclick="document.getElementById('mob').classList.remove('open')">Hábitat Sustentable</a>
+      <a href="/nosotras/interculturalidad" onclick="document.getElementById('mob').classList.remove('open')">Interculturalidad</a>
+      <a href="/nosotras/cohousing" onclick="document.getElementById('mob').classList.remove('open')">Cuidado y Cohousing</a>
+    </div>
+  </div>
+  <div class="mob-accordion">
+    <button class="mob-acc-btn" onclick="toggleMobAcc(this)">Proyectos <span class="mob-acc-arrow">▾</span></button>
+    <div class="mob-acc-panel">
+      <a href="/proyectos" onclick="document.getElementById('mob').classList.remove('open')">Proyectos</a>
+      <a href="/proyectos/vivienda" onclick="document.getElementById('mob').classList.remove('open')">Barrio Amapolas</a>
+      <a href="/proyectos/productivos" onclick="document.getElementById('mob').classList.remove('open')">Proyectos agroecológicos</a>
+    </div>
+  </div>
+  <div class="mob-accordion">
+    <button class="mob-acc-btn" onclick="toggleMobAcc(this)">Acciones y Prensa <span class="mob-acc-arrow">▾</span></button>
+    <div class="mob-acc-panel">
+      <a href="/prensa#eventos" onclick="document.getElementById('mob').classList.remove('open')">Eventos / Capacitaciones</a>
+      <a href="/prensa" onclick="document.getElementById('mob').classList.remove('open')">Prensa</a>
+      <a href="/prensa#kit" onclick="document.getElementById('mob').classList.remove('open')">Kit de Prensa</a>
+    </div>
+  </div>
+  <div class="mob-accordion">
+    <button class="mob-acc-btn" onclick="toggleMobAcc(this)">Comunidad <span class="mob-acc-arrow">▾</span></button>
+    <div class="mob-acc-panel">
+      <a href="/comunidad#aliados" onclick="document.getElementById('mob').classList.remove('open')">Aliados</a>
+      <a href="/comunidad#fundaciones" onclick="document.getElementById('mob').classList.remove('open')">Fundaciones y Org.</a>
+      <a href="/comunidad#sponsors" onclick="document.getElementById('mob').classList.remove('open')">Sponsors</a>
+      <a href="/comunidad#donantes" onclick="document.getElementById('mob').classList.remove('open')">Donantes</a>
+      <a href="/comunidad#comunidad" onclick="document.getElementById('mob').classList.remove('open')">Comunidad</a>
+    </div>
+  </div>
+  <div class="mob-lang">
+    <a href="?lang=es" class="lang-btn lang-active">ES</a>
+    <span class="lang-sep">/</span>
+    <a href="?lang=en" class="lang-btn">EN</a>
+  </div>
+  <a href="/#donar" onclick="document.getElementById('mob').classList.remove('open')" style="color:var(--rojo)">Donar ahora</a>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-breadcrumb">
+    <a href="/">Inicio</a><span>/</span>
+    <span style="color:rgba(36,37,46,.6)">Comunidad</span>
+  </div>
+  <div class="hero-inner">
+    <h1 class="hero-title reveal">Sumate<br>a construir<br><span class="accent">con nosotras</span></h1>
+    <div class="hero-right reveal">
+      <p>Hay muchas formas de ser parte de Amapolas: donar, proponer una alianza institucional, hacer voluntariado o difundir el proyecto. Cada forma de apoyo tiene su propia ruta.</p>
+      <div class="hero-anchors">
+        <a href="#donar" class="hero-anchor">→ Quiero donar</a>
+        <a href="#fundaciones" class="hero-anchor">→ Soy una organización</a>
+        <a href="#voluntariado" class="hero-anchor">→ Voluntariado</a>
+        <a href="#prensa-entry" class="hero-anchor">→ Soy periodista</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PERFILES ENTRY -->
+<section class="perfiles-section">
+  <div class="perfiles-inner">
+    <div class="perfiles-header">
+      <p class="section-eyebrow">¿Cómo querés participar?</p>
+      <h2 class="section-title">Cada vínculo tiene<br>su propio camino</h2>
+    </div>
+    <div class="perfiles-grid">
+
+      <a href="#donar" class="perfil-card donar reveal" style="text-decoration:none">
+        <div class="perfil-icon rojo-bg">
+          <svg viewBox="0 0 24 24" fill="none" stroke="var(--rojo)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"></path></svg>
+        </div>
+        <p class="perfil-tag rojo">Donantes</p>
+        <h3 class="perfil-title">Quiero donar</h3>
+        <p class="perfil-desc">Financiá viviendas, proyectos agroecológicos o el funcionamiento de la cooperativa. Elegí el monto y el destino. Donaciones trazables con personería jurídica.</p>
+        <span class="perfil-cta rojo">Ver niveles de donación →</span>
+      </a>
+
+      <a href="#fundaciones" class="perfil-card fondo reveal" style="text-decoration:none">
+        <div class="perfil-icon gris-bg">
+          <svg viewBox="0 0 24 24" fill="none" stroke="var(--gris-inst)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"></rect><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"></path></svg>
+        </div>
+        <p class="perfil-tag gris">Fondos y fundaciones</p>
+        <h3 class="perfil-title">Soy una fundación u organización</h3>
+        <p class="perfil-desc">Alianzas institucionales, fondos de cooperación, ONGs y universidades. Encontrá la propuesta de valor, los ODS que abordamos y el dossier institucional descargable.</p>
+        <span class="perfil-cta gris">Ver ruta institucional →</span>
+      </a>
+
+      <a href="#voluntariado" class="perfil-card voluntario reveal" style="text-decoration:none">
+        <div class="perfil-icon verde-bg">
+          <svg viewBox="0 0 24 24" fill="none" stroke="var(--verde)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 00-3-3.87"></path><path d="M16 3.13a4 4 0 010 7.75"></path></svg>
+        </div>
+        <p class="perfil-tag verde">Voluntariado</p>
+        <h3 class="perfil-title">Quiero hacer voluntariado</h3>
+        <p class="perfil-desc">Aportá tu tiempo y saberes. Buscamos perfiles en arquitectura, comunicación, agroecología, trabajo social y gestión de fondos.</p>
+        <span class="perfil-cta verde">Ver áreas y formulario →</span>
+      </a>
+
+      <a href="#prensa-entry" class="perfil-card prensa reveal" style="text-decoration:none">
+        <div class="perfil-icon naranja-bg">
+          <svg viewBox="0 0 24 24" fill="none" stroke="var(--naranja)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"></path><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"></path></svg>
+        </div>
+        <p class="perfil-tag naranja">Prensa</p>
+        <h3 class="perfil-title">Soy periodista o comunicadora</h3>
+        <p class="perfil-desc">Accedé al kit de prensa, gacetilla institucional, fotos en alta resolución y contacto directo con la referente de comunicación del proyecto.</p>
+        <span class="perfil-cta naranja">Ir al Kit de Prensa →</span>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- DONAR -->
+<section class="donar-section" id="donar">
+  <div class="donar-inner">
+    <div class="donar-header">
+      <p class="section-eyebrow">Donaciones</p>
+      <h2 class="section-title reveal">Cada aporte tiene<br>un destino concreto</h2>
+      <p class="reveal" style="max-width:580px;font-size:.95rem;line-height:1.8;color:rgba(36,37,46,.55);margin-top:1rem">Amapolas opera con personería jurídica (INAES N°63884). Todas las donaciones son trazables. Podés elegir financiar vivienda, proyectos agroecológicos o el funcionamiento general de la cooperativa.</p>
+    </div>
+
+    <div class="niveles-grid">
+      <div class="nivel-card reveal">
+        <div>
+          <p class="nivel-nombre">Semilla</p>
+          <p class="nivel-monto">USD 10 <span>/ mes</span></p>
+        </div>
+        <p class="nivel-desc">Cubrís materiales para una jornada de bioconstrucción o insumos del apiario colectivo. Un aporte sostenido que mantiene los proyectos productivos activos.</p>
+        <p class="nivel-impacto">→ Financia proyectos agroecológicos</p>
+      </div>
+      <div class="nivel-card destacado reveal">
+        <div>
+          <p class="nivel-nombre">Raíz</p>
+          <p class="nivel-monto">USD 50 <span>/ mes</span></p>
+        </div>
+        <p class="nivel-desc">Contribuís directamente a los fondos de construcción del Barrio Amapolas. Cada mes equivale a materiales para avanzar en la obra comunitaria.</p>
+        <p class="nivel-impacto">→ Financia vivienda y obra</p>
+      </div>
+      <div class="nivel-card reveal">
+        <div>
+          <p class="nivel-nombre">Tierra</p>
+          <p class="nivel-monto">USD 200 <span>/ única vez</span></p>
+        </div>
+        <p class="nivel-desc">Un aporte puntual de alto impacto: financia equipamiento técnico, formación o materiales de construcción para una etapa del proyecto.</p>
+        <p class="nivel-impacto">→ Financia equipamiento o formación</p>
+      </div>
+    </div>
+
+    <div class="donar-cta-wrap reveal">
+      <a href="https://www.globalgiving.org" target="_blank" rel="noopener" class="btn-donar-gg">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"></path></svg>
+        Donar en GlobalGiving
+      </a>
+      <div class="donar-trazabilidad">
+        <p><strong>Trazabilidad garantizada.</strong> Cooperativa con personería jurídica INAES N°63884.<br>Donaciones deducibles · Informe anual disponible · Tres fondos consecutivos del Fondo Mujeres del Sur.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ALIADOS — Fondo Mujeres del Sur destacado -->
+<section class="aliados-section" id="aliados">
+  <div class="aliados-inner">
+    <div class="aliados-header">
+      <p class="section-eyebrow">Red de alianzas</p>
+      <h2 class="section-title reveal">Quiénes confían<br>en el proyecto</h2>
+    </div>
+
+    <!-- Módulo destacado: Fondo Mujeres del Sur -->
+    <div class="fms-modulo reveal">
+      <div class="fms-badge">
+        <div class="fms-logo-placeholder">Fondo Mujeres del Sur</div>
+        <div class="fms-ciclos">
+          <div class="fms-ciclo">
+            <span class="fms-ciclo-year">2023</span>
+            <div class="fms-ciclo-dot"></div>
+          </div>
+          <div class="fms-ciclo">
+            <span class="fms-ciclo-year">2024</span>
+            <div class="fms-ciclo-dot"></div>
+          </div>
+          <div class="fms-ciclo">
+            <span class="fms-ciclo-year">2025</span>
+            <div class="fms-ciclo-dot"></div>
+          </div>
+        </div>
+      </div>
+      <div class="fms-content">
+        <p class="fms-eyebrow">Financiador estratégico</p>
+        <h3 class="fms-title">3 ciclos consecutivos de financiamiento</h3>
+        <p class="fms-desc">El Fondo Mujeres del Sur es una ONG argentina que financia proyectos liderados por mujeres y organizaciones feministas en América Latina. Eligió a Amapolas en 2023, evaluó el impacto, y volvió a elegirla en 2024 y 2025.</p>
+        <div class="fms-signif">
+          <p><strong>¿Por qué importa?</strong> Tres ciclos consecutivos de financiamiento no son solo un dato presupuestario: son la evidencia más concreta de rendición de cuentas y confianza acumulada. El fondo evaluó resultados y decidió reinvertir. Es el aval más sólido de la capacidad de ejecución de Amapolas.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Grilla de aliados -->
+    <div class="aliados-grid" id="fundaciones">
+      <div class="aliado-card reveal">
+        <div class="aliado-logo-wrap"><span class="aliado-logo-placeholder">MISEREOR</span></div>
+        <h4 class="aliado-nombre">MISEREOR</h4>
+        <p class="aliado-que-es">Agencia católica alemana de cooperación al desarrollo, presente en más de 90 países.</p>
+        <p class="aliado-vinculo">Financia el proyecto de senderos interpretativos interculturales junto a Fundación Gente Nueva.</p>
+      </div>
+
+      <div class="aliado-card reveal">
+        <div class="aliado-logo-wrap"><span class="aliado-logo-placeholder">HIC</span></div>
+        <h4 class="aliado-nombre">HIC — Coalición Internacional del Hábitat</h4>
+        <p class="aliado-que-es">Red global de organizaciones de sociedad civil por el derecho a la vivienda y al hábitat.</p>
+        <p class="aliado-vinculo">Amapolas integra la red y co-organizó el primer encuentro internacional de diseño participativo en Bariloche.</p>
+      </div>
+
+      <div class="aliado-card reveal">
+        <div class="aliado-logo-wrap"><span class="aliado-logo-placeholder">CIEFAP</span></div>
+        <h4 class="aliado-nombre">CIEFAP</h4>
+        <p class="aliado-que-es">Centro de Investigación y Extensión Forestal Andino Patagónico, organismo público de investigación aplicada.</p>
+        <p class="aliado-vinculo">Acompaña técnicamente el proyecto de cultivo de hongos silvestres.</p>
+      </div>
+
+      <div class="aliado-card reveal">
+        <div class="aliado-logo-wrap"><span class="aliado-logo-placeholder">UNAM México</span></div>
+        <h4 class="aliado-nombre">UNAM México</h4>
+        <p class="aliado-que-es">Universidad Nacional Autónoma de México, referente latinoamericano en hábitat participativo.</p>
+        <p class="aliado-vinculo">Amapolas accedió mediante beca al Diplomado de Diseño Participativo del Hábitat.</p>
+      </div>
+
+      <div class="aliado-card reveal">
+        <div class="aliado-logo-wrap"><span class="aliado-logo-placeholder">Fundación Gente Nueva</span></div>
+        <h4 class="aliado-nombre">Fundación Gente Nueva</h4>
+        <p class="aliado-que-es">Organización argentina de desarrollo social con financiamiento de MISEREOR.</p>
+        <p class="aliado-vinculo">Co-ejecuta el proyecto de senderos interpretativos interculturales con perspectiva de género.</p>
+      </div>
+
+      <div class="aliado-card reveal">
+        <div class="aliado-logo-wrap"><span class="aliado-logo-placeholder">Red TEC IN HAB</span></div>
+        <h4 class="aliado-nombre">Red TEC IN HAB</h4>
+        <p class="aliado-que-es">Red latinoamericana de organizaciones y profesionales para el intercambio de conocimientos sobre hábitat y vivienda.</p>
+        <p class="aliado-vinculo">Amapolas integra la red desde 2024.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RUTA INSTITUCIONAL: FONDOS Y ORGANIZACIONES -->
+<section class="institucional-section" id="fundaciones-form">
+  <div class="institucional-inner">
+    <div class="institucional-left reveal">
+      <p class="section-eyebrow" style="color:var(--gris-inst)">Para fondos y organizaciones</p>
+      <h2>Construimos desde evidencia y trazabilidad</h2>
+      <p>Amapolas articula 7 ODS de la Agenda 2030, opera con personería jurídica verificable y tiene tres ciclos consecutivos de financiamiento internacional. Todo el respaldo institucional está disponible para descarga.</p>
+
+      <div class="inst-recursos">
+        <a href="/dossier-amapolas-es.pdf" target="_blank" class="inst-recurso">
+          <div class="inst-recurso-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="var(--gris-inst)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
+          </div>
+          <div class="inst-recurso-text">
+            <p class="label">Descargable</p>
+            <p class="nombre">Dossier institucional · Español (PDF)</p>
+          </div>
+        </a>
+        <a href="/dossier-amapolas-en.pdf" target="_blank" class="inst-recurso">
+          <div class="inst-recurso-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="var(--gris-inst)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
+          </div>
+          <div class="inst-recurso-text">
+            <p class="label">Downloadable</p>
+            <p class="nombre">Institutional Dossier · English (PDF)</p>
+          </div>
+        </a>
+        <a href="/informe-anual-amapolas.pdf" target="_blank" class="inst-recurso">
+          <div class="inst-recurso-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="var(--gris-inst)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+          </div>
+          <div class="inst-recurso-text">
+            <p class="label">Transparencia</p>
+            <p class="nombre">Balance e informe anual (PDF)</p>
+          </div>
+        </a>
+        <div class="inst-recurso" style="cursor:default">
+          <div class="inst-recurso-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="var(--gris-inst)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="2"></rect><path d="M7 7h.01M12 7h.01M17 7h.01M7 12h.01M12 12h.01M17 12h.01M7 17h.01M12 17h.01M17 17h.01"></path></svg>
+          </div>
+          <div class="inst-recurso-text">
+            <p class="label">Legitimidad jurídica</p>
+            <p class="nombre">Matrícula INAES N°63884</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="institucional-right reveal">
+      <div class="inst-form-card">
+        <p style="font-size:.68rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(36,37,46,.35);margin-bottom:1.5rem">Formulario de alianza institucional</p>
+        <form id="alianzaForm" action="TU_DEFTFORM_ENDPOINT" method="POST" onsubmit="handleAlianzaSubmit(event)">
+          <div class="form-row-2">
+            <div>
+              <label class="form-label" for="org_nombre">Nombre de la organización</label>
+              <input class="form-input" type="text" id="org_nombre" name="org_nombre" placeholder="Nombre" required="">
+            </div>
+            <div>
+              <label class="form-label" for="org_pais">País</label>
+              <input class="form-input" type="text" id="org_pais" name="org_pais" placeholder="País" required="">
+            </div>
+          </div>
+          <div class="form-row">
+            <label class="form-label" for="org_tipo">Tipo de organización</label>
+            <select class="form-select" id="org_tipo" name="org_tipo" required="">
+              <option value="" disabled="" selected="">Seleccioná</option>
+              <option value="fondo">Fondo de cooperación internacional</option>
+              <option value="fundacion">Fundación</option>
+              <option value="ong">ONG / Organización de la sociedad civil</option>
+              <option value="universidad">Universidad / Centro de investigación</option>
+              <option value="organismo">Organismo multilateral</option>
+              <option value="empresa">Empresa / RSE</option>
+              <option value="otro">Otro</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <label class="form-label" for="org_area">Área de interés</label>
+            <select class="form-select" id="org_area" name="org_area" required="">
+              <option value="" disabled="" selected="">Seleccioná</option>
+              <option value="vivienda">Hábitat y vivienda</option>
+              <option value="genero">Género y derechos de las mujeres</option>
+              <option value="sustentabilidad">Sustentabilidad / Economía regenerativa</option>
+              <option value="interculturalidad">Interculturalidad / Pueblos originarios</option>
+              <option value="agroecologia">Agroecología</option>
+              <option value="ods">ODS / Cooperación internacional</option>
+              <option value="otro">Otro</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <label class="form-label" for="contacto_email">Email de contacto</label>
+            <input class="form-input" type="email" id="contacto_email" name="contacto_email" placeholder="email@organizacion.org" required="">
+          </div>
+          <div class="form-row">
+            <label class="form-label" for="propuesta">Descripción de la propuesta</label>
+            <textarea class="form-textarea" id="propuesta" name="propuesta" placeholder="Describí brevemente cómo imaginás el vínculo con Amapolas..." required=""></textarea>
+          </div>
+          <div class="turnstile-wrap">
+            <div class="cf-turnstile" data-sitekey="TU_TURNSTILE_SITE_KEY" data-theme="light" data-language="es"></div>
+          </div>
+          <button type="submit" class="btn-submit" id="alianzaBtn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+            Enviar propuesta
+          </button>
+          <p class="form-note">Tu información no será compartida con terceros.</p>
+        </form>
+        <div class="form-success" id="alianzaSuccess">
+          <h4>¡Propuesta enviada!</h4>
+          <p>Nos ponemos en contacto a la brevedad. Gracias por el interés en articular con Amapolas.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VOLUNTARIADO -->
+<section class="voluntariado-section" id="voluntariado">
+  <div class="voluntariado-inner">
+    <div class="reveal">
+      <p class="section-eyebrow" style="color:var(--verde)">Voluntariado</p>
+      <h2 class="section-title">Aportá tu tiempo<br>y saberes</h2>
+      <p style="font-size:.95rem;line-height:1.8;color:rgba(36,37,46,.55);margin-top:.8rem">Buscamos personas con compromiso real, disponibilidad concreta y capacidad de trabajo colectivo. El voluntariado en Amapolas es trabajo real con impacto real.</p>
+
+      <div class="voluntariado-areas">
+        <div class="area-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="3 9 12 2 21 9 21 20 3 20 3 9"></polygon></svg>
+          <span>Arquitectura y diseño participativo</span>
+        </div>
+        <div class="area-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+          <span>Comunicación, diseño y redes sociales</span>
+        </div>
+        <div class="area-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"></path><circle cx="9" cy="7" r="4"></circle></svg>
+          <span>Trabajo social y acompañamiento comunitario</span>
+        </div>
+        <div class="area-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"></path></svg>
+          <span>Administración y gestión de fondos</span>
+        </div>
+        <div class="area-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 110 20A10 10 0 0112 2z"></path><path d="M12 6v6l4 2"></path></svg>
+          <span>Apicultura, agroecología y hongos silvestres</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="vol-form-card reveal">
+      <p style="font-size:.68rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(36,37,46,.35);margin-bottom:1.5rem">Formulario de voluntariado</p>
+      <form id="volForm" action="TU_DEFTFORM_ENDPOINT" method="POST" onsubmit="handleVolSubmit(event)">
+        <div class="form-row-2">
+          <div>
+            <label class="form-label" for="vol_nombre">Nombre</label>
+            <input class="form-input" type="text" id="vol_nombre" name="vol_nombre" placeholder="Tu nombre" required="">
+          </div>
+          <div>
+            <label class="form-label" for="vol_email">Email</label>
+            <input class="form-input" type="email" id="vol_email" name="vol_email" placeholder="tu@email.com" required="">
+          </div>
+        </div>
+        <div class="form-row">
+          <label class="form-label" for="vol_area">Área de interés</label>
+          <select class="form-select" id="vol_area" name="vol_area" required="">
+            <option value="" disabled="" selected="">Seleccioná un área</option>
+            <option value="arquitectura">Arquitectura y diseño participativo</option>
+            <option value="comunicacion">Comunicación y redes</option>
+            <option value="trabajo_social">Trabajo social</option>
+            <option value="administracion">Administración y gestión</option>
+            <option value="agroecologia">Apicultura y agroecología</option>
+            <option value="otro">Otro</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <label class="form-label" for="vol_mensaje">Contanos sobre vos</label>
+          <textarea class="form-textarea" id="vol_mensaje" name="vol_mensaje" placeholder="Formación, experiencia, disponibilidad horaria..." required=""></textarea>
+        </div>
+        <div class="turnstile-wrap">
+          <div class="cf-turnstile" data-sitekey="TU_TURNSTILE_SITE_KEY" data-theme="light" data-language="es"></div>
+        </div>
+        <button type="submit" class="btn-vol-submit" id="volBtn">Enviar → Voluntariado</button>
+      </form>
+      <div class="form-success" id="volSuccess">
+        <h4>¡Mensaje enviado!</h4>
+        <p>Gracias por tu interés. Te contactamos pronto.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRENSA ENTRY -->
+<div class="prensa-entry" id="prensa-entry">
+  <div class="prensa-entry-inner">
+    <div class="prensa-entry-text reveal">
+      <p class="eyebrow">Para periodistas y comunicadoras</p>
+      <h2>Kit de Prensa disponible</h2>
+      <p>Gacetilla institucional en español e inglés, fotos en alta resolución, logo descargable y contacto directo con la responsable de comunicación.</p>
+    </div>
+    <div class="prensa-entry-actions reveal">
+      <a href="/prensa#kit" class="btn-kit-prensa">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+        Descargar Kit de Prensa
+      </a>
+      <a href="mailto:prensa@amapolas.coop" class="btn-prensa-contacto">Contacto de prensa →</a>
+    </div>
+  </div>
+</div>
+
+<!-- DONANTES MURO -->
+<section class="donantes-section" id="donantes">
+  <div class="donantes-inner">
+    <div class="donantes-intro reveal">
+      <p class="section-eyebrow">Donantes</p>
+      <h2 class="section-title">Las personas que<br>hacen posible esto</h2>
+      <p style="font-size:.95rem;line-height:1.8;color:rgba(36,37,46,.55);margin-top:1rem">Cada persona que dona hace posible que el modelo avance. Cuando autoricen, publicamos su nombre como parte de la comunidad de apoyo de Amapolas.</p>
+    </div>
+    <!-- Muro de donantes: poblar desde GlobalGiving / base de datos cuando esté disponible -->
+    <div class="donantes-muro reveal">
+      <p class="donantes-placeholder">Los nombres de donantes se publicarán aquí con autorización expresa. <a href="#donar" style="color:var(--rojo);font-weight:600;font-style:normal">Sé la primera persona en aparecer →</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <img src="logo_amapolas.png" alt="Amapolas Cooperativa de Viviendas" class="foot-logo">
+      <p class="foot-desc">Una cooperativa de viviendas conducida por mujeres y disidencias en la Patagonia argentina. Construimos autonomía y comunidad desde Bariloche.</p>
+    </div>
+    <div class="foot-col">
+      <h5>La cooperativa</h5>
+      <ul>
+        <li><a href="/nosotras">Quiénes somos</a></li>
+        <li><a href="/proyectos">Proyectos</a></li>
+        <li><a href="/comunidad">Comunidad</a></li>
+        <li><a href="/prensa">Prensa</a></li>
+      </ul>
+    </div>
+    <div class="foot-col">
+      <h5>Colaborar</h5>
+      <ul>
+        <li><a href="#donar">Donar</a></li>
+        <li><a href="#voluntariado">Voluntariado</a></li>
+        <li><a href="#fundaciones">Alianzas institucionales</a></li>
+        <li><a href="/prensa#kit">Kit de Prensa</a></li>
+      </ul>
+    </div>
+    <div class="foot-col">
+      <h5>Contacto</h5>
+      <ul>
+        <li><a href="mailto:contacto@amapolas.coop">contacto@amapolas.coop</a></li>
+        <li><a href="mailto:prensa@amapolas.coop">prensa@amapolas.coop</a></li>
+        <li><a href="#">Bariloche, Río Negro</a></li>
+        <li><a href="#" target="_blank" rel="noopener">Instagram</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 Amapolas Cooperativa de Viviendas Ltda. · INAES N°63884 · Bariloche, Río Negro</p>
+    <div class="foot-social">
+      <a href="#" title="Instagram" aria-label="Instagram">ig</a>
+      <a href="#" title="Facebook" aria-label="Facebook">fb</a>
+      <a href="#" title="WhatsApp" aria-label="WhatsApp">wa</a>
+    </div>
+  </div>
+</footer>
+
+<button class="scroll-top" id="stop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Volver arriba">↑</button>

@@ -1,68 +1,44 @@
 ---
-import { localePath, type Lang } from '../i18n/utils';
-import { site } from '../i18n/site';
+// Copia literal del <footer> de v5 (index.html). Cambian los ítems según el documento
+// de correcciones; los datos de contacto y redes salen de src/config/site.ts.
+// Los <h5> de columna pasan a <h2 class="foot-h"> (mismo estilo) para no saltar niveles de título.
+import { Image } from 'astro:assets';
+import logo from '../assets/img/logo_amapolas.png';
+import { site } from '../config/site';
+import { ui, localePath, type Lang } from '../i18n/ui';
 
 interface Props { lang: Lang }
 const { lang } = Astro.props;
-const href = (p: string) => localePath(lang, p);
-
-const t = {
-  es: {
-    brand: 'Amapolas Cooperativa de Viviendas',
-    desc: 'Una cooperativa de viviendas conducida por mujeres y disidencias en la Patagonia Argentina. Construimos autonomía y comunidad desde Bariloche.',
-    coop: 'La cooperativa',
-    colab: 'Colaborar',
-    contact: 'Contacto',
-    legal: `Cooperativa de Vivienda Amapolas Ltda. · Matrícula INAES N°${site.inaes} obtenida en 2022 · Bariloche, Río Negro, Argentina`,
-    top: 'Volver arriba',
-  },
-  en: {
-    brand: 'Amapolas Housing Cooperative',
-    desc: 'A housing cooperative led by women and gender-diverse people in Argentine Patagonia. We build autonomy and community from Bariloche.',
-    coop: 'The cooperative',
-    colab: 'Get involved',
-    contact: 'Contact',
-    legal: `Cooperativa de Vivienda Amapolas Ltda. · INAES Registration No. ${site.inaes} (granted 2022) · Bariloche, Río Negro, Argentina`,
-    top: 'Back to top',
-  },
-}[lang];
-
-// Enlaces del footer: según el texto de correcciones.
-const coop = [
-  { label: { es: 'Quiénes somos', en: 'Who we are' }, href: '/#quienes-somos' }, // texto: "que te lleve a la home"
-  { label: { es: 'Proyectos', en: 'Projects' }, href: '/proyectos' },
-  { label: { es: 'Acciones y Prensa', en: 'Actions & Press' }, href: '/prensa' },
-  { label: { es: 'Comunidad', en: 'Community' }, href: '/comunidad' },
-];
-const colab = [
-  { label: { es: 'Donar', en: 'Donate' }, href: '/#donar' },
-  { label: { es: 'Alianzas', en: 'Partnerships' }, href: '/comunidad' },
-  { label: { es: 'Kit de Prensa', en: 'Press Kit' }, href: '/prensa#kit' },
-];
-const social = [
-  { name: 'WhatsApp', short: 'wa', url: site.social.whatsapp },
-  { name: 'LinkedIn', short: 'in', url: site.social.linkedin },
-  { name: 'Instagram', short: 'ig', url: site.social.instagram },
-  { name: 'Facebook', short: 'fb', url: site.social.facebook },
-];
+const t = ui[lang].footer;
+const L = (p: string) => localePath(lang, p);
+const year = new Date().getFullYear();
 ---
-
+<!-- FOOTER -->
 <footer>
   <div class="footer-top">
     <div>
-      <img src="/img/logo-footer.png" alt={t.brand} class="foot-logo" />
+      <Image src={logo} alt={ui[lang].logoAlt} height={30} densities={[1, 2]} class="foot-logo" />
       <p class="foot-desc">{t.desc}</p>
     </div>
     <div class="foot-col">
-      <h5>{t.coop}</h5>
-      <ul>{coop.map((l) => <li><a href={href(l.href)}>{l.label[lang]}</a></li>)}</ul>
+      <h2 class="foot-h">{t.coop}</h2>
+      <ul>
+        <li><a href={L('/nosotras')}>{t.quienes}</a></li>
+        <li><a href={L('/proyectos')}>{t.proyectos}</a></li>
+        <li><a href={L('/prensa')}>{t.prensa}</a></li>
+        <li><a href={L('/comunidad')}>{t.comunidad}</a></li>
+      </ul>
     </div>
     <div class="foot-col">
-      <h5>{t.colab}</h5>
-      <ul>{colab.map((l) => <li><a href={href(l.href)}>{l.label[lang]}</a></li>)}</ul>
+      <h2 class="foot-h">{t.colaborar}</h2>
+      <ul>
+        <li><a href={L('/donar')}>{t.donar}</a></li>
+        <li><a href={L('/comunidad#fundaciones')}>{t.alianzas}</a></li>
+        <li><a href={L('/prensa#kit')}>{t.kit}</a></li>
+      </ul>
     </div>
     <div class="foot-col">
-      <h5>{t.contact}</h5>
+      <h2 class="foot-h">{t.contacto}</h2>
       <ul>
         <li><a href={`mailto:${site.email}`}>{site.email}</a></li>
         <li><a href={site.social.linkedin} target="_blank" rel="noopener">LinkedIn</a></li>
@@ -71,11 +47,12 @@ const social = [
     </div>
   </div>
   <div class="footer-bottom">
-    <p>{t.legal}</p>
+    <p>© {year} {t.legal}</p>
     <div class="foot-social">
-      {social.map((s) => <a href={s.url} target="_blank" rel="noopener" title={s.name} aria-label={s.name}>{s.short}</a>)}
+      <a href={site.social.whatsapp} target="_blank" rel="noopener" title="WhatsApp" aria-label="WhatsApp">wa</a>
+      <a href={site.social.linkedin} target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn">in</a>
+      <a href={site.social.instagram} target="_blank" rel="noopener" title="Instagram" aria-label="Instagram">ig</a>
+      <a href={site.social.facebook} target="_blank" rel="noopener" title="Facebook" aria-label="Facebook">fb</a>
     </div>
   </div>
 </footer>
-
-<button class="scroll-top" id="stop" aria-label={t.top}>↑</button>

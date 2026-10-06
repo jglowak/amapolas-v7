@@ -1,0 +1,228 @@
+<!-- NAV -->
+<nav id="navbar" class="over-bg">
+  <a href="/">
+    <img src="/logo_web.png" alt="Amapolas Cooperativa de Viviendas" class="nav-logo-color">
+    <img src="/logo_web_neg2.png" alt="Amapolas Cooperativa de Viviendas" class="nav-logo-neg">
+  </a>
+  <ul class="nav-links">
+    <li><a href="/">Home</a></li>
+    <li class="nav-item has-dropdown">
+      <a href="/nosotras" class="active">Nosotras</a>
+      <div class="nav-dropdown">
+        <span class="nav-dropdown-label">Nosotras</span>
+        <a href="/nosotras/genero">Género</a>
+        <a href="/nosotras/sustentabilidad">Hábitat Sustentable</a>
+        <a href="/nosotras/interculturalidad">Interculturalidad</a>
+        <a href="/nosotras/cohousing">Cuidado y Cohousing</a>
+      </div>
+    </li>
+    <li class="nav-item has-dropdown">
+      <a href="/proyectos">Proyectos</a>
+      <div class="nav-dropdown">
+        <span class="nav-dropdown-label">Proyectos</span>
+        <a href="/proyectos/vivienda">Barrio Amapolas</a>
+        <a href="/proyectos/productivos">Proyectos agroecológicos</a>
+      </div>
+    </li>
+    <li class="nav-item has-dropdown">
+      <a href="/prensa">Acciones y Prensa</a>
+      <div class="nav-dropdown">
+        <span class="nav-dropdown-label">Acciones y Prensa</span>
+        <a href="/prensa#eventos">Eventos / Charlas / Capacitaciones</a>
+        <a href="/prensa">Prensa</a>
+        <a href="/prensa#kit">Kit de Prensa</a>
+      </div>
+    </li>
+    <li class="nav-item has-dropdown">
+      <a href="/comunidad">Comunidad</a>
+      <div class="nav-dropdown">
+        <span class="nav-dropdown-label">Comunidad</span>
+        <a href="/comunidad#aliados">Aliados</a>
+        <a href="/comunidad#fundaciones">Fundaciones y Organizaciones</a>
+        <a href="/comunidad#sponsors">Sponsors</a>
+        <a href="/comunidad#donantes">Donantes</a>
+        <a href="/comunidad#comunidad">Comunidad</a>
+      </div>
+    </li>
+    <li class="nav-lang">
+      <a href="?lang=es" class="lang-btn lang-active">ES</a>
+      <span class="lang-sep">/</span>
+      <a href="?lang=en" class="lang-btn">EN</a>
+    </li>
+    <li><a href="/#donar" class="cta">Donar ahora</a></li>
+  </ul>
+  <button class="hamburger" id="ham" aria-label="Abrir menú"><span></span><span></span><span></span></button>
+</nav>
+
+<!-- MOBILE OVERLAY -->
+<div class="mobile-overlay" id="mob">
+  <button class="mob-close" onclick="document.getElementById('mob').classList.remove('open')">✕</button>
+  <a href="/" onclick="document.getElementById('mob').classList.remove('open')">Home</a>
+  <div class="mob-accordion">
+    <button class="mob-acc-btn" onclick="toggleMobAcc(this)">Nosotras <span class="mob-acc-arrow">▾</span></button>
+    <div class="mob-acc-panel">
+      <a href="/nosotras" onclick="document.getElementById('mob').classList.remove('open')">Nosotras</a>
+      <a href="/nosotras/genero" onclick="document.getElementById('mob').classList.remove('open')">Género</a>
+      <a href="/nosotras/sustentabilidad" onclick="document.getElementById('mob').classList.remove('open')">Hábitat Sustentable</a>
+      <a href="/nosotras/interculturalidad" onclick="document.getElementById('mob').classList.remove('open')">Interculturalidad</a>
+      <a href="/nosotras/cohousing" onclick="document.getElementById('mob').classList.remove('open')">Cuidado y Cohousing</a>
+    </div>
+  </div>
+  <div class="mob-accordion">
+    <button class="mob-acc-btn" onclick="toggleMobAcc(this)">Proyectos <span class="mob-acc-arrow">▾</span></button>
+    <div class="mob-acc-panel">
+      <a href="/proyectos" onclick="document.getElementById('mob').classList.remove('open')">Proyectos</a>
+      <a href="/proyectos/vivienda" onclick="document.getElementById('mob').classList.remove('open')">Barrio Amapolas</a>
+      <a href="/proyectos/productivos" onclick="document.getElementById('mob').classList.remove('open')">Proyectos agroecológicos</a>
+    </div>
+  </div>
+  <div class="mob-accordion">
+    <button class="mob-acc-btn" onclick="toggleMobAcc(this)">Acciones y Prensa <span class="mob-acc-arrow">▾</span></button>
+    <div class="mob-acc-panel">
+      <a href="/prensa#eventos" onclick="document.getElementById('mob').classList.remove('open')">Eventos / Capacitaciones</a>
+      <a href="/prensa" onclick="document.getElementById('mob').classList.remove('open')">Prensa</a>
+      <a href="/prensa#kit" onclick="document.getElementById('mob').classList.remove('open')">Kit de Prensa</a>
+    </div>
+  </div>
+  <div class="mob-accordion">
+    <button class="mob-acc-btn" onclick="toggleMobAcc(this)">Comunidad <span class="mob-acc-arrow">▾</span></button>
+    <div class="mob-acc-panel">
+      <a href="/comunidad#aliados" onclick="document.getElementById('mob').classList.remove('open')">Aliados</a>
+      <a href="/comunidad#fundaciones" onclick="document.getElementById('mob').classList.remove('open')">Fundaciones y Org.</a>
+      <a href="/comunidad#sponsors" onclick="document.getElementById('mob').classList.remove('open')">Sponsors</a>
+      <a href="/comunidad#donantes" onclick="document.getElementById('mob').classList.remove('open')">Donantes</a>
+    </div>
+  </div>
+  <div class="mob-lang">
+    <a href="?lang=es" class="lang-btn lang-active">ES</a>
+    <span class="lang-sep">/</span>
+    <a href="?lang=en" class="lang-btn">EN</a>
+  </div>
+  <a href="/#donar" onclick="document.getElementById('mob').classList.remove('open')" style="color:var(--rojo)">Donar ahora</a>
+</div>
+
+<!-- HERO -->
+<div class="hero" id="hero" style="background:var(--rojo)">
+  <div class="hero-bg">
+    <img src="/hero/genero.webp" alt="Mujeres y disidencias de la Cooperativa Amapolas en asamblea colectiva, Bariloche, Patagonia Argentina">
+  </div>
+  <div class="hero-overlay-top"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-body">
+    <div class="hero-breadcrumb">
+      <a href="/">Inicio</a><span>/</span>
+      <a href="/nosotras">Nosotras</a><span>/</span>
+      <span style="color:rgba(255,255,255,.7)">Género</span>
+    </div>
+    <div class="hero-badge" style="background:rgba(237,105,75,.35);color:white;border:1px solid rgba(255,255,255,.2)">
+      <span style="font-size:.8rem">01</span> · Perspectiva de género
+    </div>
+    <h1 class="hero-title">La habitación propia<br>como derecho</h1>
+    <p class="hero-subtitle">Reivindicamos la casa propia no como sueño sino como derecho esencial para el desarrollo humano de mujeres y disidencias.</p>
+  </div>
+</div>
+
+<!-- BLOQUE 1 -->
+<div class="eje-bloque bg-white">
+  <div class="eje-two-col">
+    <div class="reveal">
+      <p class="section-eyebrow">La habitación propia</p>
+      <h2 class="section-title">Un espacio donde<br>desarrollarnos y crecer</h2>
+      <div class="prose">
+        <p>Como mujeres sudamericanas, conocemos de primera mano las desigualdades que nos atraviesan. Por eso reivindicamos las luchas de los feminismos, la memoria de quienes nos precedieron y los derechos que hoy defendemos.</p>
+        <p>Nuestra motivación es que este espacio cooperativista —conformado por mujeres y disidencias— sea un lugar donde desarrollarnos, crecer y demostrar que otro modelo es posible.</p>
+        <p>Virginia Woolf escribió sobre la habitación propia. Nosotras reivindicamos ese espacio y apostamos por la casa propia: no como sueño, sino como <strong>derecho y condición esencial para el desarrollo humano</strong>.</p>
+      </div>
+      <div class="ods-highlight">
+        <p class="ods-num">ODS 5 — Igualdad de género</p>
+        <p>Amapolas es <strong>la única cooperativa de vivienda en Patagonia íntegramente conducida por mujeres y disidencias</strong>. Todas las decisiones, la gestión financiera y la representación institucional están en manos femeninas.</p>
+      </div>
+    </div>
+    <div class="eje-photo reveal">
+      <img src="genero_foto1.jpg" alt="Socias de Amapolas reunidas en asamblea: toma de decisiones horizontal con perspectiva de género">
+      <div class="eje-photo-placeholder"><span>Asamblea / organización</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- BLOQUE 2 -->
+<div class="eje-bloque bg-crema">
+  <div class="eje-two-col reverse">
+    <div class="eje-photo reveal">
+      <img src="genero_foto2.jpg" alt="Mujeres de la Cooperativa Amapolas trabajando en construcción con bioconstrucción, Bariloche">
+      <div class="eje-photo-placeholder"><span>Construcción / trabajo</span></div>
+    </div>
+    <div class="reveal">
+      <p class="section-eyebrow">Feminismo y hábitat</p>
+      <h2 class="section-title">Fechas que<br>nos marcan</h2>
+      <div class="prose">
+        <p>La perspectiva de género atraviesa cada decisión: desde la distribución de los espacios hasta la forma en que tomamos decisiones en asamblea. Construimos con conciencia de las violencias estructurales que enfrentamos y con la convicción de que la organización colectiva es la única salida posible.</p>
+      </div>
+      <div class="fechas-list">
+        <div class="fecha-row"><span class="fecha-dia">8 Mar</span><span class="fecha-desc">Día Internacional de la Mujer Trabajadora</span></div>
+        <div class="fecha-row"><span class="fecha-dia">3 Jun</span><span class="fecha-desc">Ni Una Menos — primera marcha multitudinaria, Argentina 2015</span></div>
+        <div class="fecha-row"><span class="fecha-dia">28 Sep</span><span class="fecha-desc">Día de Lucha por la Legalización del Aborto en América Latina</span></div>
+        <div class="fecha-row"><span class="fecha-dia">25 Nov</span><span class="fecha-desc">Día Internacional de la Eliminación de la Violencia contra la Mujer</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CIFRAS -->
+<div class="cifras-section">
+  <div class="cifras-inner">
+    <p class="section-eyebrow reveal">El contexto regional</p>
+    <h2 class="section-title reveal">Datos que explican<br>por qué existimos</h2>
+    <div class="cifras-grid reveal">
+      <div class="cifra-card">
+        <div class="cifra-val rojo">119,6</div>
+        <div class="cifra-desc">mujeres en pobreza extrema por cada 100 hombres en la misma situación en América Latina (2022)</div>
+      </div>
+      <div class="cifra-card">
+        <div class="cifra-val rojo">15%</div>
+        <div class="cifra-desc">de los cargos directivos en AL ocupados por mujeres. Solo el 14% de las empresas tienen dueña mujer.</div>
+      </div>
+      <div class="cifra-card">
+        <div class="cifra-val rojo">89M</div>
+        <div class="cifra-desc">mujeres en la región sin acceso a internet o sin capacidad de pagarlo, limitando oportunidades económicas y educativas.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- DONAR CTA -->
+<div class="donar-cta">
+  <div class="donar-cta-text reveal">
+    <p class="eyebrow">Sumate al proyecto</p>
+    <h2>Tu aporte construye<br>esta comunidad</h2>
+    <p>Tu donación financia materiales, herramientas y el trabajo de mujeres que construyen su propio futuro en la Patagonia. Cooperativa con personería jurídica INAES N°63884.</p>
+  </div>
+  <div class="donar-cta-actions reveal">
+    <a href="/#donar" class="btn-primary">Donar ahora →</a>
+    <a href="/comunidad" class="btn-outline-white">Otras formas de colaborar</a>
+    <p class="donar-note">Donaciones trazables · INAES N°63884</p>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <img src="/logo_amapolas.png" alt="Amapolas Cooperativa de Viviendas" class="foot-logo">
+      <p class="foot-desc">Una cooperativa de viviendas conducida por mujeres y disidencias en la Patagonia argentina. Construimos autonomía y comunidad desde Bariloche.</p>
+    </div>
+    <div class="foot-col"><h5>La cooperativa</h5><ul><li><a href="/nosotras">Quiénes somos</a></li><li><a href="/proyectos">Proyectos</a></li><li><a href="/comunidad">Comunidad</a></li><li><a href="/prensa">Prensa</a></li></ul></div>
+    <div class="foot-col"><h5>Colaborar</h5><ul><li><a href="/#donar">Donar</a></li><li><a href="/comunidad#voluntariado">Voluntariado</a></li><li><a href="/comunidad#fundaciones">Alianzas</a></li><li><a href="/prensa#kit">Kit de Prensa</a></li></ul></div>
+    <div class="foot-col"><h5>Contacto</h5><ul><li><a href="mailto:contacto@amapolas.coop">contacto@amapolas.coop</a></li><li><a href="mailto:prensa@amapolas.coop">prensa@amapolas.coop</a></li><li><a href="#">Bariloche, Río Negro</a></li><li><a href="#" target="_blank" rel="noopener">Instagram</a></li></ul></div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 Amapolas Cooperativa de Viviendas Ltda. · INAES N°63884 · Bariloche, Río Negro</p>
+    <div class="foot-social">
+      <a href="#" aria-label="Instagram">ig</a>
+      <a href="#" aria-label="Facebook">fb</a>
+      <a href="#" aria-label="WhatsApp">wa</a>
+    </div>
+  </div>
+</footer>
+
+<button class="scroll-top" id="stop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Volver arriba">↑</button>

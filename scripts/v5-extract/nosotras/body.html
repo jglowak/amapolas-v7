@@ -1,0 +1,565 @@
+<!-- NAV -->
+<nav id="navbar" class="over-bg">
+  <a href="/">
+    <img src="logo_web.png" alt="Amapolas Cooperativa de Viviendas" class="nav-logo-color">
+    <img src="logo_web_neg2.png" alt="Amapolas Cooperativa de Viviendas" class="nav-logo-neg">
+  </a>
+  <ul class="nav-links">
+    <li><a href="/">Home</a></li>
+    <li class="nav-item has-dropdown">
+      <a href="/nosotras" class="active">Nosotras</a>
+      <div class="nav-dropdown">
+        <span class="nav-dropdown-label">Nosotras</span>
+        <a href="/nosotras/genero">Género</a>
+        <a href="/nosotras/sustentabilidad">Hábitat Sustentable</a>
+        <a href="/nosotras/interculturalidad">Interculturalidad</a>
+        <a href="/nosotras/cohousing">Cuidado y Cohousing</a>
+      </div>
+    </li>
+    <li class="nav-item has-dropdown">
+      <a href="/proyectos">Proyectos</a>
+      <div class="nav-dropdown">
+        <span class="nav-dropdown-label">Proyectos</span>
+        <a href="/proyectos/vivienda">Barrio Amapolas</a>
+        <a href="/proyectos/productivos">Proyectos agroecológicos</a>
+      </div>
+    </li>
+    <li class="nav-item has-dropdown">
+      <a href="/prensa">Acciones y Prensa</a>
+      <div class="nav-dropdown">
+        <span class="nav-dropdown-label">Acciones y Prensa</span>
+        <a href="/prensa#eventos">Eventos / Charlas / Capacitaciones</a>
+        <a href="/prensa">Prensa</a>
+        <a href="/prensa#kit">Kit de Prensa</a>
+      </div>
+    </li>
+    <li class="nav-item has-dropdown">
+      <a href="/comunidad">Comunidad</a>
+      <div class="nav-dropdown">
+        <span class="nav-dropdown-label">Comunidad</span>
+        <a href="/comunidad#aliados">Aliados</a>
+        <a href="/comunidad#fundaciones">Fundaciones y Organizaciones</a>
+        <a href="/comunidad#sponsors">Sponsors</a>
+        <a href="/comunidad#donantes">Donantes</a>
+        <a href="/comunidad#comunidad">Comunidad</a>
+      </div>
+    </li>
+    <li class="nav-lang">
+      <a href="?lang=es" class="lang-btn lang-active">ES</a>
+      <span class="lang-sep">/</span>
+      <a href="?lang=en" class="lang-btn">EN</a>
+    </li>
+    <li><a href="/#donar" class="cta">Donar ahora</a></li>
+  </ul>
+  <button class="hamburger" id="ham" aria-label="Abrir menú"><span></span><span></span><span></span></button>
+</nav>
+
+<!-- MOBILE OVERLAY -->
+<div class="mobile-overlay" id="mob">
+  <button class="mob-close" onclick="document.getElementById('mob').classList.remove('open')">✕</button>
+  <a href="/" onclick="document.getElementById('mob').classList.remove('open')">Home</a>
+  <div class="mob-accordion">
+    <button class="mob-acc-btn" onclick="toggleMobAcc(this)">Nosotras <span class="mob-acc-arrow">▾</span></button>
+    <div class="mob-acc-panel">
+      <a href="/nosotras" onclick="document.getElementById('mob').classList.remove('open')">Nosotras</a>
+      <a href="/nosotras/genero" onclick="document.getElementById('mob').classList.remove('open')">Género</a>
+      <a href="/nosotras/sustentabilidad" onclick="document.getElementById('mob').classList.remove('open')">Hábitat Sustentable</a>
+      <a href="/nosotras/interculturalidad" onclick="document.getElementById('mob').classList.remove('open')">Interculturalidad</a>
+      <a href="/nosotras/cohousing" onclick="document.getElementById('mob').classList.remove('open')">Cuidado y Cohousing</a>
+    </div>
+  </div>
+  <div class="mob-accordion">
+    <button class="mob-acc-btn" onclick="toggleMobAcc(this)">Proyectos <span class="mob-acc-arrow">▾</span></button>
+    <div class="mob-acc-panel">
+      <a href="/proyectos" onclick="document.getElementById('mob').classList.remove('open')">Proyectos</a>
+      <a href="/proyectos/vivienda" onclick="document.getElementById('mob').classList.remove('open')">Barrio Amapolas</a>
+      <a href="/proyectos/productivos" onclick="document.getElementById('mob').classList.remove('open')">Proyectos agroecológicos</a>
+    </div>
+  </div>
+  <div class="mob-accordion">
+    <button class="mob-acc-btn" onclick="toggleMobAcc(this)">Acciones y Prensa <span class="mob-acc-arrow">▾</span></button>
+    <div class="mob-acc-panel">
+      <a href="/prensa#eventos" onclick="document.getElementById('mob').classList.remove('open')">Eventos / Capacitaciones</a>
+      <a href="/prensa" onclick="document.getElementById('mob').classList.remove('open')">Prensa</a>
+      <a href="/prensa#kit" onclick="document.getElementById('mob').classList.remove('open')">Kit de Prensa</a>
+    </div>
+  </div>
+  <div class="mob-accordion">
+    <button class="mob-acc-btn" onclick="toggleMobAcc(this)">Comunidad <span class="mob-acc-arrow">▾</span></button>
+    <div class="mob-acc-panel">
+      <a href="/comunidad#aliados" onclick="document.getElementById('mob').classList.remove('open')">Aliados</a>
+      <a href="/comunidad#fundaciones" onclick="document.getElementById('mob').classList.remove('open')">Fundaciones y Org.</a>
+      <a href="/comunidad#sponsors" onclick="document.getElementById('mob').classList.remove('open')">Sponsors</a>
+      <a href="/comunidad#donantes" onclick="document.getElementById('mob').classList.remove('open')">Donantes</a>
+    </div>
+  </div>
+  <div class="mob-lang">
+    <a href="?lang=es" class="lang-btn lang-active">ES</a>
+    <span class="lang-sep">/</span>
+    <a href="?lang=en" class="lang-btn">EN</a>
+  </div>
+  <a href="/#donar" onclick="document.getElementById('mob').classList.remove('open')" style="color:var(--rojo)">Donar ahora</a>
+</div>
+
+<!-- HERO -->
+<div class="hero" id="hero">
+  <img src="about_foto1.jpg" alt="Socias de Amapolas en el territorio de Bariloche, Patagonia Argentina" class="hero-photo" onerror="this.style.display='none'">
+  <div class="hero-deco">♀</div>
+  <div class="hero-body">
+    <div class="hero-breadcrumb">
+      <a href="/">Inicio</a><span>/</span>
+      <span style="color:rgba(255,255,255,.7)">Nosotras</span>
+    </div>
+    <h1 class="hero-title">Quiénes somos<br>y cómo llegamos<br>hasta acá</h1>
+    <p class="hero-subtitle">Una cooperativa de mujeres y disidencias que construye vivienda digna, autonomía económica y comunidad en Bariloche, Patagonia argentina.</p>
+  </div>
+  <div class="hero-tabs">
+    <a href="#historia" class="hero-tab">Historia</a>
+    <a href="#socias" class="hero-tab">Las socias</a>
+    <a href="#como" class="hero-tab">Cómo nos organizamos</a>
+    <a href="#ods" class="hero-tab">ODS</a>
+    <a href="#redes" class="hero-tab">Redes y membresías</a>
+    <a href="#ejes" class="hero-tab">Ejes de trabajo</a>
+  </div>
+</div>
+
+<!-- PROPUESTA DE VALOR — tagline jerárquico -->
+<div class="pv-section">
+  <div class="pv-inner">
+    <p class="pv-eyebrow reveal">Propuesta de valor</p>
+    <p class="pv-statement reveal">Amapolas es un modelo de hábitat comunitario con perspectiva feminista y enfoque regenerativo, desarrollado por mujeres y disidencias en Patagonia Argentina, que demuestra que es posible construir vivienda, comunidad y autonomía desde la organización colectiva, con potencial de adaptación y replicabilidad en otros territorios.</p>
+    <p class="pv-en reveal">Amapolas is a community habitat model with a feminist perspective and regenerative approach, developed by women and gender-diverse people in Patagonia, Argentina, proving that housing, community and autonomy can be built through collective action, with the potential for adaptation and replication in other territories.</p>
+  </div>
+</div>
+
+<!-- HISTORIA -->
+<section id="historia" class="historia">
+  <div class="historia-inner">
+    <div class="historia-meta reveal">
+      <div class="historia-meta-sticky">
+        <p class="meta-label">La cooperativa</p>
+        <p class="meta-quote">"Construimos no solo casas, sino la posibilidad de un futuro propio para mujeres y disidencias en la Patagonia."</p>
+        <div class="meta-datos">
+          <div class="meta-dato"><div class="val">2022</div><div class="lbl">Año de fundación</div></div>
+          <div class="meta-dato"><div class="val">#63884</div><div class="lbl">Matrícula INAES</div></div>
+          <div class="meta-dato"><div class="val">100%</div><div class="lbl">Conducción femenina</div></div>
+          <div class="meta-dato"><div class="val">30+</div><div class="lbl">Mujeres involucradas</div></div>
+        </div>
+
+        <div class="dossier-inline">
+          <div class="dossier-inline-text">
+            <p class="label">Documentación institucional</p>
+            <p class="title">Descargá el dossier y el balance anual</p>
+          </div>
+          <div class="dossier-btns-sm">
+            <a href="/dossier-amapolas-es.pdf" target="_blank" rel="noopener" class="btn-dl-sm es">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+              Dossier ES
+            </a>
+            <a href="/dossier-amapolas-en.pdf" target="_blank" rel="noopener" class="btn-dl-sm en">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+              Dossier EN
+            </a>
+            <a href="/informe-anual-amapolas.pdf" target="_blank" rel="noopener" class="btn-dl-sm bal">Balance anual</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="historia-texto">
+      <p class="section-eyebrow reveal">Quiénes somos</p>
+      <h2 class="section-title reveal">Una cooperativa nacida<br>de la necesidad concreta</h2>
+      <div class="prose reveal">
+        <p>La cooperativa Amapolas se conformó en el año 2022 en la ciudad de Bariloche, Patagonia argentina. Obtuvimos nuestra matrícula nacional N°63884 otorgada por INAES, el Instituto Nacional de Asociativismo y Economía Social. Desde entonces hemos celebrado tres Asambleas Generales Ordinarias en las que se presentaron y aprobaron los balances y se eligieron autoridades.</p>
+        <p><strong>Somos</strong> mujeres y disidencias, madres, hijas, hermanas, compañeras, docentes, artistas, emprendedoras, creativas, soñadoras y cuidadoras, migrantes e inmigrantes. Todas atravesadas por una situación económica frágil y situación habitacional de gran inestabilidad.</p>
+        <p><strong>Nos une</strong> la convicción de que la salida es colectiva y que nadie se salva sola. Desde ahí construimos sueños, proyectos e incidencia en el territorio que elegimos para habitar: Bariloche, Río Negro, Patagonia Argentina.</p>
+        <p><strong>Nos organizamos</strong> para construir un proyecto de barrio con perspectivas comunitarias y feministas, buscando causar el menor impacto al ecosistema, cuidando nuestro entorno y preservando el agua y la vida del territorio.</p>
+      </div>
+      <div class="autoridades">
+        <h4>Consejo Administrativo vigente</h4>
+        <div class="autoridades-grid">
+          <div class="autoridad"><p class="nombre">Julieta Linares</p><p class="cargo">Presidenta</p></div>
+          <div class="autoridad"><p class="nombre">Martina Cianis</p><p class="cargo">Secretaria</p></div>
+          <div class="autoridad"><p class="nombre">Andrea Duminao</p><p class="cargo">Tesorera</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LAS SOCIAS -->
+<section id="socias" class="socias-section">
+  <div class="socias-inner">
+    <div class="socias-head">
+      <div class="socias-head-meta reveal">
+        <span class="socias-count"><strong>5+</strong> socias activas</span>
+        <p class="section-eyebrow">Las socias</p>
+        <h2 class="section-title">Caras, historias,<br>oficios</h2>
+      </div>
+      <div class="socias-head-text reveal">
+        <p>Somos madres, hijas, hermanas, docentes, artistas, emprendedoras, cuidadoras. Cada una llegó a Amapolas con su propia historia de inestabilidad habitacional, y con la convicción de que la salida es colectiva. Estas son las socias que hoy sostienen el proyecto.</p>
+      </div>
+    </div>
+
+    <div class="socias-grid reveal">
+
+      <div class="socia-card">
+        <div class="socia-photo">
+          <img src="socia_julieta.jpg" alt="Julieta Linares, presidenta y socia fundadora de la Cooperativa Amapolas" onerror="this.remove()">
+          <div class="socia-photo-fallback">JL</div>
+        </div>
+        <div class="socia-body">
+          <span class="socia-badge">Consejo · Presidenta</span>
+          <h3 class="socia-name">Julieta Linares</h3>
+          <p class="socia-role">Socia fundadora</p>
+          <p class="socia-bio">Una de las impulsoras iniciales del proyecto. Representa a la cooperativa ante instancias públicas y organizaciones aliadas.</p>
+          <p class="socia-quote">"Construimos la posibilidad de un futuro propio para mujeres y disidencias en la Patagonia."</p>
+        </div>
+      </div>
+
+      <div class="socia-card">
+        <div class="socia-photo">
+          <img src="socia_martina.jpg" alt="Martina Cianis, secretaria y socia fundadora de la Cooperativa Amapolas" onerror="this.remove()">
+          <div class="socia-photo-fallback">MC</div>
+        </div>
+        <div class="socia-body">
+          <span class="socia-badge">Consejo · Secretaria</span>
+          <h3 class="socia-name">Martina Cianis</h3>
+          <p class="socia-role">Socia fundadora</p>
+          <p class="socia-bio">A cargo de actas, comunicación interna y articulación entre las comisiones de trabajo.</p>
+          <p class="socia-quote">"Organizadas podemos lograr lo que parecía inalcanzable."</p>
+        </div>
+      </div>
+
+      <div class="socia-card">
+        <div class="socia-photo">
+          <img src="socia_andrea.jpg" alt="Andrea Duminao, tesorera y socia fundadora de la Cooperativa Amapolas" onerror="this.remove()">
+          <div class="socia-photo-fallback">AD</div>
+        </div>
+        <div class="socia-body">
+          <span class="socia-badge">Consejo · Tesorera</span>
+          <h3 class="socia-name">Andrea Duminao</h3>
+          <p class="socia-role">Socia fundadora</p>
+          <p class="socia-bio">Administra los aportes, balances y rendiciones. Responsable de la trazabilidad de cada donación y fondo recibido.</p>
+          <p class="socia-quote">"La salida es colectiva. Nadie se salva sola."</p>
+        </div>
+      </div>
+
+      <div class="socia-card">
+        <div class="socia-photo">
+          <img src="socia_4.jpg" alt="María Laura, socia fundadora de la Cooperativa Amapolas" onerror="this.remove()">
+          <div class="socia-photo-fallback">ML</div>
+        </div>
+        <div class="socia-body">
+          <h3 class="socia-name">María Laura</h3>
+          <p class="socia-role">Socia fundadora</p>
+          <p class="socia-bio">Parte del grupo inicial que gestó el proyecto. Integra la comisión de hábitat y diseño del barrio.</p>
+          <p class="socia-quote">"Es saber que mis hijas van a crecer en un hogar seguro."</p>
+        </div>
+      </div>
+
+      <div class="socia-card">
+        <div class="socia-photo">
+          <img src="socia_5.jpg" alt="Rosa Carmen, socia activa de la Cooperativa Amapolas" onerror="this.remove()">
+          <div class="socia-photo-fallback">RC</div>
+        </div>
+        <div class="socia-body">
+          <h3 class="socia-name">Rosa Carmen</h3>
+          <p class="socia-role">Socia activa · 3 años</p>
+          <p class="socia-bio">Se sumó en el segundo año de la cooperativa. Trabaja en la comisión de comunicación y vínculos comunitarios.</p>
+          <p class="socia-quote">"Amapolas me mostró que juntas podemos todo."</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section id="timeline" class="timeline-section">
+  <div class="timeline-inner">
+    <div class="timeline-head reveal">
+      <p class="section-eyebrow">Nuestra historia</p>
+      <h2 class="section-title">Cuatro años<br>de construcción colectiva</h2>
+      <p style="font-size:1rem;line-height:1.75;color:rgba(36,37,46,.55);max-width:520px;margin-top:.8rem">De un grupo de mujeres buscando vivienda a una cooperativa con matrícula nacional, proyectos productivos y vínculos territoriales.</p>
+    </div>
+    <div class="timeline reveal">
+      <div class="tl-row">
+        <div class="tl-year">2022<span class="tl-month">Fundación</span></div>
+        <div class="tl-content"><h4>Nace Amapolas</h4><p>Un grupo de mujeres y disidencias de Bariloche, atravesadas por la crisis habitacional, se reúne para pensar una salida cooperativa. Se conforman los primeros grupos de trabajo.</p></div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-year">2022<span class="tl-month">Matrícula INAES</span></div>
+        <div class="tl-content"><h4>Personería jurídica N°63884</h4><p>Obtenemos la matrícula nacional otorgada por el Instituto Nacional de Asociativismo y Economía Social. La cooperativa queda formalmente constituida.</p></div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-year">2023<span class="tl-month">1ª Asamblea</span></div>
+        <div class="tl-content"><h4>Primera Asamblea General Ordinaria</h4><p>Se aprueba el primer balance y se eligen autoridades. Se definen los tres ejes de trabajo: género, sustentabilidad e interculturalidad.</p></div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-year">2024<span class="tl-month">Proyectos</span></div>
+        <div class="tl-content"><h4>Arrancan los proyectos productivos</h4><p>Se inicia el proyecto de cosecha de hongos silvestres y el apiario colectivo. Primeras ventas y primer ingreso autónomo para las socias.</p></div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-year">2025<span class="tl-month">Vínculos</span></div>
+        <div class="tl-content"><h4>Alianzas con comunidades mapuche</h4><p>Formalizamos vínculos con comunidades del territorio. Comenzamos el trabajo sostenido en perspectiva intercultural y reconocimiento de la preexistencia.</p></div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-year">2026<span class="tl-month">Hoy</span></div>
+        <div class="tl-content"><h4>Proyecto de barrio en marcha</h4><p>Tercer ejercicio aprobado, socias activas y campaña abierta para reunir los fondos necesarios para la adquisición del terreno y primeras construcciones.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CÓMO NOS ORGANIZAMOS -->
+<section id="como" class="como-section">
+  <div class="como-inner">
+    <div class="como-head reveal">
+      <p class="section-eyebrow">Cómo nos organizamos</p>
+      <h2 class="section-title">Cooperativismo,<br>no directorio</h2>
+      <p style="font-size:1rem;line-height:1.75;color:rgba(36,37,46,.55);max-width:520px;margin-top:.8rem">Todas las decisiones importantes se toman entre todas. El Consejo Administrativo representa, no decide por fuera de la Asamblea.</p>
+    </div>
+    <div class="como-grid reveal">
+      <div class="como-card">
+        <div class="como-icon">◐</div>
+        <h4>Asambleas mensuales</h4>
+        <p>Nos reunimos todos los meses en asamblea ordinaria. Cada socia tiene un voto. Las decisiones estratégicas — ingreso de nuevas socias, afectación de fondos, convenios — se toman acá.</p>
+        <div class="como-meta"><strong>1 voto</strong> por socia · agenda abierta</div>
+      </div>
+      <div class="como-card">
+        <div class="como-icon">◇</div>
+        <h4>Comisiones de trabajo</h4>
+        <p>Entre asambleas funcionan comisiones: hábitat, finanzas, comunicación, proyectos productivos e interculturalidad. Cada socia integra al menos una según sus tiempos y saberes.</p>
+        <div class="como-meta"><strong>5 comisiones</strong> · rotación anual</div>
+      </div>
+      <div class="como-card">
+        <div class="como-icon">◎</div>
+        <h4>Consenso antes que mayoría</h4>
+        <p>Buscamos el consenso como método. Si no hay acuerdo, se vota — pero priorizamos escuchar las disidencias y postergar antes que imponer. El tiempo colectivo vale más que la velocidad.</p>
+        <div class="como-meta"><strong>Consenso</strong> como primer camino</div>
+      </div>
+      <div class="como-card">
+        <div class="como-icon">◈</div>
+        <h4>Transparencia financiera</h4>
+        <p>Todos los ingresos y egresos se registran y se rinden en la Asamblea General Ordinaria anual. Balances aprobados por las socias y presentados ante INAES cada ejercicio.</p>
+        <div class="como-meta"><strong>3 balances</strong> aprobados · matrícula N°63884</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ODS CON EVIDENCIA -->
+<section id="ods" class="ods-section">
+  <div class="ods-inner">
+    <div class="ods-head reveal">
+      <p class="section-eyebrow">Agenda 2030 · Naciones Unidas</p>
+      <h2 class="section-title">7 ODS con evidencia concreta</h2>
+      <p class="body">El modelo de Amapolas no declara alineación con los ODS: la demuestra. Cada objetivo tiene una línea de evidencia específica que explica qué hace la cooperativa concretamente para contribuir a ese objetivo.</p>
+    </div>
+    <div class="ods-grid reveal">
+      <div class="ods-item">
+        <div class="ods-num">1<span class="ods-label">Fin de la pobreza</span></div>
+        <div class="ods-content">
+          <h4>ODS 1 — Fin de la pobreza</h4>
+          <p>Amapolas crea acceso a vivienda propia para mujeres y disidencias en situación de precariedad habitacional a través de la economía cooperativa, sin necesidad de créditos hipotecarios inaccesibles.</p>
+        </div>
+      </div>
+      <div class="ods-item">
+        <div class="ods-num">3<span class="ods-label">Salud y bienestar</span></div>
+        <div class="ods-content">
+          <h4>ODS 3 — Salud y bienestar</h4>
+          <p>El diseño del barrio incluye espacios de cuidado colectivo y bienestar como infraestructura planificada. La vivienda segura y estable es condición material de salud física y mental.</p>
+        </div>
+      </div>
+      <div class="ods-item">
+        <div class="ods-num">5<span class="ods-label">Igualdad de género</span></div>
+        <div class="ods-content">
+          <h4>ODS 5 — Igualdad de género</h4>
+          <p>Amapolas es la única cooperativa de vivienda en Patagonia íntegramente conducida por mujeres y disidencias. Todas las decisiones, la gestión financiera y la representación institucional están en manos femeninas.</p>
+        </div>
+      </div>
+      <div class="ods-item">
+        <div class="ods-num">10<span class="ods-label">Reducción de las desigualdades</span></div>
+        <div class="ods-content">
+          <h4>ODS 10 — Reducción de las desigualdades</h4>
+          <p>El modelo cooperativo redistribuye el acceso a la propiedad y la toma de decisiones entre sectores históricamente excluidos del mercado inmobiliario formal.</p>
+        </div>
+      </div>
+      <div class="ods-item">
+        <div class="ods-num">11<span class="ods-label">Ciudades sostenibles</span></div>
+        <div class="ods-content">
+          <h4>ODS 11 — Ciudades y comunidades sostenibles</h4>
+          <p>Desarrollamos un modelo de cohousing con bioconstrucción y diseño bioclimático en territorio patagónico. El barrio integra espacios de uso colectivo como componente estructural del diseño.</p>
+        </div>
+      </div>
+      <div class="ods-item">
+        <div class="ods-num">12<span class="ods-label">Producción responsable</span></div>
+        <div class="ods-content">
+          <h4>ODS 12 — Producción y consumo responsables</h4>
+          <p>Los proyectos productivos —apicultura, hongos silvestres y plantas nativas— operan bajo principios de economía regenerativa: sin agroquímicos, con soberanía alimentaria y respeto de los ciclos naturales.</p>
+        </div>
+      </div>
+      <div class="ods-item">
+        <div class="ods-num">15<span class="ods-label">Vida de ecosistemas</span></div>
+        <div class="ods-content">
+          <h4>ODS 15 — Vida de ecosistemas terrestres</h4>
+          <p>La reproducción de plantas nativas patagónicas, el apiario en territorio de la Comunidad Mapuche Tambo Báez y el enfoque de permacultura social protegen activamente la biodiversidad del ecosistema andino-patagónico.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REDES Y MEMBRESÍAS -->
+<section id="redes" class="redes-section">
+  <div class="redes-inner">
+    <div class="redes-head reveal">
+      <p class="section-eyebrow">Redes y membresías internacionales</p>
+      <h2 class="section-title">A quién pertenecemos<br>y qué significa</h2>
+      <p class="body">Amapolas no opera en aislamiento. Estas son las redes y organismos a los que pertenece, con una explicación de lo que cada vínculo significa para el proyecto y para quien evalúa su legitimidad institucional.</p>
+    </div>
+    <div class="redes-grid reveal">
+      <div class="red-card">
+        <p class="red-tipo">Red global · Hábitat</p>
+        <h4 class="red-nombre">HIC — Coalición Internacional del Hábitat</h4>
+        <p class="red-que-es">Red global de organizaciones de sociedad civil por el derecho a la vivienda y al hábitat, con presencia en más de 50 países y estatus consultivo ante Naciones Unidas.</p>
+        <p class="red-vinculo">Amapolas integra la red. Co-organizó en 2024 el primer encuentro internacional de diseño participativo en Bariloche, declarado de interés por el Concejo Deliberante.</p>
+      </div>
+      <div class="red-card">
+        <p class="red-tipo">Red latinoamericana · Hábitat técnico</p>
+        <h4 class="red-nombre">Red TEC IN HAB</h4>
+        <p class="red-que-es">Red latinoamericana de organizaciones y profesionales para el intercambio de conocimientos sobre hábitat participativo y vivienda social.</p>
+        <p class="red-vinculo">Amapolas integra la red desde 2024, con representación en los espacios de intercambio técnico regional.</p>
+      </div>
+      <div class="red-card">
+        <p class="red-tipo">Universidad · México</p>
+        <h4 class="red-nombre">UNAM — Diplomado de Diseño Participativo del Hábitat</h4>
+        <p class="red-que-es">La Universidad Nacional Autónoma de México es el referente latinoamericano en hábitat participativo y diseño comunitario.</p>
+        <p class="red-vinculo">Amapolas accedió mediante beca al Diplomado de Diseño Participativo del Hábitat de la UNAM, formación de excelencia que pocos proyectos cooperativos locales han alcanzado.</p>
+      </div>
+      <div class="red-card">
+        <p class="red-tipo">Fondo · Argentina</p>
+        <h4 class="red-nombre">Fondo Mujeres del Sur</h4>
+        <p class="red-que-es">ONG argentina que financia proyectos liderados por mujeres y organizaciones feministas en América Latina, con criterios rigurosos de evaluación de impacto.</p>
+        <p class="red-vinculo">Tres ciclos consecutivos de financiamiento: 2023, 2024 y 2025. La renovación consecutiva es evidencia de rendición de cuentas y confianza acumulada.</p>
+      </div>
+      <div class="red-card">
+        <p class="red-tipo">Municipio intercultural · Local</p>
+        <h4 class="red-nombre">Bariloche — Municipio Intercultural</h4>
+        <p class="red-que-es">Bariloche fue reconocida oficialmente como Municipio Intercultural el 18 de junio de 2015 mediante la Ordenanza 2641/2015, y es parte de la Red Argentina de Municipios frente al Cambio Climático (RAMCC).</p>
+        <p class="red-vinculo">El trabajo intercultural de Amapolas se inscribe dentro de este marco institucional verificable y de las políticas municipales de reconocimiento de la diversidad.</p>
+      </div>
+      <div class="red-card">
+        <p class="red-tipo">Investigación aplicada · Nacional</p>
+        <h4 class="red-nombre">CIEFAP</h4>
+        <p class="red-que-es">Centro de Investigación y Extensión Forestal Andino Patagónico, organismo público de investigación aplicada con sede en la región.</p>
+        <p class="red-vinculo">Acompaña técnicamente el proyecto de cultivo de hongos silvestres, aportando rigor científico a la dimensión productiva de la cooperativa.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VALORES -->
+<section id="valores" class="valores">
+  <div class="valores-head reveal">
+    <p class="section-eyebrow">Lo que nos guía</p>
+    <h2 class="section-title">Cinco valores,<br>una forma de habitar</h2>
+  </div>
+  <div class="valores-grid reveal">
+    <div class="valor"><p class="valor-num">01</p><h4>Cooperación</h4><p>Trabajo colectivo por sobre la competencia individual. Economía solidaria como práctica cotidiana.</p></div>
+    <div class="valor"><p class="valor-num">02</p><h4>Sustentabilidad</h4><p>Equilibrio entre necesidades humanas, respeto biocéntrico y reproducción de la vida en todas sus formas.</p></div>
+    <div class="valor"><p class="valor-num">03</p><h4>Autonomía</h4><p>Capacidad de decidir sobre nuestros cuerpos, nuestro trabajo y nuestra vivienda.</p></div>
+    <div class="valor"><p class="valor-num">04</p><h4>Cuidado</h4><p>Del entorno natural, de quienes habitamos el barrio, de las relaciones que sostenemos.</p></div>
+    <div class="valor"><p class="valor-num">05</p><h4>Justicia territorial</h4><p>Reconocimiento de la preexistencia mapuche, defensa del hábitat como derecho y distribución equitativa de la tierra.</p></div>
+  </div>
+</section>
+
+<!-- EJES -->
+<section id="ejes" class="ejes-section">
+  <div class="ejes-header reveal">
+    <p class="section-eyebrow">Nuestros ejes</p>
+    <h2 class="section-title">Género, Sustentabilidad<br>e Interculturalidad</h2>
+    <p style="font-size:1rem;line-height:1.75;color:rgba(36,37,46,.55);max-width:560px;margin-top:.8rem">Tres ejes que atraviesan todo lo que hacemos. Cada uno tiene su propio desarrollo, sus vínculos y su historia.</p>
+  </div>
+  <div class="ejes-grid reveal">
+    <a href="/nosotras/genero" class="eje-card">
+      <div class="eje-card-image color-rojo">
+        <img src="eje_genero.jpg" alt="Perspectiva de género en la Cooperativa Amapolas: mujeres y disidencias construyendo vivienda en Bariloche">
+        <span class="eje-num-bg">01</span>
+      </div>
+      <div class="eje-card-body">
+        <p class="eje-num">01 · Perspectiva de género</p>
+        <h3>La habitación propia como derecho</h3>
+        <p>Reivindicamos la casa propia no como sueño sino como derecho. Un espacio cooperativista para mujeres y disidencias donde desarrollarnos, crecer y demostrar que otro modelo es posible.</p>
+        <span class="eje-link">Leer más →</span>
+      </div>
+    </a>
+    <a href="/nosotras/sustentabilidad" class="eje-card">
+      <div class="eje-card-image color-verde">
+        <img src="eje_sustentabilidad.jpg" alt="Hábitat sustentable: bioconstrucción y permacultura social en la Cooperativa Amapolas">
+        <span class="eje-num-bg">02</span>
+      </div>
+      <div class="eje-card-body">
+        <p class="eje-num">02 · Cuidado del territorio</p>
+        <h3>Construir con las manos y con la cabeza</h3>
+        <p>Bioconstrucción, permacultura social y guardianas del agua. La sustentabilidad como forma de habitar el mundo que respeta lo que nos precedió y cuida lo que vendrá.</p>
+        <span class="eje-link">Leer más →</span>
+      </div>
+    </a>
+    <a href="/nosotras/interculturalidad" class="eje-card">
+      <div class="eje-card-image color-azul">
+        <img src="eje_interculturalidad.jpg" alt="Interculturalidad: vínculos con comunidades mapuche en Bariloche y el trabajo territorial de Amapolas">
+        <span class="eje-num-bg">03</span>
+      </div>
+      <div class="eje-card-body">
+        <p class="eje-num">03 · Territorio y memoria</p>
+        <h3>No se construyen futuros sobre injusticias negadas</h3>
+        <p>Reconocemos la preexistencia mapuche en estas tierras. Alianzas con comunidades del territorio donde cada parte aporta saberes, recursos y trabajo.</p>
+        <span class="eje-link">Leer más →</span>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- MISIÓN -->
+<div class="mision reveal">
+  <p class="mision-text">"Construir en la Patagonia argentina un barrio cooperativo de viviendas —diseñado y gestionado por mujeres y disidencias— que articule derecho al hábitat, justicia ambiental y vínculos comunitarios sólidos insertado en las redes locales del territorio."</p>
+  <p class="mision-attr">Amapolas — Cooperativa de Viviendas · Bariloche, Río Negro</p>
+</div>
+
+<!-- DONAR CTA -->
+<div class="donar-cta">
+  <div class="donar-cta-text reveal">
+    <p class="eyebrow">Sumate al proyecto</p>
+    <h2>Tu aporte construye<br>esta comunidad</h2>
+    <p>Cada donación financia materiales, herramientas y el trabajo de mujeres que construyen su propio futuro en la Patagonia.</p>
+  </div>
+  <div class="donar-cta-actions reveal">
+    <a href="/#donar" class="btn-primary">Donar ahora →</a>
+    <a href="/comunidad" class="btn-outline-white">Otras formas de colaborar</a>
+    <p class="donar-note">Cooperativa con personería jurídica INAES N°63884 · Donaciones trazables</p>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <img src="logo_amapolas.png" alt="Amapolas Cooperativa de Viviendas" class="foot-logo">
+      <p class="foot-desc">Una cooperativa de viviendas conducida por mujeres y disidencias en la Patagonia argentina. Construimos autonomía y comunidad desde Bariloche.</p>
+    </div>
+    <div class="foot-col"><h5>La cooperativa</h5><ul><li><a href="/nosotras">Quiénes somos</a></li><li><a href="/proyectos">Proyectos</a></li><li><a href="/comunidad">Comunidad</a></li><li><a href="/prensa">Prensa</a></li></ul></div>
+    <div class="foot-col"><h5>Colaborar</h5><ul><li><a href="/#donar">Donar</a></li><li><a href="/comunidad#voluntariado">Voluntariado</a></li><li><a href="/comunidad#fundaciones">Alianzas</a></li><li><a href="/prensa#kit">Kit de Prensa</a></li></ul></div>
+    <div class="foot-col"><h5>Contacto</h5><ul><li><a href="mailto:contacto@amapolas.coop">contacto@amapolas.coop</a></li><li><a href="mailto:prensa@amapolas.coop">prensa@amapolas.coop</a></li><li><a href="#">Bariloche, Río Negro</a></li><li><a href="#" target="_blank" rel="noopener">Instagram</a></li></ul></div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 Amapolas Cooperativa de Viviendas Ltda. · INAES N°63884 · Bariloche, Río Negro</p>
+    <div class="foot-social">
+      <a href="#" title="Instagram" aria-label="Instagram">ig</a>
+      <a href="#" title="Facebook" aria-label="Facebook">fb</a>
+      <a href="#" title="WhatsApp" aria-label="WhatsApp">wa</a>
+    </div>
+  </div>
+</footer>
+
+<button class="scroll-top" id="stop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Volver arriba">↑</button>
