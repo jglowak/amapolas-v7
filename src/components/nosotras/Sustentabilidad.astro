@@ -2,7 +2,7 @@
 // Hábitat Sustentable. Markup extraído de v5 nosotras/sustentabilidad.html
 // (scripts/v5-extract/nosotras__sustentabilidad/body.html). CSS: pages/nosotras__sustentabilidad.css
 // completo, como en v5. Cambios: hero, textos de los dos bloques, tarjetas de "Enfoque" y CTA
-// (docs/correcciones.md). ODS sin cambios. h4 → h3 por jerarquía.
+// (docs/correcciones.md), en el orden del documento. ODS sin cambios. h4 → h3 por jerarquía.
 import { sustentabilidad } from '../../i18n/sustentabilidad';
 import { localePath, type Lang } from '../../i18n/ui';
 import '../../styles/pages/nosotras__sustentabilidad.css';
@@ -53,6 +53,17 @@ const L = (p: string) => localePath(lang, p);
   </div>
 </div>
 
+<!-- ENFOQUE (v5: VÍNCULOS) -->
+<div class="vinculos-section">
+  <div class="vinculos-inner">
+    <p class="section-eyebrow reveal">{c.enfoque.eyebrow}</p>
+    <h2 class="section-title reveal">{c.enfoque.title[0]}<br>{c.enfoque.title[1]}</h2>
+    <div class="vinculos-grid reveal">
+      {c.enfoque.cards.map((k) => <div class="vinculo-card"><h3>{k.h}</h3><p>{k.p}</p></div>)}
+    </div>
+  </div>
+</div>
+
 <!-- BLOQUE 2 -->
 <div class="eje-bloque bg-crema">
   <div class="eje-two-col reverse">
@@ -68,17 +79,6 @@ const L = (p: string) => localePath(lang, p);
       <div class="ods-highlight">
         {c.b2.ods.map((o) => <div class="ods-item"><p class="ods-num">{o.n}</p><p set:html={o.p} /></div>)}
       </div>
-    </div>
-  </div>
-</div>
-
-<!-- ENFOQUE (v5: VÍNCULOS) -->
-<div class="vinculos-section">
-  <div class="vinculos-inner">
-    <p class="section-eyebrow reveal">{c.enfoque.eyebrow}</p>
-    <h2 class="section-title reveal">{c.enfoque.title[0]}<br>{c.enfoque.title[1]}</h2>
-    <div class="vinculos-grid reveal">
-      {c.enfoque.cards.map((k) => <div class="vinculo-card"><h3>{k.h}</h3><p>{k.p}</p></div>)}
     </div>
   </div>
 </div>
