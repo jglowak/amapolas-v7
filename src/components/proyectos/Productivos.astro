@@ -1,0 +1,320 @@
+---
+// Proyectos agroecológicos. Markup extraído de v5 proyectos/productivos.html
+// (scripts/v5-extract/proyectos__productivos/body.html). CSS: pages/proyectos__productivos.css completo.
+// Cambios del documento: sin menú inferior del hero; anclas #apicultura, #plantas-nativas y
+// #hongos-comestibles; sin métricas ni metas de GlobalGiving; textos nuevos; "Integración
+// agroecológica" y "Medicina ancestral" fuera; "Estado actual" de plantas como párrafo; hongos sin
+// punteo regenerativo; CTA solo con "Donar ahora". Fotos pendientes. h5 → h4 por jerarquía.
+import { productivos } from '../../i18n/productivos';
+import { localePath, type Lang } from '../../i18n/ui';
+import '../../styles/pages/proyectos__productivos.css';
+import '../../styles/productivos-v7.css';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const c = productivos[lang];
+const L = (p: string) => localePath(lang, p);
+const objIcons = [
+  '<path d="M12 22V12"></path><path d="M12 12C12 12 7 10 5 6c4 0 7 2 7 6z"></path><path d="M12 12c0 0 5-2 7-6-4 0-7 2-7 6z"></path>',
+  '<path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 00-3-3.87"></path><path d="M16 3.13a4 4 0 010 7.75"></path>',
+  '<circle cx="12" cy="12" r="10"></circle><path d="M12 8v4l3 3"></path>',
+  '<path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"></path><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"></path>',
+];
+const lbs = ['api', 'plantas', 'hongos'];
+---
+<!-- HERO (sin menú inferior) -->
+<div class="hero" id="hero">
+  <!-- TODO: /proyectos/productivos_hero.jpg no disponible -->
+  <div class="hero-overlay-top"></div>
+  <div class="hero-overlay"></div>
+  <span class="asset-missing" style="right:2rem;bottom:2rem">{c.hero.missing}</span>
+  <div class="hero-body">
+    <div class="hero-breadcrumb" role="navigation" aria-label={lang === 'es' ? 'Ruta de navegación' : 'Breadcrumb'}>
+      <a href={L('/')}>{c.hero.home}</a><span>/</span>
+      <a href={L('/proyectos')}>{c.hero.parent}</a><span>/</span>
+      <span style="color:rgba(255,255,255,.6)" aria-current="page">{c.hero.here}</span>
+    </div>
+    <h1 class="hero-title">{c.hero.title[0]}<br>{c.hero.title[1]}</h1>
+    <p class="hero-subtitle">{c.hero.subtitle}</p>
+  </div>
+</div>
+
+<!-- ══════════════════════ APICULTURA ══ -->
+<div id="apicultura">
+  <div class="chapter verde reveal">
+    <div class="chapter-num">01</div>
+    <div class="chapter-text">
+      <p class="chapter-tag">{c.api.tag}</p>
+      <h2 class="chapter-title">{c.api.title}</h2>
+    </div>
+  </div>
+
+  <div class="resumen">
+    <div class="resumen-inner">
+      <div>
+        <p class="section-eyebrow verde reveal">{c.api.eyebrow}</p>
+        <h3 class="section-title reveal">{c.api.h2[0]}<br>{c.api.h2[1]}</h3>
+        <div class="prose reveal">
+          {c.api.prose.map((p) => <p set:html={p} />)}
+        </div>
+        <div class="ods-highlight">
+          {c.api.ods.map(([n, p]) => <div class="ods-item"><p class="ods-num">{n}</p><p set:html={p} /></div>)}
+        </div>
+      </div>
+      <div class="datos-clave reveal">
+        {c.api.datos.map(([l, v, k]) => <div class:list={['dato', k]}><div class="dato-label">{l}</div><div class="dato-val">{v}</div></div>)}
+      </div>
+    </div>
+  </div>
+
+  <div class="galeria">
+    <div class="galeria-header reveal"><h3>{c.api.galeriaTitle}</h3><span class="galeria-note">{c.clickNote}</span></div>
+    <div class="galeria-grid reveal">
+      {c.api.galeria.map((t, i) => (
+        <div class="galeria-item" onclick={`openLB('api',${i})`}>
+          <div class="galeria-item-overlay"><span class="galeria-zoom">{c.zoom}</span></div>
+          <span class="galeria-placeholder-text">{t} · {c.pending}</span>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <div class="objetivos">
+    <div class="objetivos-inner">
+      <p class="section-eyebrow verde reveal">{c.api.objEyebrow}</p>
+      <h3 class="section-title reveal">{c.api.objTitle}</h3>
+      <div class="objetivos-grid reveal">
+        {c.api.objetivos.map(([h, p], i) => (
+          <div class="objetivo"><div class="objetivo-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--verde)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" set:html={objIcons[i]} /></div><h4>{h}</h4><p>{p}</p></div>
+        ))}
+      </div>
+    </div>
+  </div>
+
+  <div class="estado">
+    <div class="estado-inner">
+      <div><p class="section-eyebrow reveal">{c.api.estadoEyebrow}</p><h3 class="section-title reveal">{c.api.estadoTitle}</h3></div>
+      <div class="timeline reveal">
+        {c.api.timeline.map((t) => <div class="timeline-item"><div class={`timeline-dot ${t.dot}`}></div><div class="timeline-content"><h4>{t.h}</h4><p>{t.p}</p><span class="timeline-year">{t.y}</span></div></div>)}
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="proyecto-sep"></div>
+
+<!-- ══════════════════════ PLANTAS NATIVAS ══ -->
+<div id="plantas-nativas">
+  <div class="chapter rojo reveal">
+    <div class="chapter-num">02</div>
+    <div class="chapter-text">
+      <p class="chapter-tag">{c.plantas.tag}</p>
+      <h2 class="chapter-title">{c.plantas.title}</h2>
+    </div>
+  </div>
+
+  <div class="resumen">
+    <div class="resumen-inner">
+      <div>
+        <p class="section-eyebrow reveal">{c.plantas.eyebrow}</p>
+        <h3 class="section-title reveal">{c.plantas.h2[0]}<br>{c.plantas.h2[1]}</h3>
+        <div class="prose reveal">
+          {c.plantas.prose.map((p) => <p set:html={p} />)}
+        </div>
+        <div class="ods-highlight">
+          {c.plantas.ods.map(([n, p, k]) => (
+            <div class:list={['ods-item', k === 'rojo' && 'rojo-border']}><p class="ods-num" style={k === 'rojo' ? 'color:var(--rojo)' : undefined}>{n}</p><p set:html={p} /></div>
+          ))}
+        </div>
+      </div>
+      <div class="datos-clave reveal">
+        {c.plantas.datos.map(([l, v, k]) => <div class:list={['dato', k]}><div class="dato-label">{l}</div><div class="dato-val">{v}</div></div>)}
+      </div>
+    </div>
+  </div>
+
+  <div class="galeria" style="background:white">
+    <div class="galeria-header reveal"><h3>{c.plantas.galeriaTitle}</h3><span class="galeria-note">{c.clickNote}</span></div>
+    <div class="galeria-grid reveal">
+      {c.plantas.galeria.map((t, i) => (
+        <div class="galeria-item" onclick={`openLB('plantas',${i})`}>
+          <div class="galeria-item-overlay"><span class="galeria-zoom">{c.zoom}</span></div>
+          <span class="galeria-placeholder-text">{t} · {c.pending}</span>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <div class="objetivos" style="background:var(--crema)">
+    <div class="objetivos-inner">
+      <p class="section-eyebrow reveal">{c.plantas.resEyebrow}</p>
+      <h3 class="section-title reveal">{c.plantas.resTitle}</h3>
+      <div class="objetivos-grid reveal">
+        {c.plantas.resultados.map(([h, p]) => <div class="objetivo"><h4>{h}</h4><p>{p}</p></div>)}
+      </div>
+    </div>
+  </div>
+
+  <div class="objetivos" style="background:white">
+    <div class="objetivos-inner">
+      <p class="section-eyebrow reveal">{c.plantas.aliEyebrow}</p>
+      <h3 class="section-title reveal">{c.plantas.aliTitle}</h3>
+      <div class="alianzas-grid reveal">
+        {c.plantas.aliadas.map(([n, d]) => <div class="alianza-card"><div class="alianza-nombre">{n}</div><div class="alianza-desc">{d}</div></div>)}
+      </div>
+    </div>
+  </div>
+
+  <div class="estado" style="background:var(--azul)">
+    <div class="estado-inner">
+      <div>
+        <p class="section-eyebrow" style="color:rgba(255,255,255,.35)">{c.plantas.estadoEyebrow}</p>
+        <h3 class="section-title" style="color:white">{c.plantas.estadoTitle}</h3>
+      </div>
+      <div class="estado-parrafo reveal">
+        <p><strong>{c.plantas.estado[0]}</strong></p>
+        <p>{c.plantas.estado[1]}</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="proyecto-sep"></div>
+
+<!-- ══════════════════════ HONGOS COMESTIBLES ══ -->
+<div id="hongos-comestibles">
+  <div class="chapter dark reveal">
+    <div class="chapter-num">03</div>
+    <div class="chapter-text">
+      <p class="chapter-tag">{c.hongos.tag}</p>
+      <h2 class="chapter-title">{c.hongos.title}</h2>
+    </div>
+  </div>
+
+  <div class="resumen">
+    <div class="resumen-inner">
+      <div>
+        <p class="section-eyebrow reveal">{c.hongos.eyebrow}</p>
+        <h3 class="section-title reveal">{c.hongos.h2[0]}<br>{c.hongos.h2[1]}</h3>
+        <div class="prose reveal">
+          {c.hongos.prose.map((p) => <p set:html={p} />)}
+        </div>
+        <div class="ods-highlight">
+          {c.hongos.ods.map(([n, p]) => <div class="ods-item"><p class="ods-num">{n}</p><p set:html={p} /></div>)}
+        </div>
+      </div>
+      <div class="datos-clave reveal">
+        {c.hongos.datos.map(([l, v, k]) => <div class:list={['dato', k]}><div class="dato-label">{l}</div><div class="dato-val">{v}</div></div>)}
+      </div>
+    </div>
+  </div>
+
+  <div class="galeria">
+    <div class="galeria-header reveal"><h3>{c.hongos.galeriaTitle}</h3><span class="galeria-note">{c.clickNote}</span></div>
+    <div class="galeria-grid reveal">
+      {c.hongos.galeria.map((t, i) => (
+        <div class="galeria-item" onclick={`openLB('hongos',${i})`}>
+          <div class="galeria-item-overlay"><span class="galeria-zoom">{c.zoom}</span></div>
+          <span class="galeria-placeholder-text">{t} · {c.pending}</span>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <!-- Experiencias que abren camino (sin punteo) -->
+  <div class="hongos-regen">
+    <div class="hongos-regen-inner">
+      <div class="reveal">
+        <p class="section-eyebrow">{c.hongos.regenEyebrow}</p>
+        <h3 class="section-title">{c.hongos.regenTitle[0]}<br>{c.hongos.regenTitle[1]}</h3>
+      </div>
+      <div class="prose reveal">
+        {c.hongos.regen.map((p) => <p set:html={p} />)}
+      </div>
+    </div>
+  </div>
+
+  <div class="objetivos" style="background:white">
+    <div class="objetivos-inner">
+      <p class="section-eyebrow reveal">{c.hongos.procEyebrow}</p>
+      <h3 class="section-title reveal">{c.hongos.procTitle}</h3>
+      <div class="proceso-grid reveal">
+        {c.hongos.proceso.map(([n, h, p]) => <div class="paso"><p class="paso-num">{n}</p><h4>{h}</h4><p>{p}</p></div>)}
+      </div>
+    </div>
+  </div>
+
+  <div class="territorio-dark">
+    <div class="territorio-dark-inner">
+      <div>
+        <p class="section-eyebrow reveal">{c.hongos.terEyebrow}</p>
+        <h3 class="section-title reveal">{c.hongos.terTitle[0]}<br>{c.hongos.terTitle[1]}</h3>
+        <p class="territorio-desc reveal">{c.hongos.terDesc}</p>
+      </div>
+      <div class="territorio-cards reveal">
+        {c.hongos.terCards.map(([h, p]) => <div class="territorio-card"><h4>{h}</h4><p>{p}</p></div>)}
+      </div>
+    </div>
+  </div>
+
+  <div class="estado">
+    <div class="estado-inner">
+      <div><p class="section-eyebrow reveal">{c.hongos.estadoEyebrow}</p><h3 class="section-title reveal">{c.hongos.estadoTitle}</h3></div>
+      <div class="timeline reveal">
+        {c.hongos.timeline.map((t) => <div class="timeline-item"><div class={`timeline-dot ${t.dot}`}></div><div class="timeline-content"><h4>{t.h}</h4><p>{t.p}</p><span class="timeline-year">{t.y}</span></div></div>)}
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CTA — verde para agroecológico -->
+<div class="donar-cta">
+  <div class="donar-cta-text reveal">
+    <p class="eyebrow">{c.donar.eyebrow}</p>
+    <h2>{c.donar.title[0]}<br>{c.donar.title[1]}</h2>
+    <p>{c.donar.body}</p>
+  </div>
+  <div class="donar-cta-actions reveal">
+    <a href={L('/donar')} class="btn-primary">{c.donar.cta}</a>
+  </div>
+</div>
+
+<!-- LIGHTBOXES -->
+{lbs.map((k) => (
+  <div class="lightbox" id={`lb-${k}`}><button class="lightbox-close" onclick={`closeLB('${k}')`} aria-label={c.close}>✕</button><button class="lightbox-nav lightbox-prev" onclick={`navLB('${k}',-1)`} aria-label={c.prev}>‹</button><img class="lightbox-img" id={`lb-${k}-img`} src="" alt=""><button class="lightbox-nav lightbox-next" onclick={`navLB('${k}',1)`} aria-label={c.next}>›</button><span class="lightbox-caption" id={`lb-${k}-cap`}></span></div>
+))}
+
+<script is:inline>
+// LIGHTBOX (literal de v5). TODO: completar src cuando estén las fotos; sin src no abre.
+const lbData = {
+  api:    [{src:'', cap:''}, {src:'', cap:''}, {src:'', cap:''}],
+  plantas:[{src:'', cap:''}, {src:'', cap:''}, {src:'', cap:''}],
+  hongos: [{src:'', cap:''}, {src:'', cap:''}, {src:'', cap:''}]
+};
+const lbIdx = {api:0, plantas:0, hongos:0};
+function openLB(k, i) {
+  if (!lbData[k][i].src) return;
+  lbIdx[k] = i;
+  document.getElementById('lb-'+k+'-img').src = lbData[k][i].src;
+  document.getElementById('lb-'+k+'-cap').textContent = lbData[k][i].cap;
+  document.getElementById('lb-'+k).classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeLB(k) {
+  document.getElementById('lb-'+k).classList.remove('open');
+  document.body.style.overflow = '';
+}
+function navLB(k, d) {
+  const n = lbData[k];
+  lbIdx[k] = (lbIdx[k] + d + n.length) % n.length;
+  openLB(k, lbIdx[k]);
+}
+document.querySelectorAll('.lightbox').forEach(lb => {
+  lb.addEventListener('click', function(e) {
+    if (e.target === this) closeLB(this.id.replace('lb-', ''));
+  });
+});
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') document.querySelectorAll('.lightbox.open').forEach(lb => lb.classList.remove('open'));
+});
+</script>

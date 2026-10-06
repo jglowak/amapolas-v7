@@ -1,0 +1,10 @@
+---
+import Base from '../../../layouts/Base.astro';
+import Productivos from '../../../components/proyectos/Productivos.astro';
+import { productivos } from '../../../i18n/productivos';
+import { proyectos } from '../../../i18n/proyectos';
+const { title, description, crumb } = productivos.en.meta;
+---
+<Base lang="en" title={title} description={description} breadcrumbs={[{ name: proyectos.en.meta.crumb, path: '/proyectos' }, { name: crumb, path: '/proyectos/productivos' }]}>
+  <Productivos lang="en" />
+</Base>
