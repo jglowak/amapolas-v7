@@ -1,0 +1,98 @@
+---
+// Hábitat Sustentable. Markup extraído de v5 nosotras/sustentabilidad.html
+// (scripts/v5-extract/nosotras__sustentabilidad/body.html). CSS: pages/nosotras__sustentabilidad.css
+// completo, como en v5. Cambios: hero, textos de los dos bloques, tarjetas de "Enfoque" y CTA
+// (docs/correcciones.md). ODS sin cambios. h4 → h3 por jerarquía.
+import { sustentabilidad } from '../../i18n/sustentabilidad';
+import { localePath, type Lang } from '../../i18n/ui';
+import '../../styles/pages/nosotras__sustentabilidad.css';
+import '../../styles/sustentabilidad-v7.css';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const c = sustentabilidad[lang];
+const L = (p: string) => localePath(lang, p);
+---
+<!-- HERO -->
+<div class="hero" id="hero" style="background:var(--verde)">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay-top"></div>
+  <div class="hero-overlay"></div>
+  <!-- TODO: sustentabilidad_hero.jpg no disponible -->
+  <span class="asset-missing" style="right:2rem;bottom:2rem">{c.hero.missing}</span>
+  <div class="hero-body">
+    <div class="hero-breadcrumb" role="navigation" aria-label={lang === 'es' ? 'Ruta de navegación' : 'Breadcrumb'}>
+      <a href={L('/')}>{c.hero.home}</a><span>/</span>
+      <a href={L('/nosotras')}>{c.hero.parent}</a><span>/</span>
+      <span style="color:rgba(255,255,255,.7)" aria-current="page">{c.hero.here}</span>
+    </div>
+    <div class="hero-badge" style="background:rgba(55,97,53,.5);color:white;border:1px solid rgba(255,255,255,.2)">
+      <span style="font-size:.8rem">02</span> · {c.hero.badge}
+    </div>
+    <h1 class="hero-title">{c.hero.title[0]}<br>{c.hero.title[1]}</h1>
+    <p class="hero-subtitle">{c.hero.subtitle}</p>
+  </div>
+</div>
+
+<!-- BLOQUE 1 -->
+<div class="eje-bloque bg-white">
+  <div class="eje-two-col">
+    <div class="reveal">
+      <p class="section-eyebrow">{c.b1.eyebrow}</p>
+      <h2 class="section-title">{c.b1.title[0]}<br>{c.b1.title[1]}</h2>
+      <div class="prose">
+        {c.b1.prose.map((p) => <p set:html={p} />)}
+      </div>
+      <div class="ods-highlight">
+        {c.b1.ods.map((o) => <div class="ods-item"><p class="ods-num">{o.n}</p><p set:html={o.p} /></div>)}
+      </div>
+    </div>
+    <div class="eje-photo reveal">
+      <div class="eje-photo-placeholder"><span>{c.b1.photo}</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- BLOQUE 2 -->
+<div class="eje-bloque bg-crema">
+  <div class="eje-two-col reverse">
+    <div class="eje-photo reveal">
+      <div class="eje-photo-placeholder"><span>{c.b2.photo}</span></div>
+    </div>
+    <div class="reveal">
+      <p class="section-eyebrow">{c.b2.eyebrow}</p>
+      <h2 class="section-title">{c.b2.title[0]}<br>{c.b2.title[1]}</h2>
+      <div class="prose">
+        {c.b2.prose.map((p) => <p set:html={p} />)}
+      </div>
+      <div class="ods-highlight">
+        {c.b2.ods.map((o) => <div class="ods-item"><p class="ods-num">{o.n}</p><p set:html={o.p} /></div>)}
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ENFOQUE (v5: VÍNCULOS) -->
+<div class="vinculos-section">
+  <div class="vinculos-inner">
+    <p class="section-eyebrow reveal">{c.enfoque.eyebrow}</p>
+    <h2 class="section-title reveal">{c.enfoque.title[0]}<br>{c.enfoque.title[1]}</h2>
+    <div class="vinculos-grid reveal">
+      {c.enfoque.cards.map((k) => <div class="vinculo-card"><h3>{k.h}</h3><p>{k.p}</p></div>)}
+    </div>
+  </div>
+</div>
+
+<!-- DONAR CTA — verde para sustentabilidad -->
+<div class="donar-cta">
+  <div class="donar-cta-text reveal">
+    <p class="eyebrow">{c.donar.eyebrow}</p>
+    <h2>{c.donar.title[0]}<br>{c.donar.title[1]}</h2>
+    <p>{c.donar.body}</p>
+  </div>
+  <div class="donar-cta-actions reveal">
+    <a href={L('/donar')} class="btn-primary">{c.donar.cta}</a>
+    <a href={L('/comunidad')} class="btn-outline-white">{c.donar.other}</a>
+    <p class="donar-note">{c.donar.note}</p>
+  </div>
+</div>

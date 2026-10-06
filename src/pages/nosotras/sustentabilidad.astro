@@ -1,0 +1,10 @@
+---
+import Base from '../../layouts/Base.astro';
+import Sustentabilidad from '../../components/nosotras/Sustentabilidad.astro';
+import { sustentabilidad } from '../../i18n/sustentabilidad';
+import { nosotras } from '../../i18n/nosotras';
+const { title, description, crumb } = sustentabilidad.es.meta;
+---
+<Base lang="es" title={title} description={description} breadcrumbs={[{ name: nosotras.es.meta.crumb, path: '/nosotras' }, { name: crumb, path: '/nosotras/sustentabilidad' }]}>
+  <Sustentabilidad lang="es" />
+</Base>
