@@ -1,0 +1,9 @@
+---
+import Base from '../../layouts/Base.astro';
+import Comunidad from '../../components/comunidad/Comunidad.astro';
+import { comunidad } from '../../i18n/comunidad';
+const { title, description, crumb } = comunidad.en.meta;
+---
+<Base lang="en" title={title} description={description} breadcrumbs={[{ name: crumb, path: '/comunidad' }]} navLight>
+  <Comunidad lang="en" />
+</Base>

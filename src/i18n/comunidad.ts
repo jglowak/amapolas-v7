@@ -1,0 +1,198 @@
+// Textos de /comunidad. ES: docs/correcciones.md + v5; EN: borrador para revisar.
+type Opt = [string, string];
+
+const es = {
+  meta: {
+    title: 'Comunidad · Sumate a Amapolas: alianzas, sponsors y donantes',
+    description: 'Formas de ser parte de Amapolas: donar, proponer una alianza institucional, ser sponsor o difundir el proyecto. Red de alianzas, fundaciones, sponsors y donantes de la cooperativa.',
+    crumb: 'Comunidad',
+  },
+  hero: {
+    home: 'Inicio', here: 'Comunidad',
+    title: ['Sumate', 'a construir'], accent: 'con nosotras',
+    body: 'Hay muchas formas de ser parte de Amapolas. Cada vínculo hace posible que este proyecto crezca, se fortalezca y llegue más lejos. Podés acompañarnos con una donación, proponer una alianza institucional, convertirte en sponsor o ayudarnos a difundir nuestra experiencia. Porque transformar un territorio también es construir redes para hacerlo posible.',
+    anchors: [['#alianzas', '→ Red de Alianzas'], ['#fundaciones', '→ Soy una organización'], ['#sponsors', '→ Quiero ser sponsor'], ['#donantes', '→ Quiero donar']] as Opt[],
+  },
+  perfiles: {
+    eyebrow: '¿Cómo querés participar?',
+    title: ['Cada vínculo tiene', 'su propio camino'],
+    cards: [
+      { k: 'donar', icon: 'rojo', tag: 'Red de apoyo', h: 'Quiero acompañar', p: 'Tu aporte, por más pequeño que sea, ayuda a hacer posible la adquisición de un terreno propio donde desarrollar nuestra comunidad, el mantenimiento de los proyectos agroecológicos y el desarrollo de la cooperativa.', cta: 'Conocé las formas de colaborar →', href: '/donar' },
+      { k: 'fondo', icon: 'gris', tag: 'Fondos y organizaciones', h: 'Quiero desarrollar una propuesta con Amapolas', p: 'Construyamos alianzas para fortalecer nuestros proyectos, ampliar su impacto y desarrollar nuevas iniciativas.', cta: 'Conocé nuestra propuesta institucional →', href: '/comunidad#fundaciones' },
+      { k: 'prensa', icon: 'naranja', tag: 'Prensa', h: 'Quiero hablar de Amapolas', p: 'Ayudanos a amplificar nuestra voz. Accedé a recursos, información institucional y materiales para comunicar nuestro trabajo.', cta: 'Ir al Kit de Prensa →', href: '/prensa#kit' },
+    ],
+  },
+  alianzas: {
+    eyebrow: 'Red de Alianzas',
+    title: ['Quiénes confían', 'en el proyecto'],
+    fmsLogo: 'FMS',
+    fmsEyebrow: 'Financiador estratégico',
+    fmsTitle: '3 ciclos consecutivos de financiamiento',
+    fmsDesc: 'Diversas organizaciones y fondos internacionales han contribuido al crecimiento de Amapolas: FAU LAC, Fundación Gente Nueva con apoyo de MISEREOR, ONU Mujeres, LDS, y FMS en tres años consecutivos.',
+    fmsSignif: '<strong>¿Por qué importa?</strong> Tres ciclos consecutivos de financiamiento no son solo un dato presupuestario: son la evidencia más concreta de rendición de cuentas y confianza acumulada. El fondo evaluó resultados y decidió reinvertir. Es el aval más sólido de la capacidad de ejecución de Amapolas.',
+    aliados: [
+      ['HIC', 'HIC — Coalición Internacional del Hábitat', 'Red global de organizaciones de sociedad civil por el derecho a la vivienda y al hábitat.', 'Amapolas integra la red y co-organizó el primer encuentro internacional de diseño participativo en Bariloche.'],
+      ['Fundación Gente Nueva', 'Fundación Gente Nueva', 'Organización argentina de desarrollo social con financiamiento de MISEREOR.', 'Co-ejecuta el proyecto de senderos interpretativos interculturales con perspectiva de género.'],
+      ['Red TEC IN HAB', 'Red TEC IN HAB', 'Red latinoamericana de organizaciones y profesionales para el intercambio de conocimientos sobre hábitat y vivienda.', 'Amapolas integra la red desde 2024.'],
+      ['Barrio Intercultural', 'Barrio Intercultural de San Martín de los Andes', 'La unión entre un grupo de vecinos y la Comunidad originaria, Curruhuinca, hizo posible la restitución y ampliación del territorio.', 'Un proceso histórico de creación de un barrio intercultural.'],
+    ],
+  },
+  fundaciones: {
+    eyebrow: 'Para fondos y organizaciones',
+    title: 'Construimos desde evidencia y trazabilidad',
+    body: 'Amapolas aborda 7 ODS de la Agenda 2030, opera con personería jurídica verificable y tiene tres ciclos consecutivos de financiamiento internacional. Todo el respaldo institucional está disponible para descarga.',
+    recursos: {
+      es: ['Descargable', 'Dossier institucional · Español (PDF)'],
+      en: ['Downloadable', 'Institutional Dossier · English (PDF)'],
+      balance: ['Transparencia', 'Solicitar balance e información financiera'],
+      balanceSubject: 'Solicitud de balance e información financiera',
+      inaes: ['Legitimidad jurídica', 'Matrícula Nacional INAES N°63884'],
+    },
+    formLabel: 'Formulario de alianza institucional',
+    form: {
+      nombre: 'Nombre de la organización', nombrePh: 'Nombre', pais: 'País', paisPh: 'País',
+      tipo: 'Tipo de organización', area: 'Área de interés', select: 'Seleccioná',
+      tipos: [['fondo', 'Fondo de cooperación internacional'], ['fundacion', 'Fundación'], ['ong', 'ONG / Organización de la sociedad civil'], ['universidad', 'Universidad / Centro de investigación'], ['organismo', 'Organismo multilateral'], ['empresa', 'Empresa / RSE'], ['otro', 'Otro']] as Opt[],
+      areas: [['vivienda', 'Hábitat y vivienda'], ['genero', 'Género y derechos de las mujeres'], ['sustentabilidad', 'Sustentabilidad / Economía regenerativa'], ['interculturalidad', 'Interculturalidad / Pueblos originarios'], ['agroecologia', 'Agroecología'], ['ods', 'ODS / Cooperación internacional'], ['otro', 'Otro']] as Opt[],
+      email: 'Email de contacto', emailPh: 'email@organizacion.org',
+      propuesta: 'Descripción de la propuesta', propuestaPh: 'Describí brevemente cómo imaginás el vínculo con Amapolas...',
+      enviar: 'Enviar propuesta', note: 'Tu información no será compartida con terceros.', subject: 'Propuesta de alianza institucional',
+    },
+    ok: ['¡Propuesta enviada!', 'Nos ponemos en contacto a la brevedad. Gracias por el interés en articular con Amapolas.'],
+  },
+  sponsors: {
+    eyebrow: 'Sponsors',
+    title: 'Compromiso que se transforma en impacto',
+    body: [
+      'Invitamos a marcas y empresas comprometidas con nuevas formas de habitar a acompañar a Amapolas desde sus propios ámbitos de acción, contribuyendo al desarrollo de un proyecto que integra vivienda, sustentabilidad, agroecología, género, diversidad e interculturalidad.',
+      'Contanos cómo te gustaría acompañar a Amapolas y encontremos una forma de colaboración que tenga sentido para ambas partes.',
+    ],
+    formLabel: 'Formulario de interés para sponsors',
+    form: {
+      nombre: 'Nombre de la marca / empresa', nombrePh: 'Nombre', pais: 'País', paisPh: 'País',
+      tipo: 'Tipo de organización', select: 'Seleccioná',
+      tipos: [['empresa', 'Empresa'], ['marca', 'Marca'], ['emprendimiento', 'Emprendimiento'], ['fundacion', 'Fundación'], ['estudio', 'Estudio profesional'], ['cooperativa', 'Cooperativa'], ['otra', 'Otra']] as Opt[],
+      parte: '¿Qué parte del proyecto te interesa acompañar?', parteHint: 'Podés elegir más de una opción.',
+      partes: [['vivienda', 'Vivienda y construcción'], ['arquitectura', 'Arquitectura y diseño'], ['sustentabilidad', 'Sustentabilidad y medioambiente'], ['agroecologia', 'Agroecología y soberanía alimentaria'], ['genero', 'Género y feminismos'], ['diversidad', 'Diversidad e inclusión'], ['interculturalidad', 'Interculturalidad y territorio'], ['cuidados', 'Infancias, cuidados y comunidad'], ['cultura', 'Comunicación, cultura y educación'], ['otra', 'Otra']] as Opt[],
+      como: '¿Cómo te gustaría acompañar a Amapolas?',
+      comos: [['economico', 'Aporte económico'], ['materiales', 'Aporte de materiales o productos'], ['servicios', 'Aporte de servicios profesionales'], ['equipamiento', 'Equipamiento o herramientas'], ['capacitacion', 'Capacitación y transferencia de conocimientos'], ['difusion', 'Difusión y comunicación'], ['accion', 'Desarrollo de una acción o iniciativa conjunta'], ['otro', 'Otro']] as Opt[],
+      email: 'Email de contacto', emailPh: 'email@empresa.com',
+      propuesta: 'Contanos tu propuesta', propuestaPh: 'Contanos brevemente cómo imaginás el acompañamiento de tu marca a Amapolas...',
+      enviar: 'Enviar propuesta', note: 'Tu información no será compartida con terceros.', subject: 'Propuesta de sponsor',
+    },
+    ok: ['¡Propuesta enviada!', 'Gracias por querer acompañar a Amapolas. Nos ponemos en contacto a la brevedad.'],
+  },
+  prensaEntry: {
+    eyebrow: 'Para periodistas y comunicadores',
+    title: 'Kit de Prensa disponible',
+    body: 'Gacetilla institucional en español e inglés, fotos en alta resolución, logo descargable y contacto directo con la referente de comunicación.',
+    kit: 'Descargar Kit de Prensa',
+    contacto: 'Contacto de prensa →',
+  },
+  donantes: {
+    eyebrow: 'Red de apoyo',
+    title: ['Quienes aportan, hacen', 'posible el proyecto'],
+    body: 'Detrás de cada paso de la cooperativa hay personas que deciden acompañar este proceso. Sus aportes nos permiten transformar una visión en una realidad concreta.',
+    muro: 'Los nombres de donantes se publicarán aquí con autorización expresa.',
+    muroLink: 'Sé la primera persona en aparecer →',
+  },
+};
+
+const en: typeof es = {
+  meta: {
+    title: 'Community · Join Amapolas: alliances, sponsors and donors',
+    description: 'Ways to be part of Amapolas: donate, propose an institutional alliance, become a sponsor or help spread the word. The cooperative’s alliance network, foundations, sponsors and donors.',
+    crumb: 'Community',
+  },
+  hero: {
+    home: 'Home', here: 'Community',
+    title: ['Help us', 'build'], accent: 'together',
+    body: 'There are many ways to be part of Amapolas. Every bond helps this project grow, get stronger and reach further. You can support us with a donation, propose an institutional alliance, become a sponsor or help us share our experience. Because transforming a territory also means building the networks that make it possible.',
+    anchors: [['#alianzas', '→ Alliance Network'], ['#fundaciones', '→ I represent an organization'], ['#sponsors', '→ Become a sponsor'], ['#donantes', '→ I want to donate']],
+  },
+  perfiles: {
+    eyebrow: 'How would you like to take part?',
+    title: ['Every bond has', 'its own path'],
+    cards: [
+      { k: 'donar', icon: 'rojo', tag: 'Support network', h: 'I want to support', p: 'Your contribution, however small, helps make it possible to acquire land of our own to develop our community, sustain our agroecological projects and grow the cooperative.', cta: 'See ways to give →', href: '/donar' },
+      { k: 'fondo', icon: 'gris', tag: 'Funds and organizations', h: 'I want to develop a proposal with Amapolas', p: 'Let’s build alliances to strengthen our projects, expand their impact and develop new initiatives.', cta: 'See our institutional proposal →', href: '/comunidad#fundaciones' },
+      { k: 'prensa', icon: 'naranja', tag: 'Press', h: 'I want to talk about Amapolas', p: 'Help us amplify our voice. Access resources, institutional information and materials to communicate our work.', cta: 'Go to the Press Kit →', href: '/prensa#kit' },
+    ],
+  },
+  alianzas: {
+    eyebrow: 'Alliance Network',
+    title: ['Who trusts', 'the project'],
+    fmsLogo: 'FMS',
+    fmsEyebrow: 'Strategic funder',
+    fmsTitle: '3 consecutive funding cycles',
+    fmsDesc: 'Several international organizations and funds have contributed to Amapolas’ growth: FAU LAC, Fundación Gente Nueva with support from MISEREOR, UN Women, LDS, and FMS for three consecutive years.',
+    fmsSignif: '<strong>Why it matters.</strong> Three consecutive funding cycles are not just a budget figure: they are the clearest evidence of accountability and accumulated trust. The fund assessed results and chose to reinvest. It is the strongest endorsement of Amapolas’ capacity to deliver.',
+    aliados: [
+      ['HIC', 'HIC — Habitat International Coalition', 'A global network of civil society organizations for the right to housing and habitat.', 'Amapolas is part of the network and co-organized the first international gathering on participatory design in Bariloche.'],
+      ['Fundación Gente Nueva', 'Fundación Gente Nueva', 'An Argentine social development organization funded by MISEREOR.', 'Co-runs the intercultural interpretive trails project with a gender perspective.'],
+      ['Red TEC IN HAB', 'TEC IN HAB Network', 'A Latin American network of organizations and professionals sharing knowledge on habitat and housing.', 'Amapolas has been part of the network since 2024.'],
+      ['Intercultural Neighborhood', 'Intercultural Neighborhood of San Martín de los Andes', 'The union between a group of neighbors and the Curruhuinca Indigenous Community made it possible to restore and expand the territory.', 'A historic process that created an intercultural neighborhood.'],
+    ],
+  },
+  fundaciones: {
+    eyebrow: 'For funds and organizations',
+    title: 'We build on evidence and traceability',
+    body: 'Amapolas addresses 7 SDGs of the 2030 Agenda, operates with verifiable legal status and has three consecutive cycles of international funding. All institutional documentation is available for download.',
+    recursos: {
+      es: ['Descargable', 'Dossier institucional · Español (PDF)'],
+      en: ['Downloadable', 'Institutional Dossier · English (PDF)'],
+      balance: ['Transparency', 'Request financial statements and information'],
+      balanceSubject: 'Request for financial statements',
+      inaes: ['Legal standing', 'National INAES Registration No. 63884'],
+    },
+    formLabel: 'Institutional alliance form',
+    form: {
+      nombre: 'Organization name', nombrePh: 'Name', pais: 'Country', paisPh: 'Country',
+      tipo: 'Type of organization', area: 'Area of interest', select: 'Select',
+      tipos: [['fondo', 'International cooperation fund'], ['fundacion', 'Foundation'], ['ong', 'NGO / Civil society organization'], ['universidad', 'University / Research center'], ['organismo', 'Multilateral organization'], ['empresa', 'Company / CSR'], ['otro', 'Other']],
+      areas: [['vivienda', 'Habitat and housing'], ['genero', 'Gender and women’s rights'], ['sustentabilidad', 'Sustainability / Regenerative economy'], ['interculturalidad', 'Interculturality / Indigenous peoples'], ['agroecologia', 'Agroecology'], ['ods', 'SDGs / International cooperation'], ['otro', 'Other']],
+      email: 'Contact email', emailPh: 'email@organization.org',
+      propuesta: 'Proposal description', propuestaPh: 'Briefly describe how you imagine working with Amapolas...',
+      enviar: 'Send proposal', note: 'Your information will not be shared with third parties.', subject: 'Institutional alliance proposal',
+    },
+    ok: ['Proposal sent!', 'We will get back to you soon. Thank you for your interest in working with Amapolas.'],
+  },
+  sponsors: {
+    eyebrow: 'Sponsors',
+    title: 'Commitment that becomes impact',
+    body: [
+      'We invite brands and companies committed to new ways of living to support Amapolas from their own fields, contributing to a project that brings together housing, sustainability, agroecology, gender, diversity and interculturality.',
+      'Tell us how you would like to support Amapolas and let’s find a form of collaboration that makes sense for both sides.',
+    ],
+    formLabel: 'Sponsor interest form',
+    form: {
+      nombre: 'Brand / company name', nombrePh: 'Name', pais: 'Country', paisPh: 'Country',
+      tipo: 'Type of organization', select: 'Select',
+      tipos: [['empresa', 'Company'], ['marca', 'Brand'], ['emprendimiento', 'Small business'], ['fundacion', 'Foundation'], ['estudio', 'Professional firm'], ['cooperativa', 'Cooperative'], ['otra', 'Other']],
+      parte: 'Which part of the project would you like to support?', parteHint: 'You can choose more than one.',
+      partes: [['vivienda', 'Housing and construction'], ['arquitectura', 'Architecture and design'], ['sustentabilidad', 'Sustainability and environment'], ['agroecologia', 'Agroecology and food sovereignty'], ['genero', 'Gender and feminisms'], ['diversidad', 'Diversity and inclusion'], ['interculturalidad', 'Interculturality and territory'], ['cuidados', 'Childhood, care and community'], ['cultura', 'Communication, culture and education'], ['otra', 'Other']],
+      como: 'How would you like to support Amapolas?',
+      comos: [['economico', 'Financial contribution'], ['materiales', 'Materials or products'], ['servicios', 'Professional services'], ['equipamiento', 'Equipment or tools'], ['capacitacion', 'Training and knowledge transfer'], ['difusion', 'Outreach and communication'], ['accion', 'A joint action or initiative'], ['otro', 'Other']],
+      email: 'Contact email', emailPh: 'email@company.com',
+      propuesta: 'Tell us your proposal', propuestaPh: 'Briefly tell us how you imagine your brand supporting Amapolas...',
+      enviar: 'Send proposal', note: 'Your information will not be shared with third parties.', subject: 'Sponsor proposal',
+    },
+    ok: ['Proposal sent!', 'Thank you for wanting to support Amapolas. We will get back to you soon.'],
+  },
+  prensaEntry: {
+    eyebrow: 'For journalists and communicators',
+    title: 'Press Kit available',
+    body: 'Press release in Spanish and English, high-resolution photos, downloadable logo and direct contact with our communications lead.',
+    kit: 'Download Press Kit',
+    contacto: 'Press contact →',
+  },
+  donantes: {
+    eyebrow: 'Support network',
+    title: ['Those who give', 'make the project possible'],
+    body: 'Behind every step the cooperative takes are people who choose to support this process. Their contributions let us turn a vision into a concrete reality.',
+    muro: 'Donor names will be published here with their express permission.',
+    muroLink: 'Be the first to appear →',
+  },
+};
+
+export const comunidad = { es, en };

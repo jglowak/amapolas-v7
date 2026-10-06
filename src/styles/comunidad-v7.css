@@ -1,0 +1,19 @@
+/* /comunidad — adiciones de v7 sobre pages/comunidad.css (literal de v5) */
+.perfiles-grid.cols-3{grid-template-columns:repeat(3,1fr)}
+.aliados-grid.cols-4{grid-template-columns:repeat(4,1fr)}
+@media(max-width:1100px){.perfiles-grid.cols-3,.aliados-grid.cols-4{grid-template-columns:1fr 1fr}}
+@media(max-width:640px){.perfiles-grid.cols-3,.aliados-grid.cols-4{grid-template-columns:1fr}}
+.form-success h3{font-size:1rem;font-weight:800;color:var(--verde);margin-bottom:.5rem}
+.institucional-left p+p{margin-top:1rem}
+/* Sponsors: mismo diseño que "Fundaciones y organizaciones", separado por un filete */
+.sponsors-section{border-top:1px solid rgba(36,37,46,.08)}
+/* Opciones múltiples del formulario de sponsors */
+.form-checks{border:none;padding:0;margin-left:0;margin-right:0;min-width:0}
+.form-hint{font-size:.75rem;color:rgba(36,37,46,.45);margin:-.2rem 0 .6rem}
+.checks-grid{display:grid;grid-template-columns:1fr 1fr;gap:.4rem .8rem}
+.check{display:flex;align-items:flex-start;gap:.5rem;font-size:.82rem;color:var(--azul);cursor:pointer;line-height:1.35}
+.check input{accent-color:var(--rojo);margin-top:.15rem;flex-shrink:0}
+@media(max-width:640px){.checks-grid{grid-template-columns:1fr}}
+#alianzas,#fundaciones,#sponsors,#donantes,#donar{scroll-margin-top:80px}
+/* Corrige desborde horizontal en mobile que ya tenía v5 (botones del bloque de prensa) */
+@media(max-width:640px){.prensa-entry-actions{flex-shrink:1;min-width:0}}

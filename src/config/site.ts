@@ -33,6 +33,7 @@ export const site = {
   // Mientras estén vacíos, los formularios abren el cliente de correo con los datos completados.
   forms: {
     prensa: '',
+    alianzas: '',
     sponsors: '',
     turnstileSiteKey: '',
   },
