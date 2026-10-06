@@ -1,0 +1,10 @@
+---
+import Base from '../../../layouts/Base.astro';
+import Interculturalidad from '../../../components/nosotras/Interculturalidad.astro';
+import { interculturalidad } from '../../../i18n/interculturalidad';
+import { nosotras } from '../../../i18n/nosotras';
+const { title, description, crumb } = interculturalidad.en.meta;
+---
+<Base lang="en" title={title} description={description} breadcrumbs={[{ name: nosotras.en.meta.crumb, path: '/nosotras' }, { name: crumb, path: '/nosotras/interculturalidad' }]}>
+  <Interculturalidad lang="en" />
+</Base>
