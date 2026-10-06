@@ -1,0 +1,80 @@
+---
+// Formación y Capacitaciones (página nueva, no existe en v5). Se arma con las piezas de diseño de
+// v5 nosotras/genero.html (hero, eje-bloque, cifras y donar-cta) y su CSS completo, en rojo como
+// la card de Formación en /proyectos. Textos: docs/correcciones.md.
+import { formacion } from '../../i18n/formacion';
+import { localePath, type Lang } from '../../i18n/ui';
+import '../../styles/pages/nosotras__genero.css';
+import '../../styles/genero-v7.css';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const c = formacion[lang];
+const L = (p: string) => localePath(lang, p);
+---
+<!-- HERO -->
+<div class="hero" id="hero" style="background:var(--rojo)">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay-top"></div>
+  <div class="hero-overlay"></div>
+  <span class="asset-missing" style="right:2rem;bottom:2rem">{c.hero.missing}</span>
+  <div class="hero-body">
+    <div class="hero-breadcrumb" role="navigation" aria-label={lang === 'es' ? 'Ruta de navegación' : 'Breadcrumb'}>
+      <a href={L('/')}>{c.hero.home}</a><span>/</span>
+      <a href={L('/proyectos')}>{c.hero.parent}</a><span>/</span>
+      <span style="color:rgba(255,255,255,.7)" aria-current="page">{c.hero.here}</span>
+    </div>
+    <div class="hero-badge" style="background:rgba(237,105,75,.35);color:white;border:1px solid rgba(255,255,255,.2)">
+      {c.hero.badge}
+    </div>
+    <h1 class="hero-title">{c.hero.title[0]}<br>{c.hero.title[1]}</h1>
+    <p class="hero-subtitle">{c.hero.subtitle}</p>
+  </div>
+</div>
+
+<!-- BLOQUE 1 -->
+<div class="eje-bloque bg-white">
+  <div class="eje-two-col">
+    <div class="reveal">
+      <p class="section-eyebrow">{c.b1.eyebrow}</p>
+      <h2 class="section-title">{c.b1.title[0]}<br>{c.b1.title[1]}</h2>
+      <div class="prose">
+        {c.b1.prose.map((p) => <p set:html={p} />)}
+      </div>
+    </div>
+    <div class="eje-photo reveal">
+      <div class="eje-photo-placeholder"><span>{c.b1.photo}</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- PROGRAMAS (diseño de "cifras" de v5) -->
+<div class="cifras-section">
+  <div class="cifras-inner">
+    <p class="section-eyebrow reveal">{c.programas.eyebrow}</p>
+    <h2 class="section-title reveal">{c.programas.title[0]}<br>{c.programas.title[1]}</h2>
+    <div class="cifras-grid reveal">
+      {c.programas.items.map((i) => (
+        <div class="cifra-card">
+          <div class="cifra-val rojo">{i.v}</div>
+          <h3 class="cifra-key">{i.k}</h3>
+          <div class="cifra-desc">{i.d}</div>
+        </div>
+      ))}
+    </div>
+  </div>
+</div>
+
+<!-- DONAR CTA -->
+<div class="donar-cta">
+  <div class="donar-cta-text reveal">
+    <p class="eyebrow">{c.donar.eyebrow}</p>
+    <h2>{c.donar.title[0]}<br>{c.donar.title[1]}</h2>
+    <p>{c.donar.body}</p>
+  </div>
+  <div class="donar-cta-actions reveal">
+    <a href={L('/donar')} class="btn-primary">{c.donar.cta}</a>
+    <a href={L('/comunidad')} class="btn-outline-white">{c.donar.other}</a>
+    <p class="donar-note">{c.donar.note}</p>
+  </div>
+</div>
