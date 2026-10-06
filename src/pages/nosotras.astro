@@ -1,0 +1,9 @@
+---
+import Base from '../layouts/Base.astro';
+import Nosotras from '../components/nosotras/Nosotras.astro';
+import { nosotras } from '../i18n/nosotras';
+const { title, description, crumb } = nosotras.es.meta;
+---
+<Base lang="es" title={title} description={description} breadcrumbs={[{ name: crumb, path: '/nosotras' }]}>
+  <Nosotras lang="es" />
+</Base>
