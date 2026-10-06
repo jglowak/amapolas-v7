@@ -1,0 +1,32 @@
+---
+// /donar (página nueva). Usa el CSS de la home de v5 (global.css): encabezado con el diseño del
+// bloque "dossier" y el cuadro de donación completo (DonationBox).
+import DonationBox from '../DonationBox.astro';
+import { donar } from '../../i18n/donar';
+import { localePath, type Lang } from '../../i18n/ui';
+import '../../styles/global.css';
+import '../../styles/donar-v7.css';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const c = donar[lang];
+const L = (p: string) => localePath(lang, p);
+---
+<!-- ENCABEZADO (diseño del bloque DOSSIER de v5) -->
+<div class="dossier-section donar-head">
+  <div class="dossier-inner">
+    <div class="dossier-text">
+      <p class="label">{c.hero.eyebrow}</p>
+      <h1>{c.hero.title}</h1>
+      <p>{c.hero.body}</p>
+    </div>
+  </div>
+</div>
+
+<DonationBox lang={lang} />
+
+<!-- OTRAS FORMAS (diseño de NEWSLETTER de v5) -->
+<div class="newsletter reveal">
+  <h2>{c.otras.text}</h2>
+  <a href={L('/comunidad')} class="prensa-cta">{c.otras.link}</a>
+</div>

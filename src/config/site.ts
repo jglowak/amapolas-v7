@@ -42,5 +42,6 @@ export const site = {
   verified: {
     social: false,
     contact: false,
+    donate: false, // links de Donorbox / Mercado Pago reales
   },
 } as const;

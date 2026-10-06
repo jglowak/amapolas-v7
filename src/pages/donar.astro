@@ -1,0 +1,11 @@
+---
+import Base from '../layouts/Base.astro';
+import Donar from '../components/donar/Donar.astro';
+import { donar } from '../i18n/donar';
+import { site } from '../config/site';
+const { title, description, crumb } = donar.es.meta;
+const donate = { '@type': 'DonateAction', name: title, recipient: { '@id': `${site.url}/#organization` }, ...(site.verified.donate ? { target: [site.donate.donorbox, site.donate.mercadoPago] } : {}) };
+---
+<Base lang="es" title={title} description={description} breadcrumbs={[{ name: crumb, path: '/donar' }]} graph={[donate]}>
+  <Donar lang="es" />
+</Base>
