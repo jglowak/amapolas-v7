@@ -1,0 +1,43 @@
+---
+// Envío de formularios (prensa, sponsors). Basado en handlePresaSubmit de v5 prensa.html.
+// Si el formulario no tiene endpoint (data-endpoint vacío), abre el correo con los datos completados.
+import { site } from '../config/site';
+interface Props { lang: 'es' | 'en' }
+const { lang } = Astro.props;
+const msg = lang === 'es'
+  ? { sending: 'Enviando...', error: 'Hubo un error. Por favor intentá de nuevo.', verify: 'Por favor completá la verificación.' }
+  : { sending: 'Sending...', error: 'Something went wrong. Please try again.', verify: 'Please complete the verification.' };
+---
+{site.forms.turnstileSiteKey && <script is:inline src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>}
+<script is:inline define:vars={{ msg, email: site.email, turnstile: !!site.forms.turnstileSiteKey }}>
+window.amapolasSubmit = async function (e, successId) {
+  e.preventDefault();
+  const form = e.target;
+  const btn = form.querySelector('button[type=submit]');
+  const endpoint = form.dataset.endpoint;
+  const data = new FormData(form);
+  if (!endpoint) {
+    const lines = [];
+    for (const [k, v] of data.entries()) if (!k.startsWith('cf-')) lines.push(k + ': ' + v);
+    location.href = 'mailto:' + email + '?subject=' + encodeURIComponent(form.dataset.subject || 'Contacto web') + '&body=' + encodeURIComponent(lines.join('\n'));
+    return;
+  }
+  if (turnstile) {
+    const t = form.querySelector('[name="cf-turnstile-response"]');
+    if (!t || !t.value) { alert(msg.verify); return; }
+  }
+  const label = btn.innerHTML;
+  btn.disabled = true;
+  btn.textContent = msg.sending;
+  try {
+    const res = await fetch(endpoint, { method: 'POST', body: data, headers: { Accept: 'application/json' } });
+    if (!res.ok) throw new Error();
+    form.style.display = 'none';
+    document.getElementById(successId).style.display = 'block';
+  } catch {
+    btn.disabled = false;
+    btn.innerHTML = label;
+    alert(msg.error);
+  }
+};
+</script>

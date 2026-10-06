@@ -29,6 +29,14 @@ export const site = {
     mercadoPago: 'https://link.mercadopago.com.ar/amapolas', // TODO: ejemplo
   },
 
+  // TODO: endpoint de formularios (p. ej. Formspree, Basin o un Worker) y site key de Turnstile.
+  // Mientras estén vacíos, los formularios abren el cliente de correo con los datos completados.
+  forms: {
+    prensa: '',
+    sponsors: '',
+    turnstileSiteKey: '',
+  },
+
   // Mientras estén en false, el JSON-LD no publica sameAs ni ContactPoint
   // (no exponer datos de ejemplo como si fueran reales).
   verified: {

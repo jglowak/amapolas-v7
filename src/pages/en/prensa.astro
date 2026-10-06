@@ -1,0 +1,10 @@
+---
+import Base from '../../layouts/Base.astro';
+import Prensa from '../../components/prensa/Prensa.astro';
+import { prensa } from '../../i18n/prensa';
+
+const { title, description, crumb } = prensa.en.meta;
+---
+<Base lang="en" title={title} description={description} breadcrumbs={[{ name: crumb, path: '/prensa' }]}>
+  <Prensa lang="en" />
+</Base>
