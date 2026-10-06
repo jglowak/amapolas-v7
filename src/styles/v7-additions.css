@@ -1,0 +1,29 @@
+/* Adiciones de v7 sobre el CSS literal de v5 (global.css).
+   Solo reglas que replican estilos existentes para elementos nuevos o que cambiaron de tag.
+   Se unifica al final, con capturas. */
+
+/* Ítems padre sin link: <button class="nav-parent"> con el mismo estilo que .nav-links a */
+.nav-links .nav-parent{font-family:var(--font);background:none;border:none;padding:0;cursor:pointer;color:inherit;font-size:.875rem;font-weight:600;letter-spacing:.03em;opacity:.75;transition:opacity .2s,color .4s}
+nav.over-bg .nav-links .nav-parent{color:white}
+nav.solid   .nav-links .nav-parent{color:var(--azul)}
+.nav-links .nav-parent:hover{opacity:1}
+nav.solid .nav-links .nav-parent.active{opacity:1;border-bottom:2px solid var(--rojo);padding-bottom:2px}
+nav.over-bg .nav-links .nav-parent.active{opacity:1}
+.has-dropdown>.nav-parent::after{content:'▾';font-size:.65rem;margin-left:.3rem;opacity:.5;vertical-align:middle}
+.nav-item:focus-within .nav-dropdown{display:block}
+
+/* Títulos que cambiaron de nivel por jerarquía (mismo estilo que el tag original de v5) */
+.foot-col .foot-h{font-size:.62rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.2);margin-bottom:1.2rem}
+.pillar-text h3{font-size:.95rem;font-weight:700;margin-bottom:.3rem}
+.valor-item h3{font-size:.88rem;font-weight:800;color:white;margin-bottom:.6rem;letter-spacing:-.01em}
+.prensa-item h3{font-size:.95rem;font-weight:700;line-height:1.35;color:var(--azul)}
+.newsletter h2{font-size:1.5rem;font-weight:800;letter-spacing:-.02em;max-width:360px;line-height:1.2}
+
+/* Accesibilidad */
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.skip-link{position:absolute;left:1rem;top:-100px;z-index:1000;background:var(--azul);color:white;padding:.6rem 1rem;border-radius:2px;font-weight:700;font-size:.85rem}
+.skip-link:focus{top:1rem}
+:focus-visible{outline:2px solid var(--rojo);outline-offset:2px}
+
+/* Placeholder visible para assets faltantes */
+.asset-missing{position:absolute;z-index:3;font-size:.6rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:white;background:rgba(237,105,75,.85);padding:.35rem .6rem;border-radius:2px}

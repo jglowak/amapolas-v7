@@ -1,0 +1,503 @@
+<!-- NAV -->
+<nav id="navbar" class="over-bg">
+  <a href="/">
+    <img src="/logo_web.png" alt="Amapolas Cooperativa de Viviendas" class="nav-logo-color">
+    <img src="/logo_web_neg2.png" alt="Amapolas Cooperativa de Viviendas" class="nav-logo-neg">
+  </a>
+  <ul class="nav-links">
+    <li><a href="/">Home</a></li>
+    <li class="nav-item has-dropdown">
+      <a href="/nosotras">Nosotras</a>
+      <div class="nav-dropdown">
+        <span class="nav-dropdown-label">Nosotras</span>
+        <a href="/nosotras/genero">Género</a>
+        <a href="/nosotras/sustentabilidad">Hábitat Sustentable</a>
+        <a href="/nosotras/interculturalidad">Interculturalidad</a>
+        <a href="/nosotras/cohousing">Cuidado y Cohousing</a>
+      </div>
+    </li>
+    <li class="nav-item has-dropdown">
+      <a href="/proyectos" class="active">Proyectos</a>
+      <div class="nav-dropdown">
+        <span class="nav-dropdown-label">Proyectos</span>
+        <a href="/proyectos/vivienda">Barrio Amapolas</a>
+        <a href="/proyectos/productivos">Proyectos agroecológicos</a>
+      </div>
+    </li>
+    <li class="nav-item has-dropdown">
+      <a href="/prensa">Acciones y Prensa</a>
+      <div class="nav-dropdown">
+        <span class="nav-dropdown-label">Acciones y Prensa</span>
+        <a href="/prensa#eventos">Eventos / Charlas / Capacitaciones</a>
+        <a href="/prensa">Prensa</a>
+        <a href="/prensa#kit">Kit de Prensa</a>
+      </div>
+    </li>
+    <li class="nav-item has-dropdown">
+      <a href="/comunidad">Comunidad</a>
+      <div class="nav-dropdown">
+        <span class="nav-dropdown-label">Comunidad</span>
+        <a href="/comunidad#aliados">Aliados</a>
+        <a href="/comunidad#fundaciones">Fundaciones y Organizaciones</a>
+        <a href="/comunidad#sponsors">Sponsors</a>
+        <a href="/comunidad#donantes">Donantes</a>
+        <a href="/comunidad#comunidad">Comunidad</a>
+      </div>
+    </li>
+    <li class="nav-lang">
+      <a href="?lang=es" class="lang-btn lang-active">ES</a>
+      <span class="lang-sep">/</span>
+      <a href="?lang=en" class="lang-btn">EN</a>
+    </li>
+    <li><a href="/#donar" class="cta">Donar ahora</a></li>
+  </ul>
+  <button class="hamburger" id="ham" aria-label="Abrir menú"><span></span><span></span><span></span></button>
+</nav>
+
+<!-- MOBILE OVERLAY -->
+<div class="mobile-overlay" id="mob">
+  <button class="mob-close" onclick="document.getElementById('mob').classList.remove('open')">✕</button>
+  <a href="/" onclick="document.getElementById('mob').classList.remove('open')">Home</a>
+  <div class="mob-accordion">
+    <button class="mob-acc-btn" onclick="toggleMobAcc(this)">Nosotras <span class="mob-acc-arrow">▾</span></button>
+    <div class="mob-acc-panel">
+      <a href="/nosotras" onclick="document.getElementById('mob').classList.remove('open')">Nosotras</a>
+      <a href="/nosotras/genero" onclick="document.getElementById('mob').classList.remove('open')">Género</a>
+      <a href="/nosotras/sustentabilidad" onclick="document.getElementById('mob').classList.remove('open')">Hábitat Sustentable</a>
+      <a href="/nosotras/interculturalidad" onclick="document.getElementById('mob').classList.remove('open')">Interculturalidad</a>
+      <a href="/nosotras/cohousing" onclick="document.getElementById('mob').classList.remove('open')">Cuidado y Cohousing</a>
+    </div>
+  </div>
+  <div class="mob-accordion">
+    <button class="mob-acc-btn" onclick="toggleMobAcc(this)">Proyectos <span class="mob-acc-arrow">▾</span></button>
+    <div class="mob-acc-panel">
+      <a href="/proyectos" onclick="document.getElementById('mob').classList.remove('open')">Proyectos</a>
+      <a href="/proyectos/vivienda" onclick="document.getElementById('mob').classList.remove('open')">Barrio Amapolas</a>
+      <a href="/proyectos/productivos" onclick="document.getElementById('mob').classList.remove('open')">Proyectos agroecológicos</a>
+    </div>
+  </div>
+  <div class="mob-accordion">
+    <button class="mob-acc-btn" onclick="toggleMobAcc(this)">Acciones y Prensa <span class="mob-acc-arrow">▾</span></button>
+    <div class="mob-acc-panel">
+      <a href="/prensa#eventos" onclick="document.getElementById('mob').classList.remove('open')">Eventos / Capacitaciones</a>
+      <a href="/prensa" onclick="document.getElementById('mob').classList.remove('open')">Prensa</a>
+      <a href="/prensa#kit" onclick="document.getElementById('mob').classList.remove('open')">Kit de Prensa</a>
+    </div>
+  </div>
+  <div class="mob-accordion">
+    <button class="mob-acc-btn" onclick="toggleMobAcc(this)">Comunidad <span class="mob-acc-arrow">▾</span></button>
+    <div class="mob-acc-panel">
+      <a href="/comunidad#aliados" onclick="document.getElementById('mob').classList.remove('open')">Aliados</a>
+      <a href="/comunidad#fundaciones" onclick="document.getElementById('mob').classList.remove('open')">Fundaciones y Org.</a>
+      <a href="/comunidad#sponsors" onclick="document.getElementById('mob').classList.remove('open')">Sponsors</a>
+      <a href="/comunidad#donantes" onclick="document.getElementById('mob').classList.remove('open')">Donantes</a>
+    </div>
+  </div>
+  <div class="mob-lang">
+    <a href="?lang=es" class="lang-btn lang-active">ES</a>
+    <span class="lang-sep">/</span>
+    <a href="?lang=en" class="lang-btn">EN</a>
+  </div>
+  <a href="/#donar" onclick="document.getElementById('mob').classList.remove('open')" style="color:var(--rojo)">Donar ahora</a>
+</div>
+
+<!-- HERO -->
+<div class="hero" id="hero">
+  <img src="/proyectos/vivienda.jpeg" alt="Barrio Amapolas: construcción cooperativa de viviendas con bioconstrucción en Bariloche, Patagonia Argentina" class="hero-bg-img">
+  <div class="hero-overlay-top"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-body">
+    <div class="hero-breadcrumb">
+      <a href="/">Inicio</a><span>/</span>
+      <a href="/proyectos">Proyectos</a><span>/</span>
+      <span style="color:rgba(255,255,255,.6)">Barrio Amapolas</span>
+    </div>
+    <div class="hero-badge">Proyecto principal</div>
+    <h1 class="hero-title">Barrio Amapolas</h1>
+    <p class="hero-subtitle">Un barrio cooperativo con perspectiva feminista, bioconstrucción y espacios de cuidado colectivo como infraestructura. Diseñado y gestionado por quienes lo van a habitar.</p>
+  </div>
+</div>
+
+<!-- RESUMEN -->
+<section class="resumen">
+  <div class="resumen-inner">
+    <div>
+      <p class="section-eyebrow reveal">El proyecto</p>
+      <h2 class="section-title reveal">Vivienda digna<br>como derecho colectivo</h2>
+      <div class="prose reveal">
+        <p>El proyecto de vivienda es el corazón de la Cooperativa Amapolas. Nació de la necesidad concreta de garantizar acceso a la vivienda digna para mujeres y disidencias en situación de inestabilidad habitacional en Bariloche, Patagonia argentina.</p>
+        <p>Nos organizamos para construir un <strong>barrio cooperativo con perspectivas comunitarias y feministas</strong>, buscando causar el menor impacto al ecosistema, cuidando nuestro entorno y preservando el agua y la vida del territorio.</p>
+        <p>El modelo se basa en la autogestión horizontal: cada decisión se toma en asamblea. Apostamos por la bioconstrucción —barro, madera recuperada, diseño bioclimático— para que las paredes no solo sostengan techos, sino que respiren, regulen la temperatura y sean saludables para quienes viviremos dentro.</p>
+        <p>Nuestro objetivo es convertirnos en referentas locales y regionales en materia de vivienda cooperativa feminista y sustentable: un barrio que demuestre que otras formas de construir son posibles, y que ese modelo puede trasladarse a otros territorios.</p>
+      </div>
+    </div>
+    <div class="datos-clave reveal">
+      <div class="dato estado"><div class="dato-label">Estado actual</div><div class="dato-val">En desarrollo</div></div>
+      <div class="dato"><div class="dato-label">Año de inicio</div><div class="dato-val">2022</div></div>
+      <div class="dato"><div class="dato-label">Matrícula INAES</div><div class="dato-val">#63884</div></div>
+      <div class="dato"><div class="dato-label">Ubicación</div><div class="dato-val">Bariloche, Río Negro, Patagonia Argentina</div></div>
+      <div class="dato"><div class="dato-label">Conducción</div><div class="dato-val">100% femenina</div></div>
+      <div class="dato"><div class="dato-label">Enfoque constructivo</div><div class="dato-val">Bioconstrucción · Diseño bioclimático · Materiales naturales</div></div>
+      <div class="dato"><div class="dato-label">Diseño arquitectónico</div><div class="dato-val">Arq. Mariana Enet — Diseño participativo del hábitat · UNAM México</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- OBJETIVO FINANCIERO CONCRETO -->
+<div class="objetivo-financiero reveal">
+  <div class="obj-inner">
+    <div class="obj-text">
+      <p class="eyebrow">Objetivo de la campaña</p>
+      <h2>¿Cuánto necesitamos,<br>para qué y en qué plazo?</h2>
+      <p>La donación tiene un destino concreto y verificable. Sin un número claro, la donación no tiene destino. Acá está el nuestro.</p>
+    </div>
+    <div class="obj-meta">
+      <div class="obj-item dest">
+        <p class="lbl">Meta de campaña 2025–2026</p>
+        <p class="val">USD 15.000</p>
+      </div>
+      <div class="obj-item">
+        <p class="lbl">Destino principal</p>
+        <p class="val" style="font-size:.92rem">Adquisición del terreno en Bariloche y primera etapa de construcción</p>
+      </div>
+      <div class="obj-item">
+        <p class="lbl">Destino secundario</p>
+        <p class="val" style="font-size:.92rem">Materiales de bioconstrucción, herramientas y formación de socias</p>
+      </div>
+      <div class="obj-item">
+        <p class="lbl">Plazo</p>
+        <p class="val" style="font-size:.92rem">Campaña activa en GlobalGiving · 2025–2026</p>
+      </div>
+      <div class="obj-cta">
+        <a href="https://www.globalgiving.org" target="_blank" rel="noopener" class="btn-obj">Donar en GlobalGiving →</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- COHOUSING -->
+<section class="cohousing-section">
+  <div class="cohousing-inner">
+    <div class="cohousing-text reveal">
+      <p class="section-eyebrow">¿Qué es el cohousing?</p>
+      <h2 class="section-title">Un modelo de vivienda<br>que ya existe en el mundo</h2>
+      <div class="prose">
+        <p>Para visitantes que llegan sin ese contexto: el cohousing es un modelo de vivienda comunitaria donde cada familia tiene su unidad privada, pero comparte espacios y servicios con el resto del grupo. No es una comuna ni una casa colectiva: es una forma de habitar que combina privacidad individual con vida comunitaria deliberada.</p>
+      </div>
+      <div class="cohousing-def">
+        <p><strong>Cómo lo implementa Amapolas:</strong> el Barrio Amapolas aplica el modelo de cohousing con perspectiva feminista. Cada socia tendrá su vivienda propia, y el barrio contará con espacios de cuidado, producción y encuentro diseñados como infraestructura —no como agregados opcionales—, desde la primera etapa de diseño participativo.</p>
+      </div>
+    </div>
+    <div class="reveal">
+      <div class="cohousing-features">
+        <div class="cohousing-feat">
+          <div class="cohousing-feat-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="3 9 12 2 21 9 21 20 3 20 3 9"></polygon></svg>
+          </div>
+          <div class="cohousing-feat-text">
+            <h5>Unidades privadas</h5>
+            <p>Cada socia tiene su vivienda propia. Privacidad garantizada como derecho.</p>
+          </div>
+        </div>
+        <div class="cohousing-feat">
+          <div class="cohousing-feat-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 00-3-3.87"></path><path d="M16 3.13a4 4 0 010 7.75"></path></svg>
+          </div>
+          <div class="cohousing-feat-text">
+            <h5>Espacios comunitarios</h5>
+            <p>Cocina, huerta, sala de cuidado y espacio de encuentro compartidos.</p>
+          </div>
+        </div>
+        <div class="cohousing-feat">
+          <div class="cohousing-feat-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+          </div>
+          <div class="cohousing-feat-text">
+            <h5>Diseño participativo</h5>
+            <p>Cada decisión sobre el barrio se toma en asamblea. El diseño refleja las necesidades reales de quienes lo habitarán.</p>
+          </div>
+        </div>
+        <div class="cohousing-feat">
+          <div class="cohousing-feat-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22V12"></path><path d="M12 12C12 12 7 10 5 6c4 0 7 2 7 6z"></path><path d="M12 12c0 0 5-2 7-6-4 0-7 2-7 6z"></path></svg>
+          </div>
+          <div class="cohousing-feat-text">
+            <h5>Sostenibilidad integrada</h5>
+            <p>Bioconstrucción, captación de agua y huerta como componentes del diseño, no como extras.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CUIDADO COMO INFRAESTRUCTURA -->
+<section class="cuidado-section">
+  <div class="cuidado-inner">
+    <div class="cuidado-photo reveal">
+      <img src="/proyectos/vivienda.jpeg" alt="Diseño participativo del Barrio Amapolas: espacios de cuidado colectivo como infraestructura planificada">
+      <div class="cuidado-photo-placeholder"><span>Plano / diseño / espacio comunitario</span></div>
+    </div>
+    <div class="reveal">
+      <p class="section-eyebrow" style="color:var(--verde)">Lo que nos diferencia</p>
+      <h2 class="section-title">El cuidado como<br>infraestructura diseñada</h2>
+      <div class="prose">
+        <p>La mayoría de los proyectos de vivienda ignoran que el trabajo de cuidado existe. Amapolas lo hace al revés: <strong>el cuidado es un componente del diseño arquitectónico</strong>, no un valor declarativo ni una habitación improvisada.</p>
+        <p>Desde la primera etapa participativa, el barrio incorpora espacios específicos para cuidar: sala de juegos y contención para niñas y niños, espacio de encuentro y apoyo mutuo entre socias, zona de producción doméstica compartida que reduce la carga individual.</p>
+        <p>Esto diferencia a Amapolas de cualquier otro proyecto de vivienda cooperativa en la región.</p>
+      </div>
+      <div class="cuidado-highlight">
+        <p class="lbl">ODS 3 — Salud y bienestar</p>
+        <p>El diseño del barrio incluye <strong>espacios de cuidado colectivo y bienestar como infraestructura planificada</strong>. La vivienda segura y estable es condición material de salud física y mental.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REPLICABILIDAD -->
+<section class="replica-section">
+  <div class="replica-inner">
+    <div class="replica-header reveal">
+      <p class="section-eyebrow">Un modelo, no un caso único</p>
+      <h2 class="section-title">Diseñado para<br>ser replicable</h2>
+      <p>El Barrio Amapolas no es solo una respuesta local a la crisis habitacional de Bariloche. Es un prototipo transferible: un modelo que puede adaptarse a otros contextos territoriales con las variables ajustadas a cada realidad.</p>
+    </div>
+    <div class="replica-grid reveal">
+      <div class="replica-item">
+        <p class="replica-num">01</p>
+        <h4>Marco jurídico exportable</h4>
+        <p>La estructura cooperativa con matrícula INAES es replicable en cualquier provincia argentina con mínimas adaptaciones.</p>
+      </div>
+      <div class="replica-item">
+        <p class="replica-num">02</p>
+        <h4>Metodología documentada</h4>
+        <p>El proceso de diseño participativo con la Arq. Mariana Enet está sistematizado y puede aplicarse con otras comunidades.</p>
+      </div>
+      <div class="replica-item">
+        <p class="replica-num">03</p>
+        <h4>Alianzas internacionales</h4>
+        <p>La pertenencia a HIC y TEC IN HAB conecta el modelo con redes de intercambio técnico en toda América Latina.</p>
+      </div>
+      <div class="replica-item">
+        <p class="replica-num">04</p>
+        <h4>Evidencia de impacto</h4>
+        <p>Tres ciclos de financiamiento del Fondo Mujeres del Sur son la prueba más concreta de que el modelo produce resultados evaluables.</p>
+      </div>
+      <div class="replica-item">
+        <p class="replica-num">05</p>
+        <h4>Perspectiva feminista sistematizada</h4>
+        <p>La incorporación del cuidado como infraestructura y la conducción 100% femenina son decisiones de diseño transferibles, no solo valores.</p>
+      </div>
+      <div class="replica-item">
+        <p class="replica-num">06</p>
+        <h4>Para fondos que buscan escala</h4>
+        <p>Donar a Amapolas no es solo apoyar un barrio en Bariloche: es invertir en un modelo que puede crecer y adaptarse a otros territorios.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALERÍA -->
+<section class="galeria">
+  <div class="galeria-header reveal">
+    <h2>Imágenes del proyecto</h2>
+    <span class="galeria-note">Hacé click para ampliar</span>
+  </div>
+  <div class="galeria-grid reveal">
+    <div class="galeria-item" onclick="openLightbox(0)">
+      <img src="viviendas 1.webp" alt="Jornada de bioconstrucción con barro y madera en Barrio Amapolas, Bariloche">
+      <div class="galeria-item-overlay"><span class="galeria-zoom">Ampliar</span></div>
+      <span class="galeria-placeholder">Bioconstrucción</span>
+    </div>
+    <div class="galeria-item" onclick="openLightbox(1)">
+      <img src="viviendas 2.webp" alt="Asamblea cooperativa de socias de Amapolas tomando decisiones sobre el diseño del barrio">
+      <div class="galeria-item-overlay"><span class="galeria-zoom">Ampliar</span></div>
+      <span class="galeria-placeholder">Asamblea</span>
+    </div>
+    <div class="galeria-item" onclick="openLightbox(2)">
+      <img src="viviendas 3.webp" alt="Vista del territorio en Bariloche donde se proyecta el Barrio Amapolas">
+      <div class="galeria-item-overlay"><span class="galeria-zoom">Ampliar</span></div>
+      <span class="galeria-placeholder">Territorio</span>
+    </div>
+    <div class="galeria-item" onclick="openLightbox(3)">
+      <img src="vivienda-4.webp" alt="Taller de diseño participativo del hábitat con socias de la Cooperativa Amapolas">
+      <div class="galeria-item-overlay"><span class="galeria-zoom">Ampliar</span></div>
+      <span class="galeria-placeholder">Diseño participativo</span>
+    </div>
+    <div class="galeria-item" onclick="openLightbox(4)">
+      <img src="vivienda 5.webp" alt="Materiales naturales de bioconstrucción utilizados en el proyecto Barrio Amapolas">
+      <div class="galeria-item-overlay"><span class="galeria-zoom">Ampliar</span></div>
+      <span class="galeria-placeholder">Materiales</span>
+    </div>
+    <div class="galeria-item" onclick="openLightbox(5)">
+      <img src="vivienda 6.webp" alt="Socias de Amapolas en actividad colectiva del Barrio Amapolas, Patagonia">
+      <div class="galeria-item-overlay"><span class="galeria-zoom">Ampliar</span></div>
+      <span class="galeria-placeholder">Comunidad</span>
+    </div>
+  </div>
+</section>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+  <button class="lightbox-nav lightbox-prev" onclick="navLightbox(-1)">‹</button>
+  <img class="lightbox-img" id="lightboxImg" src="" alt="">
+  <button class="lightbox-nav lightbox-next" onclick="navLightbox(1)">›</button>
+  <span class="lightbox-caption" id="lightboxCaption"></span>
+</div>
+
+<!-- PLANO -->
+<section class="plano">
+  <div class="plano-inner">
+    <div class="plano-header reveal">
+      <p class="section-eyebrow">Diseño arquitectónico</p>
+      <h2 class="section-title">El plano del barrio</h2>
+    </div>
+    <div class="plano-container reveal" onclick="openPlano()">
+      <!--
+        Con plano real: <img src="plano_vivienda.jpg" alt="Plano del Barrio Amapolas: diseño participativo con espacios de cuidado colectivo, Bariloche">
+      -->
+      <div class="plano-placeholder">
+        <p>Plano del proyecto</p>
+        <small>Diseño participativo elaborado junto a la Arq. Mariana Enet<br>en el marco del Diploma de Diseño Participativo del Hábitat (UNAM · México)</small>
+      </div>
+      <span class="plano-zoom-hint">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg>
+        Ver en grande
+      </span>
+    </div>
+    <p class="plano-credit reveal">Diseño: Arq. Mariana Enet · Diseño Participativo del Hábitat · UNAM México, 2023</p>
+  </div>
+</section>
+
+<!-- DETALLES -->
+<section class="detalles">
+  <div class="detalles-inner">
+    <div class="reveal">
+      <p class="section-eyebrow">Enfoque constructivo</p>
+      <h2 class="section-title">Cómo construimos</h2>
+    </div>
+    <div class="detalles-grid reveal">
+      <div class="detalle">
+        <div class="detalle-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--verde)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg></div>
+        <h4>Bioconstrucción</h4>
+        <p>Barro, madera recuperada y materiales naturales del territorio. Paredes que respiran, regulan temperatura y son saludables para quienes las habiten.</p>
+      </div>
+      <div class="detalle">
+        <div class="detalle-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--rojo)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line></svg></div>
+        <h4>Diseño bioclimático</h4>
+        <p>Orientación solar, ventilación natural y masa térmica para reducir el consumo energético y garantizar confort en el clima patagónico.</p>
+      </div>
+      <div class="detalle">
+        <div class="detalle-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--azul)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 00-3-3.87"></path><path d="M16 3.13a4 4 0 010 7.75"></path></svg></div>
+        <h4>Decisiones colectivas</h4>
+        <p>Cada aspecto del diseño se define en asamblea. La horizontalidad no es un valor declarativo — es el método de trabajo cotidiano.</p>
+      </div>
+      <div class="detalle">
+        <div class="detalle-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--verde)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22V12"></path><path d="M12 12C12 12 7 10 5 6c4 0 7 2 7 6z"></path><path d="M12 12c0 0 5-2 7-6-4 0-7 2-7 6z"></path></svg></div>
+        <h4>Gestión del agua</h4>
+        <p>Captación de lluvia, reutilización de grises y recuperación de cuerpos hídricos dañados. Tratamos al agua como lo que es: vida.</p>
+      </div>
+      <div class="detalle">
+        <div class="detalle-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--rojo)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg></div>
+        <h4>Perspectiva feminista</h4>
+        <p>El diseño incorpora espacios de cuidado, seguridad y autonomía desde la perspectiva de quienes lo habitarán. El cuidado es infraestructura.</p>
+      </div>
+      <div class="detalle">
+        <div class="detalle-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--azul)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"></path></svg></div>
+        <h4>Justicia territorial</h4>
+        <p>El proyecto reconoce la preexistencia mapuche y busca insertarse en las redes locales del territorio con respeto y diálogo horizontal.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ESTADO ACTUAL -->
+<section class="estado">
+  <div class="estado-inner">
+    <div>
+      <p class="section-eyebrow reveal">Dónde estamos</p>
+      <h2 class="section-title reveal">Estado actual<br>del proyecto</h2>
+      <p class="estado-desc reveal">Somos honestas sobre el camino recorrido y el que falta. Cada paso es colectivo y transparente.</p>
+    </div>
+    <div class="timeline reveal">
+      <div class="timeline-item">
+        <div class="timeline-dot done"></div>
+        <div class="timeline-content">
+          <h5>Constitución de la cooperativa</h5>
+          <p>Obtención de matrícula INAES N°63884. Tres asambleas generales realizadas con balances aprobados.</p>
+          <span class="timeline-year">2022</span>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot done"></div>
+        <div class="timeline-content">
+          <h5>Diseño participativo del hábitat</h5>
+          <p>Participación en el Diplomado UNAM con beca. Vínculo con Arq. Mariana Enet. Charla abierta sobre Hábitat, Género y Sustentabilidad en el Centro Municipal de Arte.</p>
+          <span class="timeline-year">2023 — 2024</span>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot done"></div>
+        <div class="timeline-content">
+          <h5>Red internacional TEC IN HAB</h5>
+          <p>Organización del primer encuentro internacional autogestionario de diseño participativo, declarado de interés por el Concejo Deliberante de Bariloche.</p>
+          <span class="timeline-year">2024</span>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot active"></div>
+        <div class="timeline-content">
+          <h5>Gestión de terreno y financiamiento</h5>
+          <p>Búsqueda activa de terreno en Bariloche. Campaña de donaciones activa en GlobalGiving. Postulaciones a fondos nacionales e internacionales.</p>
+          <span class="timeline-year">2025 — en curso</span>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot pending"></div>
+        <div class="timeline-content">
+          <h5>Inicio de construcción</h5>
+          <p>Primera etapa constructiva cuando se concrete el terreno y el financiamiento necesario.</p>
+          <span class="timeline-year">A definir</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DONAR CTA -->
+<div class="donar-cta">
+  <div class="donar-cta-text reveal">
+    <p class="eyebrow">Apoyá este proyecto</p>
+    <h2>Tu donación acerca<br>el barrio a la realidad</h2>
+    <p>Cada aporte financia materiales, gestión y el trabajo de mujeres que construyen su propio futuro en la Patagonia. Meta: USD 15.000. Cooperativa con personería jurídica INAES N°63884.</p>
+  </div>
+  <div class="donar-cta-actions reveal">
+    <a href="/#donar" class="btn-primary">Donar ahora →</a>
+    <a href="/comunidad" class="btn-outline-white">Otras formas de colaborar</a>
+    <p class="donar-note">Donaciones trazables · INAES N°63884</p>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <img src="/logo_amapolas.png" alt="Amapolas Cooperativa de Viviendas" class="foot-logo">
+      <p class="foot-desc">Una cooperativa de viviendas conducida por mujeres y disidencias en la Patagonia argentina. Construimos autonomía y comunidad desde Bariloche.</p>
+    </div>
+    <div class="foot-col"><h5>La cooperativa</h5><ul><li><a href="/nosotras">Quiénes somos</a></li><li><a href="/proyectos">Proyectos</a></li><li><a href="/comunidad">Comunidad</a></li><li><a href="/prensa">Prensa</a></li></ul></div>
+    <div class="foot-col"><h5>Colaborar</h5><ul><li><a href="/#donar">Donar</a></li><li><a href="/comunidad#voluntariado">Voluntariado</a></li><li><a href="/comunidad#fundaciones">Alianzas</a></li><li><a href="/prensa#kit">Kit de Prensa</a></li></ul></div>
+    <div class="foot-col"><h5>Contacto</h5><ul><li><a href="mailto:contacto@amapolas.coop">contacto@amapolas.coop</a></li><li><a href="mailto:prensa@amapolas.coop">prensa@amapolas.coop</a></li><li><a href="#">Bariloche, Río Negro</a></li><li><a href="#" target="_blank" rel="noopener">Instagram</a></li></ul></div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 Amapolas Cooperativa de Viviendas Ltda. · INAES N°63884 · Bariloche, Río Negro</p>
+    <div class="foot-social">
+      <a href="#" title="Instagram" aria-label="Instagram">ig</a>
+      <a href="#" title="Facebook" aria-label="Facebook">fb</a>
+      <a href="#" title="WhatsApp" aria-label="WhatsApp">wa</a>
+    </div>
+  </div>
+</footer>
+
+<button class="scroll-top" id="stop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Volver arriba">↑</button>

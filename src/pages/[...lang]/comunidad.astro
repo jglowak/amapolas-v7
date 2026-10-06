@@ -1,8 +1,0 @@
----
-import StructurePage from '../../components/StructurePage.astro';
-import { langPaths, langFromParams } from '../../i18n/utils';
-export const getStaticPaths = langPaths;
-const lang = langFromParams(Astro.params.lang);
----
-
-<StructurePage page="comunidad" lang={lang} />

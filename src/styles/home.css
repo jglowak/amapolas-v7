@@ -1,0 +1,41 @@
+/* Home v7 — reglas literales de v5 que la home necesita además de global.css */
+
+/* ODS: copia literal de v5 nosotras.html */
+.ods-section{background:white;padding:7rem 4rem}
+.ods-inner{max-width:1200px;margin:0 auto}
+.ods-head{max-width:620px;margin-bottom:4rem}
+.ods-head p.body{font-size:1rem;line-height:1.8;color:rgba(36,37,46,.58);margin-top:.8rem}
+.ods-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.2rem}
+.ods-item{display:grid;grid-template-columns:64px 1fr;gap:1.5rem;align-items:start;padding:1.4rem 1.6rem;background:var(--crema);border-radius:3px;border-left:3px solid transparent;transition:border-color .2s,box-shadow .2s}
+.ods-item:hover{border-left-color:var(--rojo);box-shadow:0 4px 16px rgba(36,37,46,.06)}
+.ods-num{font-size:2rem;font-weight:800;letter-spacing:-.04em;line-height:1;color:var(--rojo)}
+.ods-num .ods-label{display:block;font-size:.52rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(36,37,46,.3);line-height:1.2;margin-top:.2rem}
+.ods-content h4{font-size:.92rem;font-weight:800;letter-spacing:-.01em;margin-bottom:.4rem}
+.ods-content p{font-size:.83rem;line-height:1.68;color:rgba(36,37,46,.58)}
+.ods-content h3{font-size:.92rem;font-weight:800;letter-spacing:-.01em;margin-bottom:.4rem}
+@media(max-width:1100px){
+  .ods-section{padding:5rem 2rem}
+  .ods-grid{grid-template-columns:1fr}
+}
+
+/* Proyectos: 3 cards (v5 tenía 4) */
+.projects-grid.cols-3{grid-template-columns:repeat(3,1fr)}
+.project-card ul{font-size:.85rem;line-height:1.7;color:rgba(36,37,46,.55);margin:-.6rem 0 1.2rem;padding-left:1rem;list-style:disc}
+.project-card ul li{margin-bottom:.3rem}
+.project-card .project-num{flex:none}
+.project-card-text{flex:1}
+.project-card-text p{flex:none}
+@media(max-width:1100px){.projects-grid.cols-3{grid-template-columns:1fr 1fr}}
+@media(max-width:640px){.projects-grid.cols-3{grid-template-columns:1fr}}
+
+/* Donación (versión corta): segundo párrafo y cierre con el mismo estilo que .section-body */
+.donation-content .section-body+.section-body{margin-top:1rem}
+.donation-closing{margin-top:1.8rem;font-size:.9rem;font-weight:700;color:white}
+.mp-intro{font-size:.85rem;line-height:1.7;color:rgba(36,37,46,.55);text-align:center;max-width:420px;margin-bottom:1.5rem}
+
+/* Socias: solo fotos */
+.socia-placeholder{flex-direction:column;gap:.5rem}
+.socia-placeholder svg{width:32px;height:32px;color:rgba(255,255,255,.2)}
+.socia-placeholder-label{font-size:.55rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.3)}
+.testimonios.solo-fotos{padding:4rem 0}
+

@@ -1,21 +1,23 @@
 # Amapolas v7 (Astro)
 
-Sitio estático bilingüe (ES por defecto, EN en `/en/`) basado en la maqueta `amapolas-v5`.
+Conversión a Astro de la maqueta aprobada v5 (HTML/CSS/JS estático).
 
-## Estructura
-- `src/i18n/menu.ts` – menú único (desktop + mobile). Los padres no llevan a ningún lado.
-- `src/i18n/utils.ts` – helpers de idioma (`localePath`, `switchLangPath`, `langPaths`).
-- `src/i18n/site.ts` – mail y redes (placeholders, reemplazar).
-- `src/content/structure.ts` – esqueleto de las 12 páginas (ES/EN) según el texto de correcciones.
-- `src/pages/[...lang]/*` – una ruta por página; genera `/x` (ES) y `/en/x` (EN).
-- `src/components/` – `Nav`, `Footer`, `StructurePage` (stub que se reemplaza página por página).
-- `src/styles/global.css` – tokens y estilos base extraídos de v5.
+- `npm run build` → `dist/` (Node 22). Deploy: Cloudflare Workers con static assets (`wrangler.jsonc`).
+- Español sin prefijo, inglés en `/en/`. Los slugs no se traducen.
+- Contacto, redes, dominio y links de donación: `src/config/site.ts` (con TODOs).
 
-## Comandos
-`npm install` · `npm run dev` · `npm run build` (salida en `dist/`)
+## Conversión desde v5
+1. `git clone https://github.com/jglowak/amapolas-v5.git _v5-ref` (ignorado por git; v5 no se modifica).
+2. `npm run convert` extrae con cheerio `<style>`, `<body>` y `<script>` de cada página:
+   - `src/styles/global.css` = `<style>` de index.html, literal.
+   - `src/styles/pages/<pagina>.css` = `<style>` de cada página, literal.
+   - `scripts/v5-extract/<pagina>/` = body, scripts y fragmentos (nav, menú mobile, footer).
+3. `src/styles/v7-additions.css` y `src/styles/home.css` solo agregan reglas para elementos nuevos o que cambiaron de tag.
 
-## Cloudflare
-Build command: `npm run build` · Output directory: `dist`
+## Capturas
+`npm run build && node scripts/screenshots.mjs /index.html / home` → `screenshots/` (v5 vs Astro, 1440 y 390 px). Las comparativas aprobables quedan en `docs/capturas/`.
 
-## Cambiar el idioma principal a inglés
-En `astro.config.mjs`: `defaultLocale: 'en'` y mover/renombrar el prefijo (`/es/`) en `langPaths`/`localePath` (`src/i18n/utils.ts`). Los slugs no cambian.
+## Documentación
+- `docs/correcciones.md`: documento de correcciones (guía de contenido).
+- `docs/seo-keywords.md`: validación de keywords.
+- `docs/pendientes.md`: assets faltantes y datos de ejemplo.

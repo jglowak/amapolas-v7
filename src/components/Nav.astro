@@ -1,82 +1,127 @@
 ---
-import { menu, donateLabel } from '../i18n/menu';
-import { localePath, switchLangPath, type Lang } from '../i18n/utils';
+// Copia literal del <nav> y del menú mobile de v5 (index.html).
+// Cambios: ítems del menú nuevo, ítems padre sin link como <button class="nav-parent">,
+// rutas localizadas y selector de idioma con rutas reales en vez de ?lang=.
+import { Image } from 'astro:assets';
+import logoColor from '../assets/img/logo_web.png';
+import logoNeg from '../assets/img/logo_web_neg2.png';
+import { ui, localePath, stripLang, type Lang } from '../i18n/ui';
 
-interface Props {
-  lang: Lang;
-  /** 'dark' = transparente sobre hero con imagen; 'light' = barra sólida desde el inicio. */
-  heroStyle?: 'dark' | 'light';
-}
-const { lang, heroStyle = 'light' } = Astro.props;
-const here = Astro.url.pathname.replace(/^\/en(?=\/|$)/, '').replace(/\/$/, '') || '/';
-const href = (p: string) => localePath(lang, p);
-const isActive = (p?: string) => !!p && p.split('#')[0] === here;
-const childActive = (item: (typeof menu)[number]) => item.children?.some((c) => isActive(c.href));
-const initial = heroStyle === 'dark' ? 'over-bg' : 'solid';
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const t = ui[lang].nav;
+const L = (p: string) => localePath(lang, p);
+const path = stripLang(Astro.url.pathname);
+const group = path === '/' ? 'home'
+  : path.startsWith('/nosotras') ? 'nosotras'
+  : path.startsWith('/proyectos') ? 'proyectos'
+  : path.startsWith('/prensa') ? 'prensa'
+  : path.startsWith('/comunidad') ? 'comunidad' : '';
+const act = (g: string) => (group === g ? 'active' : undefined);
+const esHref = localePath('es', path);
+const enHref = localePath('en', path);
+const close = "document.getElementById('mob').classList.remove('open')";
 ---
-
-<nav id="navbar" class={initial} data-hero={heroStyle}>
-  <a href={href('/')} aria-label="Amapolas">
-    <img src="/img/logo-color.png" alt="Amapolas Cooperativa de Viviendas" class="nav-logo-color" />
-    <img src="/img/logo-white.png" alt="" class="nav-logo-neg" />
+<!-- NAV -->
+<nav id="navbar" class="over-bg" aria-label={lang === 'es' ? 'Principal' : 'Main'}>
+  <a href={L('/')}>
+    <Image src={logoColor} alt={ui[lang].logoAlt} height={36} densities={[1, 2]} class="nav-logo-color" loading="eager" />
+    <Image src={logoNeg} alt={ui[lang].logoAlt} height={36} densities={[1, 2]} class="nav-logo-neg" loading="eager" />
   </a>
-
   <ul class="nav-links">
-    {menu.map((item) =>
-      item.children ? (
-        <li class="nav-item has-dropdown">
-          <button type="button" class:list={['nav-parent', { active: childActive(item) }]} aria-haspopup="true">
-            {item.label[lang]}
-          </button>
-          <div class="nav-dropdown">
-            <span class="nav-dropdown-label">{item.label[lang]}</span>
-            {item.children.map((c) => (
-              <a href={href(c.href)}>{c.label[lang]}</a>
-            ))}
-          </div>
-        </li>
-      ) : (
-        <li>
-          <a href={href(item.href!)} class:list={[{ active: isActive(item.href) }]}>{item.label[lang]}</a>
-        </li>
-      )
-    )}
-    <li class="nav-lang">
-      <a href={switchLangPath(Astro.url, 'es')} class:list={['lang-btn', { 'lang-active': lang === 'es' }]} hreflang="es">ES</a>
-      <span class="lang-sep">|</span>
-      <a href={switchLangPath(Astro.url, 'en')} class:list={['lang-btn', { 'lang-active': lang === 'en' }]} hreflang="en">EN</a>
+    <li><a href={L('/')} class={act('home')}>{t.home}</a></li>
+    <li class="nav-item has-dropdown">
+      <button type="button" class:list={['nav-parent', act('nosotras')]} aria-haspopup="true">{t.nosotras}</button>
+      <div class="nav-dropdown">
+        <span class="nav-dropdown-label">{t.nosotras}</span>
+        <a href={L('/nosotras')}>{t.quienes}</a>
+        <a href={L('/nosotras/genero')}>{t.genero}</a>
+        <a href={L('/nosotras/sustentabilidad')}>{t.sustentabilidad}</a>
+        <a href={L('/nosotras/interculturalidad')}>{t.interculturalidad}</a>
+        <a href={L('/nosotras/cohousing')}>{t.cohousing}</a>
+      </div>
     </li>
-    <li><a href={href('/#donar')} class="cta">{donateLabel[lang]}</a></li>
+    <li class="nav-item has-dropdown">
+      <button type="button" class:list={['nav-parent', act('proyectos')]} aria-haspopup="true">{t.proyectos}</button>
+      <div class="nav-dropdown">
+        <span class="nav-dropdown-label">{t.proyectos}</span>
+        <a href={L('/proyectos/vivienda')}>{t.vivienda}</a>
+        <a href={L('/proyectos/productivos')}>{t.productivos}</a>
+        <a href={L('/proyectos/formacion')}>{t.formacion}</a>
+      </div>
+    </li>
+    <li class="nav-item has-dropdown">
+      <button type="button" class:list={['nav-parent', act('prensa')]} aria-haspopup="true">{t.prensa}</button>
+      <div class="nav-dropdown">
+        <span class="nav-dropdown-label">{t.prensa}</span>
+        <a href={L('/prensa#eventos')}>{t.eventos}</a>
+        <a href={L('/prensa#prensa')}>{t.prensaItem}</a>
+        <a href={L('/prensa#kit')}>{t.kit}</a>
+      </div>
+    </li>
+    <li class="nav-item has-dropdown">
+      <button type="button" class:list={['nav-parent', act('comunidad')]} aria-haspopup="true">{t.comunidad}</button>
+      <div class="nav-dropdown">
+        <span class="nav-dropdown-label">{t.comunidad}</span>
+        <a href={L('/comunidad#alianzas')}>{t.alianzas}</a>
+        <a href={L('/comunidad#fundaciones')}>{t.fundaciones}</a>
+        <a href={L('/comunidad#sponsors')}>{t.sponsors}</a>
+        <a href={L('/comunidad#donantes')}>{t.donantes}</a>
+      </div>
+    </li>
+    <li class="nav-lang">
+      <a href={esHref} class:list={['lang-btn', lang === 'es' && 'lang-active']} hreflang="es" lang="es">ES</a>
+      <span class="lang-sep">/</span>
+      <a href={enHref} class:list={['lang-btn', lang === 'en' && 'lang-active']} hreflang="en" lang="en">EN</a>
+    </li>
+    <li><a href={L('/donar')} class="cta">{t.donar}</a></li>
   </ul>
-
-  <button class="hamburger" id="ham" aria-label={lang === 'es' ? 'Abrir menú' : 'Open menu'}>
-    <span></span><span></span><span></span>
-  </button>
+  <button class="hamburger" id="ham" aria-label={ui[lang].openMenu} aria-controls="mob"><span></span><span></span><span></span></button>
 </nav>
 
-<!-- Overlay mobile: mismo menú, en acordeón -->
+<!-- MOBILE OVERLAY -->
 <div class="mobile-overlay" id="mob">
-  <button class="mob-close" id="mob-close" aria-label={lang === 'es' ? 'Cerrar' : 'Close'}>✕</button>
-  {menu.map((item) =>
-    item.children ? (
-      <div class="mob-accordion">
-        <button class="mob-acc-btn" data-acc>
-          {item.label[lang]} <span class="mob-acc-arrow">▾</span>
-        </button>
-        <div class="mob-acc-panel">
-          {item.children.map((c) => (
-            <a href={href(c.href)}>{c.label[lang]}</a>
-          ))}
-        </div>
-      </div>
-    ) : (
-      <a href={href(item.href!)}>{item.label[lang]}</a>
-    )
-  )}
-  <div class="mob-lang">
-    <a href={switchLangPath(Astro.url, 'es')} class:list={['lang-btn', { 'lang-active': lang === 'es' }]} hreflang="es">ES</a>
-    <span class="lang-sep">|</span>
-    <a href={switchLangPath(Astro.url, 'en')} class:list={['lang-btn', { 'lang-active': lang === 'en' }]} hreflang="en">EN</a>
+  <button class="mob-close" onclick={close} aria-label={ui[lang].closeMenu}>✕</button>
+  <a href={L('/')} onclick={close}>{t.home}</a>
+  <div class="mob-accordion">
+    <button class="mob-acc-btn" onclick="toggleMobAcc(this)">{t.nosotras} <span class="mob-acc-arrow">▾</span></button>
+    <div class="mob-acc-panel">
+      <a href={L('/nosotras')} onclick={close}>{t.quienes}</a>
+      <a href={L('/nosotras/genero')} onclick={close}>{t.genero}</a>
+      <a href={L('/nosotras/sustentabilidad')} onclick={close}>{t.sustentabilidad}</a>
+      <a href={L('/nosotras/interculturalidad')} onclick={close}>{t.interculturalidad}</a>
+      <a href={L('/nosotras/cohousing')} onclick={close}>{t.cohousing}</a>
+    </div>
   </div>
-  <a href={href('/#donar')} style="color:var(--rojo)">{donateLabel[lang]}</a>
+  <div class="mob-accordion">
+    <button class="mob-acc-btn" onclick="toggleMobAcc(this)">{t.proyectos} <span class="mob-acc-arrow">▾</span></button>
+    <div class="mob-acc-panel">
+      <a href={L('/proyectos/vivienda')} onclick={close}>{t.vivienda}</a>
+      <a href={L('/proyectos/productivos')} onclick={close}>{t.productivos}</a>
+      <a href={L('/proyectos/formacion')} onclick={close}>{t.formacion}</a>
+    </div>
+  </div>
+  <div class="mob-accordion">
+    <button class="mob-acc-btn" onclick="toggleMobAcc(this)">{t.prensa} <span class="mob-acc-arrow">▾</span></button>
+    <div class="mob-acc-panel">
+      <a href={L('/prensa#eventos')} onclick={close}>{t.eventos}</a>
+      <a href={L('/prensa#prensa')} onclick={close}>{t.prensaItem}</a>
+      <a href={L('/prensa#kit')} onclick={close}>{t.kit}</a>
+    </div>
+  </div>
+  <div class="mob-accordion">
+    <button class="mob-acc-btn" onclick="toggleMobAcc(this)">{t.comunidad} <span class="mob-acc-arrow">▾</span></button>
+    <div class="mob-acc-panel">
+      <a href={L('/comunidad#alianzas')} onclick={close}>{t.alianzas}</a>
+      <a href={L('/comunidad#fundaciones')} onclick={close}>{t.fundaciones}</a>
+      <a href={L('/comunidad#sponsors')} onclick={close}>{t.sponsors}</a>
+      <a href={L('/comunidad#donantes')} onclick={close}>{t.donantes}</a>
+    </div>
+  </div>
+  <div class="mob-lang">
+    <a href={esHref} class:list={['lang-btn', lang === 'es' && 'lang-active']} hreflang="es" lang="es">ES</a>
+    <span class="lang-sep">/</span>
+    <a href={enHref} class:list={['lang-btn', lang === 'en' && 'lang-active']} hreflang="en" lang="en">EN</a>
+  </div>
+  <a href={L('/donar')} onclick={close} style="color:var(--rojo)">{t.donar}</a>
 </div>

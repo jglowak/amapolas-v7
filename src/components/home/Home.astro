@@ -1,0 +1,286 @@
+---
+// Home. Markup extraído de v5 index.html (scripts/v5-extract/index/body.html) con las
+// clases y la estructura originales. Cambios según docs/correcciones.md:
+// - sin contador de campaña ni GlobalGiving; donación en versión corta que apunta a /donar
+// - 3 cards de proyectos; ODS traído de v5 nosotras.html; socias solo con fotos
+// - h4 → h3 para respetar la jerarquía de títulos (mismo estilo, ver v7-additions.css)
+import { Image } from 'astro:assets';
+import integrantes from '../../assets/img/integrantes.png';
+import plantas from '../../assets/img/plantas.jpg';
+import { home } from '../../i18n/home';
+import { localePath, type Lang } from '../../i18n/ui';
+import '../../styles/home.css';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const c = home[lang];
+const L = (p: string) => localePath(lang, p);
+const SOCIAS = 12; // integrantes listadas en el documento; fotos pendientes
+const imgIcon = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>';
+const dlIcon = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>';
+---
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay-top"></div>
+  <div class="hero-overlay"></div>
+  <!-- TODO: hero7.png no está en el repo de v5 ni se pudo bajar del sitio publicado -->
+  <span class="asset-missing" style="right:2rem;bottom:2rem">{c.hero.missing}</span>
+
+  <div class="hero-body">
+    <span class="hero-eyebrow">{c.hero.eyebrow}</span>
+    <h1 class="hero-title">
+      {c.hero.title[0]}<br>{c.hero.title[1]}<br>
+      <span class="accent">{c.hero.accent}</span>
+    </h1>
+    <p class="hero-subtitle">{c.hero.subtitle}</p>
+    <div class="hero-actions">
+      <a href={L('/donar')} class="btn-primary-hero">{c.hero.donate}</a>
+      <a href={L('/proyectos/vivienda')} class="btn-ghost">{c.hero.project}</a>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="nosotras" class="about-section">
+  <div class="about-inner">
+    <div class="about-collage reveal">
+      <div class="collage-img tall">
+        <Image src={integrantes} alt={c.about.img.socias} widths={[400, 600]} sizes="(max-width:1100px) 50vw, 300px" />
+        <div class="collage-placeholder"><Fragment set:html={imgIcon} /><span>{c.about.img.sociasLabel}</span></div>
+      </div>
+      <div class="collage-img">
+        <Image src={plantas} alt={c.about.img.plantas} widths={[400, 800]} sizes="(max-width:1100px) 50vw, 300px" />
+        <div class="collage-placeholder"><Fragment set:html={imgIcon} /><span>{c.about.img.plantasLabel}</span></div>
+      </div>
+      <div class="collage-img">
+        <!-- TODO: cultiva.webp no disponible -->
+        <div class="collage-placeholder"><Fragment set:html={imgIcon} /><span>{c.about.img.agroLabel}</span></div>
+      </div>
+    </div>
+    <div class="about-content reveal">
+      <p class="section-eyebrow">{c.about.eyebrow}</p>
+      <h2 class="section-title">{c.about.title[0]}<br>{c.about.title[1]}</h2>
+      <p class="section-body">{c.about.body}</p>
+      <div class="pillar-list">
+        {c.about.pillars.map((p, i) => (
+          <div class="pillar">
+            <span class="pillar-number">{String(i + 1).padStart(2, '0')}</span>
+            <div class="pillar-text"><h3>{p.h}</h3><p>{p.p}</p></div>
+          </div>
+        ))}
+        <a href={L('/nosotras')} class="btn-ghost" style="border-color:rgba(36,37,46,.2);color:var(--azul);margin-top:2rem;display:inline-flex">{c.about.cta}</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE -->
+<div class="quote-section reveal">
+  <p class="quote-text">{c.quote.text}</p>
+  <p class="quote-attr"><strong>Amapolas</strong> {c.quote.attr}</p>
+</div>
+
+<!-- INDICADORES -->
+<div class="indicadores-section reveal">
+  <div class="indicadores-inner">
+    {c.indicadores.map((d) => (
+      <div class="indicador">
+        <div class="indicador-num">{d.n}</div>
+        <div class="indicador-label">{d.l}</div>
+      </div>
+    ))}
+  </div>
+</div>
+
+<!-- DOSSIER -->
+<div class="dossier-section reveal">
+  <div class="dossier-inner">
+    <div class="dossier-text">
+      <p class="label">{c.dossier.label}</p>
+      <h2>{c.dossier.title}</h2>
+      <p>{c.dossier.body[0]}<br>{c.dossier.body[1]}</p>
+    </div>
+    <div class="dossier-btns">
+      <!-- TODO: PDFs pendientes -->
+      <a href="/dossier-amapolas-es.pdf" target="_blank" rel="noopener" class="btn-dossier es" hreflang="es"><Fragment set:html={dlIcon} />{c.dossier.es}</a>
+      <a href="/dossier-amapolas-en.pdf" target="_blank" rel="noopener" class="btn-dossier en" hreflang="en"><Fragment set:html={dlIcon} />{c.dossier.en}</a>
+    </div>
+  </div>
+</div>
+
+<!-- PROYECTOS -->
+<section id="proyectos" class="projects-section">
+  <div class="projects-header reveal">
+    <p class="section-eyebrow">{c.projects.eyebrow}</p>
+    <h2 class="section-title">{c.projects.title[0]}</h2>
+  </div>
+  <div class="projects-grid cols-3 reveal">
+    {c.projects.cards.map((card) => (
+      <a href={L(card.href)} class="project-card">
+        <div class={`project-card-image ${card.color}`}>
+          <span class="project-card-image-placeholder">{card.ph}</span>
+        </div>
+        <div class="project-card-body">
+          <p class:list={['project-num', 'verde' in card && 'verde']}>{card.tag}</p>
+          <h3>{card.h}</h3>
+          <div class="project-card-text">
+            {card.p.map((t) => <p>{t}</p>)}
+            {card.list.length > 0 && <ul>{card.list.map((li) => <li>{li}</li>)}</ul>}
+          </div>
+          <span class="project-link">{c.projects.link}</span>
+        </div>
+      </a>
+    ))}
+  </div>
+  <div style="margin-top:2rem" class="reveal">
+    <a href={L('/proyectos')} class="prensa-cta">{c.projects.all}</a>
+  </div>
+</section>
+
+<!-- VALORES -->
+<section class="valores-section">
+  <div class="reveal">
+    <p class="section-eyebrow" style="color:rgba(255,255,255,.35)">{c.valores.eyebrow}</p>
+    <h2 class="section-title" style="color:white">{c.valores.title}</h2>
+  </div>
+  <div class="valores-grid reveal">
+    {c.valores.items.map((v, i) => (
+      <div class="valor-item">
+        <p class="valor-num">{String(i + 1).padStart(2, '0')}</p>
+        <h3>{v.h}</h3>
+        <p>{v.p}</p>
+      </div>
+    ))}
+  </div>
+</section>
+
+<!-- ODS (de v5 nosotras.html) -->
+<section id="ods" class="ods-section">
+  <div class="ods-inner">
+    <div class="ods-head reveal">
+      <p class="section-eyebrow">{c.ods.eyebrow}</p>
+      <h2 class="section-title">{c.ods.title}</h2>
+      <p class="body">{c.ods.body}</p>
+    </div>
+    <div class="ods-grid reveal">
+      {c.ods.items.map((o) => (
+        <div class="ods-item">
+          <div class="ods-num">{o.n}<span class="ods-label">{o.label}</span></div>
+          <div class="ods-content">
+            <h3>{o.h}</h3>
+            <p>{o.p}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- DONACIÓN (versión corta; el cuadro completo está en /donar) -->
+<section id="donar" class="donation-section">
+  <div class="donation-content reveal">
+    <p class="section-eyebrow">{c.donation.eyebrow}</p>
+    <h2 class="section-title">{c.donation.title[0]}<br>{c.donation.title[1]}</h2>
+    {c.donation.body.map((p) => <p class="section-body">{p}</p>)}
+    <div class="donation-impacts">
+      {c.donation.impacts.map((d) => (
+        <div class="donation-impact-row"><strong>{d.a}</strong> {d.t}</div>
+      ))}
+    </div>
+    <p class="donation-closing">{c.donation.closing}</p>
+  </div>
+  <div class="donation-widget">
+    <p class="widget-label">{c.donation.widgetLabel}</p>
+    <p class="widget-sublabel">{c.donation.widgetSub}</p>
+    <p class="mp-intro">{c.donation.widgetIntro}</p>
+    <div class="mp-grid">
+      <a href={L('/donar') + '#donorbox'} class="mp-btn featured">
+        <span class="mp-amount">{c.donation.donorbox.a}</span>
+        <span class="mp-impact">{c.donation.donorbox.t}</span>
+      </a>
+      <a href={L('/donar') + '#mercadopago'} class="mp-btn">
+        <span class="mp-amount">{c.donation.mp.a}</span>
+        <span class="mp-impact">{c.donation.mp.t}</span>
+      </a>
+    </div>
+    <a href={L('/donar')} class="mp-otro">{c.donation.more}</a>
+    <p class="mp-secure">{c.donation.secure}</p>
+  </div>
+</section>
+
+<!-- SOCIAS: solo fotos -->
+<section id="comunidad" class="testimonios solo-fotos" aria-labelledby="socias-h">
+  <h2 id="socias-h" class="sr-only">{c.socias.title}</h2>
+  <div class="socias-track-wrap">
+    <div class="socias-track">
+      {[0, 1].map((copy) => Array.from({ length: SOCIAS }, () => (
+        <div class="socia-item" aria-hidden={copy === 1 ? 'true' : undefined}>
+          {/* TODO: fotos de /chicas/ pendientes */}
+          <div class="socia-placeholder" role="img" aria-label={copy === 0 ? c.socias.alt : undefined}>
+            <Fragment set:html={imgIcon} /><span class="socia-placeholder-label">{c.socias.ph}</span>
+          </div>
+        </div>
+      )))}
+    </div>
+  </div>
+</section>
+
+<!-- PRENSA BAND -->
+<section id="prensa" class="prensa-band">
+  <div class="reveal">
+    <p class="section-eyebrow">{c.prensa.eyebrow}</p>
+    <h2 class="section-title">{c.prensa.title[0]}<br>{c.prensa.title[1]}</h2>
+  </div>
+  <div class="prensa-grid reveal">
+    {c.prensa.items.map((p) => (
+      <div class="prensa-item">
+        <span class="prensa-source">{p.s}</span>
+        <h3>{p.h}</h3>
+        <p>{p.p}</p>
+        <a href={p.href} target="_blank" rel="noopener">{p.cta}</a>
+      </div>
+    ))}
+  </div>
+  <a href={L('/prensa')} class="prensa-cta reveal">{c.prensa.all}</a>
+</section>
+
+<!-- NEWSLETTER -->
+<div class="newsletter reveal">
+  <h2>{c.newsletter.title}</h2>
+  <div class="newsletter-form">
+    <input type="email" placeholder={c.newsletter.placeholder} aria-label={c.newsletter.label}>
+    <button type="button">{c.newsletter.button}</button>
+  </div>
+</div>
+
+<!-- NEWSLETTER POPUP (literal de v5) -->
+<div id="nl-overlay" style="display:none;position:fixed;inset:0;z-index:999;background:rgba(36,37,46,.55);backdrop-filter:blur(3px);align-items:center;justify-content:center;">
+  <div id="nl-box" role="dialog" aria-modal="true" aria-labelledby="nl-title" style="position:relative;background:#eae9e2;border-radius:4px;max-width:480px;width:calc(100% - 2rem);padding:3rem 2.5rem;text-align:center;">
+    <button id="nl-close" aria-label={c.popup.close} style="position:absolute;top:1rem;right:1.25rem;background:none;border:none;font-size:1.4rem;cursor:pointer;color:#24252e;opacity:.5;line-height:1;">×</button>
+    <p style="font-family:'DM Sans',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#376135;margin-bottom:.5rem;">{c.popup.eyebrow}</p>
+    <p id="nl-title" style="font-family:'DM Sans',sans-serif;font-size:1.5rem;font-weight:800;line-height:1.2;color:#24252e;margin-bottom:1rem;">{c.popup.title}</p>
+    <p style="font-family:'DM Sans',sans-serif;font-size:.95rem;color:#24252e;opacity:.75;margin-bottom:1.75rem;line-height:1.5;">{c.popup.body}</p>
+    <div style="display:flex;gap:.5rem;flex-wrap:wrap;justify-content:center;">
+      <input type="email" placeholder={c.popup.placeholder} aria-label={c.newsletter.label}
+        style="flex:1;min-width:200px;padding:.75rem 1rem;border:1.5px solid rgba(36,37,46,.2);border-radius:2px;font-family:'DM Sans',sans-serif;font-size:.9rem;background:#fff;color:#24252e;outline:none;">
+      <button style="background:#ed694b;color:#fff;border:none;padding:.75rem 1.5rem;border-radius:2px;font-family:'DM Sans',sans-serif;font-size:.9rem;font-weight:700;cursor:pointer;white-space:nowrap;"
+        onmouseover="this.style.background='#d4533a'" onmouseout="this.style.background='#ed694b'">
+        {c.popup.button}
+      </button>
+    </div>
+    <p style="font-family:'DM Sans',sans-serif;font-size:.75rem;color:#24252e;opacity:.45;margin-top:1rem;">{c.popup.note}</p>
+  </div>
+</div>
+<script is:inline>
+(function(){
+  var overlay = document.getElementById('nl-overlay');
+  var closeBtn = document.getElementById('nl-close');
+  function showPopup(){ overlay.style.display = 'flex'; document.body.style.overflow = 'hidden'; }
+  function hidePopup(){ overlay.style.display = 'none'; document.body.style.overflow = ''; }
+  setTimeout(showPopup, 5000);
+  closeBtn.addEventListener('click', hidePopup);
+  overlay.addEventListener('click', function(e){ if(e.target === overlay) hidePopup(); });
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape') hidePopup(); });
+})();
+</script>

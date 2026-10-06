@@ -1,14 +1,24 @@
 {
   "name": "amapolas-v7",
   "type": "module",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
+  "engines": {
+    "node": ">=22"
+  },
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
-    "preview": "astro preview"
+    "preview": "astro preview",
+    "convert": "node scripts/convert-v5.mjs",
+    "shots": "node scripts/screenshots.mjs"
   },
   "dependencies": {
-    "astro": "^5.0.0"
+    "@astrojs/sitemap": "^3.7.4",
+    "astro": "^5.18.2"
+  },
+  "devDependencies": {
+    "cheerio": "^1.2.0",
+    "playwright-core": "^1.63.0"
   }
 }
