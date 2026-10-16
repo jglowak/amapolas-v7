@@ -109,19 +109,10 @@ export const home = {
       secure: 'Cooperativa de Vivienda Amapolas Ltda. · Matrícula INAES N°63884',
     },
     socias: {
-      title: 'Integrantes de la Cooperativa Amapolas',
+      eyebrow: 'Voces de la cooperativa',
+      title: ['Ellas construyen', 'este sueño'],
       alt: 'Integrante de la Cooperativa Amapolas',
       ph: 'Foto pendiente',
-    },
-    prensa: {
-      eyebrow: 'En los medios',
-      title: ['Nos escucharon,', 'nos leyeron'],
-      items: [
-        { s: 'Radio Nacional Bariloche', h: 'Entrevista sobre hábitat, género y la cooperativa Amapolas', p: 'La presidenta Julieta Linares habló sobre el proyecto cooperativo y el acceso a la vivienda para mujeres y disidencias en la Patagonia.', href: 'https://www.4shared.com/s/fkuWJQSO9ku', cta: 'Escuchar →' },
-        { s: 'ANBariloche.com.ar', h: 'Encuentro internacional sobre derecho al hábitat y bienes comunes', p: 'Cobertura del primer encuentro internacional autogestionario de diseño participativo organizado junto a HIC y organizaciones de toda Latinoamérica.', href: 'https://www.anbariloche.com.ar/noticias/2024/11/13/96117-invitan-al-encuentro-internacional-sobre-derecho-al-habitat-y-los-bienes-comunes', cta: 'Leer nota →' },
-        { s: 'Economía Solidaria', h: 'Amapolas se integra a la red latinoamericana TEC IN HAB', p: 'La cooperativa se une a la red que reúne organizaciones y profesionales de Latinoamérica para el intercambio de conocimientos sobre hábitat y vivienda.', href: 'https://economiasolidaria.com.ar/rio-negro-una-cooperativa-de-bariloche-se-integra-a-una-red-latinoamericana-sobre-diseno-del-habitat/', cta: 'Leer nota →' },
-      ],
-      all: 'Ver toda la cobertura y acciones →',
     },
     newsletter: {
       title: 'Conocé los avances del proyecto',
@@ -248,19 +239,10 @@ export const home = {
       secure: 'Cooperativa de Vivienda Amapolas Ltda. · INAES Registration No. 63884',
     },
     socias: {
-      title: 'Members of the Amapolas Cooperative',
+      eyebrow: 'Voices of the cooperative',
+      title: ['They are building', 'this dream'],
       alt: 'Member of the Amapolas Cooperative',
       ph: 'Photo pending',
-    },
-    prensa: {
-      eyebrow: 'In the media',
-      title: ['They heard us,', 'they read us'],
-      items: [
-        { s: 'Radio Nacional Bariloche', h: 'Interview on habitat, gender and the Amapolas cooperative', p: 'President Julieta Linares spoke about the cooperative project and access to housing for women and gender-diverse people in Patagonia.', href: 'https://www.4shared.com/s/fkuWJQSO9ku', cta: 'Listen (ES) →' },
-        { s: 'ANBariloche.com.ar', h: 'International gathering on the right to habitat and the commons', p: 'Coverage of the first self-organized international gathering on participatory design, organized with HIC and organizations from across Latin America.', href: 'https://www.anbariloche.com.ar/noticias/2024/11/13/96117-invitan-al-encuentro-internacional-sobre-derecho-al-habitat-y-los-bienes-comunes', cta: 'Read (ES) →' },
-        { s: 'Economía Solidaria', h: 'Amapolas joins the Latin American TEC IN HAB network', p: 'The cooperative joins a network of organizations and professionals across Latin America that share knowledge on habitat and housing.', href: 'https://economiasolidaria.com.ar/rio-negro-una-cooperativa-de-bariloche-se-integra-a-una-red-latinoamericana-sobre-diseno-del-habitat/', cta: 'Read (ES) →' },
-      ],
-      all: 'See all coverage and actions →',
     },
     newsletter: {
       title: 'Follow the project’s progress',
