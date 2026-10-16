@@ -2,7 +2,7 @@
 // Home. Markup extraído de v5 index.html (scripts/v5-extract/index/body.html) con las
 // clases y la estructura originales. Cambios según docs/correcciones.md:
 // - sin contador de campaña ni GlobalGiving; donación en versión corta que apunta a /donar
-// - 3 cards de proyectos; ODS traído de v5 nosotras.html; socias solo con fotos
+// - 3 cards de proyectos; ODS traído de v5 nosotras.html; socias con fotos sin nombres; sin "En los medios"
 // - orden de secciones según el documento (Valores y Prensa en su lugar de v5)
 // - h4 → h3 para respetar la jerarquía de títulos (mismo estilo, ver v7-additions.css)
 import { Image } from 'astro:assets';
@@ -129,9 +129,12 @@ const dlIcon = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stro
   </div>
 </section>
 
-<!-- SOCIAS: solo fotos -->
-<section id="comunidad" class="testimonios solo-fotos" aria-labelledby="socias-h">
-  <h2 id="socias-h" class="sr-only">{c.socias.title}</h2>
+<!-- SOCIAS (fotos sin nombres; encabezado de v5) -->
+<section id="comunidad" class="testimonios">
+  <div class="testimonios-header">
+    <p class="section-eyebrow reveal">{c.socias.eyebrow}</p>
+    <h2 class="section-title reveal">{c.socias.title[0]}<br>{c.socias.title[1]}</h2>
+  </div>
   <div class="socias-track-wrap">
     <div class="socias-track">
       {[0, 1].map((copy) => Array.from({ length: SOCIAS }, () => (
@@ -227,25 +230,6 @@ const dlIcon = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stro
     ))}
   </div>
 </div>
-
-<!-- PRENSA BAND -->
-<section id="prensa" class="prensa-band">
-  <div class="reveal">
-    <p class="section-eyebrow">{c.prensa.eyebrow}</p>
-    <h2 class="section-title">{c.prensa.title[0]}<br>{c.prensa.title[1]}</h2>
-  </div>
-  <div class="prensa-grid reveal">
-    {c.prensa.items.map((p) => (
-      <div class="prensa-item">
-        <span class="prensa-source">{p.s}</span>
-        <h3>{p.h}</h3>
-        <p>{p.p}</p>
-        <a href={p.href} target="_blank" rel="noopener">{p.cta}</a>
-      </div>
-    ))}
-  </div>
-  <a href={L('/prensa')} class="prensa-cta reveal">{c.prensa.all}</a>
-</section>
 
 <!-- NEWSLETTER -->
 <div class="newsletter reveal">
