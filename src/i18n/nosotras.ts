@@ -29,12 +29,7 @@ export const nosotras = {
       subtitle: 'Apostamos por formas de habitar que cuestionen las desigualdades existentes y fortalezcan el acceso justo a la tierra, la vivienda y los bienes comunes.',
       photoAlt: 'Socias de Amapolas en Bariloche, Patagonia Argentina',
       missing: 'Imagen pendiente: about_foto1.jpg',
-      tabs: [['#historia', 'Historia'], ['#socias', 'Las socias'], ['#como', 'Cómo nos organizamos'], ['#redes', 'Redes y membresías'], ['#ejes', 'Ejes de trabajo']],
-    },
-    pv: {
-      eyebrow: 'Propuesta de valor',
-      statement: 'Amapolas es un modelo de hábitat comunitario con perspectiva feminista y enfoque regenerativo, desarrollado por mujeres y disidencias en Patagonia Argentina, que demuestra que es posible construir vivienda, comunidad y autonomía desde la organización colectiva, con potencial de adaptación y replicabilidad en otros territorios.',
-      second: 'Amapolas is a community habitat model with a feminist perspective and regenerative approach, developed by women and gender-diverse people in Patagonia, Argentina, proving that housing, community and autonomy can be built through collective action, with the potential for adaptation and replication in other territories.',
+      tabs: [['#historia', 'Historia'], ['#socias', 'Las socias'], ['#como', 'Cómo nos organizamos'], ['#ejes', 'Ejes de trabajo']],
     },
     historia: {
       metaLabel: 'La cooperativa',
@@ -104,30 +99,6 @@ export const nosotras = {
         { i: '◈', h: 'Transparencia financiera', p: 'Todos los ingresos y egresos se registran y se rinden en la Asamblea General Ordinaria anual. Balances aprobados por las socias y presentados ante INAES cada ejercicio.', m: ['3 balances', ' aprobados · matrícula N°63884'] },
       ],
     },
-    redes: {
-      eyebrow: 'Redes y membresías internacionales',
-      title: ['A quién pertenecemos', 'y qué significa'],
-      body: 'Amapolas no opera en aislamiento. Estas son las redes y organismos a los que pertenece, con una explicación de lo que cada vínculo significa para el proyecto y para quien evalúa su legitimidad institucional.',
-      cards: [
-        { t: 'Red global · Hábitat', n: 'HIC — Coalición Internacional del Hábitat', q: 'Red global de organizaciones de sociedad civil por el derecho a la vivienda y al hábitat, con presencia en más de 50 países y estatus consultivo ante Naciones Unidas.', v: 'Amapolas integra la red. Co-organizó en 2024 el primer encuentro internacional de diseño participativo en Bariloche, declarado de interés por el Concejo Deliberante.' },
-        { t: 'Red latinoamericana · Hábitat técnico', n: 'Red TEC IN HAB', q: 'Red latinoamericana de organizaciones y profesionales para el intercambio de conocimientos sobre hábitat participativo y vivienda social.', v: 'Amapolas integra la red desde 2024, con representación en los espacios de intercambio técnico regional.' },
-        { t: 'Universidad · México', n: 'UNAM — Diplomado de Diseño Participativo del Hábitat', q: 'La Universidad Nacional Autónoma de México es el referente latinoamericano en hábitat participativo y diseño comunitario.', v: 'Amapolas accedió mediante beca al Diplomado de Diseño Participativo del Hábitat de la UNAM, formación de excelencia que pocos proyectos cooperativos locales han alcanzado.' },
-        { t: 'Fondo · Argentina', n: 'Fondo Mujeres del Sur', q: 'ONG argentina que financia proyectos liderados por mujeres y organizaciones feministas en América Latina, con criterios rigurosos de evaluación de impacto.', v: 'Tres ciclos consecutivos de financiamiento: 2023, 2024 y 2025. La renovación consecutiva es evidencia de rendición de cuentas y confianza acumulada.' },
-        { t: 'Municipio intercultural · Local', n: 'Bariloche — Municipio Intercultural', q: 'Bariloche fue reconocida oficialmente como Municipio Intercultural el 18 de junio de 2015 mediante la Ordenanza 2641/2015, y es parte de la Red Argentina de Municipios frente al Cambio Climático (RAMCC).', v: 'El trabajo intercultural de Amapolas se inscribe dentro de este marco institucional verificable y de las políticas municipales de reconocimiento de la diversidad.' },
-        { t: 'Investigación aplicada · Nacional', n: 'CIEFAP', q: 'Centro de Investigación y Extensión Forestal Andino Patagónico, organismo público de investigación aplicada con sede en la región.', v: 'Acompaña técnicamente el proyecto de cultivo de hongos comestibles, aportando rigor científico a la dimensión productiva de la cooperativa.' },
-      ],
-    },
-    valores: {
-      eyebrow: 'Lo que nos guía',
-      title: ['Cinco valores,', 'una forma de habitar'],
-      items: [
-        { h: 'Cooperación', p: 'Trabajo colectivo por sobre la competencia individual. Economía solidaria como práctica cotidiana.' },
-        { h: 'Sustentabilidad', p: 'Equilibrio entre necesidades humanas, respeto biocéntrico y reproducción de la vida en todas sus formas.' },
-        { h: 'Autonomía', p: 'Capacidad de decidir sobre nuestros cuerpos, nuestro trabajo y nuestra vivienda.' },
-        { h: 'Cuidado', p: 'Del entorno natural, de quienes habitamos el barrio, de las relaciones que sostenemos.' },
-        { h: 'Justicia territorial', p: 'Reconocimiento de la preexistencia mapuche, defensa del hábitat como derecho y distribución equitativa de la tierra.' },
-      ],
-    },
     ejes: {
       eyebrow: 'Nuestros ejes',
       title: ['Género, Sustentabilidad', 'e Interculturalidad'],
@@ -167,12 +138,7 @@ export const nosotras = {
       subtitle: 'We champion ways of living that challenge existing inequalities and strengthen fair access to land, housing and the commons.',
       photoAlt: 'Amapolas members in Bariloche, Argentine Patagonia',
       missing: 'Image pending: about_foto1.jpg',
-      tabs: [['#historia', 'Our cooperative'], ['#socias', 'Our members'], ['#como', 'How we organize'], ['#redes', 'Networks'], ['#ejes', 'Areas of work']],
-    },
-    pv: {
-      eyebrow: 'Value proposition',
-      statement: 'Amapolas is a community habitat model with a feminist perspective and regenerative approach, developed by women and gender-diverse people in Patagonia, Argentina, proving that housing, community and autonomy can be built through collective action, with the potential for adaptation and replication in other territories.',
-      second: '',
+      tabs: [['#historia', 'Our cooperative'], ['#socias', 'Our members'], ['#como', 'How we organize'], ['#ejes', 'Areas of work']],
     },
     historia: {
       metaLabel: 'The cooperative',
@@ -240,30 +206,6 @@ export const nosotras = {
         { i: '◇', h: 'Working committees', p: 'Between assemblies, committees work on habitat, finances, communications, productive projects and interculturality. Each member joins at least one, according to her time and skills.', m: ['5 committees', ' · annual rotation'] },
         { i: '◎', h: 'Consensus before majority', p: 'Consensus is our method. If there is no agreement we vote — but we prioritize listening to dissent and postponing rather than imposing. Collective time is worth more than speed.', m: ['Consensus', ' as the first path'] },
         { i: '◈', h: 'Financial transparency', p: 'All income and expenses are recorded and reported at the annual Ordinary General Assembly. Financial statements are approved by the members and filed with INAES every fiscal year.', m: ['3 statements', ' approved · registration No. 63884'] },
-      ],
-    },
-    redes: {
-      eyebrow: 'International networks and memberships',
-      title: ['Who we belong to', 'and what it means'],
-      body: 'Amapolas does not work in isolation. These are the networks and organizations it belongs to, with an explanation of what each tie means for the project and for anyone assessing its institutional legitimacy.',
-      cards: [
-        { t: 'Global network · Habitat', n: 'HIC — Habitat International Coalition', q: 'A global network of civil society organizations for the right to housing and habitat, present in more than 50 countries and holding consultative status with the United Nations.', v: 'Amapolas is part of the network. In 2024 it co-organized the first international gathering on participatory design in Bariloche, declared of interest by the City Council.' },
-        { t: 'Latin American network · Technical habitat', n: 'TEC IN HAB Network', q: 'A Latin American network of organizations and professionals sharing knowledge on participatory habitat and social housing.', v: 'Amapolas has been part of the network since 2024, taking part in regional technical exchange spaces.' },
-        { t: 'University · Mexico', n: 'UNAM — Diploma in Participatory Habitat Design', q: 'The National Autonomous University of Mexico is the Latin American reference in participatory habitat and community design.', v: 'Amapolas members attended UNAM’s Diploma in Participatory Habitat Design on a scholarship, a level of training few local cooperative projects have reached.' },
-        { t: 'Fund · Argentina', n: 'Fondo Mujeres del Sur', q: 'An Argentine NGO that funds projects led by women and feminist organizations in Latin America, with rigorous impact assessment criteria.', v: 'Three consecutive funding cycles: 2023, 2024 and 2025. Consecutive renewal is evidence of accountability and accumulated trust.' },
-        { t: 'Intercultural municipality · Local', n: 'Bariloche — Intercultural Municipality', q: 'Bariloche was officially recognized as an Intercultural Municipality on June 18, 2015 through Ordinance 2641/2015, and is part of the Argentine Network of Municipalities against Climate Change (RAMCC).', v: 'Amapolas’ intercultural work is part of this verifiable institutional framework and of municipal policies recognizing diversity.' },
-        { t: 'Applied research · National', n: 'CIEFAP', q: 'The Andean Patagonian Forest Research and Extension Center, a public applied research institution based in the region.', v: 'Provides technical support to the edible mushroom project, bringing scientific rigor to the cooperative’s productive work.' },
-      ],
-    },
-    valores: {
-      eyebrow: 'What guides us',
-      title: ['Five values,', 'one way of living'],
-      items: [
-        { h: 'Cooperation', p: 'Collective work over individual competition. Solidarity economy as an everyday practice.' },
-        { h: 'Sustainability', p: 'Balance between human needs, biocentric respect and the reproduction of life in all its forms.' },
-        { h: 'Autonomy', p: 'The ability to decide about our bodies, our work and our housing.' },
-        { h: 'Care', p: 'For the natural environment, for those who live in the neighborhood, for the relationships we sustain.' },
-        { h: 'Territorial justice', p: 'Recognition of Mapuche pre-existence, defense of habitat as a right and fair distribution of land.' },
       ],
     },
     ejes: {

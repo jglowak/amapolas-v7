@@ -3,6 +3,7 @@
 // con sus clases. CSS: pages/nosotras.css completo, como en v5 (sin global.css).
 // Cambios según docs/correcciones.md: hero, historia, socias reales, timeline, encabezado de
 // "Cómo nos organizamos", ejes 02 y 03, CTA de donación. El bloque ODS pasó a la home.
+// Sin "Propuesta de valor", "Redes y membresías" ni "Lo que nos guía" (correcciones).
 // h4 → h3 por jerarquía (mismo estilo, ver nosotras-v7.css).
 import { nosotras, socias } from '../../i18n/nosotras';
 import { site } from '../../config/site';
@@ -32,15 +33,6 @@ const consejo = socias.filter((s) => s.consejo);
   </div>
   <div class="hero-tabs">
     {c.hero.tabs.map(([href, label]) => <a href={href} class="hero-tab">{label}</a>)}
-  </div>
-</div>
-
-<!-- PROPUESTA DE VALOR — tagline jerárquico -->
-<div class="pv-section">
-  <div class="pv-inner">
-    <p class="pv-eyebrow reveal">{c.pv.eyebrow}</p>
-    <p class="pv-statement reveal">{c.pv.statement}</p>
-    {c.pv.second && <p class="pv-en reveal" lang="en">{c.pv.second}</p>}
   </div>
 </div>
 
@@ -156,38 +148,6 @@ const consejo = socias.filter((s) => s.consejo);
         </div>
       ))}
     </div>
-  </div>
-</section>
-
-<!-- REDES Y MEMBRESÍAS -->
-<section id="redes" class="redes-section">
-  <div class="redes-inner">
-    <div class="redes-head reveal">
-      <p class="section-eyebrow">{c.redes.eyebrow}</p>
-      <h2 class="section-title">{c.redes.title[0]}<br>{c.redes.title[1]}</h2>
-      <p class="body">{c.redes.body}</p>
-    </div>
-    <div class="redes-grid reveal">
-      {c.redes.cards.map((r) => (
-        <div class="red-card">
-          <p class="red-tipo">{r.t}</p>
-          <h3 class="red-nombre">{r.n}</h3>
-          <p class="red-que-es">{r.q}</p>
-          <p class="red-vinculo">{r.v}</p>
-        </div>
-      ))}
-    </div>
-  </div>
-</section>
-
-<!-- VALORES -->
-<section id="valores" class="valores">
-  <div class="valores-head reveal">
-    <p class="section-eyebrow">{c.valores.eyebrow}</p>
-    <h2 class="section-title">{c.valores.title[0]}<br>{c.valores.title[1]}</h2>
-  </div>
-  <div class="valores-grid reveal">
-    {c.valores.items.map((v, i) => <div class="valor"><p class="valor-num">{String(i + 1).padStart(2, '0')}</p><h3>{v.h}</h3><p>{v.p}</p></div>)}
   </div>
 </section>
 
