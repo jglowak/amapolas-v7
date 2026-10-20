@@ -32,7 +32,7 @@ export const proyectos = {
       title: ['Formación y', 'Capacitaciones'],
       desc: 'Programa anual de seminarios y talleres de gestión, diseño del hábitat y agroecología destinados a mujeres y disidencias, para generar herramientas que favorezcan la apropiación y replicabilidad del proyecto en otros territorios.',
       link: 'Ver formación y capacitaciones →',
-      tags: ['Plantas nativas · ONU Mujeres', 'Diseño Participativo del Hábitat', 'Escuela agroecológica (a futuro)'],
+      tags: ['Plantas nativas · ONU Mujeres', 'Diseño Participativo del Hábitat', 'Espacio de formación en agroecología (a futuro)'],
     },
     info: [
       { h: 'Nuestro enfoque', p: 'Cada proyecto no es independiente: el apiario poliniza las plantas nativas, los hongos aprovechan el territorio mapuche, y todo fortalece la autonomía económica que hace posible la vivienda. Un ecosistema, no una lista de actividades.' },
@@ -80,7 +80,7 @@ export const proyectos = {
       title: ['Training and', 'Workshops'],
       desc: 'An annual program of seminars and workshops on management, habitat design and agroecology for women and gender-diverse people, building tools that support ownership of the project and its replication in other territories.',
       link: 'See training and workshops →',
-      tags: ['Native plants · UN Women', 'Participatory Habitat Design', 'Agroecology school (future)'],
+      tags: ['Native plants · UN Women', 'Participatory Habitat Design', 'Agroecology training space (future)'],
     },
     info: [
       { h: 'Our approach', p: 'No project stands alone: the apiary pollinates the native plants, the mushrooms grow on Mapuche land, and everything strengthens the economic autonomy that makes housing possible. An ecosystem, not a list of activities.' },

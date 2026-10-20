@@ -12,7 +12,7 @@ export const site = {
   country: 'AR',
 
   // TODO: mail institucional único (ejemplo)
-  email: 'contacto@amapolas.org',
+  email: 'info@amapolas.org',
 
   // TODO: URLs de ejemplo
   social: {

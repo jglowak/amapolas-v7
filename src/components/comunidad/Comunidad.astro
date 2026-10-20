@@ -34,13 +34,10 @@ const sf = c.sponsors.form;
     <a href={L('/')}>{c.hero.home}</a><span>/</span>
     <span style="color:rgba(36,37,46,.6)" aria-current="page">{c.hero.here}</span>
   </div>
-  <div class="hero-inner">
+  <div class="hero-inner hero-stack">
     <h1 class="hero-title reveal">{c.hero.title[0]}<br>{c.hero.title[1]}<br><span class="accent">{c.hero.accent}</span></h1>
     <div class="hero-right reveal">
       <p>{c.hero.body}</p>
-      <div class="hero-anchors">
-        {c.hero.anchors.map(([href, t]) => <a href={href} class="hero-anchor">{t}</a>)}
-      </div>
     </div>
   </div>
 </div>
