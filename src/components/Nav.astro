@@ -1,6 +1,7 @@
 ---
 // Copia literal del <nav> y del menú mobile de v5 (index.html).
-// Cambios: ítems del menú nuevo, ítems padre sin link como <button class="nav-parent">,
+// Cambios: ítems del menú nuevo, ítems padre sin link como <button class="nav-parent"> (Comunidad sí
+// lleva a su página: el doc no pide lo contrario),
 // rutas localizadas y selector de idioma con rutas reales en vez de ?lang=.
 import { Image } from 'astro:assets';
 import logoColor from '../assets/img/logo_web.png';
@@ -61,7 +62,7 @@ const close = "document.getElementById('mob').classList.remove('open')";
       </div>
     </li>
     <li class="nav-item has-dropdown">
-      <button type="button" class:list={['nav-parent', act('comunidad')]} aria-haspopup="true">{t.comunidad}</button>
+      <a href={L('/comunidad')} class:list={['nav-parent', act('comunidad')]} aria-haspopup="true">{t.comunidad}</a>
       <div class="nav-dropdown">
         <span class="nav-dropdown-label">{t.comunidad}</span>
         <a href={L('/comunidad#alianzas')}>{t.alianzas}</a>
@@ -113,6 +114,7 @@ const close = "document.getElementById('mob').classList.remove('open')";
   <div class="mob-accordion">
     <button class="mob-acc-btn" onclick="toggleMobAcc(this)">{t.comunidad} <span class="mob-acc-arrow">▾</span></button>
     <div class="mob-acc-panel">
+      <a href={L('/comunidad')} onclick={close}>{t.comunidad}</a>
       <a href={L('/comunidad#alianzas')} onclick={close}>{t.alianzas}</a>
       <a href={L('/comunidad#fundaciones')} onclick={close}>{t.fundaciones}</a>
       <a href={L('/comunidad#sponsors')} onclick={close}>{t.sponsors}</a>
