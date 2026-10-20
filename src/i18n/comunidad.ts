@@ -11,7 +11,6 @@ const es = {
     home: 'Inicio', here: 'Comunidad',
     title: ['Sumate', 'a construir'], accent: 'con nosotras',
     body: 'Hay muchas formas de ser parte de Amapolas. Cada vínculo hace posible que este proyecto crezca, se fortalezca y llegue más lejos. Podés acompañarnos con una donación, proponer una alianza institucional, convertirte en sponsor o ayudarnos a difundir nuestra experiencia. Porque transformar un territorio también es construir redes para hacerlo posible.',
-    anchors: [['#alianzas', '→ Red de Alianzas'], ['#fundaciones', '→ Soy una organización'], ['#sponsors', '→ Quiero ser sponsor'], ['#donantes', '→ Quiero donar']] as Opt[],
   },
   perfiles: {
     eyebrow: '¿Cómo querés participar?',
@@ -108,7 +107,6 @@ const en: typeof es = {
     home: 'Home', here: 'Community',
     title: ['Help us', 'build'], accent: 'together',
     body: 'There are many ways to be part of Amapolas. Every bond helps this project grow, get stronger and reach further. You can support us with a donation, propose an institutional alliance, become a sponsor or help us share our experience. Because transforming a territory also means building the networks that make it possible.',
-    anchors: [['#alianzas', '→ Alliance Network'], ['#fundaciones', '→ I represent an organization'], ['#sponsors', '→ Become a sponsor'], ['#donantes', '→ I want to donate']],
   },
   perfiles: {
     eyebrow: 'How would you like to take part?',

@@ -17,3 +17,6 @@
 #alianzas,#fundaciones,#sponsors,#donantes,#donar{scroll-margin-top:80px}
 /* Corrige desborde horizontal en mobile que ya tenía v5 (botones del bloque de prensa) */
 @media(max-width:640px){.prensa-entry-actions{flex-shrink:1;min-width:0}}
+/* Hero como el resto de las páginas: sin menú interno, texto debajo del título (correcciones) */
+.hero-inner.hero-stack{grid-template-columns:1fr;gap:2rem;align-items:start;max-width:900px}
+.hero-stack .hero-right p{max-width:640px;margin-bottom:0;padding-left:1.4rem;border-left:3px solid var(--rojo)}
