@@ -28,12 +28,11 @@ Se usaron del repo de v5: `hero/integrantes.png` y `hero/plantas.jpg` (mismos no
 ## Datos de ejemplo (src/config/site.ts)
 - Dominio `amapolas.org`, mail, WhatsApp, LinkedIn, Instagram y Facebook.
 - Links de Donorbox y Mercado Pago (aportes únicos y mensuales).
-- Endpoints de formularios (prensa, alianzas, sponsors) y Turnstile: vacíos; mientras tanto los formularios abren el correo con los datos.
+- Formularios (prensa, alianzas, sponsors) → `/api/contacto` y newsletter → `/api/newsletter`, en `worker/index.js` con Brevo. Requiere el secreto `BREVO_API_KEY` en Cloudflare (Brevo da de baja la clave tras 90 días sin uso). Turnstile opcional: site key en `site.forms.turnstileSiteKey` y secreto `TURNSTILE_SECRET`.
 - El JSON-LD no publica `sameAs`, `ContactPoint` ni los links de donación hasta que `verified` pase a `true`.
 
 ## Funcionalidad pendiente
 - Detección por país (cf-ipcountry) para mostrar Donorbox o Mercado Pago primero en el cuadro de donación.
-- Newsletter (sección y popup): igual que en v5, todavía no envía a ningún servicio.
 - Unificar el CSS al final (hoy cada página carga su CSS completo de v5, como en v5).
 - Menú mobile: el ✕ de cerrar queda tapado por el ícono de menú (heredado de v5).
 

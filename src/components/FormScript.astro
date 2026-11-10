@@ -1,5 +1,6 @@
 ---
-// Envío de formularios (prensa, sponsors). Basado en handlePresaSubmit de v5 prensa.html.
+// Envío de formularios (prensa, alianzas, sponsors) a /api/contacto (worker/index.js → Brevo).
+// Basado en handlePresaSubmit de v5 prensa.html.
 // Si el formulario no tiene endpoint (data-endpoint vacío), abre el correo con los datos completados.
 import { site } from '../config/site';
 interface Props { lang: 'es' | 'en' }
@@ -10,6 +11,29 @@ const msg = lang === 'es'
 ---
 {site.forms.turnstileSiteKey && <script is:inline src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>}
 <script is:inline define:vars={{ msg, email: site.email, turnstile: !!site.forms.turnstileSiteKey }}>
+// [etiqueta visible, valor] por campo: selects y checkboxes mandan el texto que ve la persona,
+// y los checkboxes de un mismo grupo se unen con comas
+function fieldsOf(form) {
+  const out = new Map();
+  for (const el of form.elements) {
+    if (!el.name || el.name.startsWith('cf-') || el.name === 'website' || el.disabled) continue;
+    let v;
+    if (el.type === 'checkbox' || el.type === 'radio') { if (!el.checked) continue; v = (el.closest('label') || el).textContent.trim() || el.value; }
+    else if (el.tagName === 'SELECT') v = el.selectedOptions[0] ? el.selectedOptions[0].textContent.trim() : '';
+    else v = el.value.trim();
+    if (!v) continue;
+    const lab = el.type === 'checkbox' || el.type === 'radio'
+      ? el.closest('fieldset')?.querySelector('legend')
+      : el.id && form.querySelector('label[for="' + el.id + '"]');
+    const name = lab ? lab.textContent.trim() : el.name;
+    out.set(name, out.has(name) ? out.get(name) + ', ' + v : v);
+  }
+  return [...out];
+}
+// Campo trampa para bots (oculto para personas y lectores de pantalla)
+document.querySelectorAll('form[data-endpoint]').forEach((f) => {
+  f.insertAdjacentHTML('beforeend', '<input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">');
+});
 window.amapolasSubmit = async function (e, successId) {
   e.preventDefault();
   const form = e.target;
@@ -30,7 +54,17 @@ window.amapolasSubmit = async function (e, successId) {
   btn.disabled = true;
   btn.textContent = msg.sending;
   try {
-    const res = await fetch(endpoint, { method: 'POST', body: data, headers: { Accept: 'application/json' } });
+    const res = await fetch(endpoint, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+      body: JSON.stringify({
+        form: form.dataset.form,
+        subject: form.dataset.subject,
+        fields: fieldsOf(form),
+        website: data.get('website') || '',
+        turnstile: data.get('cf-turnstile-response') || '',
+      }),
+    });
     if (!res.ok) throw new Error();
     form.style.display = 'none';
     document.getElementById(successId).style.display = 'block';

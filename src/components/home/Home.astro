@@ -1,4 +1,5 @@
 ---
+import { site } from '../../config/site';
 // Home. Markup extraído de v5 index.html (scripts/v5-extract/index/body.html) con las
 // clases y la estructura originales. Cambios según docs/correcciones.md:
 // - sin contador de campaña ni GlobalGiving; donación en versión corta que apunta a /donar
@@ -234,9 +235,12 @@ const dlIcon = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stro
 <!-- NEWSLETTER -->
 <div class="newsletter reveal">
   <h2>{c.newsletter.title}</h2>
-  <div class="newsletter-form">
-    <input type="email" placeholder={c.newsletter.placeholder} aria-label={c.newsletter.label}>
-    <button type="button">{c.newsletter.button}</button>
+  <div>
+    <form class="newsletter-form nl-form" action={site.forms.newsletter} method="POST" novalidate>
+      <input type="email" name="email" required autocomplete="email" placeholder={c.newsletter.placeholder} aria-label={c.newsletter.label}>
+      <button type="submit">{c.newsletter.button}</button>
+    </form>
+    <p class="nl-msg" role="status" aria-live="polite"></p>
   </div>
 </div>
 
@@ -247,24 +251,46 @@ const dlIcon = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stro
     <p style="font-family:'DM Sans',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#376135;margin-bottom:.5rem;">{c.popup.eyebrow}</p>
     <p id="nl-title" style="font-family:'DM Sans',sans-serif;font-size:1.5rem;font-weight:800;line-height:1.2;color:#24252e;margin-bottom:1rem;">{c.popup.title}</p>
     <p style="font-family:'DM Sans',sans-serif;font-size:.95rem;color:#24252e;opacity:.75;margin-bottom:1.75rem;line-height:1.5;">{c.popup.body}</p>
-    <div style="display:flex;gap:.5rem;flex-wrap:wrap;justify-content:center;">
-      <input type="email" placeholder={c.popup.placeholder} aria-label={c.newsletter.label}
+    <form class="nl-form" action={site.forms.newsletter} method="POST" novalidate style="display:flex;gap:.5rem;flex-wrap:wrap;justify-content:center;">
+      <input type="email" name="email" required autocomplete="email" placeholder={c.popup.placeholder} aria-label={c.newsletter.label}
         style="flex:1;min-width:200px;padding:.75rem 1rem;border:1.5px solid rgba(36,37,46,.2);border-radius:2px;font-family:'DM Sans',sans-serif;font-size:.9rem;background:#fff;color:#24252e;outline:none;">
-      <button style="background:#ed694b;color:#fff;border:none;padding:.75rem 1.5rem;border-radius:2px;font-family:'DM Sans',sans-serif;font-size:.9rem;font-weight:700;cursor:pointer;white-space:nowrap;"
+      <button type="submit" style="background:#ed694b;color:#fff;border:none;padding:.75rem 1.5rem;border-radius:2px;font-family:'DM Sans',sans-serif;font-size:.9rem;font-weight:700;cursor:pointer;white-space:nowrap;"
         onmouseover="this.style.background='#d4533a'" onmouseout="this.style.background='#ed694b'">
         {c.popup.button}
       </button>
-    </div>
+    </form>
+    <p class="nl-msg" role="status" aria-live="polite" style="margin-top:.75rem"></p>
     <p style="font-family:'DM Sans',sans-serif;font-size:.75rem;color:#24252e;opacity:.45;margin-top:1rem;">{c.popup.note}</p>
   </div>
 </div>
-<script is:inline>
+<script is:inline define:vars={{ nl: c.newsletter.msg, lang }}>
+// Newsletter (bloque + popup) → /api/newsletter (worker/index.js → lista de Brevo)
+document.querySelectorAll('.nl-form').forEach(function(form){
+  form.insertAdjacentHTML('beforeend', '<input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">');
+  var out = form.parentElement.querySelector('.nl-msg');
+  form.addEventListener('submit', async function(e){
+    e.preventDefault();
+    var email = form.email.value.trim();
+    var btn = form.querySelector('button');
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { out.textContent = nl.invalid; form.email.focus(); return; }
+    btn.disabled = true; out.textContent = nl.sending;
+    try {
+      var res = await fetch(form.action, { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({ email: email, lang: lang, website: form.website.value }) });
+      if (!res.ok) throw new Error();
+      form.style.display = 'none'; out.textContent = nl.ok;
+      try { localStorage.setItem('amapolas-nl', '1'); } catch (_) {}
+    } catch (_) { btn.disabled = false; out.textContent = nl.error; }
+  });
+});
 (function(){
   var overlay = document.getElementById('nl-overlay');
   var closeBtn = document.getElementById('nl-close');
   function showPopup(){ overlay.style.display = 'flex'; document.body.style.overflow = 'hidden'; }
-  function hidePopup(){ overlay.style.display = 'none'; document.body.style.overflow = ''; }
-  setTimeout(showPopup, 5000);
+  function hidePopup(){ overlay.style.display = 'none'; document.body.style.overflow = ''; try { sessionStorage.setItem('amapolas-nl-closed', '1'); } catch (_) {} }
+  var seen = false;
+  try { seen = localStorage.getItem('amapolas-nl') === '1' || sessionStorage.getItem('amapolas-nl-closed') === '1'; } catch (_) {}
+  if (!seen) setTimeout(showPopup, 5000);
   closeBtn.addEventListener('click', hidePopup);
   overlay.addEventListener('click', function(e){ if(e.target === overlay) hidePopup(); });
   document.addEventListener('keydown', function(e){ if(e.key === 'Escape') hidePopup(); });

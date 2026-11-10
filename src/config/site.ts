@@ -29,12 +29,12 @@ export const site = {
     mercadoPago: 'https://link.mercadopago.com.ar/amapolas', // TODO: ejemplo
   },
 
-  // TODO: endpoint de formularios (p. ej. Formspree, Basin o un Worker) y site key de Turnstile.
-  // Mientras estén vacíos, los formularios abren el cliente de correo con los datos completados.
+  // Formularios y newsletter: worker/index.js (Brevo). Turnstile: site key pública (vacía = sin captcha).
   forms: {
-    prensa: '',
-    alianzas: '',
-    sponsors: '',
+    prensa: '/api/contacto',
+    alianzas: '/api/contacto',
+    sponsors: '/api/contacto',
+    newsletter: '/api/newsletter',
     turnstileSiteKey: '',
   },
 

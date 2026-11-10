@@ -30,3 +30,6 @@ nav.over-bg .nav-links .nav-parent.active{opacity:1}
 
 /* Nav en modo claro (páginas con hero claro, como v5 comunidad.html) */
 nav[data-light] .nav-links .nav-parent.active{opacity:1;border-bottom:2px solid var(--rojo);padding-bottom:2px}
+/* Newsletter: mensaje de estado del envío (home) */
+.nl-msg{font-size:.85rem;font-weight:600;color:var(--verde,#376135);margin-top:.6rem;min-height:1.2em}
+.nl-msg:empty{display:none}
