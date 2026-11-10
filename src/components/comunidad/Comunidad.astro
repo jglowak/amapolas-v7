@@ -139,8 +139,7 @@ const sf = c.sponsors.form;
     <div class="institucional-right reveal">
       <div class="inst-form-card">
         <p style="font-size:.68rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(36,37,46,.35);margin-bottom:1.5rem">{c.fundaciones.formLabel}</p>
-        <!-- TODO: endpoint (site.forms.alianzas); sin endpoint abre el correo -->
-        <form id="alianzaForm" method="POST" data-endpoint={site.forms.alianzas} data-subject={ff.subject} onsubmit="amapolasSubmit(event,'alianzaSuccess')">
+        <form id="alianzaForm" method="POST" data-form="alianzas" data-endpoint={site.forms.alianzas} data-subject={ff.subject} onsubmit="amapolasSubmit(event,'alianzaSuccess')">
           <div class="form-row-2">
             <div><label class="form-label" for="org_nombre">{ff.nombre}</label><input class="form-input" type="text" id="org_nombre" name="org_nombre" placeholder={ff.nombrePh} required autocomplete="organization"></div>
             <div><label class="form-label" for="org_pais">{ff.pais}</label><input class="form-input" type="text" id="org_pais" name="org_pais" placeholder={ff.paisPh} required autocomplete="country-name"></div>
@@ -182,8 +181,7 @@ const sf = c.sponsors.form;
     <div class="institucional-right reveal">
       <div class="inst-form-card">
         <p style="font-size:.68rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(36,37,46,.35);margin-bottom:1.5rem">{c.sponsors.formLabel}</p>
-        <!-- TODO: endpoint (site.forms.sponsors); sin endpoint abre el correo -->
-        <form id="sponsorForm" method="POST" data-endpoint={site.forms.sponsors} data-subject={sf.subject} onsubmit="amapolasSubmit(event,'sponsorSuccess')">
+        <form id="sponsorForm" method="POST" data-form="sponsors" data-endpoint={site.forms.sponsors} data-subject={sf.subject} onsubmit="amapolasSubmit(event,'sponsorSuccess')">
           <div class="form-row-2">
             <div><label class="form-label" for="sp_nombre">{sf.nombre}</label><input class="form-input" type="text" id="sp_nombre" name="marca" placeholder={sf.nombrePh} required autocomplete="organization"></div>
             <div><label class="form-label" for="sp_pais">{sf.pais}</label><input class="form-input" type="text" id="sp_pais" name="pais" placeholder={sf.paisPh} required autocomplete="country-name"></div>

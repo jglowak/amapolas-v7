@@ -1,10 +1,20 @@
-// Cloudflare Workers (static assets). Build: npm run build → dist/
+// Cloudflare Workers: sitio estático (dist/) + worker/index.js para /api/* (formularios y newsletter con Brevo).
+// Build: npm run build → dist/. Secretos en el panel: BREVO_API_KEY (obligatorio), TURNSTILE_SECRET (opcional).
 {
   "name": "amapolas-v7",
+  "main": "./worker/index.js",
   "compatibility_date": "2026-10-01",
   "assets": {
     "directory": "./dist",
+    "binding": "ASSETS",
     "html_handling": "drop-trailing-slash",
-    "not_found_handling": "404-page"
-  }
+    "not_found_handling": "404-page",
+    "run_worker_first": ["/api/*"]
+  },
+  "vars": {
+    "MAIL_TO": "info@amapolas.org",
+    "MAIL_FROM": "info@amapolas.org",
+    "BREVO_LIST_ID": "3"
+  },
+  "observability": { "enabled": true }
 }

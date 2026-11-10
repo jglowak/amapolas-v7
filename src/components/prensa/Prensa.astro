@@ -114,8 +114,7 @@ const f = c.contacto.form;
     </div>
 
     <div class="form-card reveal">
-      <!-- TODO: endpoint en src/config/site.ts (forms.prensa); sin endpoint abre el correo -->
-      <form id="prensaForm" method="POST" data-endpoint={site.forms.prensa} data-subject={f.subject} onsubmit="amapolasSubmit(event,'prensaSuccess')">
+      <form id="prensaForm" method="POST" data-form="prensa" data-endpoint={site.forms.prensa} data-subject={f.subject} onsubmit="amapolasSubmit(event,'prensaSuccess')">
         <div class="form-row-2">
           <div>
             <label class="form-label" for="p_nombre">{f.nombre}</label>
