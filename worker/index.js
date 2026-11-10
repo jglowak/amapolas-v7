@@ -1,6 +1,7 @@
 // Worker de Amapolas: sirve el sitio estático (dist/) y atiende /api/* con Brevo.
 //   POST /api/contacto   → mail transaccional a MAIL_TO (formularios de prensa, alianzas y sponsors)
 //   POST /api/newsletter → alta del contacto en la lista BREVO_LIST_ID
+//   cron semanal         → mantiene activa la clave de Brevo
 // Secretos (Cloudflare → Settings → Variables and Secrets): BREVO_API_KEY y, opcional, TURNSTILE_SECRET.
 // Variables: MAIL_TO, MAIL_FROM, BREVO_LIST_ID (wrangler.jsonc).
 
@@ -84,5 +85,15 @@ export default {
       return json({ ok: false, error: 'not_found' }, 404);
     }
     return env.ASSETS.fetch(req);
+  },
+
+  // Cron semanal (wrangler.jsonc → triggers): una lectura mínima para que Brevo no dé de baja
+  // la clave tras 90 días sin uso. Usa el permiso de contactos que ya tiene la clave.
+  async scheduled(_event, env) {
+    if (!env.BREVO_API_KEY) return;
+    const res = await fetch(`${BREVO}/contacts/lists/${Number(env.BREVO_LIST_ID)}`, {
+      headers: { 'api-key': env.BREVO_API_KEY, Accept: 'application/json' },
+    });
+    if (!res.ok) console.error('Brevo keep-alive', res.status, await res.text());
   },
 };
