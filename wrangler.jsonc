@@ -16,5 +16,7 @@
     "MAIL_FROM": "info@amapolas.org",
     "BREVO_LIST_ID": "3"
   },
+  // Lunes 9:17 UTC: mantiene activa la clave de Brevo (worker/index.js → scheduled)
+  "triggers": { "crons": ["17 9 * * 1"] },
   "observability": { "enabled": true }
 }
