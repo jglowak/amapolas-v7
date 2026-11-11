@@ -21,8 +21,3 @@ body .form-label{color:rgba(36,37,46,.75)}
 /* CTA de donación al pie (fondo de color; si es rojo, la página usa --rojo-fondo) */
 body .donar-cta .eyebrow,body .donar-cta-text p,body .donar-note{color:#fff}
 
-/* Footer */
-body .foot-desc{color:rgba(255,255,255,.7)}
-body .foot-col .foot-h{color:rgba(255,255,255,.65)}
-body .footer-bottom p{color:rgba(255,255,255,.62)}
-body .foot-social a{color:rgba(255,255,255,.8);border-color:rgba(255,255,255,.3)}

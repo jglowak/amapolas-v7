@@ -34,3 +34,10 @@ nav[data-light] .nav-links .nav-parent.active{opacity:1;border-bottom:2px solid 
 .nl-msg{font-size:.85rem;font-weight:600;color:var(--verde,#376135);margin-top:.6rem;min-height:1.2em}
 .nl-msg:empty{display:none}
 .nl-ts:empty{display:none}
+
+/* Footer: contraste WCAG AA en todo el sitio. El footer es un solo componente, pero sus colores venían
+   de la copia de CSS de v5 de cada página; estas reglas (cargadas por Base.astro) los unifican. */
+body .foot-desc{color:rgba(255,255,255,.7)}
+body .foot-col .foot-h{color:rgba(255,255,255,.65)}
+body .footer-bottom p{color:rgba(255,255,255,.62)}
+body .foot-social a{color:rgba(255,255,255,.8);border-color:rgba(255,255,255,.3)}
