@@ -1,10 +1,12 @@
 ---
 // Género. Markup extraído de v5 nosotras/genero.html (scripts/v5-extract/nosotras__genero/body.html).
 // CSS: pages/nosotras__genero.css completo, como en v5. Cambios: textos del bloque 1 y ODS 5,
-// cifras nuevas con fuentes, CTA hacia /donar. Fotos pendientes con el placeholder de v5.
+// cifras nuevas con fuentes, CTA hacia /donar. Doc 24/10: sin badge en el hero, sin "Fechas que
+// nos marcan" y sin el párrafo "Nuestra motivación…". Fotos pendientes con el placeholder de v5.
 import { genero } from '../../i18n/genero';
 import { localePath, type Lang } from '../../i18n/ui';
 import '../../styles/pages/nosotras__genero.css';
+import '../../styles/legibilidad-interiores.css';
 import '../../styles/genero-v7.css';
 
 interface Props { lang: Lang }
@@ -24,9 +26,6 @@ const L = (p: string) => localePath(lang, p);
       <a href={L('/')}>{c.hero.home}</a><span>/</span>
       <a href={L('/nosotras')}>{c.hero.parent}</a><span>/</span>
       <span style="color:rgba(255,255,255,.7)" aria-current="page">{c.hero.here}</span>
-    </div>
-    <div class="hero-badge" style="background:rgba(237,105,75,.35);color:white;border:1px solid rgba(255,255,255,.2)">
-      <span style="font-size:.8rem">01</span> · {c.hero.badge}
     </div>
     <h1 class="hero-title">{c.hero.title[0]}<br>{c.hero.title[1]}</h1>
     <p class="hero-subtitle">{c.hero.subtitle}</p>
@@ -49,25 +48,6 @@ const L = (p: string) => localePath(lang, p);
     </div>
     <div class="eje-photo reveal">
       <div class="eje-photo-placeholder"><span>{c.b1.photo}</span></div>
-    </div>
-  </div>
-</div>
-
-<!-- BLOQUE 2 -->
-<div class="eje-bloque bg-crema">
-  <div class="eje-two-col reverse">
-    <div class="eje-photo reveal">
-      <div class="eje-photo-placeholder"><span>{c.b2.photo}</span></div>
-    </div>
-    <div class="reveal">
-      <p class="section-eyebrow">{c.b2.eyebrow}</p>
-      <h2 class="section-title">{c.b2.title[0]}<br>{c.b2.title[1]}</h2>
-      <div class="prose">
-        <p>{c.b2.prose}</p>
-      </div>
-      <div class="fechas-list">
-        {c.b2.fechas.map(([d, t]) => <div class="fecha-row"><span class="fecha-dia">{d}</span><span class="fecha-desc">{t}</span></div>)}
-      </div>
     </div>
   </div>
 </div>
