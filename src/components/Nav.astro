@@ -56,9 +56,9 @@ const close = "document.getElementById('mob').classList.remove('open')";
       <button type="button" class:list={['nav-parent', act('prensa')]} aria-haspopup="true">{t.prensa}</button>
       <div class="nav-dropdown">
         <span class="nav-dropdown-label">{t.prensa}</span>
-        <a href={L('/prensa#eventos')}>{t.eventos}</a>
         <a href={L('/prensa#prensa')}>{t.prensaItem}</a>
         <a href={L('/prensa#kit')}>{t.kit}</a>
+        <a href={L('/prensa#eventos')}>{t.eventos}</a>
       </div>
     </li>
     <li class="nav-item has-dropdown">
@@ -106,9 +106,9 @@ const close = "document.getElementById('mob').classList.remove('open')";
   <div class="mob-accordion">
     <button class="mob-acc-btn" onclick="toggleMobAcc(this)">{t.prensa} <span class="mob-acc-arrow">▾</span></button>
     <div class="mob-acc-panel">
-      <a href={L('/prensa#eventos')} onclick={close}>{t.eventos}</a>
       <a href={L('/prensa#prensa')} onclick={close}>{t.prensaItem}</a>
       <a href={L('/prensa#kit')} onclick={close}>{t.kit}</a>
+      <a href={L('/prensa#eventos')} onclick={close}>{t.eventos}</a>
     </div>
   </div>
   <div class="mob-accordion">

@@ -16,7 +16,6 @@ const es = {
     home: 'Inicio', here: 'Acciones y Prensa',
     title: ['Acciones', 'y Prensa'],
     subtitle: 'Creemos que lo que hacemos también necesita ser contado. Comunicar nuestras experiencias, aprendizajes y desafíos nos permite ampliar las redes, visibilizar otras formas de habitar y producir, y acercar nuestra voz a quienes pueden contribuir a que estos proyectos sigan creciendo.',
-    tabs: [['#eventos', 'Eventos y Acciones'], ['#prensa', 'Prensa'], ['#contacto-prensa', 'Contacto de prensa'], ['#kit', 'Kit de Prensa']] as Link[],
   },
   eventos: {
     eyebrow: 'Registro cronológico',
@@ -88,7 +87,7 @@ const es = {
       { tag: 'Una mirada en profundidad', h: 'Dossier institucional', p: 'Un recorrido por la historia de Amapolas, sus proyectos, el enfoque que las articula y las alianzas que hacen posible su desarrollo. Disponible en español e inglés para medios y organizaciones que quieran conocer nuestra experiencia en profundidad.', links: [['Descargar ES →', '/dossier-amapolas-es.pdf'], ['Download EN →', '/dossier-amapolas-en.pdf']] as Link[] },
     ],
     boilerLabel: 'Boilerplate institucional — Texto de uso libre para medios',
-    boiler: 'Amapolas es una cooperativa de viviendas conducida íntegramente por mujeres y disidencias, fundada en 2022 en Bariloche, Patagonia Argentina (INAES N°63884). Desarrolla un modelo de hábitat comunitario con perspectiva feminista y enfoque regenerativo que articula vivienda cooperativa, proyectos agroecológicos e interculturalidad. Es una cooperativa de vivienda en Patagonia de conducción 100% femenina y ha recibido tres ciclos consecutivos de financiamiento internacional de una misma ONG (2023, 2024 y 2025). Integra la Coalición Internacional para el Hábitat en Latinoamérica (HIC - AL) y la red latinoamericana TEC IN HAB (tecnologías integrales del hábitat).',
+    boiler: 'Amapolas es una cooperativa de viviendas conducida íntegramente por mujeres y disidencias, fundada en 2022 en Bariloche, Patagonia Argentina (INAES N°63884). Desarrolla un modelo de hábitat comunitario con perspectiva feminista y enfoque regenerativo que articula vivienda cooperativa, proyectos agroecológicos e interculturalidad. Ha recibido tres ciclos consecutivos de financiamiento internacional de una misma ONG (2023, 2024 y 2025). Integra la Coalición Internacional para el Hábitat en Latinoamérica (HIC - AL) y la red latinoamericana TEC IN HAB (tecnologías integrales del hábitat).',
   },
 };
 
@@ -102,7 +101,6 @@ const en: typeof es = {
     home: 'Home', here: 'Actions and Press',
     title: ['Actions', 'and Press'],
     subtitle: 'We believe what we do also needs to be told. Sharing our experiences, lessons and challenges helps us widen our networks, make other ways of living and producing visible, and bring our voice to those who can help these projects keep growing.',
-    tabs: [['#eventos', 'Events and Actions'], ['#prensa', 'Press'], ['#contacto-prensa', 'Press contact'], ['#kit', 'Press Kit']],
   },
   eventos: {
     eyebrow: 'Timeline',
@@ -174,7 +172,7 @@ const en: typeof es = {
       { tag: 'An in-depth look', h: 'Institutional dossier', p: 'A journey through Amapolas’ history, its projects, the approach that connects them and the alliances that make them possible. Available in Spanish and English for media and organizations wanting to learn about our experience in depth.', links: [['Descargar ES →', '/dossier-amapolas-es.pdf'], ['Download EN →', '/dossier-amapolas-en.pdf']] },
     ],
     boilerLabel: 'Institutional boilerplate — Free to use by media',
-    boiler: 'Amapolas is a housing cooperative led entirely by women and gender-diverse people, founded in 2022 in Bariloche, Argentine Patagonia (INAES No. 63884). It develops a community habitat model with a feminist perspective and a regenerative approach that brings together cooperative housing, agroecological projects and interculturality. It is a 100% women-led housing cooperative in Patagonia and has received three consecutive cycles of international funding from the same NGO (2023, 2024 and 2025). It is a member of Habitat International Coalition Latin America (HIC-AL) and of the Latin American TEC IN HAB network (integrated habitat technologies).',
+    boiler: 'Amapolas is a housing cooperative led entirely by women and gender-diverse people, founded in 2022 in Bariloche, Argentine Patagonia (INAES No. 63884). It develops a community habitat model with a feminist perspective and a regenerative approach that brings together cooperative housing, agroecological projects and interculturality. It has received three consecutive cycles of international funding from the same NGO (2023, 2024 and 2025). It is a member of Habitat International Coalition Latin America (HIC-AL) and of the Latin American TEC IN HAB network (integrated habitat technologies).',
   },
 };
 

@@ -1,0 +1,28 @@
+/* Legibilidad de las páginas interiores (contraste WCAG AA), con el mismo criterio que
+   legibilidad-home.css: los grises con transparencia de v5 quedaban por debajo de 4.5:1. Se suben
+   las opacidades sin cambiar colores ni tamaños; el rojo como texto chico sobre fondo claro pasa a un
+   rojo más oscuro. Se importa después del CSS de cada página; lo particular va en su *-v7.css.
+   El prefijo body sube la especificidad por encima de las reglas de una sola clase de v5. */
+:root{--rojo-texto:#b03d27;--rojo-fondo:#cc4c32;--rojo-claro:#f3896f}
+
+/* Hero oscuro (texto sobre la foto con degradé) */
+body .hero-breadcrumb,body .hero-breadcrumb a{color:rgba(255,255,255,.85)}
+body .hero-breadcrumb span{color:rgba(255,255,255,.85)}
+body .hero-breadcrumb [aria-current]{color:#fff!important}
+body .hero-subtitle{color:rgba(255,255,255,.9)}
+
+/* Texto oscuro sobre crema / blanco */
+body .section-eyebrow{color:var(--rojo-texto)}
+body .prose p{color:rgba(36,37,46,.78)}
+body .galeria-note{color:rgba(36,37,46,.7)}
+body .dato-label{color:rgba(36,37,46,.7)}
+body .form-label{color:rgba(36,37,46,.75)}
+
+/* CTA de donación al pie (fondo de color; si es rojo, la página usa --rojo-fondo) */
+body .donar-cta .eyebrow,body .donar-cta-text p,body .donar-note{color:#fff}
+
+/* Footer */
+body .foot-desc{color:rgba(255,255,255,.7)}
+body .foot-col .foot-h{color:rgba(255,255,255,.65)}
+body .footer-bottom p{color:rgba(255,255,255,.62)}
+body .foot-social a{color:rgba(255,255,255,.8);border-color:rgba(255,255,255,.3)}
