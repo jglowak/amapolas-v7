@@ -35,7 +35,7 @@ export const site = {
     alianzas: '/api/contacto',
     sponsors: '/api/contacto',
     newsletter: '/api/newsletter',
-    turnstileSiteKey: '',
+    turnstileSiteKey: '0x4AAAAAAF8KCfbaAXwpCNt7',
   },
 
   // Mientras estén en false, el JSON-LD no publica sameAs ni ContactPoint

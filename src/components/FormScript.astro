@@ -71,6 +71,9 @@ window.amapolasSubmit = async function (e, successId) {
   } catch {
     btn.disabled = false;
     btn.innerHTML = label;
+    // el token de Turnstile es de un solo uso: pedir uno nuevo para reintentar
+    const w = form.querySelector('.cf-turnstile');
+    if (w && window.turnstile) window.turnstile.reset(w);
     alert(msg.error);
   }
 };

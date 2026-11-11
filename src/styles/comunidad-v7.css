@@ -20,3 +20,4 @@
 /* Hero como el resto de las páginas: sin menú interno, texto debajo del título (correcciones) */
 .hero-inner.hero-stack{grid-template-columns:1fr;gap:2rem;align-items:start;max-width:900px}
 .hero-stack .hero-right p{max-width:640px;margin-bottom:0;padding-left:1.4rem;border-left:3px solid var(--rojo)}
+.turnstile-wrap{margin-bottom:1rem}
