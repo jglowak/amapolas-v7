@@ -1,0 +1,23 @@
+/* Formulario de donación de una columna (DonationForm.astro): /donar2 y /donar3 */
+.d2-card [hidden]{display:none!important}
+.d2-card{background:#fff;border-radius:10px;box-shadow:0 24px 60px rgba(36,37,46,.25);padding:1.4rem}
+.d2-tabs{display:grid;grid-template-columns:1fr 1fr;gap:.4rem;padding:.35rem;background:var(--crema);border-radius:6px;margin-bottom:1.4rem}
+.d2-tab{font-family:var(--font);border:none;background:none;cursor:pointer;padding:.85rem .5rem;border-radius:4px;font-size:.95rem;font-weight:800;color:rgba(36,37,46,.75);line-height:1.25}
+.d2-tab small{display:block;font-size:.7rem;font-weight:600;margin-top:.2rem;color:rgba(36,37,46,.72)}
+.d2-tab[aria-selected="true"]{background:#fff;color:var(--azul);box-shadow:0 2px 10px rgba(36,37,46,.12)}
+.d2-freq{display:grid;grid-template-columns:1fr 1fr;border:2px solid var(--azul);border-radius:6px;overflow:hidden;margin-bottom:1rem}
+.d2-freq button{font-family:var(--font);border:none;background:#fff;color:var(--azul);font-weight:800;font-size:.95rem;padding:.8rem;cursor:pointer}
+.d2-freq button[aria-checked="true"]{background:var(--azul);color:#fff}
+.d2-hint{font-size:.85rem;color:rgba(36,37,46,.78);text-align:center;margin-bottom:.8rem}
+.d2-amount-grid{display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-bottom:1rem}
+.d2-amount{font-family:var(--font);border:2px solid rgba(36,37,46,.18);background:#fff;border-radius:6px;padding:1rem .5rem;font-size:1.3rem;font-weight:800;letter-spacing:-.02em;color:var(--azul);cursor:pointer;transition:border-color .15s,background .15s}
+.d2-amount small{font-size:.8rem;font-weight:700;margin-left:.15rem;color:rgba(36,37,46,.72)}
+.d2-amount:hover{border-color:var(--azul)}
+.d2-amount[aria-checked="true"]{border-color:var(--rojo);background:#fdeee9}
+.d2-amount--other{grid-column:1/-1;font-size:1rem}
+.d2-note{font-size:.82rem;line-height:1.5;color:rgba(36,37,46,.75);text-align:center;margin-top:.9rem}
+#d2-db dbox-widget{display:block;width:100%;min-height:420px}
+
+@media(max-width:640px){.d2-card{padding:1rem}.d2-tab{font-size:.85rem}}
+.d2-go{display:flex;align-items:center;justify-content:center;width:100%;background:var(--azul);color:#fff;font-weight:800;font-size:1rem;padding:1rem 1.5rem;border-radius:3px;text-decoration:none;text-align:center;transition:background .2s}
+.d2-go:hover{background:#15161c}

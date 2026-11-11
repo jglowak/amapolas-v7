@@ -8,6 +8,7 @@ import plantas from '../../assets/img/plantas.jpg';
 import { donar2 } from '../../i18n/donar2';
 import { site } from '../../config/site';
 import { localePath, type Lang } from '../../i18n/ui';
+import DonationForm from '../DonationForm.astro';
 import '../../styles/global.css';
 import '../../styles/donar2.css';
 
@@ -16,14 +17,6 @@ const { lang } = Astro.props;
 const c = donar2[lang];
 const f = c.form;
 const L = (p: string) => localePath(lang, p);
-const mp = site.donate.mercadoPagoAmounts;
-const fmt = (n: number) => (lang === 'es' ? `$${n.toLocaleString('es-AR')}` : `ARS ${n.toLocaleString('en-US')}`);
-const opts = (list: readonly { ars: number; url: string; featured?: boolean }[], monthly: boolean) =>
-  list.map((o) => ({ label: fmt(o.ars), url: o.url || site.donate.mercadoPago, featured: !!o.featured, cta: f.cta(fmt(o.ars), monthly) }));
-const once = opts(mp.once, false);
-const monthly = opts(mp.monthly, true);
-const otherOnce = mp.otherOnce || site.donate.mercadoPago;
-const otherMonthly = mp.otherMonthly || site.donate.mercadoPago;
 const check = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>';
 ---
 <!-- HERO -->
@@ -68,41 +61,7 @@ const check = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" strok
   <div class="d2-col">
     <p class="d2-eyebrow d2-eyebrow--dark">{f.eyebrow}</p>
     <h2 class="d2-title">{f.title}</h2>
-    <div class="d2-card">
-      <div class="d2-tabs" role="tablist">
-        <button type="button" class="d2-tab" role="tab" id="d2-tab-mp" aria-controls="d2-mp" aria-selected="true">{f.tabs.mp[0]}<small>{f.tabs.mp[1]}</small></button>
-        <button type="button" class="d2-tab" role="tab" id="d2-tab-db" aria-controls="d2-db" aria-selected="false">{f.tabs.db[0]}<small>{f.tabs.db[1]}</small></button>
-      </div>
-
-      <!-- MERCADO PAGO: frecuencia + montos (cada monto tiene su link, ver site.donate.mercadoPagoAmounts) -->
-      <div class="d2-panel" id="d2-mp" role="tabpanel" aria-labelledby="d2-tab-mp">
-        <div class="d2-freq" role="radiogroup" aria-label={lang === 'es' ? 'Frecuencia' : 'Frequency'}>
-          <button type="button" role="radio" aria-checked="true" data-freq="once">{f.freq.once}</button>
-          <button type="button" role="radio" aria-checked="false" data-freq="monthly">{f.freq.monthly}</button>
-        </div>
-        {[['once', once, otherOnce], ['monthly', monthly, otherMonthly]].map(([key, list, other]) => (
-          <div class="d2-amounts" data-group={key as string} hidden={key === 'monthly'}>
-            {key === 'monthly' && <p class="d2-hint">{f.monthlyHint}</p>}
-            <div class="d2-amount-grid" role="radiogroup" aria-label={lang === 'es' ? 'Monto' : 'Amount'}>
-              {(list as typeof once).map((o) => (
-                <button type="button" role="radio" class="d2-amount" aria-checked={o.featured ? 'true' : 'false'} data-url={o.url} data-cta={o.cta}>
-                  {o.label}{key === 'monthly' && <small>{f.perMonth}</small>}
-                </button>
-              ))}
-              <button type="button" role="radio" class="d2-amount d2-amount--other" aria-checked="false" data-url={other as string} data-cta={f.ctaOther}>{f.other}</button>
-            </div>
-          </div>
-        ))}
-        <a class="d2-btn d2-btn--dark d2-btn--block" id="d2-mp-go" href={once.find((o) => o.featured)?.url ?? site.donate.mercadoPago} target="_blank" rel="noopener">{once.find((o) => o.featured)?.cta}</a>
-        <p class="d2-note">{f.mpNote}</p>
-      </div>
-
-      <!-- DONORBOX: formulario embebido -->
-      <div class="d2-panel" id="d2-db" role="tabpanel" aria-labelledby="d2-tab-db" hidden>
-        <dbox-widget campaign={site.donate.donorboxCampaign[lang]} type="donation_form" interval="1 M" amount="30" enable-auto-scroll="true" language={lang}></dbox-widget>
-        <p class="d2-note">{f.dbNote}</p>
-      </div>
-    </div>
+    <DonationForm lang={lang} />
   </div>
 </section>
 
@@ -143,39 +102,8 @@ const check = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" strok
 <!-- Barra fija en mobile (se oculta cuando el formulario está a la vista) -->
 <a href="#aporte" class="d2-sticky" id="d2-sticky">{c.sticky}</a>
 
-<script type="module" src="https://donorbox.org/widgets.js" async is:inline></script>
 <script is:inline>
 (function () {
-  // Pestañas
-  const tabs = document.querySelectorAll('.d2-tab');
-  function select(id) {
-    tabs.forEach((t) => {
-      const on = t.id === id;
-      t.setAttribute('aria-selected', on ? 'true' : 'false');
-      document.getElementById(t.getAttribute('aria-controls')).hidden = !on;
-    });
-  }
-  tabs.forEach((t) => t.addEventListener('click', () => select(t.id)));
-  if (location.hash === '#donorbox') select('d2-tab-db');
-  else fetch('/api/pais').then((r) => (r.ok ? r.json() : null)).then((d) => {
-    if (d && d.country && d.country !== 'AR') select('d2-tab-db');
-  }).catch(() => {});
-
-  // Mercado Pago: frecuencia y monto → actualizan el botón
-  const go = document.getElementById('d2-mp-go');
-  function pick(btn) {
-    btn.parentElement.querySelectorAll('.d2-amount').forEach((b) => b.setAttribute('aria-checked', b === btn ? 'true' : 'false'));
-    go.href = btn.dataset.url;
-    go.textContent = btn.dataset.cta;
-  }
-  document.querySelectorAll('.d2-amount').forEach((b) => b.addEventListener('click', () => pick(b)));
-  document.querySelectorAll('.d2-freq button').forEach((b) => b.addEventListener('click', () => {
-    document.querySelectorAll('.d2-freq button').forEach((x) => x.setAttribute('aria-checked', x === b ? 'true' : 'false'));
-    document.querySelectorAll('.d2-amounts').forEach((g) => { g.hidden = g.dataset.group !== b.dataset.freq; });
-    const group = document.querySelector('.d2-amounts[data-group="' + b.dataset.freq + '"]');
-    pick(group.querySelector('.d2-amount[aria-checked="true"]') || group.querySelector('.d2-amount'));
-  }));
-
   // Barra fija: visible después del hero y mientras el formulario no está en pantalla
   const sticky = document.getElementById('d2-sticky');
   const form = document.getElementById('aporte');
