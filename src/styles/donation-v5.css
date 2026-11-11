@@ -78,3 +78,8 @@
 .donation-section--full .donation-widget .mp-secure{color:rgba(255,255,255,.95);font-size:.72rem}
 .donation-section--full .donation-content .section-eyebrow{color:rgba(255,255,255,.95)}
 .donation-section--full .donation-content .section-body,.donation-section--full .donation-impact-row{color:#fff;font-weight:500}
+/* Rojo más profundo solo en el cuadro de donación: texto blanco con contraste 4.5:1 (AA) */
+.donation-section.donation-section--full{background:#cc4c32}
+.donation-section.donation-section--full .donation-widget{background:#cc4c32}
+.donation-section.donation-section--full .donation-impact-row{background:rgba(36,37,46,.12)}
+.donation-section.donation-section--full .donation-content .section-eyebrow,.donation-section.donation-section--full .donation-widget .mp-secure{color:#fff}
