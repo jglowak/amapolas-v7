@@ -1,13 +1,17 @@
 // Worker de Amapolas: sirve el sitio estático (dist/) y atiende /api/* con Brevo.
 //   POST /api/contacto   → mail transaccional a MAIL_TO (formularios de prensa, alianzas y sponsors)
-//   POST /api/newsletter → alta del contacto en la lista BREVO_LIST_ID
+//                          + respuesta automática a quien escribió (plantillas BREVO_TPL_REPLY_ES/EN)
+//   POST /api/newsletter → doble opt-in: Brevo manda el mail de confirmación (BREVO_TPL_DOI_ES/EN)
+//                          y suma el contacto a BREVO_LIST_ID recién cuando lo confirma
 //   cron semanal         → mantiene activa la clave de Brevo
 // Secretos (Cloudflare → Settings → Variables and Secrets): BREVO_API_KEY y, opcional, TURNSTILE_SECRET.
-// Variables: MAIL_TO, MAIL_FROM, BREVO_LIST_ID (wrangler.jsonc).
+// Variables: MAIL_TO, MAIL_FROM, BREVO_LIST_ID y los IDs de plantillas (wrangler.jsonc).
 
 const BREVO = 'https://api.brevo.com/v3';
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const FORMS = { prensa: 'Prensa', alianzas: 'Fundaciones y organizaciones', sponsors: 'Sponsors' };
+// Nombre del formulario en la respuesta automática, según el idioma de la página
+const FORMS_EN = { prensa: 'press', alianzas: 'foundations and organizations', sponsors: 'sponsors' };
 
 const json = (body, status = 200) =>
   new Response(JSON.stringify(body), { status, headers: { 'Content-Type': 'application/json' } });
@@ -58,7 +62,21 @@ async function contacto(req, env) {
     htmlContent: `<p>Nuevo mensaje desde el formulario <strong>${esc(FORMS[d.form])}</strong> de amapolas.org</p><table>${rows}</table>`,
     textContent: fields.map(([k, v]) => `${k}: ${v}`).join('\n'),
   });
-  return res.ok ? json({ ok: true }) : json({ ok: false, error: 'send' }, 502);
+  if (!res.ok) return json({ ok: false, error: 'send' }, 502);
+
+  // Respuesta automática: si falla, el mensaje ya llegó a info@, así que no se informa error
+  if (replyTo) {
+    const en = d.lang === 'en';
+    await brevo(env, '/smtp/email', {
+      templateId: Number(en ? env.BREVO_TPL_REPLY_EN : env.BREVO_TPL_REPLY_ES),
+      to: [{ email: replyTo }],
+      params: {
+        ...(d.name ? { NOMBRE: String(d.name).trim().slice(0, 80) } : {}),
+        FORMULARIO: en ? FORMS_EN[d.form] : FORMS[d.form],
+      },
+    });
+  }
+  return json({ ok: true });
 }
 
 async function newsletter(req, env) {
@@ -66,10 +84,13 @@ async function newsletter(req, env) {
   const email = String(d?.email || '').trim().toLowerCase();
   if (!EMAIL_RE.test(email) || email.length > 254) return json({ ok: false, error: 'email' }, 400);
   if (d.website) return json({ ok: true });
-  const res = await brevo(env, '/contacts', {
+  if (!(await turnstileOk(env, d.turnstile, req.headers.get('CF-Connecting-IP')))) return json({ ok: false, error: 'turnstile' }, 403);
+  const en = d.lang === 'en';
+  const res = await brevo(env, '/contacts/doubleOptinConfirmation', {
     email,
-    listIds: [Number(env.BREVO_LIST_ID)],
-    updateEnabled: true,
+    includeListIds: [Number(env.BREVO_LIST_ID)],
+    templateId: Number(en ? env.BREVO_TPL_DOI_EN : env.BREVO_TPL_DOI_ES),
+    redirectionUrl: `${new URL(req.url).origin}${en ? '/en' : ''}/newsletter-confirmado`,
   });
   return res.ok ? json({ ok: true }) : json({ ok: false, error: 'subscribe' }, 502);
 }

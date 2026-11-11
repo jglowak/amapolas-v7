@@ -33,3 +33,4 @@ nav[data-light] .nav-links .nav-parent.active{opacity:1;border-bottom:2px solid 
 /* Newsletter: mensaje de estado del envío (home) */
 .nl-msg{font-size:.85rem;font-weight:600;color:var(--verde,#376135);margin-top:.6rem;min-height:1.2em}
 .nl-msg:empty{display:none}
+.nl-ts:empty{display:none}

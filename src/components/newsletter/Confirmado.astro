@@ -1,0 +1,29 @@
+---
+// Destino del botón "Confirmar suscripción" del mail de doble opt-in de Brevo
+// (redirectionUrl en worker/index.js). Diseño del bloque dossier de v5, como la 404.
+import Base from '../../layouts/Base.astro';
+import { localePath, type Lang } from '../../i18n/ui';
+import '../../styles/global.css';
+import '../../styles/donar-v7.css';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const t = lang === 'es'
+  ? { title: 'Suscripción confirmada · Amapolas', desc: 'Tu suscripción a las novedades de Amapolas quedó confirmada.', label: 'Newsletter', h1: '¡Suscripción confirmada!', p: 'Gracias por sumarte. Vas a recibir en tu correo las novedades del barrio, los avances del proyecto y nuestras convocatorias.', home: 'Ir al inicio →', other: 'Otras formas de participar →' }
+  : { title: 'Subscription confirmed · Amapolas', desc: 'Your subscription to Amapolas updates is confirmed.', label: 'Newsletter', h1: 'Subscription confirmed!', p: 'Thank you for joining us. You will receive news about the neighborhood, project progress and our open calls in your inbox.', home: 'Go to home →', other: 'Other ways to get involved →' };
+---
+<Base lang={lang} title={t.title} description={t.desc} noindex>
+  <div class="dossier-section donar-head">
+    <div class="dossier-inner">
+      <div class="dossier-text">
+        <p class="label">{t.label}</p>
+        <h1>{t.h1}</h1>
+        <p>{t.p}</p>
+      </div>
+      <div class="dossier-btns">
+        <a href={localePath(lang, '/')} class="btn-dossier es">{t.home}</a>
+        <a href={localePath(lang, '/comunidad')} class="btn-dossier en">{t.other}</a>
+      </div>
+    </div>
+  </div>
+</Base>

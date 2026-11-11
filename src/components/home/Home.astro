@@ -240,6 +240,7 @@ const dlIcon = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stro
       <input type="email" name="email" required autocomplete="email" placeholder={c.newsletter.placeholder} aria-label={c.newsletter.label}>
       <button type="submit">{c.newsletter.button}</button>
     </form>
+    <div class="nl-ts"></div>
     <p class="nl-msg" role="status" aria-live="polite"></p>
   </div>
 </div>
@@ -259,28 +260,48 @@ const dlIcon = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stro
         {c.popup.button}
       </button>
     </form>
+    <div class="nl-ts" style="display:flex;justify-content:center;margin-top:.5rem"></div>
     <p class="nl-msg" role="status" aria-live="polite" style="margin-top:.75rem"></p>
     <p style="font-family:'DM Sans',sans-serif;font-size:.75rem;color:#24252e;opacity:.45;margin-top:1rem;">{c.popup.note}</p>
   </div>
 </div>
-<script is:inline define:vars={{ nl: c.newsletter.msg, lang }}>
-// Newsletter (bloque + popup) → /api/newsletter (worker/index.js → lista de Brevo)
+{site.forms.turnstileSiteKey && <script is:inline src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>}
+<script is:inline define:vars={{ nl: c.newsletter.msg, lang, sitekey: site.forms.turnstileSiteKey }}>
+// Newsletter (bloque + popup) → /api/newsletter (worker/index.js → doble opt-in de Brevo).
+// Turnstile en modo "interaction-only": solo aparece si Cloudflare necesita verificar a la persona.
 document.querySelectorAll('.nl-form').forEach(function(form){
   form.insertAdjacentHTML('beforeend', '<input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">');
   var out = form.parentElement.querySelector('.nl-msg');
-  form.addEventListener('submit', async function(e){
-    e.preventDefault();
-    var email = form.email.value.trim();
-    var btn = form.querySelector('button');
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { out.textContent = nl.invalid; form.email.focus(); return; }
-    btn.disabled = true; out.textContent = nl.sending;
+  var box = form.parentElement.querySelector('.nl-ts');
+  var btn = form.querySelector('button');
+  var ts = { id: null, token: '', pending: false };
+  function ensureWidget(){
+    if (!sitekey || ts.id !== null || !window.turnstile || !box) return;
+    ts.id = window.turnstile.render(box, { sitekey: sitekey, appearance: 'interaction-only', language: lang,
+      callback: function(t){ ts.token = t; if (ts.pending) { ts.pending = false; send(); } },
+      'expired-callback': function(){ ts.token = ''; },
+      'error-callback': function(){ ts.pending = false; btn.disabled = false; out.textContent = nl.error; } });
+  }
+  form.email.addEventListener('focus', ensureWidget);
+  async function send(){
     try {
       var res = await fetch(form.action, { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-        body: JSON.stringify({ email: email, lang: lang, website: form.website.value }) });
+        body: JSON.stringify({ email: form.email.value.trim(), lang: lang, website: form.website.value, turnstile: ts.token }) });
       if (!res.ok) throw new Error();
-      form.style.display = 'none'; out.textContent = nl.ok;
+      form.style.display = 'none'; if (box) box.style.display = 'none'; out.textContent = nl.ok;
       try { localStorage.setItem('amapolas-nl', '1'); } catch (_) {}
-    } catch (_) { btn.disabled = false; out.textContent = nl.error; }
+    } catch (_) {
+      btn.disabled = false; out.textContent = nl.error;
+      if (ts.id !== null) { window.turnstile.reset(ts.id); ts.token = ''; }
+    }
+  }
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email.value.trim())) { out.textContent = nl.invalid; form.email.focus(); return; }
+    btn.disabled = true; out.textContent = nl.sending;
+    ensureWidget();
+    if (sitekey && ts.id !== null && !ts.token) { ts.pending = true; return; }
+    send();
   });
 });
 (function(){
