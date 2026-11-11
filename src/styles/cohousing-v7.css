@@ -3,3 +3,16 @@
 .cf-card h3{font-size:1rem;font-weight:800;letter-spacing:-.015em;line-height:1.15}
 .cuidado-item-text h3{font-size:.9rem;font-weight:700;color:white;margin-bottom:.2rem}
 .diferencia-content h3{font-size:.92rem;font-weight:800;margin-bottom:.35rem}
+
+/* Legibilidad (contraste AA): complementa legibilidad-interiores.css */
+body .cuidado-text .section-eyebrow{color:rgba(255,255,255,.68)}
+body .cuidado-section .ods-num,body .cuidado-item-num{color:var(--rojo-claro)}
+body .cuidado-item-text p{color:rgba(255,255,255,.72)}
+body .cf-head p,body .cf-card p{color:rgba(36,37,46,.78)}
+body .cf-tag{color:rgba(36,37,46,.68)}
+body .quote-attr{color:rgba(255,255,255,.7)}
+body .donar-cta .btn-primary{background:var(--rojo-fondo)}
+body .cuidado-section .ods-num[style]{color:var(--rojo-claro)!important}
+body .cf-head p[style]{color:rgba(36,37,46,.78)!important}
+body .quote-section{background:var(--rojo-fondo)}
+body .quote-section .quote-attr{color:#fff}
