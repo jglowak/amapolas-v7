@@ -83,3 +83,10 @@
 .donation-section.donation-section--full .donation-widget{background:#cc4c32}
 .donation-section.donation-section--full .donation-impact-row{background:rgba(36,37,46,.12)}
 .donation-section.donation-section--full .donation-content .section-eyebrow,.donation-section.donation-section--full .donation-widget .mp-secure{color:#fff}
+/* Columnas alineadas arriba: cuando el formulario de Donorbox crece, el texto de la izquierda no se
+   desplaza (antes estaba centrado verticalmente) y queda fijo mientras se completa el formulario. */
+@media(min-width:1101px){
+  .donation-section.donation-section--full{align-items:start}
+  .donation-section.donation-section--full .donation-content{justify-content:flex-start;position:sticky;top:5rem}
+  .donation-section.donation-section--full .donation-widget{justify-content:flex-start;align-self:stretch}
+}
