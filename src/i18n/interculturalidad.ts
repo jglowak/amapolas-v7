@@ -8,8 +8,7 @@ export const interculturalidad = {
     },
     hero: {
       home: 'Inicio', parent: 'Nosotras', here: 'Interculturalidad',
-      badge: 'Territorio y memoria',
-      title: ['Construimos futuro desde', 'el reconocimiento y el respeto'],
+      title: ['Construimos futuro', 'desde el reconocimiento', 'y el respeto'],
       subtitle: 'Reconocemos la preexistencia mapuche y tejemos alianzas reales con las comunidades del territorio que habitamos.',
       missing: 'Imagen pendiente: interculturalidad_hero.jpg',
     },
@@ -55,8 +54,7 @@ export const interculturalidad = {
     },
     hero: {
       home: 'Home', parent: 'About us', here: 'Interculturality',
-      badge: 'Territory and memory',
-      title: ['We build the future through', 'recognition and respect'],
+      title: ['We build the future', 'through recognition', 'and respect'],
       subtitle: 'We recognize Mapuche pre-existence and build real alliances with the communities of the territory we inhabit.',
       missing: 'Image pending: interculturalidad_hero.jpg',
     },
