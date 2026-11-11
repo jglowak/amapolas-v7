@@ -21,3 +21,27 @@
 .hero-inner.hero-stack{grid-template-columns:1fr;gap:2rem;align-items:start;max-width:900px}
 .hero-stack .hero-right p{max-width:640px;margin-bottom:0;padding-left:1.4rem;border-left:3px solid var(--rojo)}
 .turnstile-wrap{margin-bottom:1rem}
+
+/* Doc 24/10 (Fundaciones): recuadros de descargas de la izquierda más bajos. */
+.inst-recursos{gap:.5rem}
+.inst-recurso{padding:.6rem 1rem;gap:.8rem}
+.inst-recurso-icon{width:30px;height:30px}
+.inst-recurso-icon svg{width:14px;height:14px}
+/* los p heredaban el margin-bottom:2rem de .institucional-left p: eso los hacía altos */
+body .institucional-left .inst-recurso-text p{margin:0}
+body .institucional-left .inst-recurso-text p+p{margin-top:.15rem}
+
+/* Legibilidad (contraste AA): complementa legibilidad-interiores.css. El hero de Comunidad es claro:
+   la miga de pan vuelve a texto oscuro. */
+body .hero .hero-breadcrumb,body .hero .hero-breadcrumb a,body .hero .hero-breadcrumb span{color:rgba(36,37,46,.72)}
+body .hero .hero-breadcrumb [aria-current]{color:var(--azul)!important}
+body .hero-title .accent,body .perfil-tag.rojo,body .perfil-tag.naranja,body .perfil-cta.rojo,body .perfil-cta.naranja{color:var(--rojo-texto)}
+body .hero-right p,body .perfil-desc,body .institucional-left p,body .aliado-vinculo{color:rgba(36,37,46,.78)}
+body .aliado-que-es,body .form-hint{color:rgba(36,37,46,.72)}
+body .form-note{color:rgba(36,37,46,.7)}
+body .fms-ciclo-year{color:rgba(255,255,255,.7)}
+body .fms-eyebrow{color:var(--rojo-claro)}
+body .inst-recurso-text .label{color:rgba(36,37,46,.68)}
+body .section-eyebrow[style*="--rojo"],body .donantes-placeholder a[style]{color:var(--rojo-texto)!important}
+body .inst-form-card>p[style],body .donantes-intro p[style]{color:rgba(36,37,46,.75)!important}
+body .inst-form-card .form-label{color:rgba(36,37,46,.75)}
