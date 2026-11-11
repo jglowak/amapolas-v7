@@ -8,7 +8,7 @@ export const vivienda = {
     },
     hero: {
       home: 'Inicio', parent: 'Proyectos', here: 'Barrio Amapolas',
-      badge: 'Proyecto principal', title: 'Barrio Amapolas',
+      title: 'Barrio Amapolas',
       subtitle: 'Un barrio cooperativo con perspectiva feminista, diseñado desde el cuidado, la sustentabilidad y la vida comunitaria.',
       missing: 'Imagen pendiente: /proyectos/vivienda.jpeg',
     },
@@ -43,18 +43,6 @@ export const vivienda = {
         ['Sostenibilidad integrada', 'Bioconstrucción, captación de agua y huerta como componentes del diseño, no como extras.'],
       ],
     },
-    cuidado: {
-      eyebrow: 'Lo que nos diferencia',
-      title: ['El cuidado como', 'infraestructura diseñada'],
-      prose: [
-        'La mayoría de los proyectos de vivienda ignoran que el trabajo de cuidado existe. Amapolas lo hace al revés: <strong>el cuidado es un componente del diseño arquitectónico</strong>, no un valor declarativo ni una habitación improvisada.',
-        'Desde la primera etapa participativa, el barrio incorpora espacios específicos para cuidar: sala de juegos y contención para niñas y niños, espacio de encuentro y apoyo mutuo entre socias, zona de producción doméstica compartida que reduce la carga individual.',
-        'Esto diferencia a Amapolas de cualquier otro proyecto de vivienda cooperativa en la región.',
-      ],
-      lbl: 'ODS 3 — Salud y bienestar',
-      ods: 'El diseño del barrio incluye <strong>espacios de cuidado colectivo y bienestar como infraestructura planificada</strong>. La vivienda segura y estable es condición material de salud física y mental.',
-      photo: 'Plano / diseño / espacio comunitario · foto pendiente',
-    },
     replica: {
       eyebrow: 'De experiencia local a propuesta colectiva',
       title: ['Un modelo', 'replicable'],
@@ -62,22 +50,13 @@ export const vivienda = {
       items: [
         ['Modelo cooperativo', 'Enmarcada en la Ley Nacional de Cooperativas N°20337, Amapolas crea un modelo sólido y replicable en todo el territorio argentino.'],
         ['Metodología documentada', 'El proceso de diseño participativo es una metodología sistematizada que puede ser aplicada por otras comunidades.'],
-        ['Alianzas internacionales', 'La pertenencia a HIC y TEC IN HAB conecta el modelo con redes de intercambio técnico en toda América Latina.'],
         ['Evidencia de impacto', 'Tres ciclos de financiamiento consecutivos de un mismo organismo internacional son la prueba más concreta de que el modelo genera resultados evaluables.'],
-        ['Perspectiva feminista sistematizada', 'La incorporación del cuidado como infraestructura y la conducción 100% femenina son decisiones de diseño transferibles, no solo valores.'],
         ['Para fondos que buscan proyección', 'Donar a Amapolas no es solo apoyar un barrio en Bariloche: es invertir en un modelo que puede crecer y adaptarse a otros territorios.'],
       ],
     },
     galeria: {
       title: 'Imágenes del proyecto', note: 'Hacé click para ampliar', zoom: 'Ampliar', pending: 'foto pendiente',
       items: ['Bioconstrucción', 'Asamblea', 'Territorio', 'Diseño participativo', 'Materiales', 'Comunidad'],
-    },
-    plano: {
-      eyebrow: 'Diseño arquitectónico', title: 'El plano del barrio',
-      ph: 'Plano del proyecto',
-      small: ['Diseño participativo elaborado junto a la Arq. Mariana Enet', 'en el marco del Diploma de Diseño Participativo del Hábitat (UNAM · México)'],
-      zoom: 'Ver en grande',
-      credit: 'Diseño: Arq. Mariana Enet · Diseño Participativo del Hábitat · UNAM México, 2023',
     },
     detalles: {
       eyebrow: 'Enfoque constructivo',
@@ -121,7 +100,7 @@ export const vivienda = {
     },
     hero: {
       home: 'Home', parent: 'Projects', here: 'Barrio Amapolas',
-      badge: 'Main project', title: 'Barrio Amapolas',
+      title: 'Barrio Amapolas',
       subtitle: 'A cooperative neighborhood with a feminist perspective, designed around care, sustainability and community life.',
       missing: 'Image pending: /proyectos/vivienda.jpeg',
     },
@@ -156,18 +135,6 @@ export const vivienda = {
         ['Built-in sustainability', 'Natural building, water harvesting and a garden as parts of the design, not extras.'],
       ],
     },
-    cuidado: {
-      eyebrow: 'What sets us apart',
-      title: ['Care as designed', 'infrastructure'],
-      prose: [
-        'Most housing projects ignore that care work exists. Amapolas does the opposite: <strong>care is part of the architectural design</strong>, not a stated value or a makeshift room.',
-        'From the first participatory stage, the neighborhood includes dedicated care spaces: a play and support room for children, a space for gathering and mutual support among members, and a shared domestic production area that eases the individual load.',
-        'This sets Amapolas apart from any other cooperative housing project in the region.',
-      ],
-      lbl: 'SDG 3 — Good health and well-being',
-      ods: 'The neighborhood design includes <strong>collective care and well-being spaces as planned infrastructure</strong>. Safe and stable housing is a material condition for physical and mental health.',
-      photo: 'Plan / design / community space · photo pending',
-    },
     replica: {
       eyebrow: 'From local experience to a shared proposal',
       title: ['A replicable', 'model'],
@@ -175,22 +142,13 @@ export const vivienda = {
       items: [
         ['Cooperative model', 'Framed within Argentina’s National Cooperatives Law No. 20337, Amapolas creates a solid model that can be replicated anywhere in the country.'],
         ['Documented methodology', 'The participatory design process is a systematized methodology that other communities can apply.'],
-        ['International alliances', 'Membership in HIC and TEC IN HAB connects the model with technical exchange networks across Latin America.'],
         ['Evidence of impact', 'Three consecutive funding cycles from the same international organization are the most concrete proof that the model produces measurable results.'],
-        ['Systematized feminist perspective', 'Treating care as infrastructure and 100% women-led governance are transferable design decisions, not just values.'],
         ['For funders seeking reach', 'Giving to Amapolas is not just supporting a neighborhood in Bariloche: it is investing in a model that can grow and adapt to other territories.'],
       ],
     },
     galeria: {
       title: 'Project images', note: 'Click to enlarge', zoom: 'Enlarge', pending: 'photo pending',
       items: ['Natural building', 'Assembly', 'Territory', 'Participatory design', 'Materials', 'Community'],
-    },
-    plano: {
-      eyebrow: 'Architectural design', title: 'The neighborhood plan',
-      ph: 'Project plan',
-      small: ['Participatory design developed with architect Mariana Enet', 'as part of the Diploma in Participatory Habitat Design (UNAM · Mexico)'],
-      zoom: 'View larger',
-      credit: 'Design: Arch. Mariana Enet · Participatory Habitat Design · UNAM Mexico, 2023',
     },
     detalles: {
       eyebrow: 'Building approach',
