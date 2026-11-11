@@ -70,3 +70,11 @@
 .donation-section--full .donation-widget .mp-secure{color:rgba(255,255,255,.7);margin-top:1rem}
 @media(max-width:1100px){.donation-section--full .donation-widget{border-left:none;border-top:1px solid rgba(255,255,255,.18)}}
 @media(max-width:640px){.donation-section--full .donation-widget{padding:2rem 1rem}.dn-card--form{padding:.3rem}}
+/* Legibilidad de las pestañas y notas sobre rojo */
+.donation-section--full .donation-widget .dn-tabs{background:rgba(36,37,46,.14)}
+.donation-section--full .donation-widget .dn-tab{color:#fff}
+.donation-section--full .donation-widget .dn-tab small{opacity:.9;font-size:.62rem}
+.donation-section--full .donation-widget .dn-tab[aria-selected="true"]{color:#b03d27}
+.donation-section--full .donation-widget .mp-secure{color:rgba(255,255,255,.95);font-size:.72rem}
+.donation-section--full .donation-content .section-eyebrow{color:rgba(255,255,255,.95)}
+.donation-section--full .donation-content .section-body,.donation-section--full .donation-impact-row{color:#fff;font-weight:500}

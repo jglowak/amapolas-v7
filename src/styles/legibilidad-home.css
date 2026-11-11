@@ -1,0 +1,27 @@
+/* Legibilidad de la home (contraste WCAG AA): los grises con transparencia de v5 quedaban por debajo
+   de 4.5:1. Se suben las opacidades y, para texto chico en rojo, se usa un rojo más oscuro.
+   Se importa después de global.css y home.css. */
+:root{--rojo-texto:#b03d27}
+/* Hero (sobre la foto con degradé oscuro) */
+main .hero-eyebrow{color:rgba(255,255,255,.88)}
+main .hero-subtitle{color:rgba(255,255,255,.92)}
+/* Texto oscuro sobre crema / blanco */
+main .section-body,main .ods-head .body{color:rgba(36,37,46,.8)}
+main .pillar-text p,main .project-card p,main .project-card ul,main .ods-content p{color:rgba(36,37,46,.8)}
+main .quote-attr{color:rgba(36,37,46,.72)}
+main .ods-item{grid-template-columns:96px 1fr;gap:1.2rem}
+main .ods-num .ods-label{color:rgba(36,37,46,.72);font-size:.6rem;letter-spacing:.06em}
+/* Rojo como texto chico sobre fondo claro */
+main .section-eyebrow,main .pillar-number,main .project-num:not(.verde),main .ods-num{color:var(--rojo-texto)}
+/* Secciones oscuras (azul) */
+main .valores-section .section-eyebrow{color:rgba(255,255,255,.82)}
+main .valores-section p{color:rgba(255,255,255,.85)}
+main .valores-section .valor-num{color:var(--rojo)}
+main .testimonios .section-eyebrow{color:rgba(255,255,255,.85)}
+main .dossier-text .label{color:var(--rojo)}
+main .dossier-text p{color:rgba(255,255,255,.85)}
+/* Secciones rojas: texto blanco pleno y un poco más de peso */
+main .donation-content .section-eyebrow{color:rgba(255,255,255,.95)}
+main .donation-content .section-body{color:#fff;font-weight:500}
+main .donation-impact-row{color:#fff;font-weight:500}
+main .indicador-label{color:#fff}

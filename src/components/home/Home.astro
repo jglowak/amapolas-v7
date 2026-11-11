@@ -14,6 +14,7 @@ import { home } from '../../i18n/home';
 import { localePath, type Lang } from '../../i18n/ui';
 import '../../styles/global.css';
 import '../../styles/home.css';
+import '../../styles/legibilidad-home.css';
 
 interface Props { lang: Lang }
 const { lang } = Astro.props;
@@ -117,7 +118,7 @@ const dlIcon = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stro
 <!-- VALORES -->
 <section class="valores-section">
   <div class="reveal">
-    <p class="section-eyebrow" style="color:rgba(255,255,255,.35)">{c.valores.eyebrow}</p>
+    <p class="section-eyebrow">{c.valores.eyebrow}</p>
     <h2 class="section-title" style="color:white">{c.valores.title}</h2>
   </div>
   <div class="valores-grid reveal">
