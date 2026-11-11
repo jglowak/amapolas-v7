@@ -81,13 +81,6 @@ const es = {
     },
     ok: ['¡Propuesta enviada!', 'Gracias por querer acompañar a Amapolas. Nos ponemos en contacto a la brevedad.'],
   },
-  prensaEntry: {
-    eyebrow: 'Para periodistas y comunicadores',
-    title: 'Kit de Prensa disponible',
-    body: 'Gacetilla institucional en español e inglés, fotos en alta resolución, logo descargable y contacto directo con la referente de comunicación.',
-    kit: 'Descargar Kit de Prensa',
-    contacto: 'Contacto de prensa →',
-  },
   donantes: {
     eyebrow: 'Red de apoyo',
     title: ['Quienes aportan, hacen', 'posible el proyecto'],
@@ -176,13 +169,6 @@ const en: typeof es = {
       enviar: 'Send proposal', note: 'Your information will not be shared with third parties.', subject: 'Sponsor proposal',
     },
     ok: ['Proposal sent!', 'Thank you for wanting to support Amapolas. We will get back to you soon.'],
-  },
-  prensaEntry: {
-    eyebrow: 'For journalists and communicators',
-    title: 'Press Kit available',
-    body: 'Press release in Spanish and English, high-resolution photos, downloadable logo and direct contact with our communications lead.',
-    kit: 'Download Press Kit',
-    contacto: 'Press contact →',
   },
   donantes: {
     eyebrow: 'Support network',

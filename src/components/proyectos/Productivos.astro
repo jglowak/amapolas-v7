@@ -4,10 +4,13 @@
 // Cambios del documento: sin menú inferior del hero; anclas #apicultura, #plantas-nativas y
 // #hongos-comestibles; sin métricas ni metas de GlobalGiving; textos nuevos; "Integración
 // agroecológica" y "Medicina ancestral" fuera; "Estado actual" de plantas como párrafo; hongos sin
-// punteo regenerativo; CTA solo con "Donar ahora". Fotos pendientes. h5 → h4 por jerarquía.
+// punteo regenerativo; CTA solo con "Donar ahora". Doc 24/10: sin estado de apicultura, primeros
+// resultados, aliadas, proceso de cultivo ni Tambo Báez; "Experiencias que abren camino" antes de
+// la galería de hongos. Fotos pendientes. h5 → h4 por jerarquía.
 import { productivos } from '../../i18n/productivos';
 import { localePath, type Lang } from '../../i18n/ui';
 import '../../styles/pages/proyectos__productivos.css';
+import '../../styles/legibilidad-interiores.css';
 import '../../styles/productivos-v7.css';
 
 interface Props { lang: Lang }
@@ -42,7 +45,7 @@ const lbs = ['api', 'plantas', 'hongos'];
 <!-- ══════════════════════ APICULTURA ══ -->
 <div id="apicultura">
   <div class="chapter verde reveal">
-    <div class="chapter-num">01</div>
+    <div class="chapter-num" aria-hidden="true">01</div>
     <div class="chapter-text">
       <p class="chapter-tag">{c.api.tag}</p>
       <h2 class="chapter-title">{c.api.title}</h2>
@@ -91,14 +94,6 @@ const lbs = ['api', 'plantas', 'hongos'];
     </div>
   </div>
 
-  <div class="estado">
-    <div class="estado-inner">
-      <div><p class="section-eyebrow reveal">{c.api.estadoEyebrow}</p><h3 class="section-title reveal">{c.api.estadoTitle}</h3></div>
-      <div class="timeline reveal">
-        {c.api.timeline.map((t) => <div class="timeline-item"><div class={`timeline-dot ${t.dot}`}></div><div class="timeline-content"><h4>{t.h}</h4><p>{t.p}</p><span class="timeline-year">{t.y}</span></div></div>)}
-      </div>
-    </div>
-  </div>
 </div>
 
 <div class="proyecto-sep"></div>
@@ -106,7 +101,7 @@ const lbs = ['api', 'plantas', 'hongos'];
 <!-- ══════════════════════ PLANTAS NATIVAS ══ -->
 <div id="plantas-nativas">
   <div class="chapter rojo reveal">
-    <div class="chapter-num">02</div>
+    <div class="chapter-num" aria-hidden="true">02</div>
     <div class="chapter-text">
       <p class="chapter-tag">{c.plantas.tag}</p>
       <h2 class="chapter-title">{c.plantas.title}</h2>
@@ -133,7 +128,7 @@ const lbs = ['api', 'plantas', 'hongos'];
     </div>
   </div>
 
-  <div class="galeria" style="background:white">
+  <div class="galeria">
     <div class="galeria-header reveal"><h3>{c.plantas.galeriaTitle}</h3><span class="galeria-note">{c.clickNote}</span></div>
     <div class="galeria-grid reveal">
       {c.plantas.galeria.map((t, i) => (
@@ -145,25 +140,7 @@ const lbs = ['api', 'plantas', 'hongos'];
     </div>
   </div>
 
-  <div class="objetivos" style="background:var(--crema)">
-    <div class="objetivos-inner">
-      <p class="section-eyebrow reveal">{c.plantas.resEyebrow}</p>
-      <h3 class="section-title reveal">{c.plantas.resTitle}</h3>
-      <div class="objetivos-grid reveal">
-        {c.plantas.resultados.map(([h, p]) => <div class="objetivo"><h4>{h}</h4><p>{p}</p></div>)}
-      </div>
-    </div>
-  </div>
 
-  <div class="objetivos" style="background:white">
-    <div class="objetivos-inner">
-      <p class="section-eyebrow reveal">{c.plantas.aliEyebrow}</p>
-      <h3 class="section-title reveal">{c.plantas.aliTitle}</h3>
-      <div class="alianzas-grid reveal">
-        {c.plantas.aliadas.map(([n, d]) => <div class="alianza-card"><div class="alianza-nombre">{n}</div><div class="alianza-desc">{d}</div></div>)}
-      </div>
-    </div>
-  </div>
 
   <div class="estado" style="background:var(--azul)">
     <div class="estado-inner">
@@ -184,7 +161,7 @@ const lbs = ['api', 'plantas', 'hongos'];
 <!-- ══════════════════════ HONGOS COMESTIBLES ══ -->
 <div id="hongos-comestibles">
   <div class="chapter dark reveal">
-    <div class="chapter-num">03</div>
+    <div class="chapter-num" aria-hidden="true">03</div>
     <div class="chapter-text">
       <p class="chapter-tag">{c.hongos.tag}</p>
       <h2 class="chapter-title">{c.hongos.title}</h2>
@@ -209,18 +186,6 @@ const lbs = ['api', 'plantas', 'hongos'];
     </div>
   </div>
 
-  <div class="galeria">
-    <div class="galeria-header reveal"><h3>{c.hongos.galeriaTitle}</h3><span class="galeria-note">{c.clickNote}</span></div>
-    <div class="galeria-grid reveal">
-      {c.hongos.galeria.map((t, i) => (
-        <div class="galeria-item" onclick={`openLB('hongos',${i})`}>
-          <div class="galeria-item-overlay"><span class="galeria-zoom">{c.zoom}</span></div>
-          <span class="galeria-placeholder-text">{t} · {c.pending}</span>
-        </div>
-      ))}
-    </div>
-  </div>
-
   <!-- Experiencias que abren camino (sin punteo) -->
   <div class="hongos-regen">
     <div class="hongos-regen-inner">
@@ -234,28 +199,19 @@ const lbs = ['api', 'plantas', 'hongos'];
     </div>
   </div>
 
-  <div class="objetivos" style="background:white">
-    <div class="objetivos-inner">
-      <p class="section-eyebrow reveal">{c.hongos.procEyebrow}</p>
-      <h3 class="section-title reveal">{c.hongos.procTitle}</h3>
-      <div class="proceso-grid reveal">
-        {c.hongos.proceso.map(([n, h, p]) => <div class="paso"><p class="paso-num">{n}</p><h4>{h}</h4><p>{p}</p></div>)}
-      </div>
+  <div class="galeria" style="background:white">
+    <div class="galeria-header reveal"><h3>{c.hongos.galeriaTitle}</h3><span class="galeria-note">{c.clickNote}</span></div>
+    <div class="galeria-grid reveal">
+      {c.hongos.galeria.map((t, i) => (
+        <div class="galeria-item" onclick={`openLB('hongos',${i})`}>
+          <div class="galeria-item-overlay"><span class="galeria-zoom">{c.zoom}</span></div>
+          <span class="galeria-placeholder-text">{t} · {c.pending}</span>
+        </div>
+      ))}
     </div>
   </div>
 
-  <div class="territorio-dark">
-    <div class="territorio-dark-inner">
-      <div>
-        <p class="section-eyebrow reveal">{c.hongos.terEyebrow}</p>
-        <h3 class="section-title reveal">{c.hongos.terTitle[0]}<br>{c.hongos.terTitle[1]}</h3>
-        <p class="territorio-desc reveal">{c.hongos.terDesc}</p>
-      </div>
-      <div class="territorio-cards reveal">
-        {c.hongos.terCards.map(([h, p]) => <div class="territorio-card"><h4>{h}</h4><p>{p}</p></div>)}
-      </div>
-    </div>
-  </div>
+
 
   <div class="estado">
     <div class="estado-inner">

@@ -6,3 +6,15 @@
 .estado-parrafo p strong{color:white;font-weight:700}
 /* Anclas bajo el nav fijo */
 #apicultura,#plantas-nativas,#hongos-comestibles{scroll-margin-top:70px}
+
+/* Legibilidad (contraste AA): complementa legibilidad-interiores.css. El número grande de cada
+   capítulo (01/02/03) es decorativo (aria-hidden): el título del capítulo ya lo nombra. */
+body .chapter.rojo{background:var(--rojo-fondo)}
+body .chapter-tag{color:rgba(255,255,255,.85)}
+body .chapter.rojo .chapter-tag{color:#fff}
+body .objetivo p,body .timeline-content p{color:rgba(36,37,46,.75)}
+body .timeline-year{color:rgba(36,37,46,.7)}
+body .hongos-regen .section-eyebrow{color:rgba(36,37,46,.7)}
+body .ods-num[style]{color:var(--rojo-texto)!important}
+body .dato.atencion .dato-val{color:var(--rojo-texto)}
+body #plantas-nativas .estado .section-eyebrow{color:rgba(255,255,255,.68)!important}

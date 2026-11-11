@@ -8,7 +8,6 @@ export const formacion = {
     },
     hero: {
       home: 'Inicio', parent: 'Proyectos', here: 'Formación y Capacitaciones',
-      badge: 'Formación',
       title: ['Formación y', 'Capacitaciones'],
       subtitle: 'Instancias de intercambio de saberes y diálogo en torno a lo que nos importa: hábitat, género, sustentabilidad e interculturalidad.',
       missing: 'Imagen pendiente: foto de formación',
@@ -45,7 +44,6 @@ export const formacion = {
     },
     hero: {
       home: 'Home', parent: 'Projects', here: 'Training and Workshops',
-      badge: 'Training',
       title: ['Training and', 'Workshops'],
       subtitle: 'Spaces for sharing knowledge and dialogue around what matters to us: habitat, gender, sustainability and interculturality.',
       missing: 'Image pending: training photo',

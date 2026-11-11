@@ -1,13 +1,14 @@
 ---
 // Acciones y Prensa. Markup extraído de v5 prensa.html (scripts/v5-extract/prensa/body.html).
 // CSS: pages/prensa.css completo. Cambios del documento: hero con texto nuevo y sin números;
-// orden Eventos → Prensa → Contacto → Kit; eventos 2023–2026 actualizados (fondos internacionales,
+// orden Prensa → Contacto → Kit → Eventos (al final), sin pestañas en el hero; eventos 2023–2026 actualizados (fondos internacionales,
 // HIC, ONU Mujeres, links de YouTube); contacto sin "48 hs"; kit y boilerplate nuevos; mail único.
 import { prensa } from '../../i18n/prensa';
 import { site } from '../../config/site';
 import { localePath, type Lang } from '../../i18n/ui';
 import FormScript from '../FormScript.astro';
 import '../../styles/pages/prensa.css';
+import '../../styles/legibilidad-interiores.css';
 import '../../styles/prensa-v7.css';
 
 interface Props { lang: Lang }
@@ -38,35 +39,7 @@ const f = c.contacto.form;
     <h1 class="hero-title">{c.hero.title[0]}<br>{c.hero.title[1]}</h1>
     <p class="hero-subtitle">{c.hero.subtitle}</p>
   </div>
-  <div class="hero-tabs">
-    {c.hero.tabs.map(([href, t]) => <a href={href} class="hero-tab">{t}</a>)}
-  </div>
 </div>
-
-<!-- EVENTOS Y ACCIONES -->
-<section class="timeline-section" id="eventos">
-  <div class="timeline-inner">
-    <p class="section-eyebrow rojo reveal">{c.eventos.eyebrow}</p>
-    <h2 class="section-title reveal">{c.eventos.title}</h2>
-    {c.eventos.years.map(([year, evs]) => (
-      <div class="year-block reveal">
-        <div class="year-label">{year}</div>
-        <div class="events-list">
-          {evs.map((e) => (
-            <div class:list={['event-item', e.hito && 'destacado hito-alto']}>
-              <div class="event-body">
-                <p class:list={['event-tag', e.tc]}>{e.tag}</p>
-                <h3 class="event-title">{e.h}</h3>
-                <p class="event-desc">{e.p}</p>
-                {e.links && <div class="event-links">{e.links.map(([t, href]) => <a href={href} target="_blank" rel="noopener" class="event-link">{t}</a>)}</div>}
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    ))}
-  </div>
-</section>
 
 <!-- PRENSA (MEDIOS) -->
 <section class="prensa-dest" id="prensa">
@@ -190,6 +163,31 @@ const f = c.contacto.form;
       <p class="kit-boilerplate-label">{c.kit.boilerLabel}</p>
       <p class="kit-boilerplate-text">{c.kit.boiler}</p>
     </div>
+  </div>
+</section>
+
+<!-- EVENTOS Y ACCIONES -->
+<section class="timeline-section" id="eventos">
+  <div class="timeline-inner">
+    <p class="section-eyebrow rojo reveal">{c.eventos.eyebrow}</p>
+    <h2 class="section-title reveal">{c.eventos.title}</h2>
+    {c.eventos.years.map(([year, evs]) => (
+      <div class="year-block reveal">
+        <div class="year-label">{year}</div>
+        <div class="events-list">
+          {evs.map((e) => (
+            <div class:list={['event-item', e.hito && 'destacado hito-alto']}>
+              <div class="event-body">
+                <p class:list={['event-tag', e.tc]}>{e.tag}</p>
+                <h3 class="event-title">{e.h}</h3>
+                <p class="event-desc">{e.p}</p>
+                {e.links && <div class="event-links">{e.links.map(([t, href]) => <a href={href} target="_blank" rel="noopener" class="event-link">{t}</a>)}</div>}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    ))}
   </div>
 </section>
 

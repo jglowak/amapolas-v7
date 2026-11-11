@@ -4,11 +4,13 @@
 // Cambios según docs/correcciones.md: hero, historia, socias reales, timeline, encabezado de
 // "Cómo nos organizamos", ejes 02 y 03, CTA de donación. El bloque ODS pasó a la home.
 // Sin "Propuesta de valor", "Redes y membresías" ni "Lo que nos guía" (correcciones).
+// Doc 24/10: sin pestañas en el hero, sin contador de socias, sin balance en el bloque dossier,
+// timeline con volanta y título intercambiados y un solo año por fila; frases de socias sin negrita.
 // h4 → h3 por jerarquía (mismo estilo, ver nosotras-v7.css).
 import { nosotras, socias } from '../../i18n/nosotras';
-import { site } from '../../config/site';
 import { localePath, type Lang } from '../../i18n/ui';
 import '../../styles/pages/nosotras.css';
+import '../../styles/legibilidad-interiores.css';
 import '../../styles/nosotras-v7.css';
 
 interface Props { lang: Lang }
@@ -17,6 +19,8 @@ const c = nosotras[lang];
 const L = (p: string) => localePath(lang, p);
 const dl = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>';
 const consejo = socias.filter((s) => s.consejo);
+// Timeline: un solo encabezado por año (doc 24/10), con todos los hitos de ese año debajo.
+const years = Object.entries(Object.groupBy(c.timeline.rows, (r) => r.y));
 ---
 <!-- HERO -->
 <div class="hero" id="hero">
@@ -30,9 +34,6 @@ const consejo = socias.filter((s) => s.consejo);
     </div>
     <h1 class="hero-title">{c.hero.title}</h1>
     <p class="hero-subtitle">{c.hero.subtitle}</p>
-  </div>
-  <div class="hero-tabs">
-    {c.hero.tabs.map(([href, label]) => <a href={href} class="hero-tab">{label}</a>)}
   </div>
 </div>
 
@@ -57,7 +58,6 @@ const consejo = socias.filter((s) => s.consejo);
             <!-- TODO: PDFs pendientes -->
             <a href="/dossier-amapolas-es.pdf" target="_blank" rel="noopener" class="btn-dl-sm es" hreflang="es"><Fragment set:html={dl} />{c.historia.dossierEs}</a>
             <a href="/dossier-amapolas-en.pdf" target="_blank" rel="noopener" class="btn-dl-sm en" hreflang="en"><Fragment set:html={dl} />{c.historia.dossierEn}</a>
-            <a href={`mailto:${site.email}?subject=${encodeURIComponent(c.historia.balanceSubject)}`} class="btn-dl-sm bal">{c.historia.balance}</a>
           </div>
         </div>
       </div>
@@ -83,7 +83,6 @@ const consejo = socias.filter((s) => s.consejo);
   <div class="socias-inner">
     <div class="socias-head">
       <div class="socias-head-meta reveal">
-        <span class="socias-count"><strong>{socias.length}</strong> {c.socias.count}</span>
         <p class="section-eyebrow">{c.socias.eyebrow}</p>
         <h2 class="section-title">{c.socias.title[0]}<br>{c.socias.title[1]}</h2>
       </div>
@@ -116,14 +115,14 @@ const consejo = socias.filter((s) => s.consejo);
   <div class="timeline-inner">
     <div class="timeline-head reveal">
       <p class="section-eyebrow">{c.timeline.eyebrow}</p>
-      <h2 class="section-title">{c.timeline.title[0]}<br>{c.timeline.title[1]}</h2>
+      <h2 class="section-title">{c.timeline.title.map((t, i) => <>{i > 0 && <br />}{t}</>)}</h2>
       <p style="font-size:1rem;line-height:1.75;color:rgba(36,37,46,.55);max-width:520px;margin-top:.8rem">{c.timeline.body}</p>
     </div>
     <div class="timeline reveal">
-      {c.timeline.rows.map((r) => (
+      {years.map(([y, rows]) => (
         <div class="tl-row">
-          <div class="tl-year">{r.y}<span class="tl-month">{r.tag}</span></div>
-          <div class="tl-content"><h3>{r.h}</h3>{r.p.map((p) => <p>{p}</p>)}</div>
+          <div class="tl-year">{y}</div>
+          <div class="tl-content">{rows.map((r) => <div class="tl-event"><h3>{r.h}</h3>{r.p.map((p) => <p>{p}</p>)}</div>)}</div>
         </div>
       ))}
     </div>

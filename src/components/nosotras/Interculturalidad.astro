@@ -6,6 +6,7 @@
 import { interculturalidad } from '../../i18n/interculturalidad';
 import { localePath, type Lang } from '../../i18n/ui';
 import '../../styles/pages/nosotras__interculturalidad.css';
+import '../../styles/legibilidad-interiores.css';
 import '../../styles/interculturalidad-v7.css';
 
 interface Props { lang: Lang }
@@ -26,10 +27,7 @@ const L = (p: string) => localePath(lang, p);
       <a href={L('/nosotras')}>{c.hero.parent}</a><span>/</span>
       <span style="color:rgba(255,255,255,.7)" aria-current="page">{c.hero.here}</span>
     </div>
-    <div class="hero-badge" style="background:rgba(237,105,75,.35);color:white;border:1px solid rgba(255,255,255,.2)">
-      <span style="font-size:.8rem">03</span> · {c.hero.badge}
-    </div>
-    <h1 class="hero-title">{c.hero.title[0]}<br>{c.hero.title[1]}</h1>
+    <h1 class="hero-title">{c.hero.title.map((t, i) => <>{i > 0 && <br />}{t}</>)}</h1>
     <p class="hero-subtitle">{c.hero.subtitle}</p>
   </div>
 </div>

@@ -4,13 +4,15 @@
 // Cambios del documento: 3 perfiles; Red de Alianzas (#alianzas) con FMS y 4 organizaciones;
 // Fundaciones y Organizaciones (#fundaciones) con "Solicitar balance"; bloque nuevo Sponsors
 // (#sponsors) con formulario; Donantes (#donantes) con el cuadro de donación completo.
-// Se eliminan GlobalGiving, niveles de donación viejos y voluntariado. h4 → h3 por jerarquía.
+// Se eliminan GlobalGiving, niveles de donación viejos y voluntariado. Doc 24/10: sin la franja
+// "Kit de Prensa disponible" y recursos descargables más bajos. h4 → h3 por jerarquía.
 import DonationBox from '../DonationBox.astro';
 import FormScript from '../FormScript.astro';
 import { comunidad } from '../../i18n/comunidad';
 import { site } from '../../config/site';
 import { localePath, type Lang } from '../../i18n/ui';
 import '../../styles/pages/comunidad.css';
+import '../../styles/legibilidad-interiores.css';
 import '../../styles/comunidad-v7.css';
 
 interface Props { lang: Lang }
@@ -218,24 +220,6 @@ const sf = c.sponsors.form;
     </div>
   </div>
 </section>
-
-<!-- PRENSA ENTRY -->
-<div class="prensa-entry" id="prensa-entry">
-  <div class="prensa-entry-inner">
-    <div class="prensa-entry-text reveal">
-      <p class="eyebrow">{c.prensaEntry.eyebrow}</p>
-      <h2>{c.prensaEntry.title}</h2>
-      <p>{c.prensaEntry.body}</p>
-    </div>
-    <div class="prensa-entry-actions reveal">
-      <a href={L('/prensa#kit')} class="btn-kit-prensa">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-        {c.prensaEntry.kit}
-      </a>
-      <a href={`mailto:${site.email}`} class="btn-prensa-contacto">{c.prensaEntry.contacto}</a>
-    </div>
-  </div>
-</div>
 
 <!-- DONANTES -->
 <section class="donantes-section" id="donantes">

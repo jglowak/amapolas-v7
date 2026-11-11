@@ -3,10 +3,12 @@
 // (scripts/v5-extract/nosotras__cohousing/body.html). CSS: pages/nosotras__cohousing.css completo.
 // Cambios del documento: sin menú de pestañas del hero, hero y bloque "Cohousing" nuevos,
 // "El cuidado como eje central" antes de "Cohousing con perspectiva feminista", tarjeta de
-// Construcción y CTA. h4/h5 → h3 por jerarquía (mismo estilo, ver cohousing-v7.css).
+// Construcción y CTA. Doc 24/10: sin "Qué distingue este modelo", sin "Los otros ejes", CTA solo
+// con "Donar ahora" y ODS 3 sin la oración sobre salud. h4/h5 → h3 por jerarquía (ver cohousing-v7.css).
 import { cohousing } from '../../i18n/cohousing';
 import { localePath, type Lang } from '../../i18n/ui';
 import '../../styles/pages/nosotras__cohousing.css';
+import '../../styles/legibilidad-interiores.css';
 import '../../styles/cohousing-v7.css';
 
 interface Props { lang: Lang }
@@ -110,59 +112,11 @@ const icons = [
   </div>
 </section>
 
-<!-- QUÉ LO DIFERENCIA DE OTROS PROYECTOS -->
-<section class="diferencia-section">
-  <div class="diferencia-inner">
-    <div class="diferencia-head reveal">
-      <p class="section-eyebrow">{c.diferencia.eyebrow}</p>
-      <h2 class="section-title">{c.diferencia.title[0]}<br>{c.diferencia.title[1]}</h2>
-      <p style="font-size:1rem;line-height:1.78;color:rgba(36,37,46,.58);max-width:580px;margin-top:.8rem">{c.diferencia.body}</p>
-    </div>
-    <div class="diferencia-grid reveal">
-      {c.diferencia.cards.map((k) => (
-        <div class="diferencia-card">
-          <div class="diferencia-vs">
-            <span class="label">{c.diferencia.label}</span>
-            <span class="badge si">{c.diferencia.yes}</span>
-          </div>
-          <div class="diferencia-content">
-            <h3>{k.h}</h3>
-            <p>{k.p}</p>
-          </div>
-        </div>
-      ))}
-    </div>
-  </div>
-</section>
-
 <!-- QUOTE -->
 <div class="quote-section reveal">
   <p class="quote-text">{c.quote.text}</p>
   <p class="quote-attr">{c.quote.attr}</p>
 </div>
-
-<!-- EJES RELACIONADOS -->
-<section class="ejes-section">
-  <div class="ejes-inner">
-    <div class="ejes-head reveal">
-      <p class="section-eyebrow" style="color:rgba(36,37,46,.4)">{c.ejes.eyebrow}</p>
-      <h2 class="section-title">{c.ejes.title[0]}<br>{c.ejes.title[1]}</h2>
-    </div>
-    <div class="ejes-grid reveal">
-      {c.ejes.cards.map((e) => (
-        <a href={L(e.href)} class="eje-link-card">
-          <div class={`eje-link-bar ${e.bar}`}></div>
-          <div class="eje-link-body">
-            <p class="eje-link-num">{e.num}</p>
-            <h3>{e.h}</h3>
-            <p>{e.p}</p>
-            <span class="eje-arrow">{c.ejes.more}</span>
-          </div>
-        </a>
-      ))}
-    </div>
-  </div>
-</section>
 
 <!-- DONAR CTA -->
 <div class="donar-cta">
@@ -173,7 +127,6 @@ const icons = [
   </div>
   <div class="donar-cta-actions reveal">
     <a href={L('/donar')} class="btn-primary">{c.donar.cta}</a>
-    <a href={L('/proyectos/vivienda')} class="btn-outline-white">{c.donar.other}</a>
     <p class="donar-note">{c.donar.note}</p>
   </div>
 </div>

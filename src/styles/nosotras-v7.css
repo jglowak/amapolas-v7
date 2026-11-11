@@ -16,3 +16,26 @@
 .socia-photo-fallback{flex-direction:column;gap:.4rem}
 .socia-photo-pending,.eje-photo-pending{font-size:.55rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.35)}
 .eje-photo-pending{position:absolute;bottom:.8rem;left:1rem}
+
+/* Doc 24/10: frases de las socias sin negrita (siguen en itálica). */
+.socia-quote{font-weight:400}
+/* Timeline agrupado por año: varios hitos en la misma fila. */
+.tl-event+.tl-event{margin-top:1.4rem}
+
+/* Legibilidad (contraste AA): complementa legibilidad-interiores.css */
+body .meta-label,body .meta-dato .lbl,body .autoridades h3,body .socia-role,body .como-meta{color:rgba(36,37,46,.7)}
+body .meta-body,body .socias-head-text p,body .tl-content p,body .como-card p,body .ejes-header p,body .eje-card-body p{color:rgba(36,37,46,.78)}
+body .timeline-head p,body .como-head p{color:rgba(36,37,46,.78)!important}
+body .autoridad .cargo{color:rgba(36,37,46,.72)}
+body .meta-dato .val,body .como-meta strong,body .eje-num{color:var(--rojo-texto)}
+body .dossier-inline-text .label{color:var(--rojo-claro)}
+body .btn-dl-sm.es,body .socia-badge{background:var(--rojo-fondo)}
+body .mision-attr{color:rgba(255,255,255,.7)}
+body .donar-cta{background:var(--rojo-fondo)}
+body .donar-cta .btn-primary{color:var(--rojo-texto)}
+body .socias-head-meta .section-eyebrow{color:var(--rojo-texto)}
+body .ejes-header p[style]{color:rgba(36,37,46,.78)!important}
+/* Hero sobre rojo (sin foto todavía): rojo más profundo y texto blanco pleno */
+body .hero{background:#c4472c}
+body .hero::before{background:linear-gradient(180deg,rgba(196,71,44,.35) 0%,rgba(196,71,44,.75) 55%,#c4472c 100%),radial-gradient(ellipse at 75% 30%,rgba(255,255,255,.06) 0%,transparent 55%)}
+body .hero .hero-breadcrumb,body .hero .hero-breadcrumb a,body .hero .hero-breadcrumb span,body .hero .hero-subtitle{color:#fff}

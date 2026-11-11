@@ -4,3 +4,23 @@
 .replica-item h3{font-size:.92rem;font-weight:800;color:white;margin-bottom:.6rem}
 .detalle h3{font-size:.92rem;font-weight:800;margin-bottom:.6rem;letter-spacing:-.01em}
 .timeline-content h3{font-size:.9rem;font-weight:700;color:white;margin-bottom:.3rem}
+
+/* Doc 24/10: "Cómo queremos construir" pasa a ir después de cohousing (crema), así que va en blanco
+   para mantener la alternancia de fondos. "Un modelo replicable" queda con 4 ítems: una fila de 4. */
+.detalles{background:white}
+.detalle{background:white}.detalle:hover{background:var(--crema)}
+.detalle-icon{background:var(--crema)}
+.replica-grid{grid-template-columns:repeat(4,1fr)}
+@media(max-width:1100px){.replica-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:640px){.replica-grid{grid-template-columns:1fr}}
+
+/* Legibilidad (contraste AA): complementa legibilidad-interiores.css */
+body .cohousing-def p{color:rgba(36,37,46,.8)}
+body .cohousing-feat-text p,body .detalle p{color:rgba(36,37,46,.75)}
+body .replica-header .section-eyebrow,body .estado .section-eyebrow{color:rgba(255,255,255,.68)}
+body .replica-header p{color:rgba(255,255,255,.75)}
+body .replica-num{color:var(--rojo-claro)}
+body .replica-item p,body .timeline-content p{color:rgba(255,255,255,.72)}
+body .timeline-year{color:rgba(255,255,255,.65)}
+body .donar-cta{background:var(--rojo-fondo)}
+body .donar-cta .btn-primary{color:var(--rojo-texto)}

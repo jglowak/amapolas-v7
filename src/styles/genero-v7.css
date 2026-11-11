@@ -2,3 +2,10 @@
 .cifra-key{font-size:.62rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--azul);margin-bottom:.5rem}
 .cifras-sources{margin-top:1.5rem;font-size:.72rem;color:rgba(36,37,46,.45)}
 .cifras-sources a{text-decoration:underline}
+
+/* Legibilidad (contraste AA): complementa legibilidad-interiores.css (también la usa /proyectos/formacion) */
+body .ods-highlight .ods-num{color:var(--rojo-texto)}
+body .cifra-desc{color:rgba(36,37,46,.78)}
+body .cifras-sources,body .cifras-sources a{color:rgba(36,37,46,.72)}
+body .donar-cta{background:var(--rojo-fondo)}
+body .donar-cta .btn-primary{color:var(--rojo-texto)}

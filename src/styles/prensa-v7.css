@@ -1,3 +1,13 @@
 /* /prensa — adiciones de v7 sobre pages/prensa.css (literal de v5) */
 .form-success h3{font-size:.95rem;font-weight:800;color:var(--gris-inst);margin-bottom:.4rem}
 #eventos,#prensa,#contacto-prensa,#kit{scroll-margin-top:70px}
+
+/* Legibilidad (contraste AA): complementa legibilidad-interiores.css */
+body .section-eyebrow.rojo,body .event-tag.rojo{color:var(--rojo-texto)}
+body .medio-desc,body .event-desc,body .cp-desc,body .cp-item{color:rgba(36,37,46,.78)}
+body .medio-type,body .event-tag{color:rgba(36,37,46,.68)}
+body .event-link{color:rgba(36,37,46,.75)}
+body .year-label{opacity:.55}
+body .kit-header-text .section-eyebrow,body .kit-contacto-label,body .kit-boilerplate-label,body .kit-material-tag{color:rgba(255,255,255,.68)}
+body .kit-contacto-cargo,body .kit-material-desc{color:rgba(255,255,255,.75)}
+body .kit-contacto-email,body .kit-material-link{color:var(--rojo-claro)}

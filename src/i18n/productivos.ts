@@ -43,16 +43,9 @@ const es = {
       ['Nuestra cosecha', 'El primer ingreso productivo propio: 23 kg de miel en 2026. Una fuente de ingresos sustentable para las socias.'],
       ['Educación ambiental', 'Aprender a interpretar el clima y revalorizar el vínculo entre las personas y la naturaleza patagónica.'],
     ],
-    estadoEyebrow: 'Dónde estamos', estadoTitle: 'Estado actual',
-    timeline: [
-      { dot: 'done', h: 'Formación en apicultura', p: 'Capacitación de las integrantes en manejo de colmenas y prácticas agroecológicas.', y: '2024' },
-      { dot: 'done', h: 'Instalación de 5 colmenas', p: 'Adquisición y mantenimiento en el territorio de la Comunidad Mapuche Tambo Báez.', y: '2024' },
-      { dot: 'done', h: 'Primera cosecha: 23 kg', p: 'Primer ingreso productivo propio de la cooperativa.', y: '2026' },
-      { dot: 'pending', h: 'Comercialización regional', p: 'Ampliar la distribución de la miel Amapolas a mercados locales y regionales.', y: 'A definir' },
-    ] as Tl[],
   },
   plantas: {
-    tag: 'Proyecto agroecológico · Soberanía alimentaria', title: 'Plantas Nativas',
+    tag: 'Proyecto agroecológico', title: 'Plantas Nativas',
     eyebrow: 'Narrativa de impacto',
     h2: ['Raíces patagónicas,', 'diversidad que florece'],
     prose: [
@@ -71,18 +64,6 @@ const es = {
     ] as Dato[],
     galeriaTitle: 'Imágenes del proyecto',
     galeria: ['Plantas nativas', 'Reproducción por esquejes', 'Taller de compostaje'],
-    resEyebrow: 'Lo que logramos', resTitle: 'Primeros resultados',
-    resultados: [
-      ['Formación inicial', 'Capacitación en tipos de plantas acordes a los distintos territorios patagónicos y sus características ecológicas.'],
-      ['Técnicas de compostaje', 'Formación en distintos tipos de compostaje como práctica de soberanía alimentaria y reducción de residuos orgánicos.'],
-      ['Reproducción por esquejes', 'Primeras reproducciones exitosas de especies nativas patagónicas sin depender de semillas comerciales.'],
-    ],
-    aliEyebrow: 'Con quiénes trabajamos', aliTitle: 'Organizaciones aliadas',
-    aliadas: [
-      ['Vivero de Plantas Nativas — Parques Nacionales', 'Vínculo técnico para el trabajo con especies nativas patagónicas y buenas prácticas de reproducción vegetal.'],
-      ['Circuito Verde Bariloche', 'Organización local que trabaja en la promoción de prácticas sustentables y economía circular en la ciudad.'],
-      ['Jóvenes por Bariloche', 'Organización juvenil local con trabajo en territorio y cuidado ambiental con quienes construimos vínculo activo.'],
-    ],
     estadoEyebrow: 'Dónde estamos', estadoTitle: 'Estado actual',
     estado: ['"Nativas Activas", programa financiado por ONU Mujeres, dictado por UTT Patagonia y Cooperativa Amapolas.', 'Capacitación en producción de plantas nativas con perspectiva de género e interculturalidad dirigida a mujeres y disidencias de la Patagonia.'],
   },
@@ -112,19 +93,6 @@ const es = {
     regen: [
       'El cultivo de gírgolas abre la posibilidad de ampliar la producción, fortalecer el vínculo con el territorio y generar nuevos aprendizajes que puedan ser compartidos y adaptados a otros espacios.',
       'Lo que hoy comienza como una experiencia concreta puede convertirse en un <strong>modelo replicable de producción sustentable</strong>: una forma de producir alimentos, fortalecer comunidades y cuidar los ecosistemas al mismo tiempo.',
-    ],
-    procEyebrow: 'Cómo lo hacemos', procTitle: 'El proceso de cultivo',
-    proceso: [
-      ['Etapa 01', 'Preparación del sustrato', 'Preparación de troncos y sustratos aptos para la inoculación de micelio de gírgolas según las características del bosque andino.'],
-      ['Etapa 02', 'Inoculación', 'Siembra del micelio en los sustratos. El cobertizo cuenta con sistema de riego automático para mantener condiciones óptimas de humedad.'],
-      ['Etapa 03', 'Cosecha y mejoras', 'Las cosechas iniciales fueron pequeñas. La segunda inoculación de troncos está en curso con ajustes técnicos apoyados por CIEFAP.'],
-    ],
-    terEyebrow: 'Territorio e interculturalidad', terTitle: ['Un proyecto arraigado', 'en Tambo Báez'],
-    terDesc: 'El cobertizo donde se desarrolla el cultivo fue construido en el territorio de la Comunidad Mapuche Tambo Báez, fortaleciendo el vínculo intercultural entre la cooperativa y la comunidad. No es una decisión logística: es política.',
-    terCards: [
-      ['Comunidad Mapuche Tambo Báez', 'A través de su referente Mirta, la comunidad cedió el espacio para el cobertizo. El proyecto también alberga el apiario colectivo.'],
-      ['CIEFAP', 'Centro de Investigación y Extensión Forestal Andino Patagónico. Acompañamiento técnico para el cultivo de gírgolas en el ecosistema patagónico.'],
-      ['Dirección de Parques y Jardines — Municipio Bariloche', 'Apoyo técnico municipal para el desarrollo del proyecto y la capacitación de las integrantes.'],
     ],
     estadoEyebrow: 'Dónde estamos', estadoTitle: 'Estado actual',
     timeline: [
@@ -184,16 +152,9 @@ const en: typeof es = {
       ['Our harvest', 'Our first income from our own production: 23 kg of honey in 2026. A sustainable source of income for members.'],
       ['Environmental education', 'Learning to read the weather and renewing the bond between people and Patagonian nature.'],
     ],
-    estadoEyebrow: 'Where we are', estadoTitle: 'Current status',
-    timeline: [
-      { dot: 'done', h: 'Beekeeping training', p: 'Training members in hive management and agroecological practices.', y: '2024' },
-      { dot: 'done', h: 'Five hives installed', p: 'Purchase and upkeep on the land of the Tambo Báez Mapuche Community.', y: '2024' },
-      { dot: 'done', h: 'First harvest: 23 kg', p: 'The cooperative’s first income from its own production.', y: '2026' },
-      { dot: 'pending', h: 'Regional sales', p: 'Expanding distribution of Amapolas honey to local and regional markets.', y: 'To be defined' },
-    ],
   },
   plantas: {
-    tag: 'Agroecological project · Food sovereignty', title: 'Native Plants',
+    tag: 'Agroecological project', title: 'Native Plants',
     eyebrow: 'Impact story',
     h2: ['Patagonian roots,', 'diversity in bloom'],
     prose: [
@@ -212,18 +173,6 @@ const en: typeof es = {
     ],
     galeriaTitle: 'Project images',
     galeria: ['Native plants', 'Propagation from cuttings', 'Composting workshop'],
-    resEyebrow: 'What we have achieved', resTitle: 'First results',
-    resultados: [
-      ['Initial training', 'Training on plant types suited to different Patagonian territories and their ecological characteristics.'],
-      ['Composting techniques', 'Training in different composting methods as a food sovereignty practice that reduces organic waste.'],
-      ['Propagation from cuttings', 'First successful propagation of native Patagonian species without relying on commercial seeds.'],
-    ],
-    aliEyebrow: 'Who we work with', aliTitle: 'Partner organizations',
-    aliadas: [
-      ['Native Plant Nursery — National Parks', 'Technical ties for working with native Patagonian species and good plant propagation practices.'],
-      ['Circuito Verde Bariloche', 'A local organization promoting sustainable practices and the circular economy in the city.'],
-      ['Jóvenes por Bariloche', 'A local youth organization working on the ground and on environmental care, with whom we have an active relationship.'],
-    ],
     estadoEyebrow: 'Where we are', estadoTitle: 'Current status',
     estado: ['"Nativas Activas", a program funded by UN Women and taught by UTT Patagonia and the Amapolas Cooperative.', 'Training in native plant production with a gender and intercultural perspective for women and gender-diverse people in Patagonia.'],
   },
@@ -253,19 +202,6 @@ const en: typeof es = {
     regen: [
       'Oyster mushroom cultivation opens the possibility of expanding production, strengthening our bond with the territory and generating new knowledge that can be shared and adapted to other places.',
       'What begins today as a concrete experience can become a <strong>replicable model of sustainable production</strong>: a way to produce food, strengthen communities and care for ecosystems at the same time.',
-    ],
-    procEyebrow: 'How we do it', procTitle: 'The growing process',
-    proceso: [
-      ['Stage 01', 'Substrate preparation', 'Preparing logs and substrates suitable for inoculation with oyster mushroom mycelium, according to the characteristics of the Andean forest.'],
-      ['Stage 02', 'Inoculation', 'Seeding the mycelium into the substrates. The shed has an automatic irrigation system to keep humidity at optimal levels.'],
-      ['Stage 03', 'Harvest and improvements', 'Initial harvests were small. The second log inoculation is underway with technical adjustments supported by CIEFAP.'],
-    ],
-    terEyebrow: 'Territory and interculturality', terTitle: ['A project rooted', 'in Tambo Báez'],
-    terDesc: 'The shed where cultivation takes place was built on the land of the Tambo Báez Mapuche Community, strengthening the intercultural bond between the cooperative and the community. It is not a logistical decision: it is a political one.',
-    terCards: [
-      ['Tambo Báez Mapuche Community', 'Through its leader Mirta, the community provided the space for the shed. The site also hosts the collective apiary.'],
-      ['CIEFAP', 'Andean Patagonian Forest Research and Extension Center. Technical support for oyster mushroom cultivation in the Patagonian ecosystem.'],
-      ['Parks and Gardens Department — Bariloche Municipality', 'Municipal technical support for the project and for training members.'],
     ],
     estadoEyebrow: 'Where we are', estadoTitle: 'Current status',
     timeline: [
