@@ -1,5 +1,6 @@
 ---
 import { site } from '../../config/site';
+import DonationBox from '../DonationBox.astro';
 // Home. Markup extraído de v5 index.html (scripts/v5-extract/index/body.html) con las
 // clases y la estructura originales. Cambios según docs/correcciones.md:
 // - sin contador de campaña ni GlobalGiving; donación en versión corta que apunta a /donar
@@ -188,37 +189,8 @@ const dlIcon = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stro
   </div>
 </div>
 
-<!-- DONACIÓN (versión corta; el cuadro completo está en /donar) -->
-<section id="donar" class="donation-section">
-  <div class="donation-content reveal">
-    <p class="section-eyebrow">{c.donation.eyebrow}</p>
-    <h2 class="section-title">{c.donation.title[0]}<br>{c.donation.title[1]}</h2>
-    {c.donation.body.map((p) => <p class="section-body">{p}</p>)}
-    <div class="donation-impacts">
-      {c.donation.impacts.map((d) => (
-        <div class="donation-impact-row"><strong>{d.a}</strong> {d.t}</div>
-      ))}
-    </div>
-    <p class="donation-closing">{c.donation.closing}</p>
-  </div>
-  <div class="donation-widget">
-    <p class="widget-label">{c.donation.widgetLabel}</p>
-    <p class="widget-sublabel">{c.donation.widgetSub}</p>
-    <p class="mp-intro">{c.donation.widgetIntro}</p>
-    <div class="mp-grid">
-      <a href={L('/donar') + '#donorbox'} class="mp-btn featured">
-        <span class="mp-amount">{c.donation.donorbox.a}</span>
-        <span class="mp-impact">{c.donation.donorbox.t}</span>
-      </a>
-      <a href={L('/donar') + '#mercadopago'} class="mp-btn">
-        <span class="mp-amount">{c.donation.mp.a}</span>
-        <span class="mp-impact">{c.donation.mp.t}</span>
-      </a>
-    </div>
-    <a href={L('/donar')} class="mp-otro">{c.donation.more}</a>
-    <p class="mp-secure">{c.donation.secure}</p>
-  </div>
-</section>
+<!-- DONACIÓN: cuadro completo con el formulario de Donorbox (mismo que /donar) -->
+<DonationBox lang={lang} id="donar" />
 
 <!-- INDICADORES -->
 <div class="indicadores-section reveal">
