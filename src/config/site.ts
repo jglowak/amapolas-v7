@@ -25,7 +25,10 @@ export const site = {
 
   // TODO: links reales de las plataformas de donación
   donate: {
-    donorbox: 'https://donorbox.org/amapolas', // TODO: ejemplo
+    donorbox: 'https://donorbox.org/ayudanos-a-comprar-el-terreno',
+    // Campaña del formulario embebido por idioma (el idioma del formulario se configura en la
+    // campaña de Donorbox). Para inglés: duplicar la campaña en inglés y poner su slug en `en`.
+    donorboxCampaign: { es: 'ayudanos-a-comprar-el-terreno', en: 'ayudanos-a-comprar-el-terreno' },
     mercadoPago: 'https://link.mercadopago.com.ar/amapolas', // TODO: ejemplo
   },
 
