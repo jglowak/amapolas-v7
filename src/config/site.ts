@@ -57,6 +57,7 @@ export const site = {
     alianzas: '/api/contacto',
     sponsors: '/api/contacto',
     newsletter: '/api/newsletter',
+    balance: '/api/contacto',
     turnstileSiteKey: '0x4AAAAAAF8KCfbaAXwpCNt7',
   },
 

@@ -1,5 +1,5 @@
 // Worker de Amapolas: sirve el sitio estático (dist/) y atiende /api/* con Brevo.
-//   POST /api/contacto   → mail transaccional a MAIL_TO (formularios de prensa, alianzas y sponsors)
+//   POST /api/contacto   → mail transaccional a MAIL_TO (formularios de prensa, alianzas, sponsors y balance)
 //                          + respuesta automática a quien escribió (plantillas BREVO_TPL_REPLY_ES/EN)
 //   POST /api/newsletter → doble opt-in: Brevo manda el mail de confirmación (BREVO_TPL_DOI_ES/EN)
 //                          y suma el contacto a BREVO_LIST_ID recién cuando lo confirma
@@ -10,9 +10,9 @@
 
 const BREVO = 'https://api.brevo.com/v3';
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-const FORMS = { prensa: 'Prensa', alianzas: 'Fundaciones y organizaciones', sponsors: 'Sponsors' };
+const FORMS = { prensa: 'Prensa', alianzas: 'Fundaciones y organizaciones', sponsors: 'Sponsors', balance: 'Pedido de balance' };
 // Nombre del formulario en la respuesta automática, según el idioma de la página
-const FORMS_EN = { prensa: 'press', alianzas: 'foundations and organizations', sponsors: 'sponsors' };
+const FORMS_EN = { prensa: 'press', alianzas: 'foundations and organizations', sponsors: 'sponsors', balance: 'financial statements request' };
 
 const json = (body, status = 200) =>
   new Response(JSON.stringify(body), { status, headers: { 'Content-Type': 'application/json' } });
