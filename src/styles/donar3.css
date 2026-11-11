@@ -55,8 +55,9 @@ button.d3-link{background:none;border:none;border-bottom:1.5px solid var(--rojo)
 .d3-image-body{position:relative;z-index:1;max-width:760px;padding:5rem 2rem}
 .d3-image-quote{font-size:clamp(1.8rem,4vw,3rem);font-weight:800;letter-spacing:-.03em;line-height:1.1;color:#fff}
 .d3-image-attr{margin-top:1rem;font-size:.72rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.88)}
-.d3-image-cta{display:inline-block;margin-top:2rem;background:var(--rojo);color:var(--azul);font-weight:800;font-size:.95rem;padding:.95rem 2.2rem;border-radius:2px;transition:background .2s}
-.d3-image-cta:hover{background:#f07d62}
+/* Texto blanco: con el rojo más profundo de los cuadros de donación (#cc4c32) cumple AA (4.5:1) */
+.d3-image-cta{display:inline-block;margin-top:2rem;background:#cc4c32;color:#fff;font-weight:800;font-size:.95rem;padding:.95rem 2.2rem;border-radius:2px;transition:background .2s}
+.d3-image-cta:hover{background:#b8432b}
 
 /* Popup de balance */
 .d3-modal{margin:auto;border:none;border-radius:3px;padding:2.4rem 2.2rem 2rem;width:min(520px,calc(100% - 2rem));max-height:calc(100% - 2rem);box-shadow:0 24px 70px rgba(36,37,46,.35);color:var(--azul);font-family:var(--font)}
