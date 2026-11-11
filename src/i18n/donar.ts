@@ -27,8 +27,6 @@ export const donar = {
       closing: 'Cada aporte cuenta. Cada aporte nos acerca al territorio que hará posible nuestro barrio.',
     },
     box: {
-      label: 'Ayudanos a comprar el terreno',
-      intro: 'Podés realizar tu aporte de forma segura a través de Donorbox, una plataforma internacional de donaciones, o a través de Mercado Pago, si te encontrás en Argentina. En esta etapa, los fondos recaudados estarán destinados prioritariamente a la adquisición del terreno donde se desarrollará Amapolas.',
       tabs: { donorbox: ['Donación internacional', 'Donorbox · USD'], mp: ['Desde Argentina', 'Mercado Pago · ARS'] },
       secureDonorbox: 'Donaciones seguras y trazables a través de Donorbox · Matrícula INAES N°63884',
       mpIntro: 'Si te encontrás en Argentina, podés aportar en pesos a través de Mercado Pago, con un aporte único o mensual.',
@@ -64,8 +62,6 @@ export const donar = {
       closing: 'Every contribution counts. Every contribution brings us closer to the land that will make our neighborhood possible.',
     },
     box: {
-      label: 'Help us buy the land',
-      intro: 'You can give securely through Donorbox, an international donation platform, or through Mercado Pago if you are in Argentina. At this stage, funds raised will go primarily toward acquiring the land where Amapolas will be built.',
       tabs: { donorbox: ['International donation', 'Donorbox · USD'], mp: ['From Argentina', 'Mercado Pago · ARS'] },
       secureDonorbox: 'Secure, traceable donations through Donorbox · INAES Registration No. 63884',
       mpIntro: 'If you are in Argentina, you can give in pesos through Mercado Pago, as a one-time or monthly contribution.',
