@@ -18,8 +18,10 @@ interface Props {
   ogImage?: string;
   /** Hero claro: el nav no usa la variante sobre fondo oscuro (v5 comunidad.html) */
   navLight?: boolean;
+  /** Páginas de servicio (p. ej. confirmación de newsletter): fuera de buscadores */
+  noindex?: boolean;
 }
-const { lang, title, description, breadcrumbs = [], graph = [], ogImage = '/og-default.png', navLight = false } = Astro.props;
+const { lang, title, description, breadcrumbs = [], graph = [], ogImage = '/og-default.png', navLight = false, noindex = false } = Astro.props;
 const path = stripLang(Astro.url.pathname);
 const abs = (p: string) => (p === '/' ? `${site.url}/` : new URL(p, site.url).href.replace(/\/$/, ''));
 const canonical = abs(localePath(lang, path));
@@ -82,7 +84,7 @@ const ld = {
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{title}</title>
 <meta name="description" content={description}>
-{Astro.url.pathname.startsWith('/404') && <meta name="robots" content="noindex">}
+{(noindex || Astro.url.pathname.startsWith('/404')) && <meta name="robots" content="noindex">}
 <link rel="canonical" href={canonical}>
 <link rel="alternate" hreflang="es" href={esUrl}>
 <link rel="alternate" hreflang="en" href={enUrl}>

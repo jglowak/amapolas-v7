@@ -10,7 +10,7 @@ const msg = lang === 'es'
   : { sending: 'Sending...', error: 'Something went wrong. Please try again.', verify: 'Please complete the verification.' };
 ---
 {site.forms.turnstileSiteKey && <script is:inline src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>}
-<script is:inline define:vars={{ msg, email: site.email, turnstile: !!site.forms.turnstileSiteKey }}>
+<script is:inline define:vars={{ msg, lang, email: site.email, turnstile: !!site.forms.turnstileSiteKey }}>
 // [etiqueta visible, valor] por campo: selects y checkboxes mandan el texto que ve la persona,
 // y los checkboxes de un mismo grupo se unen con comas
 function fieldsOf(form) {
@@ -60,6 +60,9 @@ window.amapolasSubmit = async function (e, successId) {
       body: JSON.stringify({
         form: form.dataset.form,
         subject: form.dataset.subject,
+        lang,
+        // nombre de la persona (solo prensa lo pide) para el saludo de la respuesta automática
+        name: (form.querySelector('[autocomplete="name"]') || {}).value || '',
         fields: fieldsOf(form),
         website: data.get('website') || '',
         turnstile: data.get('cf-turnstile-response') || '',

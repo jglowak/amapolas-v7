@@ -119,7 +119,7 @@ export const home = {
       placeholder: 'Tu correo electrónico',
       label: 'Correo electrónico',
       button: 'Suscribirme',
-      msg: { sending: 'Enviando…', ok: '¡Listo! Ya estás suscripta/o a las novedades de Amapolas.', error: 'No pudimos suscribirte. Probá de nuevo en un rato.', invalid: 'Revisá el correo electrónico.' },
+      msg: { sending: 'Enviando…', ok: '¡Casi listo! Te mandamos un correo: tocá el botón para confirmar tu suscripción.', error: 'No pudimos suscribirte. Probá de nuevo en un rato.', invalid: 'Revisá el correo electrónico.' },
     },
     popup: {
       close: 'Cerrar',
@@ -250,7 +250,7 @@ export const home = {
       placeholder: 'Your email address',
       label: 'Email address',
       button: 'Subscribe',
-      msg: { sending: 'Sending…', ok: 'Done! You’re subscribed to Amapolas updates.', error: 'We couldn’t subscribe you. Please try again later.', invalid: 'Please check your email address.' },
+      msg: { sending: 'Sending…', ok: 'Almost there! We sent you an email: tap the button to confirm your subscription.', error: 'We couldn’t subscribe you. Please try again later.', invalid: 'Please check your email address.' },
     },
     popup: {
       close: 'Close',

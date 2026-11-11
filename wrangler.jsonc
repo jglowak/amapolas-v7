@@ -14,7 +14,12 @@
   "vars": {
     "MAIL_TO": "info@amapolas.org",
     "MAIL_FROM": "info@amapolas.org",
-    "BREVO_LIST_ID": "3"
+    "BREVO_LIST_ID": "3",
+    // Plantillas transaccionales de Brevo (respuesta automática y confirmación de newsletter)
+    "BREVO_TPL_REPLY_ES": "1",
+    "BREVO_TPL_REPLY_EN": "2",
+    "BREVO_TPL_DOI_ES": "3",
+    "BREVO_TPL_DOI_EN": "4"
   },
   // Lunes 9:17 UTC: mantiene activa la clave de Brevo (worker/index.js → scheduled)
   "triggers": { "crons": ["17 9 * * 1"] },
