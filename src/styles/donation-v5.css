@@ -56,3 +56,17 @@
 .donation-content .section-eyebrow{font-size:.68rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;margin-bottom:1rem}
 .donation-content .section-title{font-size:clamp(1.9rem,3vw,2.8rem);font-weight:800;letter-spacing:-.025em;line-height:1.08;margin-bottom:1.2rem}
 .donation-content .section-body{font-size:1rem;font-weight:400;line-height:1.8;max-width:520px}
+/* Cuadro completo en rojo: el formulario de Donorbox (fondo blanco fijo) y Mercado Pago van en tarjetas blancas */
+.donation-section--full .donation-widget{background:var(--rojo);border-left:1px solid rgba(255,255,255,.18)}
+.donation-section--full .donation-widget .widget-label{color:white}
+.donation-section--full .donation-widget>.mp-intro{color:rgba(255,255,255,.78)}
+.donation-section--full .donation-widget .dn-tabs{background:rgba(255,255,255,.16)}
+.donation-section--full .donation-widget .dn-tab{color:rgba(255,255,255,.85)}
+.donation-section--full .donation-widget .dn-tab[aria-selected="true"]{background:white;color:var(--rojo);box-shadow:0 2px 10px rgba(36,37,46,.12)}
+.dn-card{background:white;border-radius:6px;box-shadow:0 18px 40px rgba(36,37,46,.18);width:100%;max-width:440px;padding:1.6rem 1.4rem;display:flex;flex-direction:column;align-items:center}
+.dn-card--form{padding:.6rem;min-height:420px}
+.dn-card--form dbox-widget{display:block;width:100%}
+.dn-card .mp-intro{margin-bottom:1.1rem}
+.donation-section--full .donation-widget .mp-secure{color:rgba(255,255,255,.7);margin-top:1rem}
+@media(max-width:1100px){.donation-section--full .donation-widget{border-left:none;border-top:1px solid rgba(255,255,255,.18)}}
+@media(max-width:640px){.donation-section--full .donation-widget{padding:2rem 1rem}.dn-card--form{padding:.3rem}}
