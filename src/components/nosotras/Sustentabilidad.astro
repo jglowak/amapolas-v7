@@ -2,10 +2,12 @@
 // Hábitat Sustentable. Markup extraído de v5 nosotras/sustentabilidad.html
 // (scripts/v5-extract/nosotras__sustentabilidad/body.html). CSS: pages/nosotras__sustentabilidad.css
 // completo, como en v5. Cambios: hero, textos de los dos bloques, tarjetas de "Enfoque" y CTA
-// (docs/correcciones.md), en el orden del documento. ODS sin cambios. h4 → h3 por jerarquía.
+// (docs/correcciones.md), en el orden del documento. ODS sin cambios. Doc 24/10: sin badge en el
+// hero y foto del bloque 1 con el alto de la columna de texto. h4 → h3 por jerarquía.
 import { sustentabilidad } from '../../i18n/sustentabilidad';
 import { localePath, type Lang } from '../../i18n/ui';
 import '../../styles/pages/nosotras__sustentabilidad.css';
+import '../../styles/legibilidad-interiores.css';
 import '../../styles/sustentabilidad-v7.css';
 
 interface Props { lang: Lang }
@@ -26,9 +28,6 @@ const L = (p: string) => localePath(lang, p);
       <a href={L('/nosotras')}>{c.hero.parent}</a><span>/</span>
       <span style="color:rgba(255,255,255,.7)" aria-current="page">{c.hero.here}</span>
     </div>
-    <div class="hero-badge" style="background:rgba(55,97,53,.5);color:white;border:1px solid rgba(255,255,255,.2)">
-      <span style="font-size:.8rem">02</span> · {c.hero.badge}
-    </div>
     <h1 class="hero-title">{c.hero.title[0]}<br>{c.hero.title[1]}</h1>
     <p class="hero-subtitle">{c.hero.subtitle}</p>
   </div>
@@ -47,7 +46,7 @@ const L = (p: string) => localePath(lang, p);
         {c.b1.ods.map((o) => <div class="ods-item"><p class="ods-num">{o.n}</p><p set:html={o.p} /></div>)}
       </div>
     </div>
-    <div class="eje-photo reveal">
+    <div class="eje-photo eje-photo-alta reveal">
       <div class="eje-photo-placeholder"><span>{c.b1.photo}</span></div>
     </div>
   </div>

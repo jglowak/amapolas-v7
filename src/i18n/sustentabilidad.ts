@@ -8,7 +8,6 @@ export const sustentabilidad = {
     },
     hero: {
       home: 'Inicio', parent: 'Nosotras', here: 'Hábitat Sustentable',
-      badge: 'Cuidado del territorio',
       title: ['Cuidar el territorio,', 'cuidar la vida'],
       subtitle: 'Proyectos agroecológicos, protección de la biodiversidad y guardianas del agua. La sustentabilidad como práctica cotidiana en cada decisión del proyecto.',
       missing: 'Imagen pendiente: sustentabilidad_hero.jpg',
@@ -67,7 +66,6 @@ export const sustentabilidad = {
     },
     hero: {
       home: 'Home', parent: 'About us', here: 'Sustainable Habitat',
-      badge: 'Caring for the territory',
       title: ['Caring for the land,', 'caring for life'],
       subtitle: 'Agroecological projects, biodiversity protection and water guardians. Sustainability as an everyday practice in every project decision.',
       missing: 'Image pending: sustentabilidad_hero.jpg',
