@@ -1,0 +1,10 @@
+---
+// Propuesta de rediseño de /donar (borrador: fuera de buscadores y del sitemap).
+import Base from '../layouts/Base.astro';
+import Donar2 from '../components/donar2/Donar2.astro';
+import { donar2 } from '../i18n/donar2';
+const { title, description, crumb } = donar2.es.meta;
+---
+<Base lang="es" title={title} description={description} breadcrumbs={[{ name: crumb, path: '/donar2' }]} noindex>
+  <Donar2 lang="es" />
+</Base>

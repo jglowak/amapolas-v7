@@ -30,6 +30,25 @@ export const site = {
     // campaña de Donorbox). Para inglés: duplicar la campaña en inglés y poner su slug en `en`.
     donorboxCampaign: { es: 'ayudanos-a-comprar-el-terreno', en: 'ayudanos-a-comprar-el-terreno' },
     mercadoPago: 'https://link.mercadopago.com.ar/amapolas', // TODO: ejemplo
+    // Montos de Mercado Pago (ARS) para /donar2. Cada monto necesita su propio link de pago
+    // (único) o de suscripción (mensual). TODO: montos y links reales; mientras `url` esté vacío,
+    // el botón lleva al link general de arriba.
+    mercadoPagoAmounts: {
+      once: [
+        { ars: 10000, url: '' },
+        { ars: 25000, url: '', featured: true },
+        { ars: 50000, url: '' },
+        { ars: 100000, url: '' },
+      ],
+      monthly: [
+        { ars: 5000, url: '' },
+        { ars: 10000, url: '', featured: true },
+        { ars: 25000, url: '' },
+        { ars: 50000, url: '' },
+      ],
+      otherOnce: '', // link con monto libre (opcional)
+      otherMonthly: '',
+    },
   },
 
   // Formularios y newsletter: worker/index.js (Brevo). Turnstile: site key pública (vacía = sin captcha).
