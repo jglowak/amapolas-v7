@@ -3,6 +3,7 @@
 //                          + respuesta automática a quien escribió (plantillas BREVO_TPL_REPLY_ES/EN)
 //   POST /api/newsletter → doble opt-in: Brevo manda el mail de confirmación (BREVO_TPL_DOI_ES/EN)
 //                          y suma el contacto a BREVO_LIST_ID recién cuando lo confirma
+//   GET /api/pais        → país de quien visita (request.cf.country)
 //   cron semanal         → mantiene activa la clave de Brevo
 // Secretos (Cloudflare → Settings → Variables and Secrets): BREVO_API_KEY y, opcional, TURNSTILE_SECRET.
 // Variables: MAIL_TO, MAIL_FROM, BREVO_LIST_ID y los IDs de plantillas (wrangler.jsonc).
@@ -98,6 +99,12 @@ async function newsletter(req, env) {
 export default {
   async fetch(req, env) {
     const { pathname } = new URL(req.url);
+    // País de quien visita (Cloudflare): /donar2 elige Mercado Pago o Donorbox según el país
+    if (pathname === '/api/pais') {
+      return new Response(JSON.stringify({ country: req.cf?.country || null }), {
+        headers: { 'Content-Type': 'application/json', 'Cache-Control': 'private, no-store' },
+      });
+    }
     if (pathname.startsWith('/api/')) {
       if (req.method !== 'POST') return json({ ok: false, error: 'method' }, 405);
       if (!env.BREVO_API_KEY) return json({ ok: false, error: 'not_configured' }, 503);
