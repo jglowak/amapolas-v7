@@ -1,8 +1,12 @@
 ---
-// /donar3: landing de donación con el registro visual del sitio (v5). El formulario de una columna
+// /donar: landing de donación con el registro visual del sitio (v5). El formulario de una columna
 // queda a la vista apenas se entra (es el destino de los botones "Donar"); abajo se refuerza el
-// mensaje: "Tu aporte importa", por qué confiar y preguntas frecuentes.
+// mensaje: "Tu aporte importa", por qué confiar (con popup para pedir el balance), una franja con
+// foto y preguntas frecuentes.
+import { Image } from 'astro:assets';
+import plantas from '../../assets/img/plantas.jpg';
 import DonationForm from '../DonationForm.astro';
+import FormScript from '../FormScript.astro';
 import { donar3 } from '../../i18n/donar3';
 import { donar2 } from '../../i18n/donar2';
 import { donar } from '../../i18n/donar';
@@ -17,6 +21,7 @@ const c = donar3[lang];
 const d2 = donar2[lang];
 const left = donar[lang].left;
 const L = (p: string) => localePath(lang, p);
+const bf = c.balance;
 ---
 <!-- ENCABEZADO + FORMULARIO (a la vista al entrar) -->
 <section class="d3-top" id="aporte">
@@ -56,7 +61,18 @@ const L = (p: string) => localePath(lang, p);
         </div>
       ))}
     </div>
-    <a class="d3-link" href={`mailto:${site.email}?subject=${encodeURIComponent(d2.confianza.balanceSubject)}`}>{d2.confianza.balance} →</a>
+    <button type="button" class="d3-link" id="d3-balance-open" aria-haspopup="dialog" aria-controls="d3-balance">{d2.confianza.balance} →</button>
+  </div>
+</section>
+
+<!-- FRANJA CON FOTO -->
+<section class="d3-image">
+  <Image src={plantas} alt={c.imagen.alt} class="d3-image-bg" widths={[768, 1376]} sizes="100vw" loading="lazy" />
+  <div class="d3-image-overlay" aria-hidden="true"></div>
+  <div class="d3-image-body reveal">
+    <p class="d3-image-quote">“{c.imagen.quote}”</p>
+    <p class="d3-image-attr">{c.imagen.attr}</p>
+    <a href="#aporte" class="d3-image-cta">{c.imagen.cta}</a>
   </div>
 </section>
 
@@ -79,3 +95,33 @@ const L = (p: string) => localePath(lang, p);
   <h2 class="d3-otras">{c.otras.text}</h2>
   <a href={L('/comunidad')} class="prensa-cta">{c.otras.link}</a>
 </div>
+
+<!-- POPUP: pedido de balance (envía a /api/contacto, form "balance") -->
+<dialog class="d3-modal" id="d3-balance" aria-labelledby="d3-balance-title">
+  <button type="button" class="d3-modal-close" data-close aria-label={bf.close}>×</button>
+  <h2 id="d3-balance-title">{bf.title}</h2>
+  <p class="d3-modal-intro">{bf.intro}</p>
+  <form id="balanceForm" method="POST" data-form="balance" data-endpoint={site.forms.balance} data-subject={bf.subject} onsubmit="amapolasSubmit(event,'balanceSuccess')">
+    <label class="d3-label-f" for="b_nombre">{bf.nombre}</label>
+    <input class="d3-input" type="text" id="b_nombre" name="nombre" placeholder={bf.nombrePh} required autocomplete="name">
+    <label class="d3-label-f" for="b_org">{bf.org}</label>
+    <input class="d3-input" type="text" id="b_org" name="organizacion" placeholder={bf.orgPh} autocomplete="organization">
+    <label class="d3-label-f" for="b_email">{bf.email}</label>
+    <input class="d3-input" type="email" id="b_email" name="email" placeholder={bf.emailPh} required autocomplete="email">
+    <label class="d3-label-f" for="b_msg">{bf.mensaje}</label>
+    <textarea class="d3-input d3-textarea" id="b_msg" name="mensaje" placeholder={bf.mensajePh}></textarea>
+    {site.forms.turnstileSiteKey && <div class="turnstile-wrap"><div class="cf-turnstile" data-sitekey={site.forms.turnstileSiteKey} data-theme="light" data-language={lang}></div></div>}
+    <button type="submit" class="d3-submit">{bf.enviar}</button>
+  </form>
+  <div class="d3-success" id="balanceSuccess" role="status"><h3>{bf.ok[0]}</h3><p>{bf.ok[1]}</p></div>
+</dialog>
+
+<FormScript lang={lang} />
+<script is:inline>
+(function () {
+  const dlg = document.getElementById('d3-balance');
+  document.getElementById('d3-balance-open').addEventListener('click', () => dlg.showModal());
+  dlg.querySelector('[data-close]').addEventListener('click', () => dlg.close());
+  dlg.addEventListener('click', (e) => { if (e.target === dlg) dlg.close(); });
+})();
+</script>
