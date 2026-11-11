@@ -5,6 +5,7 @@
 import { formacion } from '../../i18n/formacion';
 import { localePath, type Lang } from '../../i18n/ui';
 import '../../styles/pages/nosotras__genero.css';
+import '../../styles/legibilidad-interiores.css';
 import '../../styles/genero-v7.css';
 
 interface Props { lang: Lang }
@@ -23,9 +24,6 @@ const L = (p: string) => localePath(lang, p);
       <a href={L('/')}>{c.hero.home}</a><span>/</span>
       <a href={L('/proyectos')}>{c.hero.parent}</a><span>/</span>
       <span style="color:rgba(255,255,255,.7)" aria-current="page">{c.hero.here}</span>
-    </div>
-    <div class="hero-badge" style="background:rgba(237,105,75,.35);color:white;border:1px solid rgba(255,255,255,.2)">
-      {c.hero.badge}
     </div>
     <h1 class="hero-title">{c.hero.title[0]}<br>{c.hero.title[1]}</h1>
     <p class="hero-subtitle">{c.hero.subtitle}</p>
