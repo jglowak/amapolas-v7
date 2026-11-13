@@ -2,7 +2,8 @@
 // Formulario de donación de una columna: pestañas Mercado Pago (frecuencia + montos en ARS, un
 // link por monto en site.donate.mercadoPagoAmounts) y Donorbox (formulario embebido).
 // La pestaña inicial se elige por país (/api/pais en worker/index.js): Argentina → Mercado Pago.
-// Usado en /donar2 y /donar3. Una sola instancia por página (ids fijos).
+// El script de Donorbox se carga solo al abrir (o apuntar) su pestaña; si se abre sola, al acercarse.
+// Usado en /donar, /donar2 y en el cuadro de donación de la home y Comunidad. Una sola instancia por página (ids fijos).
 import { donar2 } from '../i18n/donar2';
 import { site } from '../config/site';
 import type { Lang } from '../i18n/ui';
@@ -56,12 +57,38 @@ const otherMonthly = mp.otherMonthly || site.donate.mercadoPago;
   </div>
 </div>
 
-<script type="module" src="https://donorbox.org/widgets.js" async is:inline></script>
 <script is:inline>
 (function () {
+  // Donorbox (su script y su formulario embebido son lo más pesado de la página): se carga recién
+  // cuando hace falta, al abrir su pestaña o al apuntarla (mouse, foco o toque), no al cargar la página.
+  let dbLoaded = false;
+  function loadDonorbox() {
+    if (dbLoaded) return;
+    dbLoaded = true;
+    const s = document.createElement('script');
+    s.type = 'module';
+    s.async = true;
+    s.src = 'https://donorbox.org/widgets.js';
+    document.head.appendChild(s);
+  }
+  const dbTab = document.getElementById('d2-tab-db');
+  ['pointerenter', 'focus', 'touchstart'].forEach((ev) => dbTab.addEventListener(ev, loadDonorbox, { once: true, passive: true }));
+
+  // Si la pestaña se abre sola (visita de otro país), se carga cuando el formulario se acerca a la
+  // pantalla: en la home y en Comunidad el cuadro está al final; en /donar está arriba y carga enseguida.
+  function loadWhenNear() {
+    if (dbLoaded) return;
+    if (!('IntersectionObserver' in window)) return loadDonorbox();
+    const io = new IntersectionObserver((es) => {
+      if (es.some((e) => e.isIntersecting)) { io.disconnect(); loadDonorbox(); }
+    }, { rootMargin: '600px 0px' });
+    io.observe(document.querySelector('.d2-card'));
+  }
+
   // Pestañas
   const tabs = document.querySelectorAll('.d2-tab');
-  function select(id) {
+  function select(id, auto) {
+    if (id === 'd2-tab-db') (auto ? loadWhenNear : loadDonorbox)();
     tabs.forEach((t) => {
       const on = t.id === id;
       t.setAttribute('aria-selected', on ? 'true' : 'false');
@@ -71,7 +98,7 @@ const otherMonthly = mp.otherMonthly || site.donate.mercadoPago;
   tabs.forEach((t) => t.addEventListener('click', () => select(t.id)));
   if (location.hash === '#donorbox') select('d2-tab-db');
   else fetch('/api/pais').then((r) => (r.ok ? r.json() : null)).then((d) => {
-    if (d && d.country && d.country !== 'AR') select('d2-tab-db');
+    if (d && d.country && d.country !== 'AR') select('d2-tab-db', true);
   }).catch(() => {});
 
   // Mercado Pago: frecuencia y monto → actualizan el botón
