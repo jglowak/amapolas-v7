@@ -86,7 +86,7 @@ const es = {
       id: 'conservacion', h: '6. Cuánto tiempo los guardamos',
       blocks: [
         { ul: [
-          'Mensajes de formularios: [COMPLETAR: plazo, por ejemplo 2 años desde la última comunicación].',
+          'Mensajes de formularios: mientras sea necesario para responder tu consulta y mantener el vínculo con la cooperativa, o hasta que nos pidas que los eliminemos.',
           'Newsletter: mientras sigas suscripta/o; al darte de baja dejamos de enviarte correos.',
           'Donaciones: el tiempo que exijan las normas contables y fiscales aplicables a la cooperativa.',
           'Analítica: según los plazos indicados en la tabla de cookies.',
@@ -100,7 +100,6 @@ const es = {
         { p: 'El titular de los datos personales tiene la facultad de ejercer el derecho de acceso a los mismos en forma gratuita a intervalos no inferiores a seis meses, salvo que se acredite un interés legítimo al efecto conforme lo establecido en el artículo 14, inciso 3 de la Ley N° 25.326.' },
         { p: 'La AGENCIA DE ACCESO A LA INFORMACIÓN PÚBLICA, en su carácter de Órgano de Control de la Ley N° 25.326, tiene la atribución de atender las denuncias y reclamos que interpongan quienes resulten afectados en sus derechos por incumplimiento de las normas vigentes en materia de protección de datos personales.' },
         { p: 'Si nos visitás desde la Unión Europea, también podés ejercer los derechos que te reconoce el Reglamento General de Protección de Datos (RGPD), incluidos los de oposición, limitación del tratamiento y portabilidad.' },
-        { p: 'Inscripción de la base de datos ante la AAIP: [COMPLETAR: número de inscripción o indicar si está en trámite].' },
       ],
     },
     {
@@ -199,7 +198,7 @@ const en: typeof es = {
       id: 'conservacion', h: '6. How long we keep it',
       blocks: [
         { ul: [
-          'Form messages: [COMPLETAR: retention period, for example 2 years after the last contact].',
+          'Form messages: for as long as needed to answer your inquiry and keep in touch with the cooperative, or until you ask us to delete them.',
           'Newsletter: while you remain subscribed; once you unsubscribe we stop emailing you.',
           'Donations: for as long as required by the accounting and tax rules that apply to the cooperative.',
           'Analytics: according to the periods listed in the cookie table.',
@@ -213,7 +212,6 @@ const en: typeof es = {
         { p: 'Data subjects may exercise their right of access free of charge at intervals of no less than six months, unless a legitimate interest is shown, as provided in Article 14(3) of Law No. 25,326.' },
         { p: 'The Agency for Access to Public Information (AAIP), as the supervisory authority of Law No. 25,326, is empowered to handle complaints and claims from anyone whose rights are affected by non-compliance with personal data protection rules.' },
         { p: 'If you visit us from the European Union, you may also exercise the rights granted by the General Data Protection Regulation (GDPR), including the rights to object, to restrict processing and to data portability.' },
-        { p: 'Database registration with the AAIP: [COMPLETAR: registration number, or state that it is in progress].' },
       ],
     },
     {
