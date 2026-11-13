@@ -61,6 +61,21 @@ export const site = {
     turnstileSiteKey: '0x4AAAAAAF8KCfbaAXwpCNt7',
   },
 
+  // Analítica y verificación de buscadores. Vacío = desactivado. Google Analytics y Clarity se cargan
+  // solo si la persona acepta las cookies de analítica (src/components/CookieConsent.astro).
+  analytics: {
+    ga4: '', // TODO: ID de medición de Google Analytics 4 (G-XXXXXXXXXX)
+    clarity: '', // TODO (más adelante): ID de proyecto de Microsoft Clarity
+    googleVerification: '', // Search Console: valor de la meta google-site-verification (o verificar por DNS)
+    bingVerification: '', // Bing Webmaster Tools: valor de la meta msvalidate.01 (o importar desde Search Console)
+  },
+
+  // Datos legales para la política de privacidad. TODO: completar con la cooperativa.
+  legal: {
+    cuit: '',
+    address: '',
+  },
+
   // Mientras estén en false, el JSON-LD no publica sameAs ni ContactPoint
   // (no exponer datos de ejemplo como si fueran reales).
   verified: {

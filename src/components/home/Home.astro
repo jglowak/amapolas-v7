@@ -1,6 +1,7 @@
 ---
 import { site } from '../../config/site';
 import DonationBox from '../DonationBox.astro';
+import PrivacyNote from '../PrivacyNote.astro';
 // Home. Markup extraído de v5 index.html (scripts/v5-extract/index/body.html) con las
 // clases y la estructura originales. Cambios según docs/correcciones.md:
 // - sin contador de campaña ni GlobalGiving; donación en versión corta que apunta a /donar
@@ -215,6 +216,7 @@ const dlIcon = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stro
     </form>
     <div class="nl-ts"></div>
     <p class="nl-msg" role="status" aria-live="polite"></p>
+    <PrivacyNote lang={lang} class="privacy-note--left" />
   </div>
 </div>
 
@@ -235,7 +237,7 @@ const dlIcon = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stro
     </form>
     <div class="nl-ts" style="display:flex;justify-content:center;margin-top:.5rem"></div>
     <p class="nl-msg" role="status" aria-live="polite" style="margin-top:.75rem"></p>
-    <p style="font-family:'DM Sans',sans-serif;font-size:.75rem;color:#24252e;opacity:.45;margin-top:1rem;">{c.popup.note}</p>
+    <p class="nl-popup-note" style="font-family:'DM Sans',sans-serif;font-size:.75rem;color:rgba(36,37,46,.75);margin-top:1rem;">{c.popup.note} <PrivacyNote lang={lang} inline /></p>
   </div>
 </div>
 {site.forms.turnstileSiteKey && <script is:inline src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>}
@@ -284,7 +286,9 @@ document.querySelectorAll('.nl-form').forEach(function(form){
   function hidePopup(){ overlay.style.display = 'none'; document.body.style.overflow = ''; try { sessionStorage.setItem('amapolas-nl-closed', '1'); } catch (_) {} }
   var seen = false;
   try { seen = localStorage.getItem('amapolas-nl') === '1' || sessionStorage.getItem('amapolas-nl-closed') === '1'; } catch (_) {}
-  if (!seen) setTimeout(showPopup, 5000);
+  // Espera a que se resuelva el aviso de cookies para no superponer dos avisos
+  function startPopup(){ setTimeout(showPopup, 5000); }
+  if (!seen) { if (window.amapolasConsent) startPopup(); else document.addEventListener('amapolas:consent', startPopup, { once: true }); }
   closeBtn.addEventListener('click', hidePopup);
   overlay.addEventListener('click', function(e){ if(e.target === overlay) hidePopup(); });
   document.addEventListener('keydown', function(e){ if(e.key === 'Escape') hidePopup(); });

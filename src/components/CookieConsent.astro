@@ -1,0 +1,99 @@
+---
+// Aviso de cookies (todas las páginas, desde Base.astro). Las cookies necesarias no piden permiso;
+// Google Analytics y Microsoft Clarity se cargan SOLO si la persona acepta (sin precarga ni pings
+// previos). La elección se guarda 12 meses en localStorage ('amapolas-consent'); el link
+// "Configurar cookies" del footer (data-cc-open) vuelve a mostrar el aviso. Si alguien retira el
+// consentimiento, se borran las cookies de analítica y se recarga la página.
+// Avisa con el evento 'amapolas:consent' (el popup de newsletter de la home espera a la elección).
+import { site } from '../config/site';
+import { ui, localePath, type Lang } from '../i18n/ui';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const t = ui[lang].cookies;
+const ga4 = site.analytics.ga4;
+const clarity = site.analytics.clarity;
+---
+<div class="cc" id="cc" role="region" aria-label={t.label} hidden>
+  <p class="cc-text">{t.text} <a href={`${localePath(lang, '/privacidad')}#cookies`}>{t.more}</a></p>
+  <div class="cc-btns">
+    <button type="button" class="cc-btn" data-cc="denied">{t.reject}</button>
+    <button type="button" class="cc-btn cc-btn--accept" data-cc="granted">{t.accept}</button>
+  </div>
+</div>
+
+<script is:inline define:vars={{ ga4, clarity }}>
+(function () {
+  var KEY = 'amapolas-consent', MAX = 365 * 864e5;
+  var box = document.getElementById('cc');
+  function read() {
+    try {
+      var v = JSON.parse(localStorage.getItem(KEY));
+      return v && (v.c === 'granted' || v.c === 'denied') && Date.now() - v.t < MAX ? v.c : null;
+    } catch (e) { return null; }
+  }
+  function save(c) { try { localStorage.setItem(KEY, JSON.stringify({ c: c, t: Date.now() })); } catch (e) {} }
+
+  var loaded = false;
+  function loadAnalytics() {
+    if (loaded) return;
+    loaded = true;
+    if (ga4) {
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = function () { window.dataLayer.push(arguments); };
+      window.gtag('consent', 'default', { ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied', analytics_storage: 'granted' });
+      window.gtag('js', new Date());
+      window.gtag('config', ga4);
+      var g = document.createElement('script');
+      g.async = true;
+      g.src = 'https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(ga4);
+      document.head.appendChild(g);
+    }
+    if (clarity) {
+      window.clarity = window.clarity || function () { (window.clarity.q = window.clarity.q || []).push(arguments); };
+      window.clarity('consentv2', { ad_Storage: 'denied', analytics_Storage: 'granted' });
+      var c = document.createElement('script');
+      c.async = true;
+      c.src = 'https://www.clarity.ms/tag/' + encodeURIComponent(clarity);
+      document.head.appendChild(c);
+    }
+  }
+  function clearAnalyticsCookies() {
+    var host = location.hostname.split('.');
+    document.cookie.split(';').forEach(function (kv) {
+      var name = kv.split('=')[0].trim();
+      if (!/^(_ga|_gid|_gat|_clck|_clsk|CLID|MUID|ANONCHK|SM)/.test(name)) return;
+      for (var i = 0; i < host.length - 1; i++) {
+        var d = host.slice(i).join('.');
+        document.cookie = name + '=; Max-Age=0; path=/; domain=.' + d;
+      }
+      document.cookie = name + '=; Max-Age=0; path=/';
+    });
+  }
+  function show() { box.hidden = false; document.body.classList.add('cc-open'); }
+  function hide() { box.hidden = true; document.body.classList.remove('cc-open'); }
+  function decided(c) {
+    window.amapolasConsent = c;
+    document.dispatchEvent(new CustomEvent('amapolas:consent', { detail: c }));
+  }
+
+  var current = read();
+  if (current) { decided(current); if (current === 'granted') loadAnalytics(); }
+  else show();
+
+  box.addEventListener('click', function (e) {
+    var b = e.target.closest('[data-cc]');
+    if (!b) return;
+    var c = b.getAttribute('data-cc');
+    var before = read();
+    save(c);
+    hide();
+    if (c === 'granted') { loadAnalytics(); decided(c); }
+    else if (before === 'granted' && loaded) { clearAnalyticsCookies(); location.reload(); }
+    else { clearAnalyticsCookies(); decided(c); }
+  });
+  document.addEventListener('click', function (e) {
+    if (e.target.closest('[data-cc-open]')) { e.preventDefault(); show(); box.querySelector('.cc-btn--accept').focus(); }
+  });
+})();
+</script>

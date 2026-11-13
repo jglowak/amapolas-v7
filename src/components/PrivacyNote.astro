@@ -1,0 +1,9 @@
+---
+// "Al enviar aceptás nuestra política de privacidad." debajo de cada formulario (ES/EN).
+// Estilo: .privacy-note en v7-additions.css; `inline` lo devuelve como <span> para sumarlo a otra nota.
+import { ui, localePath, type Lang } from '../i18n/ui';
+interface Props { lang: Lang; inline?: boolean; class?: string }
+const { lang, inline = false, class: cls } = Astro.props;
+const html = ui[lang].privacyNote.replace('{href}', localePath(lang, '/privacidad'));
+---
+{inline ? <span class="privacy-note-inline" set:html={html} /> : <p class:list={['privacy-note', cls]} set:html={html} />}

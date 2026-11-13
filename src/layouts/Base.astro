@@ -6,6 +6,7 @@ import '../styles/v7-additions.css';
 import dmSans from '../assets/fonts/dm-sans-latin-opsz-normal.woff2?url';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
+import CookieConsent from '../components/CookieConsent.astro';
 import { site } from '../config/site';
 import { ui, languages, localePath, stripLang, type Lang } from '../i18n/ui';
 
@@ -104,6 +105,8 @@ const ld = {
 <meta name="twitter:description" content={description}>
 <meta name="twitter:image" content={abs(ogImage)}>
 <link rel="sitemap" href="/sitemap-index.xml">
+{site.analytics.googleVerification && <meta name="google-site-verification" content={site.analytics.googleVerification}>}
+{site.analytics.bingVerification && <meta name="msvalidate.01" content={site.analytics.bingVerification}>}
 <script type="application/ld+json" set:html={JSON.stringify(ld)} />
 <!-- DM Sans autoalojada (src/styles/fonts.css): se precarga la normal, que usa todo el sitio -->
 <link rel="preload" href={dmSans} as="font" type="font/woff2" crossorigin>
@@ -115,6 +118,7 @@ const ld = {
   <slot />
 </main>
 <Footer lang={lang} />
+<CookieConsent lang={lang} />
 
 <button class="scroll-top" id="stop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label={ui[lang].backToTop}>↑</button>
 
