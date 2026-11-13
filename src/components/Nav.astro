@@ -1,7 +1,7 @@
 ---
 // Copia literal del <nav> y del menú mobile de v5 (index.html).
-// Cambios: ítems del menú nuevo, ítems padre sin link como <button class="nav-parent"> (Comunidad sí
-// lleva a su página: el doc no pide lo contrario),
+// Cambios: ítems del menú nuevo, ítems padre sin link como <button class="nav-parent"> (Nosotras y
+// Proyectos: "que no te lleve a nada"); Acciones y Prensa y Comunidad sí llevan a su página (doc),
 // rutas localizadas y selector de idioma con rutas reales en vez de ?lang=.
 import { Image } from 'astro:assets';
 import logoColor from '../assets/img/logo_web.png';
@@ -53,7 +53,7 @@ const close = "document.getElementById('mob').classList.remove('open')";
       </div>
     </li>
     <li class="nav-item has-dropdown">
-      <button type="button" class:list={['nav-parent', act('prensa')]} aria-haspopup="true">{t.prensa}</button>
+      <a href={L('/prensa')} class:list={['nav-parent', act('prensa')]} aria-haspopup="true">{t.prensa}</a>
       <div class="nav-dropdown">
         <span class="nav-dropdown-label">{t.prensa}</span>
         <a href={L('/prensa#prensa')}>{t.prensaItem}</a>
@@ -106,6 +106,7 @@ const close = "document.getElementById('mob').classList.remove('open')";
   <div class="mob-accordion">
     <button class="mob-acc-btn" onclick="toggleMobAcc(this)">{t.prensa} <span class="mob-acc-arrow">▾</span></button>
     <div class="mob-acc-panel">
+      <a href={L('/prensa')} onclick={close}>{t.prensa}</a>
       <a href={L('/prensa#prensa')} onclick={close}>{t.prensaItem}</a>
       <a href={L('/prensa#kit')} onclick={close}>{t.kit}</a>
       <a href={L('/prensa#eventos')} onclick={close}>{t.eventos}</a>
