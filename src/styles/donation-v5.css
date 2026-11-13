@@ -55,3 +55,13 @@
 }
 /* Formulario compartido con /donar (DonationForm) dentro del cuadro rojo */
 .dn-form{width:100%;max-width:460px}
+/* Donorbox exige ~320 px de ancho. En la grilla del cuadro, los hijos tienen min-width:auto y se
+   ensanchaban por el formulario (la página quedaba más ancha que la pantalla en mobile). Con min-width:0
+   se ajustan al espacio como en /donar; en pantallas de hasta 400 px se reducen los márgenes laterales
+   para que entre el mínimo de Donorbox (ej.: 360 px). */
+.donation-widget,.dn-form{min-width:0}
+@media(max-width:400px){
+  .donation-section.donation-section--full .donation-widget{padding-left:.5rem;padding-right:.5rem}
+  .dn-form .d2-card{padding-left:.75rem;padding-right:.75rem}
+}
+@media(max-width:340px){.donation-section.donation-section--full .donation-widget{padding-left:0;padding-right:0}.dn-form .d2-card{padding-left:0;padding-right:0}}

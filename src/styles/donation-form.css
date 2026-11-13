@@ -17,7 +17,18 @@
 .d2-amount--other{grid-column:1/-1;font-size:1rem}
 .d2-note{font-size:.82rem;line-height:1.5;color:rgba(36,37,46,.75);text-align:center;margin-top:.9rem}
 #d2-db dbox-widget{display:block;width:100%;min-height:420px}
+/* Donorbox deja controles ocultos unos píxeles por fuera de su recuadro: se recortan en horizontal para
+   que no ensanchen la página en pantallas chicas (clip no recorta en vertical ni crea scroll). */
+#d2-db{overflow-x:clip}
 
 @media(max-width:640px){.d2-card{padding:1rem}.d2-tab{font-size:.85rem}}
 .d2-go{display:flex;align-items:center;justify-content:center;width:100%;background:var(--azul);color:#fff;font-weight:800;font-size:1rem;padding:1rem 1.5rem;border-radius:3px;text-decoration:none;text-align:center;transition:background .2s}
 .d2-go:hover{background:#15161c}
+
+/* Pantallas de hasta 340 px (ej.: 320): el mínimo de Donorbox (320 px) ocupa todo el ancho, así que la
+   tarjeta va de borde a borde; las pestañas y Mercado Pago conservan un margen interno. */
+@media(max-width:340px){
+  .d2-card{padding:1rem 0;border-radius:0}
+  .d2-tabs{margin-left:.5rem;margin-right:.5rem}
+  #d2-mp{padding:0 .75rem}
+}

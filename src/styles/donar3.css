@@ -78,3 +78,5 @@ button.d3-link{background:none;border:none;border-bottom:1.5px solid var(--rojo)
 .d3-success h3{font-size:1.05rem;font-weight:800;color:var(--verde);margin-bottom:.4rem}
 .d3-success p{font-size:.9rem;color:rgba(36,37,46,.8)}
 @media(max-width:640px){.d3-image{min-height:360px}.d3-modal{padding:2rem 1.25rem 1.5rem}}
+/* /donar en pantallas de hasta 340 px: el formulario va de borde a borde (ver donation-form.css) */
+@media(max-width:340px){.d3-top{padding-left:0;padding-right:0}.d3-head{padding:0 1rem}}
