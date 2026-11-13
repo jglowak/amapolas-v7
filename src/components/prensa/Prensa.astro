@@ -7,6 +7,7 @@ import { prensa } from '../../i18n/prensa';
 import { site } from '../../config/site';
 import { localePath, type Lang } from '../../i18n/ui';
 import FormScript from '../FormScript.astro';
+import PrivacyNote from '../PrivacyNote.astro';
 import '../../styles/pages/prensa.css';
 import '../../styles/legibilidad-interiores.css';
 import '../../styles/prensa-v7.css';
@@ -111,6 +112,7 @@ const f = c.contacto.form;
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
           {f.enviar}
         </button>
+        <PrivacyNote lang={lang} />
       </form>
       <div class="form-success" id="prensaSuccess">
         <h3>{c.contacto.ok[0]}</h3>

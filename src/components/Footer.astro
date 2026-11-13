@@ -1,6 +1,7 @@
 ---
 // Copia literal del <footer> de v5 (index.html). Cambian los ítems según el documento
 // de correcciones; los datos de contacto y redes salen de src/config/site.ts.
+// Línea legal: política de privacidad y "Configurar cookies" (reabre el aviso, CookieConsent.astro).
 // Los <h5> de columna pasan a <h2 class="foot-h"> (mismo estilo) para no saltar niveles de título.
 import { Image } from 'astro:assets';
 import logo from '../assets/img/logo_amapolas.png';
@@ -47,7 +48,10 @@ const year = new Date().getFullYear();
     </div>
   </div>
   <div class="footer-bottom">
-    <p>© {year} {t.legal}</p>
+    <div class="foot-bottom-text">
+      <p>© {year} {t.legal}</p>
+      <p class="foot-legal"><a href={L('/privacidad')}>{t.privacidad}</a><span aria-hidden="true"> · </span><button type="button" data-cc-open>{t.cookies}</button></p>
+    </div>
     <div class="foot-social">
       <a href={site.social.whatsapp} target="_blank" rel="noopener" title="WhatsApp" aria-label="WhatsApp">wa</a>
       <a href={site.social.linkedin} target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn">in</a>

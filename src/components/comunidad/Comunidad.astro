@@ -8,6 +8,7 @@
 // "Kit de Prensa disponible" y recursos descargables más bajos. h4 → h3 por jerarquía.
 import DonationBox from '../DonationBox.astro';
 import FormScript from '../FormScript.astro';
+import PrivacyNote from '../PrivacyNote.astro';
 import { comunidad } from '../../i18n/comunidad';
 import { site } from '../../config/site';
 import { localePath, type Lang } from '../../i18n/ui';
@@ -164,7 +165,7 @@ const sf = c.sponsors.form;
           <div class="form-row"><label class="form-label" for="propuesta">{ff.propuesta}</label><textarea class="form-textarea" id="propuesta" name="propuesta" placeholder={ff.propuestaPh} required></textarea></div>
           {site.forms.turnstileSiteKey && <div class="turnstile-wrap"><div class="cf-turnstile" data-sitekey={site.forms.turnstileSiteKey} data-theme="light" data-language={lang}></div></div>}
           <button type="submit" class="btn-submit" id="alianzaBtn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" set:html={send} />{ff.enviar}</button>
-          <p class="form-note">{ff.note}</p>
+          <p class="form-note">{ff.note} <PrivacyNote lang={lang} inline /></p>
         </form>
         <div class="form-success" id="alianzaSuccess"><h3>{c.fundaciones.ok[0]}</h3><p>{c.fundaciones.ok[1]}</p></div>
       </div>
@@ -213,7 +214,7 @@ const sf = c.sponsors.form;
           <div class="form-row"><label class="form-label" for="sp_propuesta">{sf.propuesta}</label><textarea class="form-textarea" id="sp_propuesta" name="propuesta" placeholder={sf.propuestaPh} required></textarea></div>
           {site.forms.turnstileSiteKey && <div class="turnstile-wrap"><div class="cf-turnstile" data-sitekey={site.forms.turnstileSiteKey} data-theme="light" data-language={lang}></div></div>}
           <button type="submit" class="btn-submit" id="sponsorBtn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" set:html={send} />{sf.enviar}</button>
-          <p class="form-note">{sf.note}</p>
+          <p class="form-note">{sf.note} <PrivacyNote lang={lang} inline /></p>
         </form>
         <div class="form-success" id="sponsorSuccess"><h3>{c.sponsors.ok[0]}</h3><p>{c.sponsors.ok[1]}</p></div>
       </div>

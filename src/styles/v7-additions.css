@@ -41,3 +41,32 @@ body .foot-desc{color:rgba(255,255,255,.7)}
 body .foot-col .foot-h{color:rgba(255,255,255,.65)}
 body .footer-bottom p{color:rgba(255,255,255,.62)}
 body .foot-social a{color:rgba(255,255,255,.8);border-color:rgba(255,255,255,.3)}
+
+/* Footer: línea legal con política de privacidad y "Configurar cookies" */
+.foot-bottom-text{display:flex;flex-direction:column;gap:.45rem}
+body .footer-bottom .foot-legal{font-size:.72rem;color:rgba(255,255,255,.62)}
+.foot-legal a,.foot-legal button{color:rgba(255,255,255,.8);text-decoration:underline;text-underline-offset:2px;font:inherit;background:none;border:none;padding:0;cursor:pointer}
+.foot-legal a:hover,.foot-legal button:hover{color:#fff}
+
+/* Aviso de cookies (CookieConsent.astro): tarjeta chica abajo a la izquierda; en mobile, ancho completo */
+.cc{position:fixed;left:1.5rem;bottom:1.5rem;z-index:900;max-width:520px;background:#24252e;color:#fff;border-radius:6px;box-shadow:0 12px 40px rgba(0,0,0,.28);padding:1.1rem 1.25rem;display:flex;flex-direction:column;gap:.9rem;font-family:'DM Sans',sans-serif}
+.cc[hidden]{display:none}
+.cc-text{font-size:.85rem;line-height:1.55;color:rgba(255,255,255,.92);margin:0}
+.cc-text a{color:#f3896f;text-decoration:underline;text-underline-offset:2px;font-weight:600}
+.cc-btns{display:flex;gap:.6rem;justify-content:flex-end;flex-wrap:wrap}
+.cc-btn{font-family:inherit;font-size:.85rem;font-weight:700;min-height:44px;padding:.6rem 1.3rem;border-radius:3px;cursor:pointer;border:1.5px solid rgba(255,255,255,.7);background:transparent;color:#fff}
+.cc-btn:hover{border-color:#fff;background:rgba(255,255,255,.08)}
+.cc-btn--accept{background:#fff;color:#24252e;border-color:#fff}
+.cc-btn--accept:hover{background:#eae9e2}
+.cc-btn:focus-visible,.cc-text a:focus-visible,.foot-legal a:focus-visible,.foot-legal button:focus-visible{outline:2px solid #f3896f;outline-offset:2px}
+@media(max-width:640px){
+  .cc{left:.75rem;right:.75rem;bottom:.75rem;max-width:none;padding:1rem}
+  .cc-btns{justify-content:stretch}.cc-btn{flex:1}
+  body.cc-open .scroll-top{display:none}
+}
+
+/* Nota de privacidad debajo de los formularios (PrivacyNote.astro) */
+.privacy-note{font-size:.75rem;line-height:1.5;color:rgba(36,37,46,.75);text-align:center;margin-top:.8rem}
+.privacy-note--left{text-align:left;margin-top:.4rem}
+.privacy-note a,.privacy-note-inline a{color:inherit;text-decoration:underline;text-underline-offset:2px}
+.privacy-note a:hover,.privacy-note-inline a:hover{color:var(--azul,#24252e)}

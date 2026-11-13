@@ -6,6 +6,7 @@
 import { Image } from 'astro:assets';
 import plantas from '../../assets/img/plantas.jpg';
 import DonationForm from '../DonationForm.astro';
+import PrivacyNote from '../PrivacyNote.astro';
 import FormScript from '../FormScript.astro';
 import { donar3 } from '../../i18n/donar3';
 import { donar2 } from '../../i18n/donar2';
@@ -112,6 +113,7 @@ const bf = c.balance;
     <textarea class="d3-input d3-textarea" id="b_msg" name="mensaje" placeholder={bf.mensajePh}></textarea>
     {site.forms.turnstileSiteKey && <div class="turnstile-wrap"><div class="cf-turnstile" data-sitekey={site.forms.turnstileSiteKey} data-theme="light" data-language={lang}></div></div>}
     <button type="submit" class="d3-submit">{bf.enviar}</button>
+    <PrivacyNote lang={lang} />
   </form>
   <div class="d3-success" id="balanceSuccess" role="status"><h3>{bf.ok[0]}</h3><p>{bf.ok[1]}</p></div>
 </dialog>
