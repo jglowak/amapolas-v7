@@ -1,10 +1,11 @@
 ---
 // Cuadro de donación completo (/donar y /comunidad#donantes). Diseño y clases del bloque
 // DONACIÓN de v5 index.html; textos y montos del documento de correcciones.
-// Donorbox (internacional, USD; formulario embebido) y Mercado Pago (Argentina, ARS) en pestañas.
-// Toda la sección en rojo: el formulario de Donorbox (fondo blanco fijo) va en una tarjeta blanca.
+// A la derecha, el mismo formulario que /donar (DonationForm): Mercado Pago con montos en ARS y
+// Donorbox, con la pestaña inicial elegida por país (Argentina → Mercado Pago).
+// Una sola instancia por página (DonationForm usa ids fijos).
 import { donar } from '../i18n/donar';
-import { site } from '../config/site';
+import DonationForm from './DonationForm.astro';
 import type { Lang } from '../i18n/ui';
 import '../styles/donation-v5.css';
 
@@ -12,7 +13,6 @@ interface Props { lang: Lang; id?: string }
 const { lang, id = 'donar' } = Astro.props;
 const c = donar[lang];
 const b = c.box;
-const campaign = site.donate.donorboxCampaign[lang];
 ---
 <section id={id} class="donation-section donation-section--full">
   <div class="donation-content reveal">
@@ -25,45 +25,8 @@ const campaign = site.donate.donorboxCampaign[lang];
     <p class="donation-closing">{c.left.closing}</p>
   </div>
   <div class="donation-widget">
-    <div class="dn-tabs" role="tablist">
-      <button type="button" class="dn-tab" role="tab" id={`${id}-tab-donorbox`} aria-controls={`${id}-donorbox`} aria-selected="true">{b.tabs.donorbox[0]}<small>{b.tabs.donorbox[1]}</small></button>
-      <button type="button" class="dn-tab" role="tab" id={`${id}-tab-mp`} aria-controls={`${id}-mercadopago`} aria-selected="false">{b.tabs.mp[0]}<small>{b.tabs.mp[1]}</small></button>
-    </div>
-
-    <!-- DONORBOX: formulario embebido (campaña por idioma en src/config/site.ts) -->
-    <div class="dn-panel" id={`${id}-donorbox`} role="tabpanel" aria-labelledby={`${id}-tab-donorbox`}>
-      <span id="donorbox" class="sr-only"></span>
-      <div class="dn-card dn-card--form">
-        <dbox-widget campaign={campaign} type="donation_form" interval="1 M" amount="30" enable-auto-scroll="true" language={lang}></dbox-widget>
-      </div>
-      <p class="mp-secure">{b.secureDonorbox}</p>
-    </div>
-
-    <!-- MERCADO PAGO (TODO: links reales en src/config/site.ts) -->
-    <div class="dn-panel" id={`${id}-mercadopago`} role="tabpanel" aria-labelledby={`${id}-tab-mp`} hidden>
-      <span id="mercadopago" class="sr-only"></span>
-      <div class="dn-card">
-        <p class="mp-intro">{b.mpIntro}</p>
-        <a href={site.donate.mercadoPago} target="_blank" rel="noopener" class="mp-otro">{b.mpOnce}</a>
-        <a href={site.donate.mercadoPago} target="_blank" rel="noopener" class="mp-otro">{b.mpMonthly}</a>
-      </div>
-      <p class="mp-secure">{b.secureMp}</p>
-    </div>
+    <span id="mercadopago" class="sr-only"></span>
+    <div class="dn-form"><DonationForm lang={lang} /></div>
+    <p class="mp-secure">{b.secure}</p>
   </div>
 </section>
-
-<script type="module" src="https://donorbox.org/widgets.js" async is:inline></script>
-<script is:inline define:vars={{ id }}>
-(function () {
-  const tabs = document.querySelectorAll('#' + id + ' .dn-tab');
-  function select(tab) {
-    tabs.forEach((t) => {
-      const on = t === tab;
-      t.setAttribute('aria-selected', on ? 'true' : 'false');
-      document.getElementById(t.getAttribute('aria-controls')).hidden = !on;
-    });
-  }
-  tabs.forEach((t) => t.addEventListener('click', () => select(t)));
-  if (location.hash === '#mercadopago') select(tabs[1]);
-})();
-</script>

@@ -94,3 +94,5 @@
   .donation-section.donation-section--full .donation-content{justify-content:flex-start;position:sticky;top:5rem}
   .donation-section.donation-section--full .donation-widget{justify-content:flex-start;align-self:stretch}
 }
+/* Formulario compartido con /donar (DonationForm) dentro del cuadro rojo */
+.dn-form{width:100%;max-width:460px}
