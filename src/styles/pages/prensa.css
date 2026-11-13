@@ -36,15 +36,6 @@ nav.over-bg .hamburger span{background:white}nav.solid .hamburger span{backgroun
 .hero-breadcrumb a{color:rgba(255,255,255,.35);transition:color .2s}.hero-breadcrumb a:hover{color:white}.hero-breadcrumb span{color:rgba(255,255,255,.18)}
 .hero-title{font-size:clamp(3rem,5.5vw,6rem);font-weight:800;line-height:.93;letter-spacing:-.04em;color:white;margin-bottom:2rem}
 .hero-subtitle{font-size:1.05rem;line-height:1.75;color:rgba(255,255,255,.5);max-width:540px}
-.hero-tabs{position:relative;z-index:2;display:flex;border-top:1px solid rgba(255,255,255,.1);overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
-.hero-tabs::-webkit-scrollbar{display:none}
-.hero-tab{flex-shrink:0;padding:1.1rem 2rem;font-size:.75rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.42);border-right:1px solid rgba(255,255,255,.08);text-align:center;transition:color .2s,background .2s;white-space:nowrap}
-.hero-tab:last-child{border-right:none}.hero-tab:hover{color:white;background:rgba(255,255,255,.06)}
-.hero-stats{position:relative;z-index:2;display:flex;gap:0;border-top:1px solid rgba(255,255,255,.08);overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
-.hero-stats::-webkit-scrollbar{display:none}
-.hero-stat{flex-shrink:0;padding:1.2rem 2.5rem;border-right:1px solid rgba(255,255,255,.08)}.hero-stat:last-child{border-right:none}
-.hero-stat-num{font-size:1.6rem;font-weight:800;color:white;letter-spacing:-.03em;line-height:1}
-.hero-stat-label{font-size:.6rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.32);margin-top:.3rem}
 
 /* SECCIÓN GENERIC */
 .section-eyebrow{font-size:.68rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--gris-inst);margin-bottom:1rem}
