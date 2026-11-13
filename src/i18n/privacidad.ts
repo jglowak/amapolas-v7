@@ -1,6 +1,6 @@
 // Política de privacidad (/privacidad). BORRADOR para revisión legal de la cooperativa.
 // Lo marcado [COMPLETAR …] se muestra resaltado en la página hasta que se complete.
-// Los textos admiten HTML simple (strong, a). Fecha de actualización: cambiarla con cada revisión.
+// Los textos admiten HTML simple (strong, a). Fecha de actualización (al final, sección 10): cambiarla con cada revisión.
 
 type Block = { p: string } | { ul: string[] } | { table: { head: string[]; rows: string[][] } };
 export interface Section { id: string; h: string; blocks: Block[] }
@@ -11,7 +11,7 @@ const es = {
     description: 'Cómo la Cooperativa de Vivienda Amapolas trata los datos personales que recibe a través de su sitio web, qué cookies usa y cómo ejercer tus derechos.',
     crumb: 'Política de privacidad',
   },
-  hero: { home: 'Inicio', here: 'Política de privacidad', title: 'Política de privacidad', updated: 'Última actualización: 13 de noviembre de 2026' },
+  hero: { home: 'Inicio', here: 'Política de privacidad', title: 'Política de privacidad', subtitle: 'Cómo cuidamos los datos que compartís con nosotras.' },
   intro: 'En Amapolas cuidamos los datos personales de quienes nos escriben, se suman a nuestra newsletter o nos apoyan con una donación. Esta política explica qué datos recibimos a través de este sitio, para qué los usamos, con quién los compartimos y cómo podés ejercer tus derechos, de acuerdo con la Ley N° 25.326 de Protección de los Datos Personales de la República Argentina.',
   toc: 'Contenido',
   sections: [
@@ -112,7 +112,7 @@ const es = {
     },
     {
       id: 'cambios', h: '10. Cambios en esta política',
-      blocks: [{ p: 'Podemos actualizar esta política para reflejar cambios en el sitio o en la normativa. La fecha de la última actualización figura al principio de esta página.' }],
+      blocks: [{ p: 'Podemos actualizar esta política para reflejar cambios en el sitio o en la normativa. Última actualización: 13 de noviembre de 2026.' }],
     },
   ] as Section[],
 };
@@ -123,7 +123,7 @@ const en: typeof es = {
     description: 'How the Amapolas Housing Cooperative handles the personal data it receives through its website, which cookies it uses and how to exercise your rights.',
     crumb: 'Privacy policy',
   },
-  hero: { home: 'Home', here: 'Privacy policy', title: 'Privacy policy', updated: 'Last updated: November 13, 2026' },
+  hero: { home: 'Home', here: 'Privacy policy', title: 'Privacy policy', subtitle: 'How we take care of the data you share with us.' },
   intro: 'At Amapolas we take care of the personal data of everyone who writes to us, joins our newsletter or supports us with a donation. This policy explains what data we receive through this website, what we use it for, who we share it with and how you can exercise your rights, in accordance with Argentina’s Personal Data Protection Law No. 25,326.',
   toc: 'Contents',
   sections: [
@@ -224,7 +224,7 @@ const en: typeof es = {
     },
     {
       id: 'cambios', h: '10. Changes to this policy',
-      blocks: [{ p: 'We may update this policy to reflect changes to the site or to the law. The date of the latest update appears at the top of this page.' }],
+      blocks: [{ p: 'We may update this policy to reflect changes to the site or to the law. Last updated: November 13, 2026.' }],
     },
   ],
 };
