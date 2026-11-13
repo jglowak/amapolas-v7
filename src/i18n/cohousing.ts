@@ -8,7 +8,6 @@ export const cohousing = {
     },
     hero: {
       home: 'Inicio', parent: 'Nosotras', here: 'Cuidado y Cohousing',
-      badge: 'Modelo de hábitat',
       title: ['El cuidado como', 'infraestructura'],
       subtitle: 'Buscamos integrar el cuidado al diseño del barrio desde el inicio, como una responsabilidad compartida que atraviesa los espacios, la organización y la vida comunitaria.',
     },
@@ -71,7 +70,6 @@ export const cohousing = {
     },
     hero: {
       home: 'Home', parent: 'About us', here: 'Care and Cohousing',
-      badge: 'Habitat model',
       title: ['Care as', 'infrastructure'],
       subtitle: 'We aim to build care into the neighborhood’s design from the start, as a shared responsibility that runs through its spaces, its organization and its community life.',
     },

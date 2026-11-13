@@ -4,7 +4,7 @@
 // Cambios del documento: sin menú de pestañas del hero, hero y bloque "Cohousing" nuevos,
 // "El cuidado como eje central" antes de "Cohousing con perspectiva feminista", tarjeta de
 // Construcción y CTA. Doc 24/10: sin "Qué distingue este modelo", sin "Los otros ejes", CTA solo
-// con "Donar ahora" y ODS 3 sin la oración sobre salud. h4/h5 → h3 por jerarquía (ver cohousing-v7.css).
+// con "Donar ahora" y ODS 3 sin la oración sobre salud. Sin badge en el hero, como las otras páginas. h4/h5 → h3 por jerarquía (ver cohousing-v7.css).
 import { cohousing } from '../../i18n/cohousing';
 import { localePath, type Lang } from '../../i18n/ui';
 import '../../styles/pages/nosotras__cohousing.css';
@@ -32,9 +32,6 @@ const icons = [
       <a href={L('/')}>{c.hero.home}</a><span>/</span>
       <a href={L('/nosotras')}>{c.hero.parent}</a><span>/</span>
       <span style="color:rgba(255,255,255,.7)" aria-current="page">{c.hero.here}</span>
-    </div>
-    <div class="hero-badge">
-      <span style="font-size:.8rem">04</span> · {c.hero.badge}
     </div>
     <h1 class="hero-title">{c.hero.title[0]}<br>{c.hero.title[1]}</h1>
     <p class="hero-subtitle">{c.hero.subtitle}</p>
