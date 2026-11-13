@@ -53,3 +53,7 @@
   .indicador-num{font-size:1.75rem;white-space:nowrap}
   .indicador-label{font-size:.8rem;margin-top:0}
 }
+
+/* "Voces de la cooperativa": en tablet y mobile la sección ya tiene margen lateral (2rem); el encabezado
+   sumaba otros 4rem y quedaba corrido. Así arranca alineado con el resto de las secciones. */
+@media(max-width:1100px){.testimonios-header{padding:0}}
