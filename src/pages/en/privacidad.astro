@@ -1,0 +1,9 @@
+---
+import Base from '../../layouts/Base.astro';
+import Privacidad from '../../components/legal/Privacidad.astro';
+import { privacidad } from '../../i18n/privacidad';
+const { title, description, crumb } = privacidad.en.meta;
+---
+<Base lang="en" title={title} description={description} breadcrumbs={[{ name: crumb, path: '/privacidad' }]}>
+  <Privacidad lang="en" />
+</Base>

@@ -1,0 +1,64 @@
+---
+// Política de privacidad. Textos en src/i18n/privacidad.ts (borrador para revisión legal).
+// Usa la base de diseño de las páginas de Nosotras (hero oscuro, nav y footer de nosotras__genero.css)
+// y legal.css para el cuerpo de texto. El índice es un <div role="navigation">: el CSS de v5 fija todo <nav>. Lo pendiente ([COMPLETAR …]) se resalta con <mark>.
+import { privacidad } from '../../i18n/privacidad';
+import { site } from '../../config/site';
+import { localePath, type Lang } from '../../i18n/ui';
+import '../../styles/pages/nosotras__genero.css';
+import '../../styles/legibilidad-interiores.css';
+import '../../styles/legal.css';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const c = privacidad[lang];
+const L = (p: string) => localePath(lang, p);
+const vars: Record<string, string> = {
+  cuit: site.legal.cuit || '[COMPLETAR: CUIT]',
+  address: site.legal.address || (lang === 'es' ? '[COMPLETAR: domicilio legal completo]' : '[COMPLETAR: full legal address]'),
+  email: site.email,
+};
+const fill = (s: string) =>
+  s.replace(/\{(\w+)\}/g, (_, k) => vars[k] ?? `{${k}}`).replace(/\[COMPLETAR[^\]]*\]/g, (m) => `<mark class="legal-todo">${m}</mark>`);
+---
+<div class="hero legal-hero" id="hero">
+  <div class="hero-body">
+    <div class="hero-breadcrumb" role="navigation" aria-label={lang === 'es' ? 'Ruta de navegación' : 'Breadcrumb'}>
+      <a href={L('/')}>{c.hero.home}</a><span>/</span>
+      <span aria-current="page">{c.hero.here}</span>
+    </div>
+    <h1 class="hero-title">{c.hero.title}</h1>
+    <p class="hero-subtitle">{c.hero.updated}</p>
+  </div>
+</div>
+
+<div class="legal">
+  <div class="legal-inner">
+    <div class="legal-toc" role="navigation" aria-label={c.toc}>
+      <p class="legal-toc-h">{c.toc}</p>
+      <ol>
+        {c.sections.map((s) => <li><a href={`#${s.id}`}>{s.h.replace(/^\d+\.\s*/, '')}</a></li>)}
+      </ol>
+    </div>
+    <article class="legal-body">
+      <p class="legal-intro">{c.intro}</p>
+      {c.sections.map((s) => (
+        <section id={s.id} class="legal-section">
+          <h2>{s.h}</h2>
+          {s.blocks.map((b) =>
+            'p' in b ? <p set:html={fill(b.p)} />
+            : 'ul' in b ? <ul>{b.ul.map((li) => <li set:html={fill(li)} />)}</ul>
+            : (
+              <div class="legal-table-wrap">
+                <table>
+                  <thead><tr>{b.table.head.map((h) => <th scope="col">{h}</th>)}</tr></thead>
+                  <tbody>{b.table.rows.map((r) => <tr>{r.map((d, i) => (i === 0 ? <th scope="row">{d}</th> : <td>{d}</td>))}</tr>)}</tbody>
+                </table>
+              </div>
+            )
+          )}
+        </section>
+      ))}
+    </article>
+  </div>
+</div>
