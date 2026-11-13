@@ -37,3 +37,19 @@
 .socia-placeholder svg{width:32px;height:32px;color:rgba(255,255,255,.2)}
 .socia-placeholder-label{font-size:.55rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.3)}
 
+
+/* Mobile: "Nuestros valores" en una columna y las 5 cifras como lista (cifra a la izquierda, texto a la
+   derecha) para que los textos no queden en columnas angostas. Tablet y escritorio sin cambios. */
+@media(max-width:640px){
+  .valores-grid{grid-template-columns:1fr;margin-top:2rem}
+  .valor-item{padding:1.4rem 1.25rem}
+  .valor-num{margin-bottom:.5rem}
+  .valor-item p{font-size:.85rem}
+  .indicadores-section{padding:2.5rem 1.5rem}
+  .indicadores-inner{grid-template-columns:1fr;gap:0}
+  .indicador{display:grid;grid-template-columns:8.2rem 1fr;gap:1rem;align-items:center;padding:1.1rem 0;border-top:1px solid rgba(36,37,46,.18)}
+  .indicador:first-child{border-top:none;padding-top:0}
+  .indicador:last-child{padding-bottom:0}
+  .indicador-num{font-size:1.75rem;white-space:nowrap}
+  .indicador-label{font-size:.8rem;margin-top:0}
+}
