@@ -31,7 +31,6 @@
 /* Donación (versión corta): segundo párrafo y cierre con el mismo estilo que .section-body */
 .donation-content .section-body+.section-body{margin-top:1rem}
 .donation-closing{margin-top:1.8rem;font-size:.9rem;font-weight:700;color:white}
-.mp-intro{font-size:.85rem;line-height:1.7;color:rgba(36,37,46,.55);text-align:center;max-width:420px;margin-bottom:1.5rem}
 
 /* Socias: solo fotos */
 .socia-placeholder{flex-direction:column;gap:.5rem}

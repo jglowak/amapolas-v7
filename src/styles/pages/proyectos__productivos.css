@@ -29,7 +29,7 @@ nav.over-bg .hamburger span{background:white}nav.solid .hamburger span{backgroun
 
 /* HERO */
 .hero{min-height:62vh;display:flex;flex-direction:column;justify-content:flex-end;position:relative;overflow:hidden;background:var(--verde)}
-.hero-bg-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+
 .hero-overlay{position:absolute;inset:0;z-index:1;background:linear-gradient(to top,rgba(36,37,46,.9) 0%,rgba(36,37,46,.4) 55%,rgba(36,37,46,.15) 100%)}
 .hero-overlay-top{position:absolute;top:0;left:0;right:0;height:180px;z-index:1;background:linear-gradient(to bottom,rgba(36,37,46,.75),transparent)}
 .hero-body{position:relative;z-index:2;padding:130px 4rem 4rem;max-width:860px}
@@ -37,9 +37,6 @@ nav.over-bg .hamburger span{background:white}nav.solid .hamburger span{backgroun
 .hero-breadcrumb a{color:rgba(255,255,255,.35);transition:color .2s}.hero-breadcrumb a:hover{color:white}.hero-breadcrumb span{color:rgba(255,255,255,.18)}
 .hero-title{font-size:clamp(2.8rem,5vw,5.5rem);font-weight:800;line-height:.95;letter-spacing:-.04em;color:white;margin-bottom:1.5rem}
 .hero-subtitle{font-size:1rem;line-height:1.78;color:rgba(255,255,255,.55);max-width:560px}
-.proyecto-nav{position:relative;z-index:2;display:flex;gap:0;border-top:1px solid rgba(255,255,255,.1)}
-.proyecto-nav a{flex:1;padding:1.1rem 1.5rem;font-size:.75rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.45);border-right:1px solid rgba(255,255,255,.08);text-align:center;transition:color .2s,background .2s}
-.proyecto-nav a:last-child{border-right:none}.proyecto-nav a:hover{color:white;background:rgba(255,255,255,.06)}
 
 /* CHAPTER */
 .chapter{padding:3.5rem 4rem 2.5rem;display:flex;align-items:center;gap:2rem;border-bottom:1px solid rgba(36,37,46,.08)}
@@ -63,19 +60,6 @@ nav.over-bg .hamburger span{background:white}nav.solid .hamburger span{backgroun
 .dato.atencion{border-left:3px solid var(--rojo);background:rgba(237,105,75,.05)}.dato.atencion .dato-val{color:var(--rojo)}
 
 /* OBJETIVO FINANCIERO POR PROYECTO */
-.obj-proyecto{padding:2rem 4rem;background:var(--azul)}
-.obj-proyecto-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:3rem;flex-wrap:wrap}
-.obj-proyecto-text .eyebrow{font-size:.58rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:.4rem}
-.obj-proyecto-text h3{font-size:1.1rem;font-weight:800;color:white;letter-spacing:-.02em;margin-bottom:.3rem}
-.obj-proyecto-text p{font-size:.82rem;color:rgba(255,255,255,.45);line-height:1.55}
-.obj-proyecto-metas{display:flex;gap:.8rem;flex-wrap:wrap}
-.obj-meta-chip{padding:.5rem 1rem;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:2px;text-align:center}
-.obj-meta-chip .val{font-size:1.2rem;font-weight:800;color:white;display:block;letter-spacing:-.025em}
-.obj-meta-chip .lbl{font-size:.58rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.3);display:block;margin-top:.15rem}
-.obj-meta-chip.dest{border-color:var(--rojo);background:rgba(237,105,75,.12)}
-.obj-meta-chip.dest .val{color:var(--rojo)}
-.btn-obj-sm{display:inline-flex;align-items:center;gap:.4rem;background:var(--rojo);color:white;font-size:.82rem;font-weight:800;padding:.7rem 1.4rem;border-radius:2px;transition:background .2s;white-space:nowrap}
-.btn-obj-sm:hover{background:#d4533a}
 
 /* ODS HIGHLIGHT */
 .ods-highlight{margin-top:1.5rem;display:flex;flex-direction:column;gap:.6rem}
@@ -87,11 +71,6 @@ nav.over-bg .hamburger span{background:white}nav.solid .hamburger span{backgroun
 .ods-item strong{color:var(--azul);font-weight:700}
 
 /* MÉTRICAS */
-.metricas{display:flex;gap:0;border-top:1px solid rgba(36,37,46,.07);border-bottom:1px solid rgba(36,37,46,.07);background:var(--crema)}
-.metrica{flex:1;padding:1.4rem 2rem;border-right:1px solid rgba(36,37,46,.07)}.metrica:last-child{border-right:none}
-.metrica-num{font-size:1.8rem;font-weight:800;letter-spacing:-.04em;line-height:1}
-.metrica-num.verde{color:var(--verde)}.metrica-num.rojo{color:var(--rojo)}.metrica-num.azul{color:var(--azul)}
-.metrica-label{font-size:.6rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(36,37,46,.38);margin-top:.3rem}
 
 /* GALERÍA */
 .galeria{background:var(--crema);padding:4rem}
@@ -113,13 +92,6 @@ nav.over-bg .hamburger span{background:white}nav.solid .hamburger span{backgroun
 .objetivo-icon{width:36px;height:36px;border-radius:50%;background:rgba(55,97,53,.1);display:flex;align-items:center;justify-content:center;margin-bottom:1rem}
 .objetivo-icon svg{width:16px;height:16px}
 .objetivo h4{font-size:.9rem;font-weight:800;margin-bottom:.5rem}.objetivo p{font-size:.83rem;line-height:1.7;color:rgba(36,37,46,.55)}
-.proceso-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(36,37,46,.07);margin-top:2rem}
-.paso{background:white;padding:2rem 1.8rem;transition:background .2s}.paso:hover{background:var(--crema)}
-.paso-num{font-size:.58rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--verde);margin-bottom:.8rem}
-.paso h4{font-size:.9rem;font-weight:800;margin-bottom:.5rem}.paso p{font-size:.83rem;line-height:1.7;color:rgba(36,37,46,.55)}
-.alianzas-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.8rem;margin-top:2rem}
-.alianza-card{background:var(--crema);border-radius:3px;padding:1.4rem 1.6rem}
-.alianza-nombre{font-size:.88rem;font-weight:800;margin-bottom:.3rem}.alianza-desc{font-size:.8rem;line-height:1.6;color:rgba(36,37,46,.52)}
 
 /* TIMELINE */
 .estado{background:var(--crema);padding:4rem}
@@ -133,24 +105,11 @@ nav.over-bg .hamburger span{background:white}nav.solid .hamburger span{backgroun
 .timeline-year{font-size:.6rem;font-weight:700;letter-spacing:.1em;color:rgba(36,37,46,.28);margin-top:.25rem;display:block}
 
 /* TERRITORIO DARK */
-.territorio-dark{background:var(--azul);padding:4rem}
-.territorio-dark-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
-.territorio-dark .section-eyebrow{color:rgba(255,255,255,.35)}.territorio-dark .section-title{color:white}
-.territorio-desc{font-size:.95rem;line-height:1.78;color:rgba(255,255,255,.5);margin-bottom:1.5rem}
-.territorio-cards{display:flex;flex-direction:column;gap:.7rem}
-.territorio-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:3px;padding:1.5rem 1.8rem}
-.territorio-card h4{font-size:.86rem;font-weight:800;color:white;margin-bottom:.4rem}
-.territorio-card p{font-size:.8rem;line-height:1.65;color:rgba(255,255,255,.42)}
 
 /* HONGOS — módulo economía regenerativa */
 .hongos-regen{background:var(--crema);padding:4rem}
 .hongos-regen-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:5fr 7fr;gap:4rem;align-items:start}
 .hongos-regen .section-eyebrow{color:rgba(36,37,46,.5)}
-.regen-puntos{display:flex;flex-direction:column;gap:.7rem;margin-top:1.5rem}
-.regen-punto{display:flex;align-items:flex-start;gap:1rem;padding:1rem 1.2rem;background:white;border-radius:3px}
-.regen-punto-num{font-size:.58rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--verde);min-width:26px;padding-top:3px}
-.regen-punto-text h5{font-size:.88rem;font-weight:700;margin-bottom:.2rem}
-.regen-punto-text p{font-size:.8rem;line-height:1.6;color:rgba(36,37,46,.55)}
 
 /* SEPARATOR */
 .proyecto-sep{height:1px;background:rgba(36,37,46,.1)}
@@ -194,20 +153,20 @@ footer img.foot-logo{height:30px;margin-bottom:1.2rem;display:block;filter:brigh
   nav,nav.solid{padding:1rem 2rem}.nav-links{display:none}.hamburger{display:flex}
   .hero-body{padding:100px 2rem 4rem}
   .chapter{padding:2.5rem 2rem 2rem;gap:1.2rem}
-  .resumen,.galeria,.objetivos,.estado,.territorio-dark,.hongos-regen{padding:3rem 2rem}
+  .resumen,.galeria,.objetivos,.estado,.hongos-regen{padding:3rem 2rem}
   .resumen-inner{grid-template-columns:1fr;gap:2.5rem}
-  .metricas{flex-wrap:wrap}.metrica{min-width:50%}
-  .objetivos-grid,.proceso-grid{grid-template-columns:1fr}
-  .alianzas-grid{grid-template-columns:1fr}
+  
+  .objetivos-grid{grid-template-columns:1fr}
+  
   .estado-inner{grid-template-columns:1fr;gap:2.5rem}
-  .territorio-dark-inner{grid-template-columns:1fr;gap:2.5rem}
+  
   .hongos-regen-inner{grid-template-columns:1fr;gap:2.5rem}
-  .obj-proyecto{padding:2rem}.obj-proyecto-inner{flex-direction:column;align-items:flex-start}
+  
   .donar-cta{grid-template-columns:1fr;gap:2rem;padding:4rem 2rem}
   .footer-top{grid-template-columns:1fr 1fr;gap:2rem}footer{padding:3rem 2rem 1.5rem}
-  .proyecto-nav{flex-wrap:wrap}.proyecto-nav a{flex:none;width:50%}
+  
 }
 @media(max-width:640px){
   .galeria-grid{grid-template-columns:1fr 1fr}.footer-top{grid-template-columns:1fr}
-  .metricas{flex-direction:column}.metrica{min-width:100%}.proyecto-nav a{width:100%}
+  
 }

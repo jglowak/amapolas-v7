@@ -94,9 +94,6 @@ footer img.foot-logo{height:30px;margin-bottom:1.2rem;display:block;filter:brigh
 .hero-title{font-size:clamp(3rem,5vw,5.5rem);font-weight:800;line-height:.93;letter-spacing:-.04em;color:var(--azul)}
 .hero-title .accent{color:var(--rojo)}
 .hero-right p{font-size:1.05rem;line-height:1.78;color:rgba(36,37,46,.55);margin-bottom:2rem}
-.hero-anchors{display:flex;gap:.5rem;flex-wrap:wrap}
-.hero-anchor{display:inline-block;padding:.5rem 1.1rem;border:1.5px solid rgba(36,37,46,.15);border-radius:2px;font-size:.75rem;font-weight:700;letter-spacing:.06em;color:rgba(36,37,46,.5);transition:all .2s}
-.hero-anchor:hover{border-color:var(--rojo);color:var(--rojo)}
 
 /* ─── PERFILES ENTRY (por perfil de visitante) ─── */
 .perfiles-section{background:white;padding:6rem 4rem}
@@ -109,12 +106,12 @@ footer img.foot-logo{height:30px;margin-bottom:1.2rem;display:block;filter:brigh
 .perfil-card:hover{box-shadow:0 8px 32px rgba(36,37,46,.09);transform:translateY(-3px)}
 .perfil-card.donar{border-top-color:var(--rojo)}
 .perfil-card.fondo{border-top-color:var(--gris-inst)}
-.perfil-card.voluntario{border-top-color:var(--verde)}
+
 .perfil-card.prensa{border-top-color:var(--naranja)}
 .perfil-icon{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .perfil-icon.rojo-bg{background:rgba(237,105,75,.12)}
 .perfil-icon.gris-bg{background:rgba(58,60,71,.1)}
-.perfil-icon.verde-bg{background:rgba(55,97,53,.12)}
+
 .perfil-icon.naranja-bg{background:rgba(237,105,75,.1)}
 .perfil-icon svg{width:20px;height:20px}
 .perfil-tag{font-size:.6rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase}
@@ -132,28 +129,6 @@ footer img.foot-logo{height:30px;margin-bottom:1.2rem;display:block;filter:brigh
 .perfil-cta:hover{gap:.7rem}
 
 /* ─── DONAR SECTION ─── */
-.donar-section{background:var(--crema);padding:6rem 4rem;border-top:1px solid rgba(36,37,46,.07)}
-.donar-inner{max-width:1200px;margin:0 auto}
-.donar-header{margin-bottom:3.5rem}
-.donar-header p.section-eyebrow{color:var(--rojo)}
-.niveles-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-bottom:3rem}
-.nivel-card{background:white;border-radius:3px;padding:2.2rem;display:flex;flex-direction:column;gap:1.2rem;border-bottom:3px solid rgba(36,37,46,.06);transition:box-shadow .2s,transform .2s}
-.nivel-card:hover{box-shadow:0 6px 24px rgba(36,37,46,.08);transform:translateY(-2px)}
-.nivel-card.destacado{border-bottom-color:var(--rojo);background:var(--azul);color:white}
-.nivel-monto{font-size:2rem;font-weight:800;letter-spacing:-.04em}
-.nivel-monto span{font-size:.9rem;font-weight:500;opacity:.5;margin-left:.2rem}
-.nivel-card.destacado .nivel-monto{color:var(--rojo)}
-.nivel-nombre{font-size:.65rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;opacity:.4}
-.nivel-card.destacado .nivel-nombre{color:rgba(255,255,255,.5)}
-.nivel-desc{font-size:.88rem;line-height:1.72;color:rgba(36,37,46,.55);flex:1}
-.nivel-card.destacado .nivel-desc{color:rgba(255,255,255,.6)}
-.nivel-impacto{font-size:.78rem;font-weight:700;color:var(--verde);padding:.55rem .9rem;background:rgba(55,97,53,.08);border-radius:2px;line-height:1.4}
-.nivel-card.destacado .nivel-impacto{background:rgba(237,105,75,.15);color:#f9b49a}
-.donar-cta-wrap{display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap}
-.btn-donar-gg{display:inline-flex;align-items:center;gap:.7rem;background:var(--rojo);color:white;font-size:1rem;font-weight:800;padding:1rem 2.2rem;border-radius:2px;transition:background .2s,transform .15s;letter-spacing:.02em}
-.btn-donar-gg:hover{background:#d4533a;transform:translateY(-1px)}
-.donar-trazabilidad{font-size:.8rem;color:rgba(36,37,46,.45);line-height:1.6}
-.donar-trazabilidad strong{color:rgba(36,37,46,.7);font-weight:600}
 
 /* ─── ALIADOS SECTION ─── */
 .aliados-section{background:white;padding:6rem 4rem}
@@ -218,50 +193,17 @@ footer img.foot-logo{height:30px;margin-bottom:1.2rem;display:block;filter:brigh
 .form-success p{font-size:.88rem;color:rgba(36,37,46,.6);line-height:1.6}
 
 /* ─── VOLUNTARIADO ─── */
-.voluntariado-section{background:white;padding:6rem 4rem;border-top:1px solid rgba(36,37,46,.07)}
-.voluntariado-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start}
-.voluntariado-areas{display:flex;flex-direction:column;gap:.8rem;margin-top:2rem}
-.area-item{display:flex;align-items:center;gap:1rem;padding:.9rem 1.1rem;background:var(--crema);border-radius:3px;border-left:3px solid var(--verde)}
-.area-item svg{width:18px;height:18px;flex-shrink:0;color:var(--verde)}
-.area-item span{font-size:.88rem;font-weight:600;color:var(--azul)}
-.voluntariado-cta-wrap{margin-top:2.5rem;display:flex;flex-direction:column;gap:1rem}
-.btn-voluntariado{display:inline-flex;align-items:center;gap:.6rem;background:var(--verde);color:white;font-size:.9rem;font-weight:800;padding:.85rem 1.8rem;border-radius:2px;transition:background .2s;width:fit-content}
-.btn-voluntariado:hover{background:#2c4f29}
-.voluntariado-contact{font-size:.85rem;color:rgba(36,37,46,.5)}
-.voluntariado-contact a{color:var(--verde);font-weight:600}
+
 /* form voluntariado (simple, reutiliza estilos) */
-.vol-form-card{background:var(--crema);border-radius:3px;padding:2.2rem}
-.vol-form-card .form-label{font-size:.65rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:rgba(36,37,46,.4);display:block;margin-bottom:.5rem}
-.vol-form-card .form-row{margin-bottom:1.1rem}
-.vol-form-card .form-row-2{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.1rem}
-.vol-form-card .form-input,.vol-form-card .form-select,.vol-form-card .form-textarea{width:100%;border:1.5px solid rgba(36,37,46,.12);background:white;border-radius:2px;padding:.8rem 1rem;font-family:var(--font);font-size:.9rem;color:var(--azul);outline:none;transition:border-color .2s;appearance:none}
-.vol-form-card .form-input:focus,.vol-form-card .form-select:focus,.vol-form-card .form-textarea:focus{border-color:var(--verde);background:white}
-.vol-form-card .form-input::placeholder,.vol-form-card .form-textarea::placeholder{color:rgba(36,37,46,.3)}
-.vol-form-card .form-textarea{resize:vertical;min-height:100px;line-height:1.6}
-.vol-form-card .form-select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%2324252e' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 1rem center;padding-right:2.5rem;cursor:pointer}
-.btn-vol-submit{width:100%;background:var(--verde);color:white;border:none;border-radius:2px;padding:.9rem;font-family:var(--font);font-size:.9rem;font-weight:800;cursor:pointer;letter-spacing:.04em;transition:background .2s}
-.btn-vol-submit:hover{background:#2c4f29}
-.btn-vol-submit:disabled{opacity:.5;cursor:not-allowed}
 
 /* ─── PRENSA ENTRY ─── */
-.prensa-entry{background:var(--azul);padding:4rem;margin:0}
-.prensa-entry-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:3rem;flex-wrap:wrap}
-.prensa-entry-text .eyebrow{font-size:.62rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(237,105,75,.8);margin-bottom:.8rem}
-.prensa-entry-text h2{font-size:clamp(1.4rem,2vw,2rem);font-weight:800;color:white;letter-spacing:-.025em;line-height:1.1;margin-bottom:.6rem}
-.prensa-entry-text p{font-size:.92rem;color:rgba(255,255,255,.5);line-height:1.7}
-.prensa-entry-actions{display:flex;gap:1rem;align-items:center;flex-wrap:wrap;flex-shrink:0}
-.btn-kit-prensa{display:inline-flex;align-items:center;gap:.6rem;background:var(--rojo);color:white;font-size:.9rem;font-weight:800;padding:.85rem 1.8rem;border-radius:2px;transition:background .2s}
-.btn-kit-prensa:hover{background:#d4533a}
-.btn-prensa-contacto{display:inline-flex;align-items:center;gap:.5rem;border:1.5px solid rgba(255,255,255,.2);color:rgba(255,255,255,.7);font-size:.88rem;font-weight:700;padding:.8rem 1.5rem;border-radius:2px;transition:all .2s}
-.btn-prensa-contacto:hover{border-color:rgba(255,255,255,.5);color:white}
 
 /* ─── DONANTES MURO ─── */
 .donantes-section{background:var(--crema);padding:6rem 4rem}
 .donantes-inner{max-width:1200px;margin:0 auto}
 .donantes-intro{max-width:620px;margin-bottom:3rem}
 .donantes-muro{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:2rem}
-.donante-badge{display:inline-flex;align-items:center;gap:.5rem;background:white;border-radius:2px;padding:.45rem .9rem;font-size:.78rem;font-weight:600;color:rgba(36,37,46,.65);border:1px solid rgba(36,37,46,.06)}
-.donante-badge .donante-flag{font-size:.9rem}
+
 .donantes-placeholder{font-size:.88rem;color:rgba(36,37,46,.38);font-style:italic;padding:1rem 0}
 
 /* ─── RESPONSIVE ─── */
@@ -271,13 +213,13 @@ footer img.foot-logo{height:30px;margin-bottom:1.2rem;display:block;filter:brigh
   .hamburger{display:flex}
   .hero{padding:100px 2rem 4rem}
   .hero-inner{grid-template-columns:1fr;gap:2rem}
-  .perfiles-section,.donar-section,.aliados-section,.institucional-section,.voluntariado-section,.donantes-section{padding:4rem 2rem}
-  .prensa-entry{padding:3rem 2rem}
+  .perfiles-section,.aliados-section,.institucional-section,.donantes-section{padding:4rem 2rem}
+  
   .perfiles-grid{grid-template-columns:1fr 1fr}
-  .niveles-grid{grid-template-columns:1fr}
+  
   .aliados-grid{grid-template-columns:1fr 1fr}
   .institucional-inner{grid-template-columns:1fr;gap:3rem}
-  .voluntariado-inner{grid-template-columns:1fr;gap:3rem}
+  
   .fms-modulo{grid-template-columns:1fr;gap:2rem}
   .footer-top{grid-template-columns:1fr 1fr;gap:2rem}
   footer{padding:3rem 2rem 1.5rem}
@@ -285,7 +227,7 @@ footer img.foot-logo{height:30px;margin-bottom:1.2rem;display:block;filter:brigh
 @media(max-width:640px){
   .perfiles-grid{grid-template-columns:1fr}
   .aliados-grid{grid-template-columns:1fr}
-  .inst-form-card .form-row-2,.vol-form-card .form-row-2{grid-template-columns:1fr}
+  .inst-form-card .form-row-2{grid-template-columns:1fr}
   .footer-top{grid-template-columns:1fr}
   .fms-ciclos{flex-wrap:wrap}
 }

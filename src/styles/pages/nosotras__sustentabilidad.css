@@ -49,14 +49,14 @@ nav.over-bg .lang-btn{color:white}nav.solid .lang-btn{color:var(--azul)}
 .hero-body{position:relative;z-index:2;padding:130px 4rem 5rem;max-width:820px}
 .hero-breadcrumb{display:flex;align-items:center;gap:.5rem;font-size:.68rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:2rem}
 .hero-breadcrumb a{color:rgba(255,255,255,.35);transition:color .2s}.hero-breadcrumb a:hover{color:white}.hero-breadcrumb span{color:rgba(255,255,255,.18)}
-.hero-badge{display:inline-flex;align-items:center;gap:.5rem;font-size:.62rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:.4rem 1rem;border-radius:2px;margin-bottom:1.2rem}
+
 .hero-title{font-size:clamp(2.8rem,5vw,5.5rem);font-weight:800;line-height:.95;letter-spacing:-.04em;color:white;margin-bottom:1.5rem}
 .hero-subtitle{font-size:1rem;line-height:1.78;color:rgba(255,255,255,.55);max-width:560px}
 
 /* BLOQUES */
 .eje-bloque{padding:6rem 4rem;border-bottom:1px solid rgba(36,37,46,.07)}
 .eje-bloque:last-child{border-bottom:none}
-.eje-bloque.bg-white{background:white}.eje-bloque.bg-crema{background:var(--crema)}.eje-bloque.bg-azul{background:var(--azul)}
+.eje-bloque.bg-white{background:white}.eje-bloque.bg-crema{background:var(--crema)}
 .eje-two-col{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;max-width:1200px;margin:0 auto}
 .eje-two-col.reverse{direction:rtl}.eje-two-col.reverse>*{direction:ltr}
 .eje-photo{border-radius:3px;overflow:hidden;aspect-ratio:4/3;position:relative;background:rgba(36,37,46,.08)}

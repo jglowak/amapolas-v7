@@ -2,7 +2,6 @@
 /* h4/h5 → h3 por jerarquía: mismo estilo que las reglas originales */
 .cf-card h3{font-size:1rem;font-weight:800;letter-spacing:-.015em;line-height:1.15}
 .cuidado-item-text h3{font-size:.9rem;font-weight:700;color:white;margin-bottom:.2rem}
-.diferencia-content h3{font-size:.92rem;font-weight:800;margin-bottom:.35rem}
 
 /* Legibilidad (contraste AA): complementa legibilidad-interiores.css */
 body .cuidado-text .section-eyebrow{color:rgba(255,255,255,.68)}
