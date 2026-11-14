@@ -20,10 +20,10 @@
 /* Donorbox deja controles ocultos unos píxeles por fuera de su recuadro: se recortan en horizontal para
    que no ensanchen la página en pantallas chicas (clip no recorta en vertical ni crea scroll). */
 #d2-db{overflow-x:clip}
-/* Donorbox no pasa de 425 px de ancho: centrado en la tarjeta en lugar de quedar pegado a la izquierda */
+/* Donorbox no pasa de 425 px de ancho: va centrado en la tarjeta, y Mercado Pago usa el mismo ancho para que
+   las dos pestañas se vean iguales (en mobile los dos ocupan todo el ancho disponible). */
 #d2-db dbox-widget{max-width:425px;margin-left:auto;margin-right:auto}
-/* Con el estilo sumado desde DonationForm (clase dbox-full), Donorbox ocupa todo el ancho de la tarjeta */
-#d2-db dbox-widget.dbox-full{max-width:none}
+#d2-mp{max-width:425px;margin-left:auto;margin-right:auto}
 
 @media(max-width:640px){.d2-card{padding:1rem}.d2-tab{font-size:.85rem}}
 .d2-go{display:flex;align-items:center;justify-content:center;width:100%;background:var(--azul);color:#fff;font-weight:800;font-size:1rem;padding:1rem 1.5rem;border-radius:3px;text-decoration:none;text-align:center;transition:background .2s}
