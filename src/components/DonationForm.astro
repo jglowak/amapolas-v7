@@ -70,6 +70,32 @@ const otherMonthly = mp.otherMonthly || site.donate.mercadoPago;
     s.async = true;
     s.src = 'https://donorbox.org/widgets.js';
     document.head.appendChild(s);
+    if (window.customElements) customElements.whenDefined('dbox-widget').then(widenDonorbox);
+  }
+  // Donorbox limita su formulario a 425 px dentro de su shadow DOM. Se le suma una hoja de estilos para que
+  // ocupe el ancho de la tarjeta; si algo falla, queda centrado a 425 px (ver donation-form.css).
+  function widenDonorbox() {
+    const w = document.querySelector('#d2-db dbox-widget');
+    const css = ':host{max-width:none!important}section{max-width:none!important}';
+    let tries = 0;
+    (function apply() {
+      const sr = w && w.shadowRoot;
+      if (!sr) { if (++tries < 40) setTimeout(apply, 250); return; }
+      try {
+        const sheet = new CSSStyleSheet();
+        sheet.replaceSync(css);
+        const add = () => { if (!sr.adoptedStyleSheets.includes(sheet)) sr.adoptedStyleSheets = [...sr.adoptedStyleSheets, sheet]; };
+        add();
+        new MutationObserver(add).observe(sr, { childList: true });
+      } catch (e) {
+        const st = document.createElement('style');
+        st.textContent = css;
+        const add = () => { if (!st.isConnected) sr.appendChild(st); };
+        add();
+        new MutationObserver(add).observe(sr, { childList: true });
+      }
+      w.classList.add('dbox-full');
+    })();
   }
   const dbTab = document.getElementById('d2-tab-db');
   ['pointerenter', 'focus', 'touchstart'].forEach((ev) => dbTab.addEventListener(ev, loadDonorbox, { once: true, passive: true }));
